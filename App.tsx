@@ -19,6 +19,7 @@ import {
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {CORP_HEADSHOT} from './src/images';
+import SimpleCarousel from './src/components/SimpleCarousel';
 
 function LogoTitle() {
   return <Image style={{width: 50, height: 50}} source={CORP_HEADSHOT} />;
@@ -59,6 +60,14 @@ function ProfileScreen({navigation}) {
   );
 }
 
+function CarouselScreen({navigation}) {
+  return (
+    <View>
+      <SimpleCarousel />
+    </View>
+  );
+}
+
 function HomeScreen({navigation}) {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
@@ -85,6 +94,7 @@ function DetailsScreen({navigation}) {
 const Tab = createBottomTabNavigator();
 const SettingsStack = createNativeStackNavigator();
 const HomeStack = createNativeStackNavigator();
+const CarouselStack = createNativeStackNavigator();
 
 function App(): JSX.Element {
   useColorScheme() === 'dark';
@@ -103,6 +113,7 @@ function App(): JSX.Element {
             </HomeStack.Navigator>
           )}
         </Tab.Screen>
+
         <Tab.Screen name="Second">
           {() => (
             <SettingsStack.Navigator>
@@ -114,6 +125,18 @@ function App(): JSX.Element {
             </SettingsStack.Navigator>
           )}
         </Tab.Screen>
+
+        <Tab.Screen name="Third" >
+          {() => (
+            <CarouselStack.Navigator>
+              <CarouselStack.Screen
+                name="Carousel"
+                component={CarouselScreen}
+                />
+            </CarouselStack.Navigator>
+          )}
+        </Tab.Screen>
+
       </Tab.Navigator>
     </NavigationContainer>
   );
