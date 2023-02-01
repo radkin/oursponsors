@@ -1,0 +1,885 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/nunito/200-italic.css",
+      "sha1": "91d5de7aa5b99c653fc85b44dc6ad1b369b5cfd7"
+    },
+    {
+      "path": "assets/fonts/nunito/200.css",
+      "sha1": "867c3afee471d94f3dc84ce467003a5aa5425c5c"
+    },
+    {
+      "path": "assets/fonts/nunito/300-italic.css",
+      "sha1": "dcbcda075228a9d9774ff537fc4cfb07b7d85e6b"
+    },
+    {
+      "path": "assets/fonts/nunito/300.css",
+      "sha1": "095e76b728d13639744aeba6563209127c152ed7"
+    },
+    {
+      "path": "assets/fonts/nunito/400-italic.css",
+      "sha1": "ac445240f97bfc498bea23cc461b585bfef23fbe"
+    },
+    {
+      "path": "assets/fonts/nunito/400.css",
+      "sha1": "7eddc390d0f09351dc83b0d2bd59fe7e2fef836b"
+    },
+    {
+      "path": "assets/fonts/nunito/500-italic.css",
+      "sha1": "3a96a4dd74965a2cf23d7ab7442a0b0dde6eeb47"
+    },
+    {
+      "path": "assets/fonts/nunito/500.css",
+      "sha1": "2543a462ff902e4a7d22bae93f10220e9cde6a2c"
+    },
+    {
+      "path": "assets/fonts/nunito/600-italic.css",
+      "sha1": "440fe7d5ecd632a9a63373ebae8e0746af464fa8"
+    },
+    {
+      "path": "assets/fonts/nunito/600.css",
+      "sha1": "380c366485afedd6f636b39b915c7f63af50b175"
+    },
+    {
+      "path": "assets/fonts/nunito/700-italic.css",
+      "sha1": "052b38ffcfe72f3816a21dd5afc5f1bb2f3b691b"
+    },
+    {
+      "path": "assets/fonts/nunito/700.css",
+      "sha1": "f93b0548bdeccba4467907a81f66f9674eb3d2ea"
+    },
+    {
+      "path": "assets/fonts/nunito/800-italic.css",
+      "sha1": "69de82157009add5f865c7866573be26124508bc"
+    },
+    {
+      "path": "assets/fonts/nunito/800.css",
+      "sha1": "e8cd4e53f09b0b79a755fc47e96e46dc4a9e0fd0"
+    },
+    {
+      "path": "assets/fonts/nunito/900-italic.css",
+      "sha1": "a9b167144c21eceeada254572261ec6805d971c7"
+    },
+    {
+      "path": "assets/fonts/nunito/900.css",
+      "sha1": "338d5761521bf676cce415ed2046b5c6765deb85"
+    },
+    {
+      "path": "assets/fonts/nunito/CHANGELOG.md",
+      "sha1": "388da46d18957ff5863c8a654b8f9707e6c50e14"
+    },
+    {
+      "path": "assets/fonts/nunito/README.md",
+      "sha1": "65c7368b2bb496c36ec486a935516e6767308dea"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-200-italic.css",
+      "sha1": "2e352dd50ed20d56bad239d41b35f0e283d7095b"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-200.css",
+      "sha1": "3028e500cff13055dd0c743ddea073e36d1b340d"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-300-italic.css",
+      "sha1": "4ed1bf671d6fa79da8c9b081318320f56e4914d8"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-300.css",
+      "sha1": "f00033d1d9b76adc1813e3808fcf0234f98f90e9"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-400-italic.css",
+      "sha1": "22a2b1b274da24ed27567b0ae3459bea6b2af8e5"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-400.css",
+      "sha1": "c1b6fe5e62f91b41ef9b06798a2d1b9c5366c9b5"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-500-italic.css",
+      "sha1": "3e6e4feeba7c5b0a2081c108deec9766df03e7ad"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-500.css",
+      "sha1": "aa0fc8ee6c302e8f324f970a9ce1adecf7c70826"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-600-italic.css",
+      "sha1": "3762acdabf68912e6c45d9e3cdc67a73ff05269f"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-600.css",
+      "sha1": "93b47c274922ac18c7063991d2c49646e61d6562"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-700-italic.css",
+      "sha1": "7399b759e98fcedefed0cd6533a615ddb7820c57"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-700.css",
+      "sha1": "2a665d7ea5106c1cd4ba036d63349a5ed014e69a"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-800-italic.css",
+      "sha1": "e1ac0957036dca43cf9d577fa3aaf845af2b16b2"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-800.css",
+      "sha1": "6f98713a29c7d9947ff5cc0b11e80b4a6a88a611"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-900-italic.css",
+      "sha1": "3d62ec34385f574fc435782f328234bdf7fc70b8"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-900.css",
+      "sha1": "aedd5dbcb32bfd4ee0131711171cb5bbc4be9843"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-ext-200-italic.css",
+      "sha1": "b1708749841e5027ee7ebd9e8ba9cd611202fbc4"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-ext-200.css",
+      "sha1": "6ef298e3bbe9a33bb5f64abdbd00b87266cdaed5"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-ext-300-italic.css",
+      "sha1": "e1d2bc23059116612fa9e960655c441a29b95029"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-ext-300.css",
+      "sha1": "1c5f98c76d6dd02d3208634e4b1641ddeae827c6"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-ext-400-italic.css",
+      "sha1": "2466bcefd650ea8388aae2f1c41a068077320241"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-ext-400.css",
+      "sha1": "b5b80210b96072826535d1468cd5438829db1663"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-ext-500-italic.css",
+      "sha1": "e469302c0cfd244e01b4d835367ab174ee5b0495"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-ext-500.css",
+      "sha1": "de323f4f2f8d3d62195fcd39a7d0c653a3579202"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-ext-600-italic.css",
+      "sha1": "90e14e5a7a0d9c3195e5505e076bf74c87c5cbfb"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-ext-600.css",
+      "sha1": "4997ed9036aa4db44e0325ea1081ad2ddeb2e208"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-ext-700-italic.css",
+      "sha1": "36a0501b9f1deed416f2fe909a5d403d4c106ee7"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-ext-700.css",
+      "sha1": "280595907c0ad2fbaa6c20a828d00e0450254888"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-ext-800-italic.css",
+      "sha1": "abefefc4b869aefb0b9d89ed8ef63dd60e815cd3"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-ext-800.css",
+      "sha1": "748263c6a8e0bb12b1142b93ccef241a18f9539b"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-ext-900-italic.css",
+      "sha1": "ef6f80428379b4b3634333174c13bfe2f3e82e45"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-ext-900.css",
+      "sha1": "e263722a20950537acad520311bfb401c602b074"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic-ext.css",
+      "sha1": "dfaf0e19782018d3a0536c6e6abc1f09dcbe4cec"
+    },
+    {
+      "path": "assets/fonts/nunito/cyrillic.css",
+      "sha1": "c201594f4966c63417e0dbce3ef17e921d24d2e2"
+    },
+    {
+      "path": "assets/fonts/nunito/files/file-list.json",
+      "sha1": "73462ba1fc3946472fa5caafb6b81ad3e581185d"
+    },
+    {
+      "path": "assets/fonts/nunito/index.css",
+      "sha1": "7eddc390d0f09351dc83b0d2bd59fe7e2fef836b"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-200-italic.css",
+      "sha1": "c6da61d5bdaa513b3dac853465018ef011daf75c"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-200.css",
+      "sha1": "da7031a850f05aa909bf8d717b539eede75ba7b0"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-300-italic.css",
+      "sha1": "2d41eed407e5ed070c592d71ad30d62f0a2d8561"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-300.css",
+      "sha1": "b4d9e471bd2c11bee89e38f64bd7c52803813d16"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-400-italic.css",
+      "sha1": "a7b3c3a41150bbabd13aeafcf14223ef8513da3d"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-400.css",
+      "sha1": "be56d35b62bbcd63af6620d6bd77270ce1b460ef"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-500-italic.css",
+      "sha1": "01877de1e7e7ecfff7ebce298b2cffa87a95233c"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-500.css",
+      "sha1": "823377324a45334ff390c9f9f6a9157676fb7ad4"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-600-italic.css",
+      "sha1": "8f6043b0cc74c6907e500dcb2524b5396e5a3973"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-600.css",
+      "sha1": "db6d5dd9646ba914a8acaaeff805c4ba1f4b9dc3"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-700-italic.css",
+      "sha1": "d66888b8b3d278b6e664e2448c856eb12f500fc8"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-700.css",
+      "sha1": "bae29398e00d50491a3fa6167cad25bd35f377f1"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-800-italic.css",
+      "sha1": "ada54be89bd3e0c59f6562cf692c51352f6c6a3b"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-800.css",
+      "sha1": "eb3f920b8034bb6fc3c23e60b5a90a165f65cbd0"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-900-italic.css",
+      "sha1": "b3bb89b9f6fdbd22624f63e2018c635c57ee7080"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-900.css",
+      "sha1": "8c503e00e4e00fab9b801a6354311b10d63e2e1f"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-ext-200-italic.css",
+      "sha1": "46d580ad6d571ec4ebcb2bb37919b5f7cf6f79fe"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-ext-200.css",
+      "sha1": "57c6f3dc3139b295d14d8ca2c992a764e30dadab"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-ext-300-italic.css",
+      "sha1": "b9ac6610fcde1915a6fb7e3c733ef88d59230f36"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-ext-300.css",
+      "sha1": "6a92d6cb7532d75093dc9cbb3a03cb0789183dcb"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-ext-400-italic.css",
+      "sha1": "8faaa204e0619ac40ea87b0c9db5deaf50882d28"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-ext-400.css",
+      "sha1": "bbffc7676feab6ec0256f537de0a03da644b7ef1"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-ext-500-italic.css",
+      "sha1": "00c9128e3c9e432e538bda51c3249eb6527d7b44"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-ext-500.css",
+      "sha1": "5cbd3706c69e34893787439413a80812ffd216d7"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-ext-600-italic.css",
+      "sha1": "b7111cb5b95f49721fa4756e20c78befa60a7cbc"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-ext-600.css",
+      "sha1": "11d298cf050599c8f4821485502d71a0659c09dc"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-ext-700-italic.css",
+      "sha1": "649742bc5cb929f30632134d49523b0ce7cce8a4"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-ext-700.css",
+      "sha1": "5a2e7188a973d3077f85debf131b898a9a1dbb66"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-ext-800-italic.css",
+      "sha1": "b48c50d76b3203af32d9cb947eabe3346a2dbcf7"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-ext-800.css",
+      "sha1": "d79c507074e07d9db5c6d6c04d9a522cb5879042"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-ext-900-italic.css",
+      "sha1": "7e861f9ab54d496e5d032cde11600f63fc3258b7"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-ext-900.css",
+      "sha1": "a1c4753caf1d46a00937af7b22b7d2f96082f134"
+    },
+    {
+      "path": "assets/fonts/nunito/latin-ext.css",
+      "sha1": "16101e54c99d6c667adac1cd2f1eef3e5131013b"
+    },
+    {
+      "path": "assets/fonts/nunito/latin.css",
+      "sha1": "a95483a8671026ed2226a073cdef72c6b8b98fef"
+    },
+    {
+      "path": "assets/fonts/nunito/metadata.json",
+      "sha1": "127c907bb6af5f26c95a958c0629ca5caf8ec05b"
+    },
+    {
+      "path": "assets/fonts/nunito/scss/mixins.scss",
+      "sha1": "d70b7f768bbafe0fa54914bf585ca806fd028526"
+    },
+    {
+      "path": "assets/fonts/nunito/unicode.json",
+      "sha1": "9dfc6674eba48faab357b582cdf4ec009016116a"
+    },
+    {
+      "path": "assets/fonts/nunito/variable-italic.css",
+      "sha1": "6810a50fd569518778c70cab3e1238bf2a847c59"
+    },
+    {
+      "path": "assets/fonts/nunito/variable.css",
+      "sha1": "2596889257da0d7dc48bf72117911293066b2480"
+    },
+    {
+      "path": "assets/fonts/nunito/vietnamese-200-italic.css",
+      "sha1": "7d45ddfb288909aef842685296e7672b60fb69fa"
+    },
+    {
+      "path": "assets/fonts/nunito/vietnamese-200.css",
+      "sha1": "30ba2baf250c65544766231b7edc2bf32ef2f3b2"
+    },
+    {
+      "path": "assets/fonts/nunito/vietnamese-300-italic.css",
+      "sha1": "3143e6ebd9fa97b582cd5935780fcf3484362d57"
+    },
+    {
+      "path": "assets/fonts/nunito/vietnamese-300.css",
+      "sha1": "15c8d95072087ac626f0b09b0be8463700a90f50"
+    },
+    {
+      "path": "assets/fonts/nunito/vietnamese-400-italic.css",
+      "sha1": "74a3813cd528083a56083c126ceef2ca1c91ac1d"
+    },
+    {
+      "path": "assets/fonts/nunito/vietnamese-400.css",
+      "sha1": "6365988419a6ffc19cf96e9598a0c6cabd40231e"
+    },
+    {
+      "path": "assets/fonts/nunito/vietnamese-500-italic.css",
+      "sha1": "9cc70bc902e96fea7ff0c0dbf9176ea6db564762"
+    },
+    {
+      "path": "assets/fonts/nunito/vietnamese-500.css",
+      "sha1": "a462af59438f3699d4b4b9225d04e83ba27a3233"
+    },
+    {
+      "path": "assets/fonts/nunito/vietnamese-600-italic.css",
+      "sha1": "bf14c59d41b03bd419ab286cfa693dd7484d0e5c"
+    },
+    {
+      "path": "assets/fonts/nunito/vietnamese-600.css",
+      "sha1": "239624763c955bc5f5eeaf7c0ba0d66e99d7cef1"
+    },
+    {
+      "path": "assets/fonts/nunito/vietnamese-700-italic.css",
+      "sha1": "1651d7c8794c3080bb2348e3feaab6a6a8dde71a"
+    },
+    {
+      "path": "assets/fonts/nunito/vietnamese-700.css",
+      "sha1": "c0a13c6fedf1529f8802c42790ffe0c7a3b17da5"
+    },
+    {
+      "path": "assets/fonts/nunito/vietnamese-800-italic.css",
+      "sha1": "80e8fb25bc4a4fcfba75ef47354e8a49de3c7674"
+    },
+    {
+      "path": "assets/fonts/nunito/vietnamese-800.css",
+      "sha1": "10537416d7fb9bbd5987fa2bf67217199a6981e7"
+    },
+    {
+      "path": "assets/fonts/nunito/vietnamese-900-italic.css",
+      "sha1": "ac17de45f67d6d4b2f17702609bf0f67deee29cf"
+    },
+    {
+      "path": "assets/fonts/nunito/vietnamese-900.css",
+      "sha1": "8a6f59af15c3c811082c2b0fe94fddbf1caece94"
+    },
+    {
+      "path": "assets/fonts/nunito/vietnamese.css",
+      "sha1": "c185bef216495fff3a7e2dc57899a941ab5df202"
+    },
+    {
+      "path": "assets/fonts/roboto/100-italic.css",
+      "sha1": "e48d5f37027a49684561e409ba5bc05df19ea3b7"
+    },
+    {
+      "path": "assets/fonts/roboto/100.css",
+      "sha1": "fd65870ef5d8e01f128125f0278ed362f6970ea7"
+    },
+    {
+      "path": "assets/fonts/roboto/300-italic.css",
+      "sha1": "0067491f779e308ae12e3ae16f835192d0cf1a8b"
+    },
+    {
+      "path": "assets/fonts/roboto/300.css",
+      "sha1": "dfe36d45c9890c799a1c8bda0d2ca2c50db65539"
+    },
+    {
+      "path": "assets/fonts/roboto/400-italic.css",
+      "sha1": "fdf73a763ff0743b0a7aa647245645afb892bc71"
+    },
+    {
+      "path": "assets/fonts/roboto/400.css",
+      "sha1": "b6b912345a0faf06b489af33e9aed0564a7f73f5"
+    },
+    {
+      "path": "assets/fonts/roboto/500-italic.css",
+      "sha1": "348d3eb924622c84b63e112987f2e3738a0bc517"
+    },
+    {
+      "path": "assets/fonts/roboto/500.css",
+      "sha1": "e3af0d1d4861d25fd360e8d24fb30856b3bee812"
+    },
+    {
+      "path": "assets/fonts/roboto/700-italic.css",
+      "sha1": "3b954744df46de9563b0e71e20ced0f674a87b1c"
+    },
+    {
+      "path": "assets/fonts/roboto/700.css",
+      "sha1": "8c4be3ca0f213eb07bd5095b6d863a68100b2177"
+    },
+    {
+      "path": "assets/fonts/roboto/900-italic.css",
+      "sha1": "e52a965c6c5e18b5be63d41d20a97df7f9e2043d"
+    },
+    {
+      "path": "assets/fonts/roboto/900.css",
+      "sha1": "d65229d667358113ea4aa17711f4d98548cfed0c"
+    },
+    {
+      "path": "assets/fonts/roboto/CHANGELOG.md",
+      "sha1": "388da46d18957ff5863c8a654b8f9707e6c50e14"
+    },
+    {
+      "path": "assets/fonts/roboto/README.md",
+      "sha1": "297466577ec1abba65976778d7197e361c997a17"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-100-italic.css",
+      "sha1": "cb9ab8189248e7fc7fa342b9eb75c7ffbda5b629"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-100.css",
+      "sha1": "7ffce0a322a482e8c0a610b1bbbad7d8ae9bc270"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-300-italic.css",
+      "sha1": "4e4f356d88f063de8f716ac59dd11c9e069b9623"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-300.css",
+      "sha1": "62a71dc2264dea6fac955c85fb95137f97a9e70b"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-400-italic.css",
+      "sha1": "8eaf253f181f953f0e387453f4a2589e86182464"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-400.css",
+      "sha1": "6fe6ac5251daf6a8e49634dd6e099d6392ce4788"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-500-italic.css",
+      "sha1": "5c9f3099ced9a84500f22a9f962b92e9ed2da16c"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-500.css",
+      "sha1": "c83b1af976bbfef002b83d3cbd69b0e05ca3d84d"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-700-italic.css",
+      "sha1": "c9f43aa0199a46a328c9773b76d894c64cdb5c1e"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-700.css",
+      "sha1": "509fff2f9f1ffa10031e40b29621789d255ccc7e"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-900-italic.css",
+      "sha1": "6ed1cb0de15fe9903ee6e0fa3c972c022fc5c9b0"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-900.css",
+      "sha1": "56aacbd4613de1728fe2f251841f46bb14c9f67e"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-ext-100-italic.css",
+      "sha1": "848d4a0ea3783c6429ee72a457e8345a5e28baa1"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-ext-100.css",
+      "sha1": "635b5c6d3a972a16528fd12a0f85ed6813a5c291"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-ext-300-italic.css",
+      "sha1": "84c8d3fc818fe2748ea8074cc62b753d4945d9c4"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-ext-300.css",
+      "sha1": "a16dac80888e909237c3430b80f2c40d4b886d13"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-ext-400-italic.css",
+      "sha1": "f5a2d489fc0fce8afd4dedd27d7bcc29e31bb98b"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-ext-400.css",
+      "sha1": "22b33e161afe93780b5e9f7a9344869662ed6f17"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-ext-500-italic.css",
+      "sha1": "f7d78a3972a73059a8256e0316a81692f696fd32"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-ext-500.css",
+      "sha1": "05c830d58235924ee43fdd5a0a7d88218ce46e9b"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-ext-700-italic.css",
+      "sha1": "429bb6a7b30cdbe5ed4227b0610973fb92fd1ea5"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-ext-700.css",
+      "sha1": "4d42f1e2101ad6bbce1d7ff1f6a333037e64fba9"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-ext-900-italic.css",
+      "sha1": "e1e1660a92a169eaa3a2f6aba58abf04ca9397de"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-ext-900.css",
+      "sha1": "2a366f5607273c745981dc83063e65578faed499"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic-ext.css",
+      "sha1": "a0d2b297194fc328b34ecebc7bfc2ae5bb597c85"
+    },
+    {
+      "path": "assets/fonts/roboto/cyrillic.css",
+      "sha1": "a6302e3ad85b53650940bba074b9fe26610ae1b1"
+    },
+    {
+      "path": "assets/fonts/roboto/files/file-list.json",
+      "sha1": "f2b8f0d861c9f1c486a29e653951aa3a623ef17f"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-100-italic.css",
+      "sha1": "8cbf720a9e9072db8aab6306fa1d6d7384146ea9"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-100.css",
+      "sha1": "4387d526fca4cdd2168fd5024045743795ca12dc"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-300-italic.css",
+      "sha1": "8499093613a55a7075b2ee7c406d0823be01d2f2"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-300.css",
+      "sha1": "0c1292f48bd089a3858d5cc74fb4825052a78102"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-400-italic.css",
+      "sha1": "5c3e320222af456ca1353a5a9cdab952a7043889"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-400.css",
+      "sha1": "8b666642a3d06aec2af12aca20b9b3db7ecfab30"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-500-italic.css",
+      "sha1": "45e406384f0ef166d6a1261f1235e17a7b4d9021"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-500.css",
+      "sha1": "1063487bd042f655d82923ab3bd2babdda4735f2"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-700-italic.css",
+      "sha1": "0b587259b201f2a9be755fdf252b69e88f04ea7a"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-700.css",
+      "sha1": "c00b75fe20782b6eb1acbc9fc23803c132c0f1a4"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-900-italic.css",
+      "sha1": "06801a1765462a051df48a79cdc42917bb4f4270"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-900.css",
+      "sha1": "6c98e4039f3f03e1ac5b20babe478b2e86211b38"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-ext-100-italic.css",
+      "sha1": "2667413c5b922bc51c046b0f13d7709e80c54c8b"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-ext-100.css",
+      "sha1": "4991cb47aff6c404da3347019b54179bb9d6997f"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-ext-300-italic.css",
+      "sha1": "802754efe08a3a789c1d9c3b02f8b04db9ed2019"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-ext-300.css",
+      "sha1": "4466b2d874893b26818af72b02b2bbc1d09c0a7c"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-ext-400-italic.css",
+      "sha1": "cef32abf9d792f4ef35f1b1a6dd649e04b7dd2db"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-ext-400.css",
+      "sha1": "69ecf6f0f651ac122ebb30067d7821e73d0c107b"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-ext-500-italic.css",
+      "sha1": "71c335e895fe4a3e273616d98d6ba3991e2d6c92"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-ext-500.css",
+      "sha1": "24cfbb895106e1980ca9608b4eda2244446ba019"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-ext-700-italic.css",
+      "sha1": "e86ccf85f4f9378ae3401fb01e3d1817b398af4e"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-ext-700.css",
+      "sha1": "7a7e1676fe37ef0ead9eaf83b8064417b571b08c"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-ext-900-italic.css",
+      "sha1": "dd9f6a2e996b93b6507dd0f96381e0d6e561f815"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-ext-900.css",
+      "sha1": "a9545a3a59c18307874a841c04f10955ab63f069"
+    },
+    {
+      "path": "assets/fonts/roboto/greek-ext.css",
+      "sha1": "f2f7a2349fa1c12cf1cabdde2559e010c0e9b6a2"
+    },
+    {
+      "path": "assets/fonts/roboto/greek.css",
+      "sha1": "e1aaae4846e1be78ecc7d4720179bcde4227ac16"
+    },
+    {
+      "path": "assets/fonts/roboto/index.css",
+      "sha1": "b6b912345a0faf06b489af33e9aed0564a7f73f5"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-100-italic.css",
+      "sha1": "fc332255bee4f90bc2edc44c64c3879509a42449"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-100.css",
+      "sha1": "f60ee6db69bfd376b35423055dba7dc2d7369ab4"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-300-italic.css",
+      "sha1": "ccbfdcdfadd40213984316c3042d7e7f613f5f6e"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-300.css",
+      "sha1": "f83ecab4dd71af0e6a103da0ef92cba8f038af3b"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-400-italic.css",
+      "sha1": "4a71b903a91641d8ca551a634524bd31af38999d"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-400.css",
+      "sha1": "17ef7b58b3e4826eb943a318e275d425f21e4a97"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-500-italic.css",
+      "sha1": "d2430c9553aa05c762e27833f96e9ba605864859"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-500.css",
+      "sha1": "24a8bf21147feba016550d072db4a752678b3abb"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-700-italic.css",
+      "sha1": "f22c6e280de2b2fcd0b244a89bdeb02274f36a74"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-700.css",
+      "sha1": "8df0e6650193ec3e05576c6f7ef00d698d9b8e7b"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-900-italic.css",
+      "sha1": "6697600e2e44d5746c082fc7ecc2e756dde9fb35"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-900.css",
+      "sha1": "0d6bcb273ecf636825212984a09460fa0000aa0f"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-ext-100-italic.css",
+      "sha1": "080e1901d79c3073cf4a5b03955f8296bf9aec7c"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-ext-100.css",
+      "sha1": "3ccb47f6614a2a9e06dc9515460b439aacfcaefe"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-ext-300-italic.css",
+      "sha1": "31ccb87afede756647b2634474890d1793eb3ab9"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-ext-300.css",
+      "sha1": "2b814050c5c03ae53438d5ea210dd48ce08efa12"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-ext-400-italic.css",
+      "sha1": "f320b7af48494d2baba124330ab554658c1a52f1"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-ext-400.css",
+      "sha1": "8dfd136abcf72b479b92397a8be71215c78501d7"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-ext-500-italic.css",
+      "sha1": "46f338949973c9669288245c38a9607b5e8cd429"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-ext-500.css",
+      "sha1": "cc775c6050b42891febcd81da1d83270bccb97a1"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-ext-700-italic.css",
+      "sha1": "ad4a8344c51d9d404e153af569daa6e1ba09c080"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-ext-700.css",
+      "sha1": "b1835b0dd92f33c9c092feadb9348e93f390deb9"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-ext-900-italic.css",
+      "sha1": "c066350380337a3dd347a4b29d01530569e39843"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-ext-900.css",
+      "sha1": "2b12c7d91292a48c8c900337fb408ea6bbd663be"
+    },
+    {
+      "path": "assets/fonts/roboto/latin-ext.css",
+      "sha1": "b1fa3fadb351b7208b31967c27bc229224df7a4b"
+    },
+    {
+      "path": "assets/fonts/roboto/latin.css",
+      "sha1": "146f910340ff417465240318016f6d793e2bfbdc"
+    },
+    {
+      "path": "assets/fonts/roboto/metadata.json",
+      "sha1": "1b1cd54c04671dab1d302672d4941c1098860d32"
+    },
+    {
+      "path": "assets/fonts/roboto/scss/mixins.scss",
+      "sha1": "1330361b999acc4c0c01f0fc30a4716c4e5e8674"
+    },
+    {
+      "path": "assets/fonts/roboto/unicode.json",
+      "sha1": "f038545da4c83d108df7b7b11066284701f2d108"
+    },
+    {
+      "path": "assets/fonts/roboto/vietnamese-100-italic.css",
+      "sha1": "200a3c6ca4e20c3ebbfeff9cc27518967f26c3fd"
+    },
+    {
+      "path": "assets/fonts/roboto/vietnamese-100.css",
+      "sha1": "91ec88bee569bfa113f0eb62b56388e6db0089c1"
+    },
+    {
+      "path": "assets/fonts/roboto/vietnamese-300-italic.css",
+      "sha1": "cafbf8091a72911a48ec9a82ca0485a527ecd886"
+    },
+    {
+      "path": "assets/fonts/roboto/vietnamese-300.css",
+      "sha1": "5db252de417419b5b2367f776ba43a4334500365"
+    },
+    {
+      "path": "assets/fonts/roboto/vietnamese-400-italic.css",
+      "sha1": "d8868dd027ca7f88386f7c1bed1447c4a7d1bf93"
+    },
+    {
+      "path": "assets/fonts/roboto/vietnamese-400.css",
+      "sha1": "f375f066185f5a626646db2525b852795f4f68e3"
+    },
+    {
+      "path": "assets/fonts/roboto/vietnamese-500-italic.css",
+      "sha1": "4a5b4bdb00607ba66c629c0cc35556010a878607"
+    },
+    {
+      "path": "assets/fonts/roboto/vietnamese-500.css",
+      "sha1": "c833fba6aa37820afe693c090ec0cb073752e2e9"
+    },
+    {
+      "path": "assets/fonts/roboto/vietnamese-700-italic.css",
+      "sha1": "f0474e1c9ffa4b2b596aa5fdfb46a3c494014812"
+    },
+    {
+      "path": "assets/fonts/roboto/vietnamese-700.css",
+      "sha1": "ddabe865429ed8c1489e4fdd0f67ab1e1ccc6395"
+    },
+    {
+      "path": "assets/fonts/roboto/vietnamese-900-italic.css",
+      "sha1": "e60bdb721df217332c3e33a53f036bf5fe8a8bc7"
+    },
+    {
+      "path": "assets/fonts/roboto/vietnamese-900.css",
+      "sha1": "e9e399a706369b0293871fb5cc25d9553ef8e447"
+    },
+    {
+      "path": "assets/fonts/roboto/vietnamese.css",
+      "sha1": "29d3a670ab8b8c10796647e2a13a6235e7b04c8b"
+    }
+  ]
+}

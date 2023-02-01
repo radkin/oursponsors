@@ -6,97 +6,142 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
+import {NavigationContainer, useFocusEffect} from '@react-navigation/native';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
+  Image,
+  Button,
   StyleSheet,
   Text,
   useColorScheme,
   View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {CORP_HEADSHOT} from './src/images';
+import SimpleCarousel from './src/components/SimpleCarousel';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+function LogoTitle() {
+  return <Image style={{width: 50, height: 50}} source={CORP_HEADSHOT} />;
+}
+function SettingsScreen({navigation}) {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text>Settings Screen</Text>
+      <Button
+        title="Go to Profile"
+        onPress={() => navigation.navigate('Profile')}
+      />
     </View>
   );
 }
 
-function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+function ProfileScreen({navigation}) {
+  useFocusEffect(
+    React.useCallback(() => {
+      alert('Screen was focused');
+      // Do something when the screen is focused
+      return () => {
+        alert('Screen was unfocused');
+        // Do something when the screen is unfocused
+        // Useful for cleanup functions
+      };
+    }, []),
+  );
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text>Profile Screen</Text>
+      <Button
+        title="Go to Settings"
+        onPress={() => navigation.navigate('Settings')}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
-const styles = StyleSheet.create({
+function CarouselScreen({navigation}) {
+  return (
+    <View>
+      <SimpleCarousel />
+    </View>
+  );
+}
+
+function HomeScreen({navigation}) {
+  return (
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text>Home Screen</Text>
+      <Button
+        title="Go to Details"
+        onPress={() => navigation.navigate('Details')}
+      />
+    </View>
+  );
+}
+
+function DetailsScreen({navigation}) {
+  return (
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text>Details Screen</Text>
+      <Button
+        title="Go to Details... again"
+        onPress={() => navigation.push('Details')}
+      />
+    </View>
+  );
+}
+const Tab = createBottomTabNavigator();
+const SettingsStack = createNativeStackNavigator();
+const HomeStack = createNativeStackNavigator();
+const CarouselStack = createNativeStackNavigator();
+
+function App(): JSX.Element {
+  useColorScheme() === 'dark';
+  return (
+    <NavigationContainer>
+      <Tab.Navigator screenOptions={{headerShown: false}}>
+        <Tab.Screen name="First">
+          {() => (
+            <HomeStack.Navigator>
+              <HomeStack.Screen
+                name="Home"
+                component={HomeScreen}
+                options={{headerTitle: props => <LogoTitle {...props} />}}
+              />
+              <HomeStack.Screen name="Details" component={DetailsScreen} />
+            </HomeStack.Navigator>
+          )}
+        </Tab.Screen>
+
+        <Tab.Screen name="Second">
+          {() => (
+            <SettingsStack.Navigator>
+              <SettingsStack.Screen
+                name="Settings"
+                component={SettingsScreen}
+              />
+              <SettingsStack.Screen name="Profile" component={ProfileScreen} />
+            </SettingsStack.Navigator>
+          )}
+        </Tab.Screen>
+
+        <Tab.Screen name="Third" >
+          {() => (
+            <CarouselStack.Navigator>
+              <CarouselStack.Screen
+                name="Carousel"
+                component={CarouselScreen}
+                />
+            </CarouselStack.Navigator>
+          )}
+        </Tab.Screen>
+
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
+StyleSheet.create({
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,
@@ -114,5 +159,4 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
-
 export default App;
