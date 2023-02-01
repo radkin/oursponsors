@@ -1,186 +1,101 @@
 import * as React from 'react';
 import { View } from 'react-native';
-import Carousel from 'react-native-reanimated-carousel';
 import Animated, {
-  Extrapolate,
   interpolate,
+  interpolateColor,
   useAnimatedStyle,
-  useSharedValue,
 } from 'react-native-reanimated';
-import SButton from '../components/SButton';
+import Carousel from 'react-native-reanimated-carousel';
+import type { TAnimationStyle } from '../../../src/layouts/BaseLayout';
 import { SBItem } from '../components/SBItem';
+import SButton from '../components/SButton';
 import { ElementsText, window } from '../constants';
 
 const PAGE_WIDTH = window.width;
-const colors = [
-  '#26292E',
-  '#899F9C',
-  '#B3C680',
-  '#5C6265',
-  '#F5D399',
-  '#F1F1F1',
-];
 
 function SimpleCarousel() {
-  const [isVertical, setIsVertical] = React.useState(false);
-  const [autoPlay, setAutoPlay] = React.useState(false);
-  const [pagingEnabled, setPagingEnabled] = React.useState<boolean>(true);
-  const [snapEnabled, setSnapEnabled] = React.useState<boolean>(true);
-  const progressValue = useSharedValue<number>(0);
-  const baseOptions = isVertical
-    ? ({
-      vertical: true,
-      width: PAGE_WIDTH,
-      height: PAGE_WIDTH * 0.6,
-    } as const)
-    : ({
-      vertical: false,
-      width: PAGE_WIDTH,
-      height: PAGE_WIDTH * 0.6,
-    } as const);
+  const [isAutoPlay, setIsAutoPlay] = React.useState(false);
+  const animationStyle: TAnimationStyle = React.useCallback(
+    (value: number) => {
+      'worklet';
+
+      const zIndex = interpolate(value, [-1, 0, 1], [10, 20, 30]);
+      const translateX = interpolate(
+        value,
+        [-2, 0, 1],
+        [-PAGE_WIDTH, 0, PAGE_WIDTH]
+      );
+
+      return {
+        transform: [{ translateX }],
+        zIndex,
+      };
+    },
+    []
+  );
 
   return (
-    <View
-      style={{
-        alignItems: 'center',
-      }}
-    >
+    <View style={{ flex: 1 }}>
       <Carousel
-        {...baseOptions}
-        loop
-        pagingEnabled={pagingEnabled}
-        snapEnabled={snapEnabled}
-        autoPlay={autoPlay}
-        autoPlayInterval={1500}
-        onProgressChange={(_, absoluteProgress) =>
-          (progressValue.value = absoluteProgress)
-        }
-        mode="parallax"
-        modeConfig={{
-          parallaxScrollingScale: 0.9,
-          parallaxScrollingOffset: 50,
+        loop={true}
+        autoPlay={isAutoPlay}
+        style={{ width: PAGE_WIDTH, height: 240 }}
+        width={PAGE_WIDTH}
+        data={[...new Array(6).keys()]}
+        renderItem={({ index, animationValue }) => {
+          return (
+            <CustomItem
+              key={index}
+              index={index}
+              animationValue={animationValue}
+            />
+          );
         }}
-        data={colors}
-        renderItem={({ index }) => <SBItem index={index} />}
+        customAnimation={animationStyle}
+        scrollAnimationDuration={1200}
       />
-      {!!progressValue && (
-        <View
-          style={
-            isVertical
-              ? {
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                width: 10,
-                alignSelf: 'center',
-                position: 'absolute',
-                right: 5,
-                top: 40,
-              }
-              : {
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                width: 100,
-                alignSelf: 'center',
-              }
-          }
-        >
-          {colors.map((backgroundColor, index) => {
-            return (
-              <PaginationItem
-                backgroundColor={backgroundColor}
-                animValue={progressValue}
-                index={index}
-                key={index}
-                isRotate={isVertical}
-                length={colors.length}
-              />
-            );
-          })}
-        </View>
-      )}
-      <SButton
-        onPress={() => setAutoPlay(!autoPlay)}
-      >{`${ElementsText.AUTOPLAY}:${autoPlay}`}</SButton>
       <SButton
         onPress={() => {
-          setIsVertical(!isVertical);
+          setIsAutoPlay(!isAutoPlay);
         }}
       >
-        {isVertical ? 'Set horizontal' : 'Set Vertical'}
-      </SButton>
-      <SButton
-        onPress={() => {
-          setPagingEnabled(!pagingEnabled);
-        }}
-      >
-        {`pagingEnabled:${pagingEnabled}`}
-      </SButton>
-      <SButton
-        onPress={() => {
-          setSnapEnabled(!snapEnabled);
-        }}
-      >
-        {`snapEnabled:${snapEnabled}`}
+        {ElementsText.AUTOPLAY}:{`${isAutoPlay}`}
       </SButton>
     </View>
   );
 }
 
-const PaginationItem: React.FC<{
+interface ItemProps {
   index: number;
-  backgroundColor: string;
-  length: number;
-  animValue: Animated.SharedValue<number>;
-  isRotate?: boolean;
-}> = (props) => {
-  const { animValue, index, length, backgroundColor, isRotate } = props;
-  const width = 10;
-
-  const animStyle = useAnimatedStyle(() => {
-    let inputRange = [index - 1, index, index + 1];
-    let outputRange = [-width, 0, width];
-
-    if (index === 0 && animValue?.value > length - 1) {
-      inputRange = [length - 1, length, length + 1];
-      outputRange = [-width, 0, width];
-    }
+  animationValue: Animated.SharedValue<number>;
+}
+const CustomItem: React.FC<ItemProps> = ({ index, animationValue }) => {
+  const maskStyle = useAnimatedStyle(() => {
+    const backgroundColor = interpolateColor(
+      animationValue.value,
+      [-1, 0, 1],
+      ['#000000dd', 'transparent', '#000000dd']
+    );
 
     return {
-      transform: [
-        {
-          translateX: interpolate(
-            animValue?.value,
-            inputRange,
-            outputRange,
-            Extrapolate.CLAMP
-          ),
-        },
-      ],
+      backgroundColor,
     };
-  }, [animValue, index, length]);
+  }, [animationValue]);
+
   return (
-    <View
-      style={{
-        backgroundColor: 'white',
-        width,
-        height: width,
-        borderRadius: 50,
-        overflow: 'hidden',
-        transform: [
-          {
-            rotateZ: isRotate ? '90deg' : '0deg',
-          },
-        ],
-      }}
-    >
+    <View style={{ flex: 1 }}>
+      <SBItem key={index} index={index} style={{ borderRadius: 0 }} />
       <Animated.View
+        pointerEvents="none"
         style={[
           {
-            borderRadius: 50,
-            backgroundColor,
-            flex: 1,
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
           },
-          animStyle,
+          maskStyle,
         ]}
       />
     </View>
