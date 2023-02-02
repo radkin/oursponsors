@@ -15,11 +15,13 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import { Provider as PaperProvider } from 'react-native-paper';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {CORP_HEADSHOT} from './src/images';
 import SimpleCarousel from './src/components/SimpleCarousel';
+import RNCardFlip from "./src/components/RNCardFlip";
 
 function LogoTitle() {
   return <Image style={{width: 50, height: 50}} source={CORP_HEADSHOT} />;
@@ -62,8 +64,20 @@ function ProfileScreen({navigation}) {
 
 function CarouselScreen({navigation}) {
   return (
-    <View>
-      <SimpleCarousel />
+    <View
+      style={[
+        styles.container,
+        {
+          flexDirection: 'column',
+        },
+      ]}>
+      <View style={{flex: 1, alignItems:'center'}} >
+        <SimpleCarousel />
+      </View>
+      <View style={{flex: 2}}>
+        <RNCardFlip />
+      </View>
+
     </View>
   );
 }
@@ -99,8 +113,12 @@ const CarouselStack = createNativeStackNavigator();
 function App(): JSX.Element {
   useColorScheme() === 'dark';
   return (
+    <PaperProvider>
+
     <NavigationContainer>
       <Tab.Navigator screenOptions={{headerShown: false}}>
+
+
         <Tab.Screen name="First">
           {() => (
             <HomeStack.Navigator>
@@ -137,8 +155,12 @@ function App(): JSX.Element {
           )}
         </Tab.Screen>
 
+
       </Tab.Navigator>
     </NavigationContainer>
+
+    </PaperProvider>
+
   );
 }
 StyleSheet.create({
@@ -157,6 +179,12 @@ StyleSheet.create({
   },
   highlight: {
     fontWeight: '700',
+  },
+});
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
   },
 });
 export default App;

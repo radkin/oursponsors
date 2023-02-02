@@ -38,7 +38,8 @@ function SimpleCarousel() {
     <View style={{ flex: 1 }}>
       <Carousel
         loop={true}
-        autoPlay={isAutoPlay}
+        // autoPlay={isAutoPlay}
+        autoPlay={true}
         style={{ width: PAGE_WIDTH, height: 240 }}
         width={PAGE_WIDTH}
         data={[...new Array(6).keys()]}
@@ -52,7 +53,7 @@ function SimpleCarousel() {
           );
         }}
         customAnimation={animationStyle}
-        scrollAnimationDuration={1200}
+        scrollAnimationDuration={2400}
       />
       <SButton
         onPress={() => {
