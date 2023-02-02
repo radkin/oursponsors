@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View } from 'react-native';
+import {StyleSheet, View, Image} from 'react-native';
 import Animated, {
   interpolate,
   interpolateColor,
@@ -11,10 +11,30 @@ import { SBItem } from '../components/SBItem';
 import SButton from '../components/SButton';
 import { ElementsText, window } from '../constants';
 
+import { SEN1, SEN2, SEN3, SEN4, SEN5, SEN6, SEN7 } from "../images";
+
+const senatorImages = [
+  {key: 1, value: SEN1},
+  {key: 2, value: SEN2},
+  {key: 3, value: SEN3},
+  {key: 4, value: SEN4},
+  {key: 5, value: SEN5},
+  {key: 6, value: SEN6},
+  {key: 7, value: SEN7}
+];
+
 const PAGE_WIDTH = window.width;
 
 function SimpleCarousel() {
   const [isAutoPlay, setIsAutoPlay] = React.useState(false);
+
+  type ItemProps = {value: object};
+  const RenderCard = ({value}: ItemProps) => {
+    return (
+      <Image style={{width: PAGE_WIDTH, height: 240}} source={value} />
+    )};
+
+
   const animationStyle: TAnimationStyle = React.useCallback(
     (value: number) => {
       'worklet';
@@ -42,16 +62,8 @@ function SimpleCarousel() {
         autoPlay={true}
         style={{ width: PAGE_WIDTH, height: 240 }}
         width={PAGE_WIDTH}
-        data={[...new Array(6).keys()]}
-        renderItem={({ index, animationValue }) => {
-          return (
-            <CustomItem
-              key={index}
-              index={index}
-              animationValue={animationValue}
-            />
-          );
-        }}
+        data={senatorImages}
+        renderItem={({item}) => <RenderCard value={item.value} />}
         customAnimation={animationStyle}
         scrollAnimationDuration={2400}
       />
@@ -102,5 +114,15 @@ const CustomItem: React.FC<ItemProps> = ({ index, animationValue }) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  surface: {
+    padding: 8,
+    height: 80,
+    width: 80,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default SimpleCarousel;
