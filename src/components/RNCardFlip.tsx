@@ -1,36 +1,50 @@
 import {StyleSheet, View} from 'react-native';
 import * as React from 'react';
-import {Avatar, Button, Card, Text} from 'react-native-paper';
-import {Grid} from 'react-native-paper-grid';
-
+import {Avatar, Card, Button, Text} from 'react-native-paper';
 import {SEN1, SEN2, SEN3, SEN4, SEN5, SEN6, SEN7} from '../images';
+import {FlatList} from 'react-native';
 
-const senatorImages = [SEN1, SEN2, SEN3, SEN4, SEN5, SEN6, SEN7];
+const senatorImages = [
+  {key: 1, value: SEN1},
+  {key: 2, value: SEN2},
+  {key: 3, value: SEN3},
+  {key: 4, value: SEN4},
+  {key: 5, value: SEN5},
+  {key: 6, value: SEN6},
+  {key: 7, value: SEN7}
+];
 
 function renderSenators() {
   const LeftContent = props => <Avatar.Icon {...props} icon="folder" />;
+  type ItemProps = {value: object};
+  const RenderCard = ({value}: ItemProps) => {
+    return (
+      <Card>
+        <Card.Title
+          title="Card Title"
+          subtitle="Card Subtitle"
+          left={LeftContent}
+        />
+        <Card.Content>
+          <Text variant="titleLarge">Card title</Text>
+          <Text variant="bodyMedium">Card content</Text>
+        </Card.Content>
+        <Card.Cover source={value} />
+        <Card.Actions>
+          <Button>Cancel</Button>
+          <Button>Ok</Button>
+        </Card.Actions>
+      </Card>
+      )};
 
   if (senatorImages.length > 0) {
-    return senatorImages.map((image, index) => (
-      <Grid container key={index}>
-        <Card>
-          <Card.Title
-            title="Card Title"
-            subtitle="Card Subtitle"
-            left={LeftContent}
-          />
-          <Card.Content>
-            <Text variant="titleLarge">Card title</Text>
-            <Text variant="bodyMedium">Card content</Text>
-          </Card.Content>
-          <Card.Cover source={image} />
-          <Card.Actions>
-            <Button>Cancel</Button>
-            <Button>Ok</Button>
-          </Card.Actions>
-        </Card>
-      </Grid>
-    ));
+    return (
+      <FlatList
+        data={senatorImages}
+        renderItem={({item}) => <RenderCard value={item.value} />}
+        keyExtractor={item => item.key}
+      />
+    );
   }
 }
 
