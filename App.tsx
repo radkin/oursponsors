@@ -21,7 +21,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {CORP_HEADSHOT} from './src/images';
 import SimpleCarousel from './src/components/SimpleCarousel';
-import RNCardFlip from "./src/components/RNCardFlip";
+import CardsFlatlist from "./src/components/CardsFlatlist";
 
 function LogoTitle() {
   return <Image style={{width: 50, height: 50}} source={CORP_HEADSHOT} />;
@@ -75,7 +75,7 @@ function CarouselScreen({navigation}) {
         <SimpleCarousel />
       </View>
       <View style={{flex: 2}}>
-        <RNCardFlip />
+        <CardsFlatlist />
       </View>
 
     </View>

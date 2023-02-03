@@ -1,5 +1,6 @@
-import {StyleSheet, View} from 'react-native';
 import * as React from 'react';
+import {INAJAR_TOKEN} from '@env';
+import {StyleSheet, View} from 'react-native';
 import {Avatar, Card, Button, Text} from 'react-native-paper';
 import {SEN1, SEN2, SEN3, SEN4, SEN5, SEN6, SEN7} from '../images';
 import {FlatList} from 'react-native';
@@ -15,6 +16,7 @@ const senatorImages = [
 ];
 
 function renderSenators() {
+  console.log(INAJAR_TOKEN);
   const LeftContent = props => <Avatar.Icon {...props} icon="folder" />;
   type ItemProps = {value: object};
   const RenderCard = ({value}: ItemProps) => {
@@ -43,12 +45,13 @@ function renderSenators() {
         data={senatorImages}
         renderItem={({item}) => <RenderCard value={item.value} />}
         keyExtractor={item => item.key}
+        horizontal={true}
       />
     );
   }
 }
 
-function RNCardFlip(): JSX.Element {
+function CardsFlatlist(): JSX.Element {
   return <View style={styles.container}>{renderSenators()}</View>;
 }
 
@@ -72,4 +75,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RNCardFlip;
+export default CardsFlatlist;
