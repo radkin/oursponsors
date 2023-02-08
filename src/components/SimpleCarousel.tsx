@@ -11,16 +11,12 @@ import { SBItem } from '../components/SBItem';
 import SButton from '../components/SButton';
 import { ElementsText, window } from '../constants';
 
-import { SEN1, SEN2, SEN3, SEN4, SEN5, SEN6, SEN7 } from "../images";
+import { AP, BBC, NPR} from "../images";
 
 const senatorImages = [
-  {key: 1, value: SEN1},
-  {key: 2, value: SEN2},
-  {key: 3, value: SEN3},
-  {key: 4, value: SEN4},
-  {key: 5, value: SEN5},
-  {key: 6, value: SEN6},
-  {key: 7, value: SEN7}
+  {key: 1, value: NPR},
+  {key: 2, value: AP},
+  {key: 3, value: BBC}
 ];
 
 const PAGE_WIDTH = window.width;
