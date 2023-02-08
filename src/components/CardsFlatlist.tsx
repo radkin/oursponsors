@@ -2,20 +2,9 @@ import {useState, useEffect} from 'react';
 import {INAJAR_TOKEN, INAJAR_URL} from '@env';
 import {StyleSheet, View} from 'react-native';
 import {Avatar, Card, Button, Text} from 'react-native-paper';
-import {SEN1, SEN2, SEN3, SEN4, SEN5, SEN6, SEN7} from '../images';
 import {FlatList} from 'react-native';
 
-import axios, {Axios} from 'axios';
-
-const senatorImages = [
-  {key: 1, value: SEN1},
-  {key: 2, value: SEN2},
-  {key: 3, value: SEN3},
-  {key: 4, value: SEN4},
-  {key: 5, value: SEN5},
-  {key: 6, value: SEN6},
-  {key: 7, value: SEN7},
-];
+const {default: axios} = require('axios');
 
 const url = `${INAJAR_URL}/propublica/get_senators`;
 console.log(url);
@@ -26,35 +15,41 @@ const instance = axios.create({
 });
 
 function renderSenators() {
-  console.log(INAJAR_TOKEN);
 
-  const [data, setData] = useState({hits: []});
+  const [appState, setAppState] = useState({
+    loading: false,
+    repos: null,
+  });
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await instance.get(url);
-      setData(result.data);
-    };
-
-    fetchData();
-  }, []);
+    setAppState({loading: true});
+    instance.get().then(repos => {
+      const allRepos = repos.data;
+      setAppState({loading: false, repos: allRepos});
+    });
+  }, [setAppState]);
 
   const LeftContent = props => <Avatar.Icon {...props} icon="folder" />;
-  type ItemProps = {value: object};
-  const RenderCard = ({value}: ItemProps) => {
-    console.log(data);
+  const RenderCard = ({value}) => {
+    console.log(appState.repos);
     return (
       <Card>
         <Card.Title
-          title="Card Title"
-          subtitle="Card Subtitle"
+          title={`${value.first_name} ${value.last_name}`}
+          subtitle={value.title}
           left={LeftContent}
         />
         <Card.Content>
-          <Text variant="titleLarge">Card title</Text>
-          <Text variant="bodyMedium">Card content</Text>
+          <Text>{value.leadership_role}</Text>
+          <Text>
+            State:{value.state} Party:{value.party}
+          </Text>
+          <Text>Votes With Party: %{value.votes_with_party_pct}</Text>
+          <Text>DOB: {value.date_of_birth}</Text>
         </Card.Content>
-        <Card.Cover source={value} />
+        <Card.Cover
+          source={{uri: value.image_url}}
+        />
         <Card.Actions>
           <Button>Cancel</Button>
           <Button>Ok</Button>
@@ -63,16 +58,17 @@ function renderSenators() {
     );
   };
 
-  if (senatorImages.length > 0) {
-    return (
-      <FlatList
-        data={senatorImages}
-        renderItem={({item}) => <RenderCard value={item.value} />}
-        keyExtractor={item => item.key}
-        horizontal={true}
-      />
-    );
-  }
+
+  return (
+    <FlatList
+      isLoading={appState.loading}
+      data={appState.repos}
+      renderItem={({item}) => <RenderCard value={item} />}
+      keyExtractor={item => item.id}
+      horizontal={true}
+    />
+  );
+
 }
 
 function CardsFlatlist(): JSX.Element {
