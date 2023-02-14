@@ -15,7 +15,6 @@ const instance = axios.create({
 });
 
 function renderSenators() {
-
   const [appState, setAppState] = useState({
     loading: false,
     repos: null,
@@ -47,9 +46,7 @@ function renderSenators() {
           <Text>Votes With Party: %{value.votes_with_party_pct}</Text>
           <Text>DOB: {value.date_of_birth}</Text>
         </Card.Content>
-        <Card.Cover
-          source={{uri: value.image_url}}
-        />
+        <Card.Cover source={{uri: value.image_url}} />
         <Card.Actions>
           <Button>Cancel</Button>
           <Button>Ok</Button>
@@ -57,7 +54,6 @@ function renderSenators() {
       </Card>
     );
   };
-
 
   return (
     <FlatList
@@ -68,7 +64,6 @@ function renderSenators() {
       horizontal={true}
     />
   );
-
 }
 
 function CardsFlatlist(): JSX.Element {
