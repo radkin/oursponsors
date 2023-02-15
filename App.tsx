@@ -16,7 +16,7 @@ import {
 } from './src/components/screens';
 
 function LogoTitle() {
-  return <Image style={{width: 50, height: 50}} source={CORP_HEADSHOT} />;
+  return <Image style={{width: 70, height: 70}} source={CORP_HEADSHOT} />;
 }
 const Tab = createBottomTabNavigator();
 const SettingsStack = createNativeStackNavigator();
@@ -59,8 +59,14 @@ function App(): JSX.Element {
 
           <Tab.Screen name="Third">
             {() => (
-              <CarouselStack.Navigator>
-                <CarouselStack.Screen name="News" component={RepsScreen} />
+              <CarouselStack.Navigator
+                screenOptions={{
+                  headerShown: false
+                }}
+              >
+                <CarouselStack.Screen
+                  name="News"
+                  component={RepsScreen} />
               </CarouselStack.Navigator>
             )}
           </Tab.Screen>

@@ -3,7 +3,8 @@ import {INAJAR_TOKEN, INAJAR_URL} from '@env';
 import {StyleSheet, View} from 'react-native';
 import {Avatar, Card, Button, Text} from 'react-native-paper';
 import {FlatList} from 'react-native';
-
+import { Dimensions } from 'react-native';
+import Image from 'react-native-scalable-image';
 const {default: axios} = require('axios');
 
 const url = `${INAJAR_URL}/propublica/get_senators`;
@@ -31,6 +32,7 @@ function renderSenators() {
   const LeftContent = props => <Avatar.Icon {...props} icon="folder" />;
   const RenderCard = ({value}) => {
     console.log(appState.repos);
+
     return (
       <Card>
         <Card.Title
@@ -38,19 +40,11 @@ function renderSenators() {
           subtitle={value.title}
           left={LeftContent}
         />
-        <Card.Content>
-          <Text>{value.leadership_role}</Text>
-          <Text>
-            State:{value.state} Party:{value.party}
-          </Text>
-          <Text>Votes With Party: %{value.votes_with_party_pct}</Text>
-          <Text>DOB: {value.date_of_birth}</Text>
-        </Card.Content>
-        <Card.Cover source={{uri: value.image_url}} />
-        <Card.Actions>
-          <Button>Cancel</Button>
-          <Button>Ok</Button>
-        </Card.Actions>
+        <Image
+          source={{ uri: value.image_url }}
+          resizeMode={'cover'}
+          width={Dimensions.get('window').width}
+        />
       </Card>
     );
   };
