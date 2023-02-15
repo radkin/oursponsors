@@ -1,20 +1,9 @@
 import {useState, useEffect} from 'react';
 import {INAJAR_TOKEN, INAJAR_URL} from '@env';
 import {StyleSheet, View} from 'react-native';
-import {
-  Avatar,
-  Button,
-  Card,
-  Dialog,
-  Portal,
-  Provider,
-  Text,
-} from 'react-native-paper';
 import {FlatList} from 'react-native';
-import {Dimensions} from 'react-native';
-import Image from 'react-native-scalable-image';
-import {TouchableOpacity} from 'react-native';
 import * as React from 'react';
+import RenderCard from "./RenderCard";
 
 const {default: axios} = require('axios');
 const url = `${INAJAR_URL}/propublica/get_senators`;
@@ -30,10 +19,6 @@ function renderSenators() {
     repos: null,
   });
 
-  const [visible, setVisible] = React.useState(false);
-  const showDialog = () => setVisible(true);
-  const hideDialog = () => setVisible(false);
-
   useEffect(() => {
     setAppState({loading: true});
     instance.get().then(repos => {
@@ -41,43 +26,6 @@ function renderSenators() {
       setAppState({loading: false, repos: allRepos});
     });
   }, [setAppState]);
-
-  const LeftContent = props => <Avatar.Icon {...props} icon="folder" />;
-  const RenderCard = ({value}) => {
-    console.log(appState.repos);
-
-    return (
-      <Provider>
-        <Card type="outlined">
-          <Card.Title
-            title={`${value.first_name} ${value.last_name}`}
-            subtitle={`${value.state} ${value.party} ${value.title}`}
-            left={LeftContent}
-          />
-          <TouchableOpacity onPress={showDialog}>
-            <Image
-              source={{uri: value.image_url}}
-              resizeMode={'cover'}
-              width={Dimensions.get('window').width}
-            />
-          </TouchableOpacity>
-        </Card>
-        <View>
-          <Portal>
-            <Dialog visible={visible} onDismiss={hideDialog}>
-              <Dialog.Title>Alert</Dialog.Title>
-              <Dialog.Content>
-                <Text variant="bodyMedium">This is simple dialog</Text>
-              </Dialog.Content>
-              <Dialog.Actions>
-                <Button onPress={hideDialog}>Done</Button>
-              </Dialog.Actions>
-            </Dialog>
-          </Portal>
-        </View>
-      </Provider>
-    );
-  };
 
   return (
     <FlatList
