@@ -4,6 +4,7 @@ import {StyleSheet, View} from 'react-native';
 import {FlatList} from 'react-native';
 import * as React from 'react';
 import RenderCard from "./RenderCard";
+import {responsiveScreenHeight, responsiveScreenWidth} from 'react-native-responsive-dimensions';
 
 const {default: axios} = require('axios');
 const url = `${INAJAR_URL}/propublica/get_senators`;
@@ -31,7 +32,11 @@ function renderSenators() {
     <FlatList
       isLoading={appState.loading}
       data={appState.repos}
-      renderItem={({item}) => <RenderCard value={item} />}
+      renderItem={({item}) =>
+        <View style={styles.card}>
+          <RenderCard value={item}  />
+        </View>
+      }
       keyExtractor={item => item.id}
       horizontal={false}
     />
@@ -54,11 +59,7 @@ const styles = StyleSheet.create({
     borderColor: '#E8E8E8',
     justifyContent: 'center',
     backgroundColor: 'white',
-  },
-  text: {
-    textAlign: 'center',
-    fontSize: 50,
-    backgroundColor: 'transparent',
+    height: responsiveScreenHeight(20),
   },
 });
 

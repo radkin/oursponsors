@@ -1,8 +1,8 @@
 import { Avatar, Button, Card, Dialog, Portal, Provider, Text } from "react-native-paper";
-import { TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import Image from "react-native-scalable-image";
 import * as React from "react";
-import {responsiveScreenHeight, responsiveScreenWidth} from 'react-native-responsive-dimensions';
+import { responsiveScreenHeight, responsiveScreenWidth, useResponsiveHeight } from "react-native-responsive-dimensions";
 
 function RenderCard({value}) {
   // console.log(appState.repos);
@@ -17,20 +17,23 @@ function RenderCard({value}) {
 
   return (
     <Provider>
-      <Card type="outlined">
-        <Card.Title
-          title={`${value.first_name} ${value.last_name}`}
-          subtitle={`${value.state} ${value.party} ${value.title}`}
-          left={LeftContent}
-        />
-        <TouchableOpacity onPress={showDialog} >
+      <Card style={styles.cardSmallStyle}>
+          <Card.Title
+            style={styles.textContainer}
+            title={`${value.first_name} ${value.last_name}`}
+            left={LeftContent}
+          />
+        <Card.Content style={styles.textContainer}>
+          <Text variant="titlelarge">{`${value.state} ${value.party} ${value.title}`}</Text>
+        </Card.Content>
+        <View onPress={showDialog} style={styles.cardProfPic}>
           <Image
             source={{uri: value.image_url}}
             resizeMode={'cover'}
-            width={responsiveScreenWidth(100)}
+            width={responsiveScreenWidth(40)}
             height={responsiveScreenHeight(100)}
           />
-        </TouchableOpacity>
+        </View>
       </Card>
       <View>
         <Portal>
@@ -51,4 +54,34 @@ function RenderCard({value}) {
   );
 }
 
+const styles = StyleSheet.create({
+  screenRow: {
+    flex: 1,
+    marginHorizontal: 20,
+    marginBottom: 20,
+    alignItems: 'stretch',
+  },
+  cardSmallStyle: {
+    height: responsiveScreenHeight(100),
+    width: responsiveScreenWidth(60),
+    marginHorizontal: 7,
+    marginVertical: 7,
+  },
+  cardContainer: {
+    margin: 15,
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: '#3d80fc'
+  },
+  textContainer: {
+    marginTop: 15,
+    height: responsiveScreenHeight(5),
+    left: 2,
+    flexDirection: 'row'
+  },
+  cardProfPic: {
+    position: 'absolute',
+    left: '100%'
+  },
+})
 export default RenderCard;
