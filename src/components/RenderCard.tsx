@@ -1,7 +1,8 @@
 import { Avatar, Button, Card, Dialog, Portal, Provider, Text } from "react-native-paper";
-import { Dimensions, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import Image from "react-native-scalable-image";
 import * as React from "react";
+import {responsiveScreenHeight, responsiveScreenWidth} from 'react-native-responsive-dimensions';
 
 function RenderCard({value}) {
   // console.log(appState.repos);
@@ -26,16 +27,19 @@ function RenderCard({value}) {
           <Image
             source={{uri: value.image_url}}
             resizeMode={'cover'}
-            width={Dimensions.get('window').width}
+            width={responsiveScreenWidth(100)}
+            height={responsiveScreenHeight(100)}
           />
         </TouchableOpacity>
       </Card>
       <View>
         <Portal>
           <Dialog visible={visible} onDismiss={hideDialog}>
-            <Dialog.Title>Alert</Dialog.Title>
+            <Dialog.Icon icon={"dots-horizontal-circle-outline"}></Dialog.Icon>
+            <Dialog.Title>Details</Dialog.Title>
             <Dialog.Content>
-              <Text variant="bodyMedium">This is simple dialog</Text>
+              <Text variant="bodyMedium">Votes with party: {value.votes_with_party_pct}%</Text>
+              <Text>{value.leadership_role}</Text>
             </Dialog.Content>
             <Dialog.Actions>
               <Button onPress={hideDialog}>Done</Button>
