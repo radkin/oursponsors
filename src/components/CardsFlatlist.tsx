@@ -33,7 +33,7 @@ function renderSenators() {
       data={appState.repos}
       renderItem={({item}) => <RenderCard value={item} />}
       keyExtractor={item => item.id}
-      horizontal={true}
+      horizontal={false}
     />
   );
 }
