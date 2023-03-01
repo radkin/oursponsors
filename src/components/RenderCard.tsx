@@ -57,8 +57,6 @@ function RenderCard({value}) {
 const styles = StyleSheet.create({
   screenRow: {
     flex: 1,
-    marginHorizontal: 20,
-    marginBottom: 20,
     alignItems: 'stretch',
   },
   cardSmallStyle: {
