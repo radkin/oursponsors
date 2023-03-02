@@ -4,7 +4,7 @@ import {StyleSheet, View} from 'react-native';
 import {FlatList} from 'react-native';
 import * as React from 'react';
 import RenderCard from "./RenderCard";
-import {responsiveScreenHeight, responsiveScreenWidth} from 'react-native-responsive-dimensions';
+import {responsiveScreenHeight} from 'react-native-responsive-dimensions';
 
 const {default: axios} = require('axios');
 const url = `${INAJAR_URL}/propublica/get_senators`;

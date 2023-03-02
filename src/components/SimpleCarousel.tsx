@@ -1,13 +1,8 @@
 import * as React from 'react';
-import {StyleSheet, View, Image} from 'react-native';
-import Animated, {
-  interpolate,
-  interpolateColor,
-  useAnimatedStyle,
-} from 'react-native-reanimated';
+import {View, Image} from 'react-native';
+import { interpolate,} from 'react-native-reanimated';
 import Carousel from 'react-native-reanimated-carousel';
 import type { TAnimationStyle } from '../layouts/BaseLayout';
-import { SBItem } from '../components/SBItem';
 import SButton from '../components/SButton';
 import { ElementsText, window } from '../constants';
 
@@ -73,52 +68,5 @@ function SimpleCarousel() {
     </View>
   );
 }
-
-interface ItemProps {
-  index: number;
-  animationValue: Animated.SharedValue<number>;
-}
-const CustomItem: React.FC<ItemProps> = ({ index, animationValue }) => {
-  const maskStyle = useAnimatedStyle(() => {
-    const backgroundColor = interpolateColor(
-      animationValue.value,
-      [-1, 0, 1],
-      ['#000000dd', 'transparent', '#000000dd']
-    );
-
-    return {
-      backgroundColor,
-    };
-  }, [animationValue]);
-
-  return (
-    <View style={{ flex: 1 }}>
-      <SBItem key={index} index={index} style={{ borderRadius: 0 }} />
-      <Animated.View
-        pointerEvents="none"
-        style={[
-          {
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-          },
-          maskStyle,
-        ]}
-      />
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  surface: {
-    padding: 8,
-    height: 80,
-    width: 80,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default SimpleCarousel;
