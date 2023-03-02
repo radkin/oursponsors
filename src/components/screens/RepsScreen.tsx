@@ -12,9 +12,11 @@ function RepsScreen({navigation}) {
           flexDirection: 'column',
         },
       ]}>
+      {/*
       <View style={{flex: 1, alignItems:'center'}} >
         <SimpleCarousel />
       </View>
+      */}
       <View style={{flex: 2}}>
         <CardsFlatlist />
       </View>
