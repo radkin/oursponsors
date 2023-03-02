@@ -7,6 +7,8 @@ import {Provider as PaperProvider} from 'react-native-paper';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {CORP_HEADSHOT} from './src/images';
+import {Avatar} from 'react-native-paper';
+
 import {
   DetailsScreen,
   SettingsScreen,
@@ -29,7 +31,13 @@ function App(): JSX.Element {
     <PaperProvider>
       <NavigationContainer>
         <Tab.Navigator screenOptions={{headerShown: false}}>
-          <Tab.Screen name="First">
+          <Tab.Screen
+            name="First"
+            options={{
+              tabBarIcon: ({size, focused, color}) => {
+                return <Avatar.Icon size={24} icon="facebook" />;
+              },
+            }}>
             {() => (
               <HomeStack.Navigator>
                 <HomeStack.Screen
@@ -61,12 +69,9 @@ function App(): JSX.Element {
             {() => (
               <CarouselStack.Navigator
                 screenOptions={{
-                  headerShown: false
-                }}
-              >
-                <CarouselStack.Screen
-                  name="News"
-                  component={RepsScreen} />
+                  headerShown: false,
+                }}>
+                <CarouselStack.Screen name="News" component={RepsScreen} />
               </CarouselStack.Navigator>
             )}
           </Tab.Screen>
