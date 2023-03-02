@@ -2,7 +2,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {Image, StyleSheet, useColorScheme} from 'react-native';
 
-import {Provider as PaperProvider} from 'react-native-paper';
+import { Avatar, Provider as PaperProvider } from "react-native-paper";
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -77,7 +77,14 @@ function App(): JSX.Element {
             )}
           </Tab.Screen>
 
-          <Tab.Screen name="Third">
+          <Tab.Screen
+            name="Third"
+            options={{
+              tabBarIcon: ({size, focused, color}) => {
+                return <Avatar.Icon size={24} icon='flag' />;
+              },
+            }}
+          >
             {() => (
               <CarouselStack.Navigator
                 screenOptions={{
