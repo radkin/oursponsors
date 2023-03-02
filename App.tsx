@@ -7,7 +7,7 @@ import {Provider as PaperProvider} from 'react-native-paper';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {CORP_HEADSHOT} from './src/images';
-import {Avatar} from 'react-native-paper';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import {
   DetailsScreen,
@@ -30,20 +30,25 @@ function App(): JSX.Element {
   return (
     <PaperProvider>
       <NavigationContainer>
-        <Tab.Navigator screenOptions={{headerShown: false}}>
+        <Tab.Navigator screenOptions={{
+          headerShown: false,
+          title: ''
+        }}>
           <Tab.Screen
             name="First"
             options={{
               tabBarIcon: ({size, focused, color}) => {
-                return <Avatar.Icon size={24} icon="facebook" />;
+                return <FontAwesome5 name="flag-usa" size={24} />;
               },
             }}>
             {() => (
               <HomeStack.Navigator>
                 <HomeStack.Screen
-                  name="Home"
-                  component={HomeScreen}
+                  name="Senators"
+                  component={RepsScreen}
+                  /*
                   options={{headerTitle: props => <LogoTitle {...props} />}}
+                  */
                 />
                 <HomeStack.Screen name="Details" component={DetailsScreen} />
               </HomeStack.Navigator>
@@ -71,7 +76,7 @@ function App(): JSX.Element {
                 screenOptions={{
                   headerShown: false,
                 }}>
-                <CarouselStack.Screen name="News" component={RepsScreen} />
+                <CarouselStack.Screen name="Home" component={HomeScreen} />
               </CarouselStack.Navigator>
             )}
           </Tab.Screen>
