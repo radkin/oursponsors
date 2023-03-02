@@ -6,8 +6,8 @@ import {Provider as PaperProvider} from 'react-native-paper';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {CORP_HEADSHOT} from './src/images';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {CORP_HEADSHOT, CALIFORNIA} from './src/images';
+import Flag from 'react-native-flags';
 
 import {
   DetailsScreen,
@@ -38,7 +38,7 @@ function App(): JSX.Element {
             name="First"
             options={{
               tabBarIcon: ({size, focused, color}) => {
-                return <FontAwesome5 name="flag-usa" size={24} />;
+                return <Flag code='US' size={24} />;
               },
             }}>
             {() => (
@@ -55,7 +55,14 @@ function App(): JSX.Element {
             )}
           </Tab.Screen>
 
-          <Tab.Screen name="Second">
+          <Tab.Screen
+            name="Second"
+            options={{
+              tabBarIcon: ({size, focused, color}) => {
+                return <Image style={{width: 24, height: 24}} source={CALIFORNIA} />;
+              },
+            }}
+          >
             {() => (
               <SettingsStack.Navigator>
                 <SettingsStack.Screen
