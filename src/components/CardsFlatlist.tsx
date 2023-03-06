@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import {INAJAR_TOKEN, INAJAR_URL} from '@env';
-import {StyleSheet, View} from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import {FlatList} from 'react-native';
 import * as React from 'react';
 import RenderCard from "./RenderCard";
@@ -14,7 +14,7 @@ const instance = axios.create({
   headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
 });
 
-function renderSenators() {
+function renderSenators(props) {
   const [appState, setAppState] = useState({
     loading: false,
     repos: null,
@@ -28,14 +28,18 @@ function renderSenators() {
     });
   }, [setAppState]);
 
+  const navigation = props.navigation;
+
   return (
     <FlatList
       isLoading={appState.loading}
       data={appState.repos}
       renderItem={({item}) =>
-        <View style={styles.card}>
+        <TouchableOpacity onPress={() => navigation.navigate('Details') }>
+          <View style={styles.card}>
           <RenderCard value={item}  />
         </View>
+        </TouchableOpacity>
       }
       keyExtractor={item => item.id}
       horizontal={false}
@@ -43,8 +47,8 @@ function renderSenators() {
   );
 }
 
-function CardsFlatlist(): JSX.Element {
-  return <View style={styles.container}>{renderSenators()}</View>;
+function CardsFlatlist(props): JSX.Element {
+  return <View style={styles.container}>{renderSenators(props)}</View>;
 }
 
 const styles = StyleSheet.create({

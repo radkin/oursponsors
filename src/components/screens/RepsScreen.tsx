@@ -3,7 +3,8 @@ import CardsFlatlist from "../CardsFlatlist";
 import { StyleSheet, View } from "react-native";
 import React from "react";
 
-function RepsScreen({navigation}) {
+function RepsScreen(props) {
+
   return (
     <View
       style={[
@@ -18,7 +19,7 @@ function RepsScreen({navigation}) {
       </View>
       */}
       <View style={{flex: 2}}>
-        <CardsFlatlist />
+        <CardsFlatlist navigation={props.navigation} />
       </View>
 
     </View>
