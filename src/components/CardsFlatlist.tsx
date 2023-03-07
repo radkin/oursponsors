@@ -35,7 +35,10 @@ function renderSenators(props) {
       isLoading={appState.loading}
       data={appState.repos}
       renderItem={({item}) =>
-        <TouchableOpacity onPress={() => navigation.navigate('Details') }>
+        <TouchableOpacity onPress={() => navigation.navigate('Details',
+          {
+            value: item
+          }) }>
           <View style={styles.card}>
           <RenderCard value={item}  />
         </View>
