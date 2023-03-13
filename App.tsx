@@ -6,7 +6,7 @@ import {Avatar, Provider as PaperProvider} from 'react-native-paper';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {CORP_HEADSHOT, CALIFORNIA} from './src/images';
+import {CALIFORNIA} from './src/images';
 import Flag from 'react-native-flags';
 
 import {
@@ -17,9 +17,9 @@ import {
   RepsScreen,
 } from './src/components/screens';
 
-function LogoTitle() {
-  return <Image style={{width: 70, height: 70}} source={CORP_HEADSHOT} />;
-}
+// function LogoTitle() {
+//   return <Image style={{width: 70, height: 70}} source={CORP_HEADSHOT} />;
+// }
 const Tab = createBottomTabNavigator();
 const SettingsStack = createNativeStackNavigator();
 const HomeStack = createNativeStackNavigator();

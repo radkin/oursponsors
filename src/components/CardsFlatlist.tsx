@@ -1,9 +1,10 @@
 import {useState, useEffect} from 'react';
+// @ts-ignore
 import {INAJAR_TOKEN, INAJAR_URL} from '@env';
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {FlatList} from 'react-native';
 import * as React from 'react';
-import RenderCard from "./RenderCard";
+import RenderCard from './RenderCard';
 import {responsiveScreenHeight} from 'react-native-responsive-dimensions';
 
 const {default: axios} = require('axios');
@@ -34,16 +35,18 @@ function renderSenators(props) {
     <FlatList
       isLoading={appState.loading}
       data={appState.repos}
-      renderItem={({item}) =>
-        <TouchableOpacity onPress={() => navigation.navigate('Details',
-          {
-            value: item
-          }) }>
+      renderItem={({item}) => (
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('Details', {
+              value: item,
+            })
+          }>
           <View style={styles.card}>
-          <RenderCard value={item}  />
-        </View>
+            <RenderCard value={item} />
+          </View>
         </TouchableOpacity>
-      }
+      )}
       keyExtractor={item => item.id}
       horizontal={false}
     />

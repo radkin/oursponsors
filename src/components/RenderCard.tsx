@@ -1,8 +1,11 @@
-import { Avatar, Card, Provider, Text } from "react-native-paper";
-import { StyleSheet, View } from "react-native";
-import Image from "react-native-scalable-image";
-import * as React from "react";
-import { responsiveScreenHeight, responsiveScreenWidth } from "react-native-responsive-dimensions";
+import {Avatar, Card, Provider, Text} from 'react-native-paper';
+import {StyleSheet, View} from 'react-native';
+import Image from 'react-native-scalable-image';
+import * as React from 'react';
+import {
+  responsiveScreenHeight,
+  responsiveScreenWidth,
+} from 'react-native-responsive-dimensions';
 
 function RenderCard({value}) {
   // console.log(appState.repos);
@@ -12,13 +15,13 @@ function RenderCard({value}) {
   return (
     <Provider>
       <Card style={styles.cardSmallStyle}>
-          <Card.Title
-            style={styles.textContainer}
-            title={`${value.first_name} ${value.last_name}`}
-            left={LeftContent}
-          />
+        <Card.Title
+          style={styles.textContainer}
+          title={`${value.first_name} ${value.last_name}`}
+          left={LeftContent}
+        />
         <Card.Content style={styles.textContainer}>
-          <Text variant="titlelarge">{`${value.state} ${value.party} ${value.title}`}</Text>
+          <Text variant="titleMedium">{`${value.state} ${value.party} ${value.title}`}</Text>
         </Card.Content>
         <View style={styles.cardProfPic}>
           <Image
@@ -48,17 +51,17 @@ const styles = StyleSheet.create({
     margin: 15,
     borderRadius: 15,
     borderWidth: 1,
-    borderColor: '#3d80fc'
+    borderColor: '#3d80fc',
   },
   textContainer: {
     marginTop: 15,
     height: responsiveScreenHeight(5),
     left: 2,
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   cardProfPic: {
     position: 'absolute',
-    left: '100%'
+    left: '100%',
   },
-})
+});
 export default RenderCard;
