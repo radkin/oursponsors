@@ -8,7 +8,7 @@ import {
 } from 'react-native-responsive-dimensions';
 
 function RenderCard({value}) {
-  // console.log(appState.repos);
+  // console.log(appState.senators);
 
   const LeftContent = props => <Avatar.Icon {...props} icon="folder" />;
 

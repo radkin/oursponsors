@@ -16,16 +16,18 @@ const instance = axios.create({
 });
 
 function renderSenators(props) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [appState, setAppState] = useState({
     loading: false,
-    repos: null,
+    senators: null,
   });
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    setAppState({loading: true});
-    instance.get().then(repos => {
-      const allRepos = repos.data;
-      setAppState({loading: false, repos: allRepos});
+    setAppState({senators: null, loading: true});
+    instance.get().then(senators => {
+      const allSenators = senators.data;
+      setAppState({loading: false, senators: allSenators});
     });
   }, [setAppState]);
 
@@ -34,7 +36,7 @@ function renderSenators(props) {
   return (
     <FlatList
       isLoading={appState.loading}
-      data={appState.repos}
+      data={appState.senators}
       renderItem={({item}) => (
         <TouchableOpacity
           onPress={() =>

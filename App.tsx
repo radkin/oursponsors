@@ -38,7 +38,7 @@ function App(): JSX.Element {
           <Tab.Screen
             name="First"
             options={{
-              tabBarIcon: ({size, focused, color}) => {
+              tabBarIcon: ({}) => {
                 return <Flag code="US" size={24} />;
               },
             }}>
@@ -59,7 +59,7 @@ function App(): JSX.Element {
           <Tab.Screen
             name="Second"
             options={{
-              tabBarIcon: ({size, focused, color}) => {
+              tabBarIcon: ({}) => {
                 return (
                   <Image style={{width: 24, height: 24}} source={CALIFORNIA} />
                 );
@@ -82,7 +82,7 @@ function App(): JSX.Element {
           <Tab.Screen
             name="Third"
             options={{
-              tabBarIcon: ({size, focused, color}) => {
+              tabBarIcon: ({}) => {
                 return <Avatar.Icon size={24} icon="flag" />;
               },
             }}>
