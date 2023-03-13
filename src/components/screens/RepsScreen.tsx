@@ -1,4 +1,3 @@
-import SimpleCarousel from '../SimpleCarousel';
 import CardsFlatlist from "../CardsFlatlist";
 import { StyleSheet, View } from "react-native";
 import React from "react";
@@ -13,11 +12,6 @@ function RepsScreen(props) {
           flexDirection: 'column',
         },
       ]}>
-      {/*
-      <View style={{flex: 1, alignItems:'center'}} >
-        <SimpleCarousel />
-      </View>
-      */}
       <View style={{flex: 2}}>
         <CardsFlatlist navigation={props.navigation} />
       </View>
