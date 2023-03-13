@@ -1,3 +1,4 @@
+import SimpleCarousel from '../SimpleCarousel';
 import CardsFlatlist from "../CardsFlatlist";
 import { StyleSheet, View } from "react-native";
 import React from "react";
