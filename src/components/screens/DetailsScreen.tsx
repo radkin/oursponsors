@@ -2,7 +2,7 @@ import {View, StyleSheet, Linking, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {List, MD3Colors, Surface, Text} from 'react-native-paper';
 
-function DetailsScreen({route, navigation}) {
+function DetailsScreen({route}) {
   const {value} = route.params;
   console.log(value);
   return (

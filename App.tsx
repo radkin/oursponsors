@@ -2,11 +2,11 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {Image, StyleSheet, useColorScheme} from 'react-native';
 
-import { Avatar, Provider as PaperProvider } from "react-native-paper";
+import {Avatar, Provider as PaperProvider} from 'react-native-paper';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {CORP_HEADSHOT, CALIFORNIA} from './src/images';
+import {CALIFORNIA} from './src/images';
 import Flag from 'react-native-flags';
 
 import {
@@ -17,9 +17,9 @@ import {
   RepsScreen,
 } from './src/components/screens';
 
-function LogoTitle() {
-  return <Image style={{width: 70, height: 70}} source={CORP_HEADSHOT} />;
-}
+// function LogoTitle() {
+//   return <Image style={{width: 70, height: 70}} source={CORP_HEADSHOT} />;
+// }
 const Tab = createBottomTabNavigator();
 const SettingsStack = createNativeStackNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -30,15 +30,16 @@ function App(): JSX.Element {
   return (
     <PaperProvider>
       <NavigationContainer>
-        <Tab.Navigator screenOptions={{
-          headerShown: false,
-          title: ''
-        }}>
+        <Tab.Navigator
+          screenOptions={{
+            headerShown: false,
+            title: '',
+          }}>
           <Tab.Screen
             name="First"
             options={{
-              tabBarIcon: ({size, focused, color}) => {
-                return <Flag code='US' size={24} />;
+              tabBarIcon: ({}) => {
+                return <Flag code="US" size={24} />;
               },
             }}>
             {() => (
@@ -58,11 +59,12 @@ function App(): JSX.Element {
           <Tab.Screen
             name="Second"
             options={{
-              tabBarIcon: ({size, focused, color}) => {
-                return <Image style={{width: 24, height: 24}} source={CALIFORNIA} />;
+              tabBarIcon: ({}) => {
+                return (
+                  <Image style={{width: 24, height: 24}} source={CALIFORNIA} />
+                );
               },
-            }}
-          >
+            }}>
             {() => (
               <SettingsStack.Navigator>
                 <SettingsStack.Screen
@@ -80,11 +82,10 @@ function App(): JSX.Element {
           <Tab.Screen
             name="Third"
             options={{
-              tabBarIcon: ({size, focused, color}) => {
-                return <Avatar.Icon size={24} icon='flag' />;
+              tabBarIcon: ({}) => {
+                return <Avatar.Icon size={24} icon="flag" />;
               },
-            }}
-          >
+            }}>
             {() => (
               <CarouselStack.Navigator
                 screenOptions={{
