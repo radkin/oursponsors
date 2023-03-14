@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
   },
   cardSmallStyle: {
-    height: responsiveScreenHeight(100),
+    height: responsiveScreenHeight(22.5),
     width: responsiveScreenWidth(60),
     marginHorizontal: 7,
     marginVertical: 7,
