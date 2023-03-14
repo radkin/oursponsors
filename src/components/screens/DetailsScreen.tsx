@@ -109,6 +109,58 @@ function DetailsScreen({route}) {
           </TouchableOpacity>
         </Surface>
       )}
+      {value.api_url && (
+        <Surface style={styles.surface} elevation={4}>
+          <TouchableOpacity
+            onPress={() =>
+              Linking.openURL(
+                `${value.api_url}`,
+              )
+            }>
+            <Text>ProPublica</Text>
+            <List.Icon color={MD3Colors.tertiary70} icon="people" />
+          </TouchableOpacity>
+        </Surface>
+      )}
+      {value.icpsr_id && (
+        <Surface style={styles.surface} elevation={4}>
+          <TouchableOpacity
+            onPress={() =>
+              Linking.openURL(
+                `https://voteview.com/person/${value.icpsr_id}`,
+              )
+            }>
+            <Text>Vote View</Text>
+            <List.Icon color={MD3Colors.tertiary70} icon="poll" />
+          </TouchableOpacity>
+        </Surface>
+      )}
+      {value.fec_candidate_id && (
+        <Surface style={styles.surface} elevation={4}>
+          <TouchableOpacity
+            onPress={() =>
+              Linking.openURL(
+                `https://www.fec.gov/data/candidate/${value.fec_candidate_id}`,
+              )
+            }>
+            <Text>FEC</Text>
+            <List.Icon color={MD3Colors.tertiary70} icon="selection" />
+          </TouchableOpacity>
+        </Surface>
+      )}
+      {value.url && (
+        <Surface style={styles.surface} elevation={4}>
+          <TouchableOpacity
+            onPress={() =>
+              Linking.openURL(
+                `${value.url}`,
+              )
+            }>
+            <Text>GOV website</Text>
+            <List.Icon color={MD3Colors.tertiary70} icon="web" />
+          </TouchableOpacity>
+        </Surface>
+      )}
     </View>
   );
 }
