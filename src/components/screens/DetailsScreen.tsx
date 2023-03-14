@@ -35,6 +35,9 @@ function DetailsScreen({route}) {
                   icon="twitter"
                   style={styles.surfaceIcon}
                 />
+                <Text style={styles.surfaceText} variant="titleMedium">
+                  Twitter
+                </Text>
               </TouchableOpacity>
             </Surface>
           )}
@@ -51,6 +54,9 @@ function DetailsScreen({route}) {
                   icon="facebook"
                   style={styles.surfaceIcon}
                 />
+                <Text style={styles.surfaceText} variant="titleMedium">
+                  Facebook
+                </Text>
               </TouchableOpacity>
             </Surface>
           )}
@@ -67,6 +73,9 @@ function DetailsScreen({route}) {
                   icon="youtube"
                   style={styles.surfaceIcon}
                 />
+                <Text style={styles.surfaceText} variant="titleMedium">
+                  YouTube
+                </Text>
               </TouchableOpacity>
             </Surface>
           )}
@@ -79,7 +88,9 @@ function DetailsScreen({route}) {
                   icon="contacts"
                   style={styles.surfaceIcon}
                 />
-                <Text style={styles.surfaceText}>Contact</Text>
+                <Text style={styles.surfaceText} variant="titleMedium">
+                  Contact
+                </Text>
               </TouchableOpacity>
             </Surface>
           )}
@@ -96,6 +107,9 @@ function DetailsScreen({route}) {
                   icon="google"
                   style={styles.surfaceIcon}
                 />
+                <Text style={styles.surfaceText} variant="titleMedium">
+                  Google Entity
+                </Text>
               </TouchableOpacity>
             </Surface>
           )}
@@ -107,7 +121,9 @@ function DetailsScreen({route}) {
                     `https://www.c-span.org/person/?${value.cspan_id}`,
                   )
                 }>
-                <Text style={styles.surfaceText}>C-SPAN</Text>
+                <Text style={styles.surfaceText} variant="titleMedium">
+                  C-SPAN
+                </Text>
                 <List.Icon
                   color={MD3Colors.primary40}
                   icon="folder"
@@ -124,7 +140,9 @@ function DetailsScreen({route}) {
                     `https://justfacts.votesmart.org/candidate/${value.votesmart_id}`,
                   )
                 }>
-                <Text style={styles.surfaceText}>Vote Smart</Text>
+                <Text style={styles.surfaceText} variant="titleMedium">
+                  Vote Smart
+                </Text>
                 <List.Icon
                   color={MD3Colors.primary40}
                   icon="vote"
@@ -146,7 +164,9 @@ function DetailsScreen({route}) {
                   icon="trackpad"
                   style={styles.surfaceIcon}
                 />
-                <Text style={styles.surfaceText}>Gov Track</Text>
+                <Text style={styles.surfaceText} variant="titleMedium">
+                  Gov Track
+                </Text>
               </TouchableOpacity>
             </Surface>
           )}
@@ -163,7 +183,9 @@ function DetailsScreen({route}) {
                   icon="file-hidden"
                   style={styles.surfaceIcon}
                 />
-                <Text style={styles.surfaceText}>Open Secrets</Text>
+                <Text style={styles.surfaceText} variant="titleMedium">
+                  Open Secrets
+                </Text>
               </TouchableOpacity>
             </Surface>
           )}
@@ -176,7 +198,9 @@ function DetailsScreen({route}) {
                   icon="people"
                   style={styles.surfaceIcon}
                 />
-                <Text style={styles.surfaceText}>ProPublica</Text>
+                <Text style={styles.surfaceText} variant="titleMedium">
+                  ProPublica
+                </Text>
               </TouchableOpacity>
             </Surface>
           )}
@@ -193,7 +217,9 @@ function DetailsScreen({route}) {
                   icon="poll"
                   style={styles.surfaceIcon}
                 />
-                <Text style={styles.surfaceText}>Vote View</Text>
+                <Text style={styles.surfaceText} variant="titleMedium">
+                  Vote View
+                </Text>
               </TouchableOpacity>
             </Surface>
           )}
@@ -210,7 +236,9 @@ function DetailsScreen({route}) {
                   icon="selection"
                   style={styles.surfaceIcon}
                 />
-                <Text style={styles.surfaceText}>FEC</Text>
+                <Text style={styles.surfaceText} variant="titleMedium">
+                  FEC
+                </Text>
               </TouchableOpacity>
             </Surface>
           )}
@@ -222,7 +250,9 @@ function DetailsScreen({route}) {
                   icon="web"
                   style={styles.surfaceIcon}
                 />
-                <Text style={styles.surfaceText}>GOV website</Text>
+                <Text style={styles.surfaceText} variant="titleMedium">
+                  GOV website
+                </Text>
               </TouchableOpacity>
             </Surface>
           )}
@@ -240,14 +270,14 @@ const styles = StyleSheet.create({
     margin: 2,
     textAlign: 'auto',
     borderColor: 'grey',
-    backgroundColor: 'white',
+    backgroundColor: MD3Colors.secondary95,
   },
   card: {
     borderRadius: 4,
     borderWidth: 2,
     borderColor: '#E8E8E8',
     justifyContent: 'center',
-    backgroundColor: 'white',
+    backgroundColor: MD3Colors.secondary90,
     height: responsiveScreenHeight(20),
   },
   detailsContainer: {
