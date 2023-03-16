@@ -55,7 +55,7 @@ function renderSenators(props) {
   );
 }
 
-function CardsFlatlist(props): JSX.Element {
+function SenatorCardsFlatlist(props): JSX.Element {
   return <View style={styles.container}>{renderSenators(props)}</View>;
 }
 
@@ -75,4 +75,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CardsFlatlist;
+export default SenatorCardsFlatlist;
