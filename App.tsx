@@ -1,10 +1,14 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem,
+} from '@react-navigation/drawer';
 import {StyleSheet, useColorScheme} from 'react-native';
-
 import {Avatar, Provider as PaperProvider} from 'react-native-paper';
 
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {
@@ -14,8 +18,16 @@ import {
 } from './src/components/screens';
 
 const Tab = createBottomTabNavigator();
-const HomeStack = createNativeStackNavigator();
+const HomeStack = createDrawerNavigator();
 
+function CustomDrawerContent(props) {
+  return (
+    <DrawerContentScrollView {...props}>
+      <DrawerItemList {...props} />
+      <DrawerItem label="Help" onPress={() => alert('Link to help')} />
+    </DrawerContentScrollView>
+  );
+}
 function App(): JSX.Element {
   useColorScheme() === 'dark';
   return (
@@ -34,7 +46,8 @@ function App(): JSX.Element {
               },
             }}>
             {() => (
-              <HomeStack.Navigator>
+              <HomeStack.Navigator
+                drawerContent={props => <CustomDrawerContent {...props} />}>
                 <HomeStack.Screen name="Senators" component={SenatorsScreen} />
                 <HomeStack.Screen name="Details" component={DetailsScreen} />
               </HomeStack.Navigator>
