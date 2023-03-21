@@ -1,42 +1,30 @@
-import {useState, useEffect} from 'react';
-// @ts-ignore
-import {INAJAR_TOKEN, INAJAR_URL} from '@env';
+import {useEffect} from 'react';
+
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {FlatList} from 'react-native';
 import * as React from 'react';
 import RenderCard from './RenderCard';
 import {responsiveScreenHeight} from 'react-native-responsive-dimensions';
 
-const {default: axios} = require('axios');
-const url = `${INAJAR_URL}/propublica/get_senators`;
-const instance = axios.create({
-  baseURL: url,
-  timeout: 1000,
-  headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
-});
+import {useDispatch, useSelector} from 'react-redux';
+import {getSenators} from '../store/actions/senatorAction';
 
 function renderSenators(props) {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [appState, setAppState] = useState({
-    loading: false,
-    senators: null,
-  });
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const dispatch = useDispatch();
+  const senatorsListData = useSelector(state => state.senatorsList);
+  const {loading, error, senators} = senatorsListData;
+
   useEffect(() => {
-    setAppState({senators: null, loading: true});
-    instance.get().then(senators => {
-      const allSenators = senators.data;
-      setAppState({loading: false, senators: allSenators});
-    });
-  }, [setAppState]);
+    dispatch(getSenators())
+  }, [dispatch])
 
   const navigation = props.navigation;
 
   return (
-    <FlatList
-      isLoading={appState.loading}
-      data={appState.senators}
+    loading ? "Loading..." : error ? error.message :
+          <FlatList
+      data={senators}
       renderItem={({item}) => (
         <TouchableOpacity
           onPress={() =>
@@ -51,6 +39,7 @@ function renderSenators(props) {
       )}
       keyExtractor={item => item.id}
       horizontal={false}
+
     />
   );
 }

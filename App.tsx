@@ -1,11 +1,6 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItemList,
-  DrawerItem,
-} from '@react-navigation/drawer';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import {StyleSheet, useColorScheme} from 'react-native';
 import {Avatar, Provider as PaperProvider} from 'react-native-paper';
 
@@ -16,21 +11,18 @@ import {
   SenatorsScreen,
   CongressScreen,
 } from './src/components/screens';
+import CustomDrawerContent from './src/components/CustomDrawerContent';
+
+import {Provider} from 'react-redux';
+import store from './src/store/store';
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createDrawerNavigator();
 
-function CustomDrawerContent(props) {
-  return (
-    <DrawerContentScrollView {...props}>
-      <DrawerItemList {...props} />
-      <DrawerItem label="Help" onPress={() => alert('Link to help')} />
-    </DrawerContentScrollView>
-  );
-}
 function App(): JSX.Element {
   useColorScheme() === 'dark';
   return (
+    <Provider store={store}>
     <PaperProvider>
       <NavigationContainer>
         <Tab.Navigator
@@ -71,6 +63,7 @@ function App(): JSX.Element {
         </Tab.Navigator>
       </NavigationContainer>
     </PaperProvider>
+    </Provider>
   );
 }
 StyleSheet.create({
