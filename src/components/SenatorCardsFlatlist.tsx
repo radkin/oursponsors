@@ -7,16 +7,23 @@ import RenderCard from './RenderCard';
 import {responsiveScreenHeight} from 'react-native-responsive-dimensions';
 
 import {useDispatch, useSelector} from 'react-redux';
-import {getSenators} from '../store/actions/senatorAction';
+import {getSenators, getSenatorsByState} from '../store/actions/senatorAction';
 
 function renderSenators(props) {
   const dispatch = useDispatch();
   const senatorsListData = useSelector(state => state.senatorsList);
   const {senators} = senatorsListData;
+  let byState = true;
 
-  useEffect(() => {
-    dispatch(getSenators());
-  }, [dispatch]);
+  if (byState) {
+    useEffect(() => {
+      dispatch(getSenatorsByState());
+    }, [dispatch]);
+  } else {
+    useEffect(() => {
+      dispatch(getSenators());
+    }, [dispatch]);
+  }
 
   const navigation = props.navigation;
 
