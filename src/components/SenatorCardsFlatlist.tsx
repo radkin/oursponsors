@@ -10,19 +10,18 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getSenators} from '../store/actions/senatorAction';
 
 function renderSenators(props) {
-
   const dispatch = useDispatch();
   const senatorsListData = useSelector(state => state.senatorsList);
   const {senators} = senatorsListData;
 
   useEffect(() => {
-    dispatch(getSenators())
-  }, [dispatch])
+    dispatch(getSenators());
+  }, [dispatch]);
 
   const navigation = props.navigation;
 
   return (
-          <FlatList
+    <FlatList
       data={senators}
       renderItem={({item}) => (
         <TouchableOpacity
@@ -38,7 +37,6 @@ function renderSenators(props) {
       )}
       keyExtractor={item => item.id}
       horizontal={false}
-
     />
   );
 }

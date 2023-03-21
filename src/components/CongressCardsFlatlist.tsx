@@ -10,14 +10,13 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getCongress} from '../store/actions/congressAction';
 
 function renderCongress(props) {
-
   const dispatch = useDispatch();
   const congressListData = useSelector(state => state.congressList);
   const {congress} = congressListData;
 
   useEffect(() => {
-    dispatch(getCongress())
-  }, [dispatch])
+    dispatch(getCongress());
+  }, [dispatch]);
 
   const navigation = props.navigation;
 
