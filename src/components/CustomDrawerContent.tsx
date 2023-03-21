@@ -8,8 +8,6 @@ import {
 function CustomDrawerContent(props) {
   const [active, setActive] = React.useState('');
 
-  console.log(props.active);
-
   return (
     <DrawerContentScrollView {...props}>
       <DrawerItemList {...props} />

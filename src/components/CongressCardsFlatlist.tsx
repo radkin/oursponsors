@@ -1,42 +1,29 @@
-import {useState, useEffect} from 'react';
-// @ts-ignore
-import {INAJAR_TOKEN, INAJAR_URL} from '@env';
+import {useEffect} from 'react';
+
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {FlatList} from 'react-native';
 import * as React from 'react';
 import RenderCard from './RenderCard';
 import {responsiveScreenHeight} from 'react-native-responsive-dimensions';
 
-const {default: axios} = require('axios');
-const url = `${INAJAR_URL}/propublica/get_congress`;
-const instance = axios.create({
-  baseURL: url,
-  timeout: 1000,
-  headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
-});
+import {useDispatch, useSelector} from 'react-redux';
+import {getCongress} from '../store/actions/congressAction';
 
 function renderCongress(props) {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [appState, setAppState] = useState({
-    loading: false,
-    congress: null,
-  });
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const dispatch = useDispatch();
+  const congressListData = useSelector(state => state.congressList);
+  const {congress} = congressListData;
+
   useEffect(() => {
-    setAppState({congress: null, loading: true});
-    instance.get().then(congress => {
-      const allCongress = congress.data;
-      setAppState({loading: false, congress: allCongress});
-    });
-  }, [setAppState]);
+    dispatch(getCongress())
+  }, [dispatch])
 
   const navigation = props.navigation;
 
   return (
     <FlatList
-      isLoading={appState.loading}
-      data={appState.congress}
+      data={congress}
       renderItem={({item}) => (
         <TouchableOpacity
           onPress={() =>

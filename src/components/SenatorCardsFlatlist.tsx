@@ -13,7 +13,7 @@ function renderSenators(props) {
 
   const dispatch = useDispatch();
   const senatorsListData = useSelector(state => state.senatorsList);
-  const {loading, error, senators} = senatorsListData;
+  const {senators} = senatorsListData;
 
   useEffect(() => {
     dispatch(getSenators())
@@ -22,7 +22,6 @@ function renderSenators(props) {
   const navigation = props.navigation;
 
   return (
-    loading ? "Loading..." : error ? error.message :
           <FlatList
       data={senators}
       renderItem={({item}) => (

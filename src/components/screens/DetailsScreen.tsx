@@ -13,7 +13,6 @@ import ScrollView = Animated.ScrollView;
 
 function DetailsScreen({route}) {
   const {value} = route.params;
-  console.log(value);
   return (
     <View style={{paddingBottom: 190}}>
       <View style={styles.card}>

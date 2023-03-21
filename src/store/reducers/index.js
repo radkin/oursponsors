@@ -1,6 +1,8 @@
-import { combineReducers } from 'redux'
-import senatorReducer from './senatorReducer'
+import { combineReducers } from 'redux';
+import senatorReducer from './senatorReducer';
+import congressReducer from "./congressReducer";
 
 export default combineReducers({
-  senatorsList: senatorReducer
+  senatorsList: senatorReducer,
+  congressList: congressReducer
 })

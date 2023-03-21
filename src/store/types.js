@@ -1,2 +1,4 @@
 export const GET_SENATORS = 'GET_SENATORS';
-export const SENATORS_ERROR = 'SENATORS_ERROR'
+export const SENATORS_ERROR = 'SENATORS_ERROR';
+export const GET_CONGRESS = 'GET_CONGRESS';
+export const CONGRESS_ERROR = 'CONGRESS_ERROR';
