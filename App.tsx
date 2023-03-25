@@ -23,46 +23,52 @@ function App(): JSX.Element {
   useColorScheme() === 'dark';
   return (
     <Provider store={store}>
-    <PaperProvider>
-      <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={{
-            headerShown: false,
-            title: '',
-          }}>
-          <Tab.Screen
-            name="First"
-            options={{
-              tabBarIcon: ({}) => {
-                return <Avatar.Icon size={24} icon="flag" />;
-              },
+      <PaperProvider>
+        <NavigationContainer>
+          <Tab.Navigator
+            screenOptions={{
+              headerShown: false,
+              title: '',
             }}>
-            {() => (
-              <HomeStack.Navigator
-                drawerContent={props => <CustomDrawerContent {...props} />}>
-                <HomeStack.Screen name="Senators" component={SenatorsScreen} />
-                <HomeStack.Screen name="Details" component={DetailsScreen} />
-              </HomeStack.Navigator>
-            )}
-          </Tab.Screen>
+            <Tab.Screen
+              name="First"
+              options={{
+                tabBarIcon: ({}) => {
+                  return <Avatar.Icon size={24} icon="flag" />;
+                },
+              }}>
+              {() => (
+                <HomeStack.Navigator
+                  drawerContent={props => <CustomDrawerContent {...props} />}>
+                  <HomeStack.Screen
+                    name="Senators"
+                    component={SenatorsScreen}
+                  />
+                  <HomeStack.Screen name="Details" component={DetailsScreen} />
+                </HomeStack.Navigator>
+              )}
+            </Tab.Screen>
 
-          <Tab.Screen
-            name="Second"
-            options={{
-              tabBarIcon: ({}) => {
-                return <Avatar.Icon size={24} icon="flag-outline" />;
-              },
-            }}>
-            {() => (
-              <HomeStack.Navigator>
-                <HomeStack.Screen name="Congress" component={CongressScreen} />
-                <HomeStack.Screen name="Details" component={DetailsScreen} />
-              </HomeStack.Navigator>
-            )}
-          </Tab.Screen>
-        </Tab.Navigator>
-      </NavigationContainer>
-    </PaperProvider>
+            <Tab.Screen
+              name="Second"
+              options={{
+                tabBarIcon: ({}) => {
+                  return <Avatar.Icon size={24} icon="flag-outline" />;
+                },
+              }}>
+              {() => (
+                <HomeStack.Navigator>
+                  <HomeStack.Screen
+                    name="Congress"
+                    component={CongressScreen}
+                  />
+                  <HomeStack.Screen name="Details" component={DetailsScreen} />
+                </HomeStack.Navigator>
+              )}
+            </Tab.Screen>
+          </Tab.Navigator>
+        </NavigationContainer>
+      </PaperProvider>
     </Provider>
   );
 }
