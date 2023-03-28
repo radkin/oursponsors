@@ -44,7 +44,15 @@ function App(): JSX.Element {
                     name="Senators"
                     component={SenatorsScreen}
                   />
-                  <HomeStack.Screen name="Details" component={DetailsScreen} />
+                  <HomeStack.Screen
+                    name="Details"
+                    component={DetailsScreen}
+                    options={{
+                      drawerItemStyle: {
+                        display: 'none',
+                      },
+                    }}
+                  />
                 </HomeStack.Navigator>
               )}
             </Tab.Screen>
@@ -57,12 +65,21 @@ function App(): JSX.Element {
                 },
               }}>
               {() => (
-                <HomeStack.Navigator>
+                <HomeStack.Navigator
+                  drawerContent={props => <CustomDrawerContent {...props} />}>
                   <HomeStack.Screen
                     name="Congress"
                     component={CongressScreen}
                   />
-                  <HomeStack.Screen name="Details" component={DetailsScreen} />
+                  <HomeStack.Screen
+                    name="Details"
+                    component={DetailsScreen}
+                    options={{
+                      drawerItemStyle: {
+                        display: 'none',
+                      },
+                    }}
+                  />
                 </HomeStack.Navigator>
               )}
             </Tab.Screen>
