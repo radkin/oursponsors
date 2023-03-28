@@ -19,16 +19,36 @@ function CustomDrawerContent(props) {
   const [govTrack, setHideGovTrack] = useState(false);
   const [openSecrets, setHideOpenSecrets] = useState(false);
 
-  const showMyStateOnly = () => {setCheck(prevState => !prevState);};
-  const showMyPartyOnly = () => {setMyPartyOnly(prevState => !prevState);};
-  const hideTwitter = () => {setHideTwitter(prevState => !prevState);};
-  const hideFacebook = () => {setHideTwitter(prevState => !prevState);};
-  const hideYouTube = () => {setHideYoutube(prevState => !prevState);};
-  const hideGoogleEntity = () => {setHideGoogleEntity(prevState => !prevState);};
-  const hideCspan = () => {setHideCspan(prevState => !prevState);};
-  const hideVoteSmart = () => {setHideVoteSmart(prevState => !prevState);};
-  const hideGovTrack = () => {setHideGovTrack(prevState => !prevState);};
-  const hideOpenSecrets = () => {setHideOpenSecrets(prevState => !prevState);};
+  const showMyStateOnly = () => {
+    setCheck(prevState => !prevState);
+  };
+  const showMyPartyOnly = () => {
+    setMyPartyOnly(prevState => !prevState);
+  };
+  const hideTwitter = () => {
+    setHideTwitter(prevState => !prevState);
+  };
+  const hideFacebook = () => {
+    setHideFacebook(prevState => !prevState);
+  };
+  const hideYouTube = () => {
+    setHideYoutube(prevState => !prevState);
+  };
+  const hideGoogleEntity = () => {
+    setHideGoogleEntity(prevState => !prevState);
+  };
+  const hideCspan = () => {
+    setHideCspan(prevState => !prevState);
+  };
+  const hideVoteSmart = () => {
+    setHideVoteSmart(prevState => !prevState);
+  };
+  const hideGovTrack = () => {
+    setHideGovTrack(prevState => !prevState);
+  };
+  const hideOpenSecrets = () => {
+    setHideOpenSecrets(prevState => !prevState);
+  };
 
   return (
     <DrawerContentScrollView {...props}>
