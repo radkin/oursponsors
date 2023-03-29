@@ -35,8 +35,8 @@ export const getCongressByState = () => async dispatch => {
   try {
     const res = await axios.post(
       `${INAJAR_URL}/propublica/get_congress_by_state`,
-      {"state": "CA"},
-      { headers: {'INAJAR-TOKEN': INAJAR_TOKEN} },
+      {state: 'CA'},
+      {headers: {'INAJAR-TOKEN': INAJAR_TOKEN}},
     );
     dispatch({
       type: GET_CONGRESS_BY_STATE,

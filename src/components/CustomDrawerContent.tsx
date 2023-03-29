@@ -1,53 +1,24 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import {Drawer} from 'react-native-paper';
 import {
   DrawerContentScrollView,
   DrawerItem,
   DrawerItemList,
 } from '@react-navigation/drawer';
+import {useDispatch, useSelector} from 'react-redux';
+import {getPreferences} from '../store/actions/preferencesAction';
 function CustomDrawerContent(props) {
-  // General Preferences
-  const [myStateOnly, setCheck] = useState(true);
-  const [myPartyOnly, setMyPartyOnly] = useState(false);
-  // Hide Detail Preferences
-  const [twitter, setHideTwitter] = useState(false);
-  const [facebook, setHideFacebook] = useState(false);
-  const [youtube, setHideYoutube] = useState(false);
-  const [googleEntity, setHideGoogleEntity] = useState(false);
-  const [cspan, setHideCspan] = useState(false);
-  const [voteSmart, setHideVoteSmart] = useState(false);
-  const [govTrack, setHideGovTrack] = useState(false);
-  const [openSecrets, setHideOpenSecrets] = useState(false);
+  const dispatch = useDispatch();
+  const preferencesListData = useSelector(state => state.preferencesList);
+  const {preferences} = preferencesListData;
 
-  const showMyStateOnly = () => {
-    setCheck(prevState => !prevState);
-  };
-  const showMyPartyOnly = () => {
-    setMyPartyOnly(prevState => !prevState);
-  };
-  const hideTwitter = () => {
-    setHideTwitter(prevState => !prevState);
-  };
-  const hideFacebook = () => {
-    setHideFacebook(prevState => !prevState);
-  };
-  const hideYouTube = () => {
-    setHideYoutube(prevState => !prevState);
-  };
-  const hideGoogleEntity = () => {
-    setHideGoogleEntity(prevState => !prevState);
-  };
-  const hideCspan = () => {
-    setHideCspan(prevState => !prevState);
-  };
-  const hideVoteSmart = () => {
-    setHideVoteSmart(prevState => !prevState);
-  };
-  const hideGovTrack = () => {
-    setHideGovTrack(prevState => !prevState);
-  };
-  const hideOpenSecrets = () => {
-    setHideOpenSecrets(prevState => !prevState);
+  // General Preferences
+  useEffect(() => {
+    dispatch(getPreferences());
+  }, [dispatch]);
+
+  const dummyAction = () => {
+    console.log('dummy boolean toggle')
   };
 
   return (
@@ -56,55 +27,55 @@ function CustomDrawerContent(props) {
       <Drawer.Section title="General Preferences">
         <Drawer.Item
           label="only California"
-          active={myStateOnly === true}
-          onPress={() => showMyStateOnly()}
+          active={preferences.my_state_only === true}
+          onPress={() => dummyAction()}
         />
         <Drawer.Item
-          label="only Democratics"
-          active={myPartyOnly === true}
-          onPress={() => showMyPartyOnly()}
+          label="only Democrats"
+          active={preferences.my_party_only === true}
+          onPress={() => dummyAction()}
         />
       </Drawer.Section>
       <Drawer.Section title="Hide Details Preferences">
         <Drawer.Item
           label="twitter"
-          active={twitter === true}
-          onPress={() => hideTwitter()}
+          active={preferences.twitter_hide === true}
+          onPress={() => dummyAction()}
         />
         <Drawer.Item
           label="facebook"
-          active={facebook === true}
-          onPress={() => hideFacebook()}
+          active={preferences.facebook_hide === true}
+          onPress={() => dummyAction()}
         />
         <Drawer.Item
           label="youTube"
-          active={youtube === true}
-          onPress={() => hideYouTube()}
+          active={preferences.youtube_hide === true}
+          onPress={() => dummyAction()}
         />
         <Drawer.Item
           label="google entity"
-          active={googleEntity === true}
-          onPress={() => hideGoogleEntity()}
+          active={preferences.google_entity_hide === true}
+          onPress={() => dummyAction()}
         />
         <Drawer.Item
           label="cspan"
-          active={cspan === true}
-          onPress={() => hideCspan()}
+          active={preferences.cspan_hide === true}
+          onPress={() => dummyAction()}
         />
         <Drawer.Item
           label="vote smart"
-          active={voteSmart === true}
-          onPress={() => hideVoteSmart()}
+          active={preferences.vote_smart_hide === true}
+          onPress={() => dummyAction()}
         />
         <Drawer.Item
           label="gov track"
-          active={govTrack === true}
-          onPress={() => hideGovTrack()}
+          active={preferences.gov_track_hide === true}
+          onPress={() => dummyAction()}
         />
         <Drawer.Item
           label="open secrets"
-          active={openSecrets === true}
-          onPress={() => hideOpenSecrets()}
+          active={preferences.open_secrets_hide === true}
+          onPress={() => dummyAction()}
         />
       </Drawer.Section>
 
