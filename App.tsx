@@ -10,8 +10,8 @@ import {
   DetailsScreen,
   SenatorsScreen,
   CongressScreen,
+  PreferencesScreen
 } from './src/components/screens';
-import CustomDrawerContent from './src/components/CustomDrawerContent';
 
 import {Provider} from 'react-redux';
 import store from './src/store/store';
@@ -38,11 +38,14 @@ function App(): JSX.Element {
                 },
               }}>
               {() => (
-                <HomeStack.Navigator
-                  drawerContent={props => <CustomDrawerContent {...props} />}>
+                <HomeStack.Navigator>
                   <HomeStack.Screen
                     name="Senators"
                     component={SenatorsScreen}
+                  />
+                  <HomeStack.Screen
+                    name="Preferences"
+                    component={PreferencesScreen}
                   />
                   <HomeStack.Screen
                     name="Details"
@@ -65,11 +68,14 @@ function App(): JSX.Element {
                 },
               }}>
               {() => (
-                <HomeStack.Navigator
-                  drawerContent={props => <CustomDrawerContent {...props} />}>
+                <HomeStack.Navigator>
                   <HomeStack.Screen
                     name="Congress"
                     component={CongressScreen}
+                  />
+                  <HomeStack.Screen
+                    name="Preferences"
+                    component={PreferencesScreen}
                   />
                   <HomeStack.Screen
                     name="Details"
