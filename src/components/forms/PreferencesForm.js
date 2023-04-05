@@ -1,111 +1,97 @@
-import React from 'react';
-import {Text, TextInput, View, Button, StyleSheet} from 'react-native';
-import {connect} from 'react-redux';
-// import { bindActionCreators } from 'redux';
-// import { sendLoginAction, sendLogoutAction,
-//   // loginSuccess,
-// } from '../LoginAction';
-import { getPreferences, updatePreferences } from "../../store/actions/preferencesAction";
+import * as React from 'react';
+import {Text, View, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
+// or any pure javascript modules available in npm
+import {Title, Card, Button, TextInput} from 'react-native-paper';
 
-class PreferencesScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Login',
+// Import Redux and React Redux Dependencies
+import {connect, useDispatch, useSelector} from 'react-redux';
+import {
+  updatePreferences,
+  getPreferences,
+} from '../../store/actions/preferencesAction';
+import {useEffect} from 'react';
+
+// Test Data
+// const data = [
+//   {id: 1, task: "Do this stuff"},
+//   {id: 2, task: "Do another stuff"},
+// ]
+
+const PreferencesForm = ({updatePreferences}) => {
+  const dispatch = useDispatch();
+  const preferencesListData = useSelector(state => state.preferencesList);
+  const {preferences} = preferencesListData;
+
+  useEffect(() => {
+    dispatch(getPreferences());
+  }, [dispatch]);
+
+  const [task, setTask] = React.useState('');
+
+  const handleUpdatePreferences = () => {
+    updatePreferences(task);
+    setTask('');
   };
 
-  constructor(props, context) {
-    super(props, context);
-    this.state = this.props.preferences;
+  return (
+    <View style={styles.container}>
+      <Card title="Card Title">
+        <Text style={styles.paragraph}>
+          ToDo App with React Native and Redux
+        </Text>
+      </Card>
+      <Card>
+        <Card.Content>
+          <Title>Select Preference to change</Title>
 
-    console.log('const prop:' + JSON.stringify(this.props));
-    console.log('const state:' + JSON.stringify(this.state));
-  }
-  componentDidMount() {
-    // console.log("componentDidMount store.getState:" + JSON.stringify(store.getState()));
-    // console.log("componentDidMount state:" + JSON.stringify(this.state));
-  }
+          <TextInput
+            mode="outlined"
+            label="Preference"
+            value={task}
+            onChangeText={task => setTask(task)}
+          />
+          <Button mode="contained" onPress={handleUpdatePreferences}>
+            Update Preference
+          </Button>
+        </Card.Content>
+      </Card>
 
-  onPressPreferencesUpdate = () => {
-    console.log(
-      'onPressPreferencesUpdate... state:' + JSON.stringify(this.state),
-    );
-    const preferences = {
-      myStateOnly: this.state.myStateOnly,
-      myPartyOnly: this.state.myPartyOnly,
-    };
+        <Card>
+          <Card.Title
+            title={`${preferences.id} | My State Only: ${preferences.my_state_only}`}
+            left={props => <Icon name="tasks" size={24} color="black" />}
+          />
+          <Card.Content>
+            <Text>My State Only: { `${preferences.my_state_only}` }</Text>
+          </Card.Content>
+        </Card>
 
-    this.props.updatePreferences(preferences, this.successCb, this.failCb);
-  };
-
-  successCb = loginUser => {
-    console.log('successCb... loginUser:' + JSON.stringify(loginUser));
-  };
-
-  failCb = error => {
-    console.log('failCb... error:' + JSON.stringify(error)); //"code":"auth/wrong-password"
-    alert('Your login failed. Please try again.' + error);
-  };
-
-  onChangeMyStateOnly = myStateOnly => this.setState({myStateOnly});
-  onChangeMyPartyOnly = myPartyOnly => this.setState({myPartyOnly});
-
-  render() {
-    return (
-      <View>
-        <Text style={styles.title}>My State Only:</Text>
-        <TextInput
-          style={styles.stateOnlyInput}
-          onChangeText={this.onChangeMyStateOnly}
-          value={this.state.myStateOnly}
-        />
-        <Text style={styles.title}>My Party Only:</Text>
-        <TextInput
-          style={styles.stateOnlyInput}
-          onChangeText={this.onChangeMyPartyOnly}
-          value={this.state.myPartyOnly}
-        />
-        <Button
-          title="Update Preferences"
-          style={styles.buttonText}
-          onPress={this.onPressPreferencesUpdate}
-        />
-      </View>
-    );
-  }
-}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-  title: {
-    marginTop: 14,
-    marginLeft: 14,
-    fontSize: 16,
+  container: {
+    flex: 1,
+    paddingTop: 20,
+    backgroundColor: '#ecf0f1',
+    padding: 10,
   },
-  stateOnlyInput: {
-    height: 32,
-    margin: 16,
-    paddingHorizontal: 14,
-    borderColor: '#111111',
-    borderWidth: 1,
+  paragraph: {
+    margin: 24,
     fontSize: 18,
-  },
-  buttonText: {
-    marginLeft: 16,
-    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
 
-const mapStateToProps = state => {
-  const {preferences} = state;
-  console.log('login mapStateToProps ... state:' + JSON.stringify(state));
-  console.log(
-    'login mapStateToProps ... props:' + JSON.stringify({preferences}),
-  );
-  return {preferences};
+const mapStateToProps = (state, ownProps) => {
+  return {
+    preferences: state.preferences,
+  };
 };
 
-// need custom middleware for async func --added thunk in createStore
-const mapDispatchToProps = {
-  updatePreferences: updatePreferences,
-  preferences: getPreferences,
-};
+const mapDispatchToProps = {updatePreferences};
 
-export default connect(mapStateToProps, mapDispatchToProps)(PreferencesScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(PreferencesForm);
