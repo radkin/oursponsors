@@ -5,8 +5,7 @@ import {connect} from 'react-redux';
 // import { sendLoginAction, sendLogoutAction,
 //   // loginSuccess,
 // } from '../LoginAction';
-import { updatePreferences } from '../../store/actions/updatePreferencesAction';
-import { getPreferences } from "../../store/actions/preferencesAction";
+import { getPreferences, updatePreferences } from "../../store/actions/preferencesAction";
 
 class PreferencesScreen extends React.Component {
   static navigationOptions = {
