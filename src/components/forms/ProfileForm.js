@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 // or any pure javascript modules available in npm
-import {Title, Card, Button, TextInput, Switch} from 'react-native-paper';
+import {Title, Card, Button, TextInput} from 'react-native-paper';
 
 // Import Redux and React Redux Dependencies
 import {connect, useDispatch, useSelector} from 'react-redux';
@@ -18,7 +18,7 @@ import {useEffect} from 'react';
 //   {id: 2, task: "Do another stuff"},
 // ]
 
-const PreferencesForm = ({updatePreferences}) => {
+const ProfileForm = ({updatePreferences}) => {
   const dispatch = useDispatch();
   const preferencesListData = useSelector(state => state.preferencesList);
   const {preferences} = preferencesListData;
@@ -28,34 +28,19 @@ const PreferencesForm = ({updatePreferences}) => {
   }, [dispatch]);
 
   const [task, setTask] = React.useState('');
-  const [isSwitchOn, setIsSwitchOn] = React.useState(false);
 
   const handleUpdatePreferences = () => {
     updatePreferences(task);
     setTask('');
   };
 
-  const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
-
   return (
     <View style={styles.container}>
-
       <Card title="Card Title">
         <Text style={styles.paragraph}>
           ToDo App with React Native and Redux
         </Text>
       </Card>
-
-      <Card>
-        <Card.Title
-          title='My State Only:'
-          left={props => <Icon name="tasks" size={24} color="black" />}
-        />
-        <Card.Content style={{ position: "absolute", bottom: 0, right: 0 }}>
-          <Switch value={isSwitchOn} onValueChange={onToggleSwitch} />
-        </Card.Content>
-      </Card>
-
       <Card>
         <Card.Content>
           <Title>Select Preference to change</Title>
@@ -72,7 +57,15 @@ const PreferencesForm = ({updatePreferences}) => {
         </Card.Content>
       </Card>
 
-
+        <Card>
+          <Card.Title
+            title={`${preferences.id} | My State Only: ${preferences.my_state_only}`}
+            left={props => <Icon name="tasks" size={24} color="black" />}
+          />
+          <Card.Content>
+            <Text>My State Only: { `${preferences.my_state_only}` }</Text>
+          </Card.Content>
+        </Card>
 
     </View>
   );
@@ -101,4 +94,4 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = {updatePreferences};
 
-export default connect(mapStateToProps, mapDispatchToProps)(PreferencesForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileForm);
