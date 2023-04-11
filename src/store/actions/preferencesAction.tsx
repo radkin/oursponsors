@@ -2,7 +2,12 @@
 import {INAJAR_TOKEN, INAJAR_URL} from '@env';
 import axios from 'axios';
 
-import {GET_PREFERENCES, PREFERENCES_ERROR, UPDATE_PREFERENCES} from '../types';
+import {
+  GET_PREFERENCES,
+  PREFERENCES_ERROR,
+  UPDATE_PREFERENCES,
+  UPDATE_PREFERENCES_ERROR,
+} from '../types';
 
 export const getPreferences = () => async dispatch => {
   try {
@@ -54,7 +59,7 @@ export const updatePreferences = () => async dispatch => {
     });
   } catch (error) {
     dispatch({
-      type: PREFERENCES_ERROR,
+      type: UPDATE_PREFERENCES_ERROR,
       payload: error,
     });
   }
