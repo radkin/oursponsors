@@ -33,7 +33,7 @@ function PreferencesForm({updatePreferences}) {
         <Card.Content style={{position: 'absolute', bottom: 0, right: 0}}>
           <Switch
             value={preferences.my_state_only}
-            onValueChange={updatePreferences()}
+            onChange={value => updatePreferences(value)}
           />
         </Card.Content>
       </Card>
@@ -60,10 +60,8 @@ const mapStateToProps = state => ({
   preferences: state.preferences,
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    updatePreferences: () => dispatch(updatePreferences()),
-  };
+const mapDispatchToProps = {
+  updatePreferences,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PreferencesForm);

@@ -32,7 +32,7 @@ export const updatePreferences = () => async dispatch => {
   const prefData = {
     id: 1,
     user_id: 1,
-    my_state_only: false,
+    my_state_only: true,
     my_party_only: false,
     my_county_only: false,
     twitter_hide: false,
