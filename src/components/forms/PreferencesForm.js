@@ -33,7 +33,7 @@ function PreferencesForm({updatePreferences}) {
         <Card.Content style={{position: 'absolute', bottom: 0, right: 0}}>
           <Switch
             value={preferences.my_state_only}
-            onChange={value => updatePreferences(value)}
+            onValueChange={value => updatePreferences(value)}
           />
         </Card.Content>
       </Card>
