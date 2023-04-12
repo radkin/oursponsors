@@ -7,23 +7,16 @@ import RenderRepCard from './RenderRepCard';
 import {responsiveScreenHeight} from 'react-native-responsive-dimensions';
 
 import {useDispatch, useSelector} from 'react-redux';
-import { getCongress, getCongressByState } from "../store/actions/congressAction";
+import {getCongress} from '../store/actions/congressAction';
 
 function renderCongress(props) {
   const dispatch = useDispatch();
   const congressListData = useSelector(state => state.congressList);
   const {congress} = congressListData;
-  let byState = true;
 
-  if (byState) {
-    useEffect(() => {
-      dispatch(getCongressByState());
-    }, [dispatch]);
-  } else {
-    useEffect(() => {
-      dispatch(getCongress());
-    }, [dispatch]);
-  }
+  useEffect(() => {
+    dispatch(getCongress());
+  }, [dispatch]);
 
   const navigation = props.navigation;
 
