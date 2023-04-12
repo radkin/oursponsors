@@ -9,7 +9,7 @@ import {
 import {useState} from 'react';
 
 
-function RenderCard({value}) {
+function RenderRepCard({value}) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const LeftContent = props => <Avatar.Icon {...props} icon="folder" />;
 
@@ -76,4 +76,4 @@ const styles = StyleSheet.create({
     left: '100%',
   },
 });
-export default RenderCard;
+export default RenderRepCard;

@@ -3,7 +3,7 @@ import {useEffect} from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {FlatList} from 'react-native';
 import * as React from 'react';
-import RenderCard from './RenderCard';
+import RenderRepCard from './RenderRepCard';
 import {responsiveScreenHeight} from 'react-native-responsive-dimensions';
 
 import {useDispatch, useSelector} from 'react-redux';
@@ -38,7 +38,7 @@ function renderCongress(props) {
             })
           }>
           <View style={styles.card}>
-            <RenderCard value={item} />
+            <RenderRepCard value={item} />
           </View>
         </TouchableOpacity>
       )}
