@@ -18,6 +18,7 @@ function renderSenators(props) {
     dispatch(getSenators());
   }, [dispatch]);
 
+  console.log(senators);
   const navigation = props.navigation;
 
   return (
