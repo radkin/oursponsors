@@ -3,12 +3,18 @@ import {Text, View, StyleSheet, ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {Card, Switch} from 'react-native-paper';
 
-import {useSelector, connect} from 'react-redux';
-import {updatePreferences} from '../store/actions/preferencesAction';
+import { useSelector, connect, useDispatch } from "react-redux";
+import { getPreferences, updatePreferences } from "../store/actions/preferencesAction";
+import { useEffect } from "react";
 
 function PreferencesCards({updatePreferences}) {
+  const dispatch = useDispatch();
   const preferencesListData = useSelector(state => state.preferencesList);
   const {preferences} = preferencesListData;
+
+  useEffect(() => {
+    dispatch(getPreferences());
+  }, [dispatch]);
 
   return (
     <ScrollView>
