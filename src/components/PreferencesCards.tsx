@@ -12,6 +12,7 @@ function PreferencesCards({updatePreferences}) {
   const preferencesListData = useSelector(state => state.preferencesList);
   const {preferences} = preferencesListData;
 
+  // ToDo: mapStateToProps is not working. When fixed, remove this hook
   useEffect(() => {
     dispatch(getPreferences());
   }, [dispatch]);
