@@ -6,11 +6,11 @@ import {Card, Switch} from 'react-native-paper';
 import {useSelector, connect, useDispatch} from 'react-redux';
 import {
   getPreferences,
-  updatePreferences,
+  setPreferences,
 } from '../store/actions/preferencesAction';
 import {useEffect} from 'react';
 
-function PreferencesCards({updatePreferences}) {
+function PreferencesCards({setPreferences}) {
   const dispatch = useDispatch();
   const preferencesListData = useSelector(state => state.preferencesList);
   const {preferences} = preferencesListData;
@@ -37,7 +37,7 @@ function PreferencesCards({updatePreferences}) {
           <Card.Content style={styles.cardContent}>
             <Switch
               value={preferences.my_state_only}
-              onValueChange={value => updatePreferences('my_state_only', value)}
+              onValueChange={value => setPreferences('my_state_only', value)}
             />
           </Card.Content>
         </Card>
@@ -50,7 +50,7 @@ function PreferencesCards({updatePreferences}) {
           <Card.Content style={styles.cardContent}>
             <Switch
               value={preferences.my_party_only}
-              onValueChange={value => updatePreferences('my_party_only', value)}
+              onValueChange={value => setPreferences('my_party_only', value)}
             />
           </Card.Content>
         </Card>
@@ -63,7 +63,7 @@ function PreferencesCards({updatePreferences}) {
           <Card.Content style={styles.cardContent}>
             <Switch
               value={preferences.twitter_hide}
-              onValueChange={value => updatePreferences('twitter_hide', value)}
+              onValueChange={value => setPreferences('twitter_hide', value)}
             />
           </Card.Content>
         </Card>
@@ -76,7 +76,7 @@ function PreferencesCards({updatePreferences}) {
           <Card.Content style={styles.cardContent}>
             <Switch
               value={preferences.facebook_hide}
-              onValueChange={value => updatePreferences('facebook_hide', value)}
+              onValueChange={value => setPreferences('facebook_hide', value)}
             />
           </Card.Content>
         </Card>
@@ -89,7 +89,7 @@ function PreferencesCards({updatePreferences}) {
           <Card.Content style={styles.cardContent}>
             <Switch
               value={preferences.youtube_hide}
-              onValueChange={value => updatePreferences('youtube_hide', value)}
+              onValueChange={value => setPreferences('youtube_hide', value)}
             />
           </Card.Content>
         </Card>
@@ -103,7 +103,7 @@ function PreferencesCards({updatePreferences}) {
             <Switch
               value={preferences.google_entity_hide}
               onValueChange={value =>
-                updatePreferences('google_entity_hide', value)
+                setPreferences('google_entity_hide', value)
               }
             />
           </Card.Content>
@@ -117,7 +117,7 @@ function PreferencesCards({updatePreferences}) {
           <Card.Content style={styles.cardContent}>
             <Switch
               value={preferences.cspan_hide}
-              onValueChange={value => updatePreferences('cspan_hide', value)}
+              onValueChange={value => setPreferences('cspan_hide', value)}
             />
           </Card.Content>
         </Card>
@@ -131,7 +131,7 @@ function PreferencesCards({updatePreferences}) {
             <Switch
               value={preferences.vote_smart_hide}
               onValueChange={value =>
-                updatePreferences('vote_smart_hide', value)
+                setPreferences('vote_smart_hide', value)
               }
             />
           </Card.Content>
@@ -146,7 +146,7 @@ function PreferencesCards({updatePreferences}) {
             <Switch
               value={preferences.gov_track_hide}
               onValueChange={value =>
-                updatePreferences('gov_track_hide', value)
+                setPreferences('gov_track_hide', value)
               }
             />
           </Card.Content>
@@ -161,7 +161,7 @@ function PreferencesCards({updatePreferences}) {
             <Switch
               value={preferences.open_secrets_hide}
               onValueChange={value =>
-                updatePreferences('open_secrets_hide', value)
+                setPreferences('open_secrets_hide', value)
               }
             />
           </Card.Content>
@@ -176,7 +176,7 @@ function PreferencesCards({updatePreferences}) {
             <Switch
               value={preferences.vote_view_hide}
               onValueChange={value =>
-                updatePreferences('vote_view_hide', value)
+                setPreferences('vote_view_hide', value)
               }
             />
           </Card.Content>
@@ -190,7 +190,7 @@ function PreferencesCards({updatePreferences}) {
           <Card.Content style={styles.cardContent}>
             <Switch
               value={preferences.fec_hide}
-              onValueChange={value => updatePreferences('fec_hide', value)}
+              onValueChange={value => setPreferences('fec_hide', value)}
             />
           </Card.Content>
         </Card>
@@ -224,7 +224,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  updatePreferences,
+  setPreferences,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PreferencesCards);

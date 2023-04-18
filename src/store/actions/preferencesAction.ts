@@ -3,6 +3,8 @@ import {INAJAR_TOKEN, INAJAR_URL} from '@env';
 import axios from 'axios';
 
 import {GET_PREFERENCES, PREFERENCES_ERROR, UPDATE_PREFERENCES} from '../types';
+import {getSenators} from "./senatorAction";
+import {getCongress} from "./congressAction";
 
 export const getPreferences = () => async dispatch => {
   try {
@@ -46,3 +48,9 @@ export const updatePreferences = (pref, value) => async dispatch => {
     });
   }
 };
+
+export const setPreferences = (pref, value) => async dispatch=> {
+  await dispatch(updatePreferences(pref, value));
+  await dispatch(getSenators());
+  await dispatch(getCongress());
+}
