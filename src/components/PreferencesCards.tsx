@@ -130,9 +130,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Content style={styles.cardContent}>
             <Switch
               value={preferences.vote_smart_hide}
-              onValueChange={value =>
-                setPreferences('vote_smart_hide', value)
-              }
+              onValueChange={value => setPreferences('vote_smart_hide', value)}
             />
           </Card.Content>
         </Card>
@@ -145,9 +143,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Content style={styles.cardContent}>
             <Switch
               value={preferences.gov_track_hide}
-              onValueChange={value =>
-                setPreferences('gov_track_hide', value)
-              }
+              onValueChange={value => setPreferences('gov_track_hide', value)}
             />
           </Card.Content>
         </Card>
@@ -175,9 +171,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Content style={styles.cardContent}>
             <Switch
               value={preferences.vote_view_hide}
-              onValueChange={value =>
-                setPreferences('vote_view_hide', value)
-              }
+              onValueChange={value => setPreferences('vote_view_hide', value)}
             />
           </Card.Content>
         </Card>
