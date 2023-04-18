@@ -5,13 +5,24 @@ import {
   TouchableOpacity,
   Animated,
 } from 'react-native';
-import React from 'react';
+import React, { useEffect } from "react";
 import {List, MD3Colors, Surface, Text} from 'react-native-paper';
 import {responsiveScreenHeight} from 'react-native-responsive-dimensions';
 import RenderRepCard from '../RenderRepCard';
 import ScrollView = Animated.ScrollView;
+import { connect, useDispatch, useSelector } from "react-redux";
+import { getPreferences } from "../../store/actions/preferencesAction";
 
 function DetailsScreen({route}) {
+  const dispatch = useDispatch();
+  const preferencesListData = useSelector(state => state.preferencesList);
+  const {preferences} = preferencesListData;
+
+  // ToDo: mapStateToProps is not working. When fixed, remove this hook
+  useEffect(() => {
+    dispatch(getPreferences());
+  }, [dispatch]);
+
   const {value} = route.params;
   return (
     <View style={{paddingBottom: 190}}>
@@ -21,7 +32,7 @@ function DetailsScreen({route}) {
 
       <ScrollView style={{paddingTop: 7}}>
         <View>
-          {value.twitter_account && (
+          {value.twitter_account && !preferences.twitter_hide && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -40,7 +51,7 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.facebook_account && (
+          {value.facebook_account && !preferences.facebook_hide && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -59,7 +70,7 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.youtube_account && (
+          {value.youtube_account && !preferences.youtube_hide && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -93,7 +104,7 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.google_entity_id && (
+          {value.google_entity_id && !preferences.google_entity_hide && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -112,7 +123,7 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.cspan_id && (
+          {value.cspan_id && !preferences.cspan_hide && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -131,7 +142,7 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.votesmart_id && (
+          {value.votesmart_id && !preferences.vote_smart_hide && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -150,7 +161,7 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.govtrack_id && (
+          {value.govtrack_id && !preferences.gov_track_hide && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -169,7 +180,7 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.crp_id && (
+          {value.crp_id && !preferences.open_secrets_hide && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -203,7 +214,7 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.icpsr_id && (
+          {value.icpsr_id && !preferences.vote_view_hide && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -222,7 +233,7 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.fec_candidate_id && (
+          {value.fec_candidate_id && !preferences.fec_hide &&(
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -297,4 +308,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DetailsScreen;
+const mapStateToProps = state => ({
+  preferences: state.preferences,
+});
+
+export default connect(mapStateToProps)(DetailsScreen);
