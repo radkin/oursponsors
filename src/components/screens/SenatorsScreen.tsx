@@ -1,9 +1,8 @@
-import SenatorCardsFlatlist from "../SenatorCardsFlatlist";
-import { StyleSheet, View } from "react-native";
-import React from "react";
+import SenatorCardsFlatlist from '../SenatorCardsFlatlist';
+import {StyleSheet, View} from 'react-native';
+import React from 'react';
 
 function SenatorsScreen(props) {
-
   return (
     <View
       style={[
@@ -15,7 +14,6 @@ function SenatorsScreen(props) {
       <View style={{flex: 2}}>
         <SenatorCardsFlatlist navigation={props.navigation} />
       </View>
-
     </View>
   );
 }
@@ -26,4 +24,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default  SenatorsScreen;
+export default SenatorsScreen;

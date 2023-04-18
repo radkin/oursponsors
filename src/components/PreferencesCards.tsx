@@ -3,9 +3,12 @@ import {Text, View, StyleSheet, ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {Card, Switch} from 'react-native-paper';
 
-import { useSelector, connect, useDispatch } from "react-redux";
-import { getPreferences, updatePreferences } from "../store/actions/preferencesAction";
-import { useEffect } from "react";
+import {useSelector, connect, useDispatch} from 'react-redux';
+import {
+  getPreferences,
+  updatePreferences,
+} from '../store/actions/preferencesAction';
+import {useEffect} from 'react';
 
 function PreferencesCards({updatePreferences}) {
   const dispatch = useDispatch();

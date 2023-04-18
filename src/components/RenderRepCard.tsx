@@ -8,7 +8,6 @@ import {
 } from 'react-native-responsive-dimensions';
 import {useState} from 'react';
 
-
 function RenderRepCard({value}) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const LeftContent = props => <Avatar.Icon {...props} icon="folder" />;
@@ -33,15 +32,15 @@ function RenderRepCard({value}) {
           <Text variant="titleMedium">{`${value.state} ${value.party} ${value.title}`}</Text>
         </Card.Content>
         <View style={styles.cardProfPic}>
-            <Image
-              source={{uri: value.image_url}}
-              resizeMode={'cover'}
-              width={responsiveScreenWidth(40)}
-              height={responsiveScreenHeight(100)}
-              onLoad={handleImageLoad}
-              onError={handleImageError}
-            />
-          {!imageLoaded? <ActivityIndicator color='red' /> :<></>}
+          <Image
+            source={{uri: value.image_url}}
+            resizeMode={'cover'}
+            width={responsiveScreenWidth(40)}
+            height={responsiveScreenHeight(100)}
+            onLoad={handleImageLoad}
+            onError={handleImageError}
+          />
+          {!imageLoaded ? <ActivityIndicator color="red" /> : <></>}
         </View>
       </Card>
     </Provider>

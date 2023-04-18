@@ -1,7 +1,6 @@
-import { useFocusEffect } from "@react-navigation/native";
-import React from "react";
-import { Button, Text, View } from "react-native";
-
+import {useFocusEffect} from '@react-navigation/native';
+import React from 'react';
+import {Button, Text, View} from 'react-native';
 
 function ProfileScreen({navigation}) {
   useFocusEffect(

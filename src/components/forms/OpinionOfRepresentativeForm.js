@@ -57,16 +57,15 @@ const OpinionOfRepForm = ({updatePreferences}) => {
         </Card.Content>
       </Card>
 
-        <Card>
-          <Card.Title
-            title={`${preferences.id} | My State Only: ${preferences.my_state_only}`}
-            left={props => <Icon name="tasks" size={24} color="black" />}
-          />
-          <Card.Content>
-            <Text>My State Only: { `${preferences.my_state_only}` }</Text>
-          </Card.Content>
-        </Card>
-
+      <Card>
+        <Card.Title
+          title={`${preferences.id} | My State Only: ${preferences.my_state_only}`}
+          left={props => <Icon name="tasks" size={24} color="black" />}
+        />
+        <Card.Content>
+          <Text>My State Only: {`${preferences.my_state_only}`}</Text>
+        </Card.Content>
+      </Card>
     </View>
   );
 };
