@@ -5,13 +5,13 @@ import {
   TouchableOpacity,
   Animated,
 } from 'react-native';
-import React, { useEffect } from "react";
+import React, {useEffect} from 'react';
 import {List, MD3Colors, Surface, Text} from 'react-native-paper';
 import {responsiveScreenHeight} from 'react-native-responsive-dimensions';
 import RenderRepCard from '../RenderRepCard';
 import ScrollView = Animated.ScrollView;
-import { connect, useDispatch, useSelector } from "react-redux";
-import { getPreferences } from "../../store/actions/preferencesAction";
+import {connect, useDispatch, useSelector} from 'react-redux';
+import {getPreferences} from '../../store/actions/preferencesAction';
 
 function DetailsScreen({route}) {
   const dispatch = useDispatch();
@@ -233,7 +233,7 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.fec_candidate_id && !preferences.fec_hide &&(
+          {value.fec_candidate_id && !preferences.fec_hide && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
