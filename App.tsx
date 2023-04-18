@@ -10,7 +10,7 @@ import {
   DetailsScreen,
   SenatorsScreen,
   CongressScreen,
-  PreferencesScreen
+  PreferencesScreen,
 } from './src/components/screens';
 
 import {Provider} from 'react-redux';
