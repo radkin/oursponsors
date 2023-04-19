@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Text, View, StyleSheet, ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-import {Card, Switch} from 'react-native-paper';
+import {Card, Switch, Divider} from 'react-native-paper';
 
 import {useSelector, connect, useDispatch} from 'react-redux';
 import {
@@ -20,12 +20,13 @@ function PreferencesCards({setPreferences}) {
     dispatch(getPreferences());
   }, [dispatch]);
 
+  // ToDo: "vote_view, vote_smart, fec are not working. Uncomment when fixed
   return (
     <ScrollView>
       <View style={styles.container}>
         <Card title="Card Title">
           <Text style={styles.paragraph}>
-            These Global Settings will effect all views
+            Senator and Congress Member Filtering
           </Text>
         </Card>
 
@@ -53,6 +54,14 @@ function PreferencesCards({setPreferences}) {
               onValueChange={value => setPreferences('my_party_only', value)}
             />
           </Card.Content>
+        </Card>
+
+        <Divider horizontalInset={true} style={{height: 10}}/>
+
+        <Card title="Card Title">
+          <Text style={styles.paragraph}>
+            Specific Member Details
+          </Text>
         </Card>
 
         <Card>
@@ -124,19 +133,6 @@ function PreferencesCards({setPreferences}) {
 
         <Card>
           <Card.Title
-            title="Vote Smart Hide"
-            left={() => <Icon name="tasks" size={24} color="black" />}
-          />
-          <Card.Content style={styles.cardContent}>
-            <Switch
-              value={preferences.vote_smart_hide}
-              onValueChange={value => setPreferences('vote_smart_hide', value)}
-            />
-          </Card.Content>
-        </Card>
-
-        <Card>
-          <Card.Title
             title="Gov Track Hide"
             left={() => <Icon name="tasks" size={24} color="black" />}
           />
@@ -162,7 +158,7 @@ function PreferencesCards({setPreferences}) {
             />
           </Card.Content>
         </Card>
-
+        {/*
         <Card>
           <Card.Title
             title="Vote View Hide"
@@ -172,6 +168,19 @@ function PreferencesCards({setPreferences}) {
             <Switch
               value={preferences.vote_view_hide}
               onValueChange={value => setPreferences('vote_view_hide', value)}
+            />
+          </Card.Content>
+        </Card>
+
+        <Card>
+          <Card.Title
+            title="Vote Smart Hide"
+            left={() => <Icon name="tasks" size={24} color="black" />}
+          />
+          <Card.Content style={styles.cardContent}>
+            <Switch
+              value={preferences.vote_smart_hide}
+              onValueChange={value => setPreferences('vote_smart_hide', value)}
             />
           </Card.Content>
         </Card>
@@ -188,6 +197,7 @@ function PreferencesCards({setPreferences}) {
             />
           </Card.Content>
         </Card>
+        */}
       </View>
     </ScrollView>
   );
@@ -202,7 +212,7 @@ const styles = StyleSheet.create({
   },
   paragraph: {
     margin: 24,
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
   },

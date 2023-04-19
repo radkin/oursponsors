@@ -6,7 +6,7 @@ import {
   Animated,
 } from 'react-native';
 import React, {useEffect} from 'react';
-import {List, MD3Colors, Surface, Text} from 'react-native-paper';
+import { Divider, List, MD3Colors, Surface, Text } from "react-native-paper";
 import {responsiveScreenHeight} from 'react-native-responsive-dimensions';
 import RenderRepCard from '../RenderRepCard';
 import ScrollView = Animated.ScrollView;
@@ -85,21 +85,6 @@ function DetailsScreen({route}) {
                 />
                 <Text style={styles.surfaceText} variant="titleMedium">
                   YouTube
-                </Text>
-              </TouchableOpacity>
-            </Surface>
-          )}
-          {value.contact_form && (
-            <Surface style={styles.surface} elevation={4}>
-              <TouchableOpacity
-                onPress={() => Linking.openURL(value.contact_form)}>
-                <List.Icon
-                  color={MD3Colors.primary40}
-                  icon="contacts"
-                  style={styles.surfaceIcon}
-                />
-                <Text style={styles.surfaceText} variant="titleMedium">
-                  Contact
                 </Text>
               </TouchableOpacity>
             </Surface>
@@ -199,21 +184,6 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.api_url && (
-            <Surface style={styles.surface} elevation={4}>
-              <TouchableOpacity
-                onPress={() => Linking.openURL(`${value.api_url}`)}>
-                <List.Icon
-                  color={MD3Colors.primary40}
-                  icon="people"
-                  style={styles.surfaceIcon}
-                />
-                <Text style={styles.surfaceText} variant="titleMedium">
-                  ProPublica
-                </Text>
-              </TouchableOpacity>
-            </Surface>
-          )}
           {value.icpsr_id && !preferences.vote_view_hide && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
@@ -252,6 +222,24 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
+
+          <Divider horizontalInset={true} style={{height: 10}}/>
+
+          {value.contact_form && (
+            <Surface style={styles.surface} elevation={4}>
+              <TouchableOpacity
+                onPress={() => Linking.openURL(value.contact_form)}>
+                <List.Icon
+                  color={MD3Colors.primary40}
+                  icon="contacts"
+                  style={styles.surfaceIcon}
+                />
+                <Text style={styles.surfaceText} variant="titleMedium">
+                  Contact
+                </Text>
+              </TouchableOpacity>
+            </Surface>
+          )}
           {value.url && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity onPress={() => Linking.openURL(`${value.url}`)}>
@@ -266,6 +254,22 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
+          {value.api_url && (
+            <Surface style={styles.surface} elevation={4}>
+              <TouchableOpacity
+                onPress={() => Linking.openURL(`${value.api_url}`)}>
+                <List.Icon
+                  color={MD3Colors.primary40}
+                  icon="people"
+                  style={styles.surfaceIcon}
+                />
+                <Text style={styles.surfaceText} variant="titleMedium">
+                  ProPublica
+                </Text>
+              </TouchableOpacity>
+            </Surface>
+          )}
+
         </View>
       </ScrollView>
     </View>
