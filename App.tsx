@@ -6,90 +6,68 @@ import {Avatar, Provider as PaperProvider} from 'react-native-paper';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {
-  DetailsScreen,
-  SenatorsScreen,
-  CongressScreen,
-  PreferencesScreen,
-} from './src/components/screens';
-
 import {Provider} from 'react-redux';
 import store from './src/store/store';
 
+import senatorsScreen from './src/components/screens/SenatorsScreen';
+import congressScreen from './src/components/screens/CongressScreen';
+import {PreferencesScreen} from './src/components/screens';
+import DetailsScreen from './src/components/screens/DetailsScreen';
+
 const Tab = createBottomTabNavigator();
-const HomeStack = createDrawerNavigator();
+const Drawer = createDrawerNavigator();
 
 function App(): JSX.Element {
   useColorScheme() === 'dark';
+
+  const TabNavigator = () => {
+    return (
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false,
+          title: '',
+        }}>
+        <Tab.Screen
+          name="Senators"
+          component={senatorsScreen}
+          options={{
+            tabBarIcon: ({}) => {
+              return <Avatar.Icon size={24} icon="flag" />;
+            },
+          }}
+        />
+
+        <Tab.Screen
+          name="Details"
+          component={DetailsScreen}
+          options={{
+            tabBarItemStyle: {
+              display: 'none',
+            },
+          }}
+        />
+
+        <Tab.Screen
+          name="Congress"
+          component={congressScreen}
+          options={{
+            tabBarIcon: ({}) => {
+              return <Avatar.Icon size={24} icon="flag-outline" />;
+            },
+          }}
+        />
+      </Tab.Navigator>
+    );
+  };
+
   return (
     <Provider store={store}>
       <PaperProvider>
         <NavigationContainer>
-          <Tab.Navigator
-            screenOptions={{
-              headerShown: false,
-              title: '',
-            }}>
-            <Tab.Screen
-              name="First"
-              options={{
-                tabBarIcon: ({}) => {
-                  return <Avatar.Icon size={24} icon="flag" />;
-                },
-              }}>
-              {() => (
-                <HomeStack.Navigator>
-                  <HomeStack.Screen
-                    name="Senators"
-                    component={SenatorsScreen}
-                  />
-                  <HomeStack.Screen
-                    name="Preferences"
-                    component={PreferencesScreen}
-                  />
-                  <HomeStack.Screen
-                    name="Details"
-                    component={DetailsScreen}
-                    options={{
-                      drawerItemStyle: {
-                        display: 'none',
-                      },
-                    }}
-                  />
-                </HomeStack.Navigator>
-              )}
-            </Tab.Screen>
-
-            <Tab.Screen
-              name="Second"
-              options={{
-                tabBarIcon: ({}) => {
-                  return <Avatar.Icon size={24} icon="flag-outline" />;
-                },
-              }}>
-              {() => (
-                <HomeStack.Navigator>
-                  <HomeStack.Screen
-                    name="Congress"
-                    component={CongressScreen}
-                  />
-                  <HomeStack.Screen
-                    name="Preferences"
-                    component={PreferencesScreen}
-                  />
-                  <HomeStack.Screen
-                    name="Details"
-                    component={DetailsScreen}
-                    options={{
-                      drawerItemStyle: {
-                        display: 'none',
-                      },
-                    }}
-                  />
-                </HomeStack.Navigator>
-              )}
-            </Tab.Screen>
-          </Tab.Navigator>
+          <Drawer.Navigator>
+            <Drawer.Screen name="Representatives" component={TabNavigator} />
+            <Drawer.Screen name="Preferences" component={PreferencesScreen} />
+          </Drawer.Navigator>
         </NavigationContainer>
       </PaperProvider>
     </Provider>
