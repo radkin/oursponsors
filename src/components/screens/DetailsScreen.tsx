@@ -8,7 +8,7 @@ import {
 import React, {useEffect} from 'react';
 import { Divider, List, MD3Colors, Surface, Text } from "react-native-paper";
 import {responsiveScreenHeight} from 'react-native-responsive-dimensions';
-import RenderRepDetailsCard from '../RenderRepDetailsCard';
+import RenderRepCard from '../RenderRepCard';
 import ScrollView = Animated.ScrollView;
 import {useDispatch, useSelector} from 'react-redux';
 import {getPreferences} from '../../store/actions/preferencesAction';
@@ -26,7 +26,7 @@ function DetailsScreen({route}) {
   return (
     <View style={{paddingBottom: 190}}>
       <View style={styles.card}>
-        <RenderRepDetailsCard value={value} />
+        <RenderRepCard value={value} />
       </View>
 
       <ScrollView style={{paddingTop: 7}}>

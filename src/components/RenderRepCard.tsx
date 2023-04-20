@@ -1,24 +1,13 @@
 import {Avatar, Card, Provider, Text} from 'react-native-paper';
-import {StyleSheet, View, ActivityIndicator} from 'react-native';
-import Image from 'react-native-scalable-image';
+import {StyleSheet} from 'react-native';
 import * as React from 'react';
 import {
   responsiveScreenHeight,
   responsiveScreenWidth,
 } from 'react-native-responsive-dimensions';
-import {useState} from 'react';
 
 function RenderRepCard({value}) {
-  const [imageLoaded, setImageLoaded] = useState(false);
   const LeftContent = props => <Avatar.Icon {...props} icon="folder" />;
-
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-  };
-
-  const handleImageError = () => {
-    // Handle image load error
-  };
 
   return (
     <Provider>
@@ -31,17 +20,7 @@ function RenderRepCard({value}) {
         <Card.Content style={styles.textContainer}>
           <Text variant="titleMedium">{`${value.state} ${value.party} ${value.title}`}</Text>
         </Card.Content>
-        <View style={styles.cardProfPic}>
-          <Image
-            source={{uri: value.image_url}}
-            resizeMode={'cover'}
-            width={responsiveScreenWidth(40)}
-            height={responsiveScreenHeight(100)}
-            onLoad={handleImageLoad}
-            onError={handleImageError}
-          />
-          {!imageLoaded ? <ActivityIndicator color="red" /> : <></>}
-        </View>
+        <Card.Cover style={styles.cardProfPic} source={{uri: value.image_url}} />
       </Card>
     </Provider>
   );
@@ -73,6 +52,8 @@ const styles = StyleSheet.create({
   cardProfPic: {
     position: 'absolute',
     left: '100%',
+    height: responsiveScreenHeight(20),
+    width: responsiveScreenWidth(40)
   },
 });
 export default RenderRepCard;
