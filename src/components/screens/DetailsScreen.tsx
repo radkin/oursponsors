@@ -8,9 +8,9 @@ import {
 import React, {useEffect} from 'react';
 import { Divider, List, MD3Colors, Surface, Text } from "react-native-paper";
 import {responsiveScreenHeight} from 'react-native-responsive-dimensions';
-import RenderRepCard from '../RenderRepCard';
+import RenderRepDetailsCard from '../RenderRepDetailsCard';
 import ScrollView = Animated.ScrollView;
-import {connect, useDispatch, useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {getPreferences} from '../../store/actions/preferencesAction';
 
 function DetailsScreen({route}) {
@@ -18,7 +18,6 @@ function DetailsScreen({route}) {
   const preferencesListData = useSelector(state => state.preferencesList);
   const {preferences} = preferencesListData;
 
-  // ToDo: mapStateToProps is not working. When fixed, remove this hook
   useEffect(() => {
     dispatch(getPreferences());
   }, [dispatch]);
@@ -27,7 +26,7 @@ function DetailsScreen({route}) {
   return (
     <View style={{paddingBottom: 190}}>
       <View style={styles.card}>
-        <RenderRepCard value={value} />
+        <RenderRepDetailsCard value={value} />
       </View>
 
       <ScrollView style={{paddingTop: 7}}>
@@ -312,8 +311,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = state => ({
-  preferences: state.preferences,
-});
-
-export default connect(mapStateToProps)(DetailsScreen);
+export default DetailsScreen;
