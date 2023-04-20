@@ -6,7 +6,7 @@ import {
   Animated,
 } from 'react-native';
 import React, {useEffect} from 'react';
-import { Divider, List, MD3Colors, Surface, Text } from "react-native-paper";
+import {Divider, List, MD3Colors, Surface, Text} from 'react-native-paper';
 import {responsiveScreenHeight} from 'react-native-responsive-dimensions';
 import RenderRepCard from '../RenderRepCard';
 import ScrollView = Animated.ScrollView;
@@ -222,7 +222,7 @@ function DetailsScreen({route}) {
             </Surface>
           )}
 
-          <Divider horizontalInset={true} style={{height: 10}}/>
+          <Divider horizontalInset={true} style={{height: 10}} />
 
           {value.contact_form && (
             <Surface style={styles.surface} elevation={4}>
@@ -268,7 +268,6 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-
         </View>
       </ScrollView>
     </View>

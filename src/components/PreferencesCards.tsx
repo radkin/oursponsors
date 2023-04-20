@@ -56,12 +56,10 @@ function PreferencesCards({setPreferences}) {
           </Card.Content>
         </Card>
 
-        <Divider horizontalInset={true} style={{height: 10}}/>
+        <Divider horizontalInset={true} style={{height: 10}} />
 
         <Card title="Card Title">
-          <Text style={styles.paragraph}>
-            Specific Member Details
-          </Text>
+          <Text style={styles.paragraph}>Specific Member Details</Text>
         </Card>
 
         <Card>

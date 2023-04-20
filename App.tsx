@@ -9,10 +9,12 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Provider} from 'react-redux';
 import store from './src/store/store';
 
-import senatorsScreen from './src/components/screens/SenatorsScreen';
-import congressScreen from './src/components/screens/CongressScreen';
-import {PreferencesScreen} from './src/components/screens';
-import DetailsScreen from './src/components/screens/DetailsScreen';
+import {
+  PreferencesScreen,
+  CongressScreen,
+  SenatorsScreen,
+  DetailsScreen,
+} from './src/components/screens';
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -29,7 +31,7 @@ function App(): JSX.Element {
         }}>
         <Tab.Screen
           name="Senators"
-          component={senatorsScreen}
+          component={SenatorsScreen}
           options={{
             tabBarIcon: ({}) => {
               return <Avatar.Icon size={24} icon="flag" />;
@@ -49,7 +51,7 @@ function App(): JSX.Element {
 
         <Tab.Screen
           name="Congress"
-          component={congressScreen}
+          component={CongressScreen}
           options={{
             tabBarIcon: ({}) => {
               return <Avatar.Icon size={24} icon="flag-outline" />;
