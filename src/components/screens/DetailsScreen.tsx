@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import React, {useEffect} from 'react';
 import {Divider, List, MD3Colors, Surface, Text} from 'react-native-paper';
-import {responsiveScreenHeight} from 'react-native-responsive-dimensions';
+import { responsiveScreenFontSize, responsiveScreenHeight } from "react-native-responsive-dimensions";
 import RenderRepCard from '../RenderRepCard';
 import ScrollView = Animated.ScrollView;
 import {useDispatch, useSelector} from 'react-redux';
@@ -307,6 +307,8 @@ const styles = StyleSheet.create({
   surfaceText: {
     position: 'absolute',
     left: '20%',
+    fontSize: responsiveScreenFontSize(1),
+    paddingTop: responsiveScreenFontSize(1.3)
   },
 });
 

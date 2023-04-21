@@ -4,6 +4,7 @@ import * as React from 'react';
 import {
   responsiveScreenHeight,
   responsiveScreenWidth,
+  responsiveScreenFontSize
 } from 'react-native-responsive-dimensions';
 
 function RenderRepCard({value}) {
@@ -15,12 +16,16 @@ function RenderRepCard({value}) {
         <Card.Title
           style={styles.textContainer}
           title={`${value.first_name} ${value.last_name}`}
+          titleVariant={"displayMedium"}
           left={LeftContent}
         />
         <Card.Content style={styles.textContainer}>
-          <Text variant="titleMedium">{`${value.state} ${value.party} ${value.title}`}</Text>
+          <Text variant="titleMedium" style={styles.contentText}>{`${value.state} ${value.party} ${value.title}`}</Text>
         </Card.Content>
-        <Card.Cover style={styles.cardProfPic} source={{uri: value.image_url}} />
+        <Card.Cover
+          style={styles.cardProfPic}
+          source={{uri: value.image_url}}
+        />
       </Card>
     </Provider>
   );
@@ -49,11 +54,15 @@ const styles = StyleSheet.create({
     left: 2,
     flexDirection: 'row',
   },
+  contentText: {
+    paddingTop: responsiveScreenFontSize(1),
+    fontSize: responsiveScreenFontSize(1.3),
+  },
   cardProfPic: {
     position: 'absolute',
     left: '100%',
     height: responsiveScreenHeight(20),
-    width: responsiveScreenWidth(40)
+    width: responsiveScreenWidth(40),
   },
 });
 export default RenderRepCard;

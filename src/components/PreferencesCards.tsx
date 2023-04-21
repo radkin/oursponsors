@@ -9,6 +9,11 @@ import {
   setPreferences,
 } from '../store/actions/preferencesAction';
 import {useEffect} from 'react';
+import {
+  responsiveScreenFontSize,
+  responsiveScreenHeight,
+  responsiveScreenWidth
+} from "react-native-responsive-dimensions";
 
 function PreferencesCards({setPreferences}) {
   const dispatch = useDispatch();
@@ -30,9 +35,10 @@ function PreferencesCards({setPreferences}) {
           </Text>
         </Card>
 
-        <Card>
+        <Card style={styles.singleCard}>
           <Card.Title
             title="My State Only"
+            titleVariant={"headlineLarge"}
             left={() => <Icon name="tasks" size={24} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
@@ -43,9 +49,10 @@ function PreferencesCards({setPreferences}) {
           </Card.Content>
         </Card>
 
-        <Card>
+        <Card style={styles.singleCard}>
           <Card.Title
             title="My Party Only"
+            titleVariant={"headlineLarge"}
             left={() => <Icon name="tasks" size={24} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
@@ -62,9 +69,10 @@ function PreferencesCards({setPreferences}) {
           <Text style={styles.paragraph}>Specific Member Details</Text>
         </Card>
 
-        <Card>
+        <Card style={styles.singleCard}>
           <Card.Title
             title="Twitter Hide"
+            titleVariant={"headlineLarge"}
             left={() => <Icon name="tasks" size={24} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
@@ -75,9 +83,10 @@ function PreferencesCards({setPreferences}) {
           </Card.Content>
         </Card>
 
-        <Card>
+        <Card style={styles.singleCard}>
           <Card.Title
             title="Facebook Hide"
+            titleVariant={"headlineLarge"}
             left={() => <Icon name="tasks" size={24} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
@@ -88,9 +97,10 @@ function PreferencesCards({setPreferences}) {
           </Card.Content>
         </Card>
 
-        <Card>
+        <Card style={styles.singleCard}>
           <Card.Title
             title="YouTube Hide"
+            titleVariant={"headlineLarge"}
             left={() => <Icon name="tasks" size={24} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
@@ -101,9 +111,10 @@ function PreferencesCards({setPreferences}) {
           </Card.Content>
         </Card>
 
-        <Card>
+        <Card style={styles.singleCard}>
           <Card.Title
             title="Google Entity Hide"
+            titleVariant={"headlineLarge"}
             left={() => <Icon name="tasks" size={24} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
@@ -116,9 +127,10 @@ function PreferencesCards({setPreferences}) {
           </Card.Content>
         </Card>
 
-        <Card>
+        <Card style={styles.singleCard}>
           <Card.Title
             title="Cspan Hide"
+            titleVariant={"headlineLarge"}
             left={() => <Icon name="tasks" size={24} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
@@ -129,9 +141,10 @@ function PreferencesCards({setPreferences}) {
           </Card.Content>
         </Card>
 
-        <Card>
+        <Card style={styles.singleCard}>
           <Card.Title
             title="Gov Track Hide"
+            titleVariant={"headlineLarge"}
             left={() => <Icon name="tasks" size={24} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
@@ -142,9 +155,10 @@ function PreferencesCards({setPreferences}) {
           </Card.Content>
         </Card>
 
-        <Card>
+        <Card style={styles.singleCard}>
           <Card.Title
             title="Open Secrets Hide"
+            titleVariant={"headlineLarge"}
             left={() => <Icon name="tasks" size={24} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
@@ -157,9 +171,10 @@ function PreferencesCards({setPreferences}) {
           </Card.Content>
         </Card>
         {/*
-        <Card>
+        <Card style={styles.singleCard}>
           <Card.Title
             title="Vote View Hide"
+            titleVariant={"headlineLarge"}
             left={() => <Icon name="tasks" size={24} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
@@ -170,9 +185,10 @@ function PreferencesCards({setPreferences}) {
           </Card.Content>
         </Card>
 
-        <Card>
+        <Card style={styles.singleCard}>
           <Card.Title
             title="Vote Smart Hide"
+            titleVariant={"headlineLarge"}
             left={() => <Icon name="tasks" size={24} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
@@ -183,9 +199,10 @@ function PreferencesCards({setPreferences}) {
           </Card.Content>
         </Card>
 
-        <Card>
+        <Card style={styles.singleCard}>
           <Card.Title
             title="FEC Hide"
+            titleVariant={"headlineLarge"}
             left={() => <Icon name="tasks" size={24} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
@@ -207,10 +224,11 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     backgroundColor: '#ecf0f1',
     padding: 10,
+    width: responsiveScreenWidth(90)
   },
   paragraph: {
     margin: 24,
-    fontSize: 20,
+    fontSize: responsiveScreenFontSize(1.3),
     fontWeight: 'bold',
     textAlign: 'center',
   },
@@ -219,6 +237,9 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
   },
+  singleCard: {
+    height: responsiveScreenHeight(7)
+  }
 });
 
 const mapStateToProps = state => ({
