@@ -16,7 +16,7 @@ function RenderRepCard({value}) {
         <Card.Title
           style={styles.textContainer}
           title={`${value.first_name} ${value.last_name}`}
-          titleVariant={"displayMedium"}
+          titleStyle={{fontSize: responsiveScreenFontSize(2.5), fontWeight: 'bold'}}
           left={LeftContent}
         />
         <Card.Content style={styles.textContainer}>
@@ -30,6 +30,8 @@ function RenderRepCard({value}) {
     </Provider>
   );
 }
+
+const contentFont = responsiveScreenFontSize(2);
 
 const styles = StyleSheet.create({
   screenRow: {
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
   },
   contentText: {
     paddingTop: responsiveScreenFontSize(1),
-    fontSize: responsiveScreenFontSize(1.3),
+    fontSize: responsiveScreenFontSize(2),
   },
   cardProfPic: {
     position: 'absolute',

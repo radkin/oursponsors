@@ -305,9 +305,10 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
   surfaceText: {
+    margin: 10,
     position: 'absolute',
     left: '20%',
-    fontSize: responsiveScreenFontSize(1),
+    fontSize: responsiveScreenFontSize(2),
     paddingTop: responsiveScreenFontSize(1.3)
   },
 });
