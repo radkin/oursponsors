@@ -16,7 +16,11 @@ function RenderRepCard({value}) {
         <Card.Title
           style={styles.textContainer}
           title={`${value.first_name} ${value.last_name}`}
-          titleStyle={{fontSize: responsiveScreenFontSize(2.5), fontWeight: 'bold'}}
+          titleStyle={{
+            fontSize: responsiveScreenFontSize(2.2),
+            fontWeight: 'bold',
+            paddingTop: responsiveScreenHeight(2.5),
+          }}
           left={LeftContent}
         />
         <Card.Content style={styles.textContainer}>
@@ -31,8 +35,6 @@ function RenderRepCard({value}) {
   );
 }
 
-const contentFont = responsiveScreenFontSize(2);
-
 const styles = StyleSheet.create({
   screenRow: {
     flex: 1,
@@ -42,7 +44,7 @@ const styles = StyleSheet.create({
     height: responsiveScreenHeight(22.5),
     width: responsiveScreenWidth(60),
     marginHorizontal: 7,
-    marginVertical: 7,
+    marginVertical: responsiveScreenHeight(1),
   },
   cardContainer: {
     margin: 15,
@@ -57,7 +59,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   contentText: {
-    paddingTop: responsiveScreenFontSize(1),
+    paddingTop: responsiveScreenFontSize(3),
     fontSize: responsiveScreenFontSize(2),
   },
   cardProfPic: {

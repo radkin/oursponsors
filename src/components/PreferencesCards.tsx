@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     backgroundColor: '#ecf0f1',
     padding: 10,
-    width: responsiveScreenWidth(90)
+    width: responsiveScreenWidth(90),
   },
   paragraph: {
     margin: 24,

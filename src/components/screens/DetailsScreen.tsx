@@ -278,9 +278,10 @@ const styles = StyleSheet.create({
   surface: {
     flexDirection: 'column-reverse',
     flex: 1,
-    padding: 10,
-    margin: 2,
-    textAlign: 'auto',
+    padding: responsiveScreenHeight(1),
+    margin: responsiveScreenHeight(.4),
+    textAlign: 'center',
+    height: responsiveScreenHeight(7),
     borderColor: 'grey',
     backgroundColor: MD3Colors.secondary95,
   },
@@ -309,7 +310,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: '20%',
     fontSize: responsiveScreenFontSize(2),
-    paddingTop: responsiveScreenFontSize(1.3)
+    paddingTop: responsiveScreenFontSize(2)
   },
 });
 
