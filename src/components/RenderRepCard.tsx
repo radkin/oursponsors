@@ -20,6 +20,8 @@ function RenderRepCard({value}) {
             fontSize: responsiveScreenFontSize(2.2),
             fontWeight: 'bold',
             paddingTop: responsiveScreenHeight(2.5),
+            position: 'relative',
+            bottom: '17%',
           }}
           left={LeftContent}
         />
@@ -45,6 +47,7 @@ const styles = StyleSheet.create({
     width: responsiveScreenWidth(60),
     marginHorizontal: 7,
     marginVertical: responsiveScreenHeight(1),
+    position: 'absolute',
   },
   cardContainer: {
     margin: 15,

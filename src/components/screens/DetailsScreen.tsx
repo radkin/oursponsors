@@ -304,6 +304,8 @@ const styles = StyleSheet.create({
     left: 2,
     flexDirection: 'row',
     alignSelf: 'flex-start',
+    transform: [{ scaleX:  responsiveScreenFontSize(.08)}, { scaleY: responsiveScreenFontSize(.08) }]
+
   },
   surfaceText: {
     margin: 10,
