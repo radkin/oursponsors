@@ -13,12 +13,13 @@ import {
 } from 'react-native-responsive-dimensions';
 import RenderRepCard from '../RenderRepCard';
 import ScrollView = Animated.ScrollView;
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {getPreferences} from '../../store/actions/preferencesAction';
+import {useAppSelector} from '../../hooks';
 
 function DetailsScreen({route}) {
   const dispatch = useDispatch();
-  const preferencesListData = useSelector(state => state.preferencesList);
+  const preferencesListData = useAppSelector(state => state.preferencesList);
   const {preferences} = preferencesListData;
 
   useEffect(() => {

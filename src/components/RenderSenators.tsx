@@ -1,14 +1,15 @@
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {useEffect} from 'react';
 import {getSenators} from '../store/actions/senatorAction';
 import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import RenderRepCard from './RenderRepCard';
 import * as React from 'react';
 import {responsiveScreenHeight} from 'react-native-responsive-dimensions';
+import {useAppSelector} from '../hooks';
 
 function RenderSenators(props) {
   const dispatch = useDispatch();
-  const senatorsListData = useSelector(state => state.senatorsList);
+  const senatorsListData = useAppSelector(state => state.senatorsList);
   const {senators} = senatorsListData;
 
   useEffect(() => {

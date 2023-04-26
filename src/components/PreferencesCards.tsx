@@ -3,7 +3,7 @@ import {Text, View, StyleSheet, ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {Card, Switch, Divider} from 'react-native-paper';
 
-import {useSelector, connect, useDispatch} from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
 import {
   getPreferences,
   setPreferences,
@@ -14,10 +14,11 @@ import {
   responsiveScreenHeight,
   responsiveScreenWidth,
 } from 'react-native-responsive-dimensions';
+import { useAppSelector } from "../hooks";
 
 function PreferencesCards({setPreferences}) {
   const dispatch = useDispatch();
-  const preferencesListData = useSelector(state => state.preferencesList);
+  const preferencesListData = useAppSelector(state => state.preferencesList);
   const {preferences} = preferencesListData;
 
   // ToDo: mapStateToProps is not working. When fixed, remove this hook
