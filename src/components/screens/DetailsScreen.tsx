@@ -4,6 +4,8 @@ import {
   Linking,
   TouchableOpacity,
   Animated,
+  ViewStyle,
+  TextStyle,
 } from 'react-native';
 import React, {useEffect} from 'react';
 import {Divider, List, MD3Colors, Surface, Text} from 'react-native-paper';
@@ -13,12 +15,11 @@ import {
 } from 'react-native-responsive-dimensions';
 import RenderRepCard from '../RenderRepCard';
 import ScrollView = Animated.ScrollView;
-import {useDispatch} from 'react-redux';
 import {getPreferences} from '../../store/actions/preferencesAction';
-import {useAppSelector} from '../../hooks';
+import {useAppDispatch, useAppSelector} from '../../hooks';
 
 function DetailsScreen({route}) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const preferencesListData = useAppSelector(state => state.preferencesList);
   const {preferences} = preferencesListData;
 
@@ -86,7 +87,9 @@ function DetailsScreen({route}) {
                   icon="youtube"
                   style={styles.surfaceIcon}
                 />
-                <Text style={styles.surfaceText} variant="titleMedium">
+                <Text
+                  style={styles.surfaceText as TextStyle}
+                  variant="titleMedium">
                   YouTube
                 </Text>
               </TouchableOpacity>
@@ -105,7 +108,9 @@ function DetailsScreen({route}) {
                   icon="google"
                   style={styles.surfaceIcon}
                 />
-                <Text style={styles.surfaceText} variant="titleMedium">
+                <Text
+                  style={styles.surfaceText as TextStyle}
+                  variant="titleMedium">
                   Google Entity
                 </Text>
               </TouchableOpacity>

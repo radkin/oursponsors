@@ -4,7 +4,7 @@ import * as React from 'react';
 import {
   responsiveScreenHeight,
   responsiveScreenWidth,
-  responsiveScreenFontSize
+  responsiveScreenFontSize,
 } from 'react-native-responsive-dimensions';
 
 function RenderRepCard({value}) {
@@ -26,7 +26,11 @@ function RenderRepCard({value}) {
           left={LeftContent}
         />
         <Card.Content style={styles.textContainer}>
-          <Text variant="titleMedium" style={styles.contentText}>{`${value.state} ${value.party} ${value.title}`}</Text>
+          <Text
+            variant="titleMedium"
+            style={
+              styles.contentText
+            }>{`${value.state} ${value.party} ${value.title}`}</Text>
         </Card.Content>
         <Card.Cover
           style={styles.cardProfPic}

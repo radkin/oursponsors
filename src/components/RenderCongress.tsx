@@ -1,14 +1,13 @@
-import {useDispatch} from 'react-redux';
 import {useEffect} from 'react';
 import {getCongress} from '../store/actions/congressAction';
 import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import RenderRepCard from './RenderRepCard';
 import * as React from 'react';
 import {responsiveScreenHeight} from 'react-native-responsive-dimensions';
-import { useAppSelector } from "../hooks";
+import {useAppDispatch, useAppSelector} from '../hooks';
 
 function RenderCongress(props) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const congressListData = useAppSelector(state => state.congressList);
   const {congress} = congressListData;
 

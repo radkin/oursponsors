@@ -3,7 +3,7 @@ import {Text, View, StyleSheet, ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {Card, Switch, Divider} from 'react-native-paper';
 
-import {connect, useDispatch} from 'react-redux';
+import {connect} from 'react-redux';
 import {
   getPreferences,
   setPreferences,
@@ -14,10 +14,10 @@ import {
   responsiveScreenHeight,
   responsiveScreenWidth,
 } from 'react-native-responsive-dimensions';
-import { useAppSelector } from "../hooks";
+import {useAppDispatch, useAppSelector} from '../hooks';
 
 function PreferencesCards({setPreferences}) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const preferencesListData = useAppSelector(state => state.preferencesList);
   const {preferences} = preferencesListData;
 
