@@ -1,5 +1,5 @@
 // @ts-ignore
-import {INAJAR_TOKEN, INAJAR_URL} from '@env';
+import {INAJAR_TOKEN, INAJAR_URL} from 'react-native-dotenv';
 import axios from 'axios';
 
 import {GET_PREFERENCES, PREFERENCES_ERROR, UPDATE_PREFERENCES} from '../types';

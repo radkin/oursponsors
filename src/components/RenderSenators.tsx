@@ -5,7 +5,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   View,
-  ViewStyle,
 } from 'react-native';
 import RenderRepCard from './RenderRepCard';
 import * as React from 'react';

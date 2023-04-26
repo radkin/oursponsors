@@ -1,5 +1,4 @@
-// @ts-ignore
-import {INAJAR_TOKEN, INAJAR_URL} from '@env';
+import {INAJAR_TOKEN, INAJAR_URL} from 'react-native-dotenv';
 
 const url = `${INAJAR_URL}/propublica/get_senators`;
 const instance = axios.create({
