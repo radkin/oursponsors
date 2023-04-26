@@ -7,7 +7,10 @@ import {
 } from 'react-native';
 import React, {useEffect} from 'react';
 import {Divider, List, MD3Colors, Surface, Text} from 'react-native-paper';
-import { responsiveScreenFontSize, responsiveScreenHeight } from "react-native-responsive-dimensions";
+import {
+  responsiveScreenFontSize,
+  responsiveScreenHeight,
+} from 'react-native-responsive-dimensions';
 import RenderRepCard from '../RenderRepCard';
 import ScrollView = Animated.ScrollView;
 import {useDispatch, useSelector} from 'react-redux';
@@ -279,7 +282,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column-reverse',
     flex: 1,
     padding: responsiveScreenHeight(1),
-    margin: responsiveScreenHeight(.4),
+    margin: responsiveScreenHeight(0.4),
     textAlign: 'center',
     height: responsiveScreenHeight(7),
     borderColor: 'grey',
@@ -304,15 +307,17 @@ const styles = StyleSheet.create({
     left: 2,
     flexDirection: 'row',
     alignSelf: 'flex-start',
-    transform: [{ scaleX:  responsiveScreenFontSize(.08)}, { scaleY: responsiveScreenFontSize(.08) }]
-
+    transform: [
+      {scaleX: responsiveScreenFontSize(0.08)},
+      {scaleY: responsiveScreenFontSize(0.08)},
+    ],
   },
   surfaceText: {
     margin: 10,
     position: 'absolute',
     left: '20%',
     fontSize: responsiveScreenFontSize(2),
-    paddingTop: responsiveScreenFontSize(2)
+    paddingTop: responsiveScreenFontSize(2),
   },
 });
 

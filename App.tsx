@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {StyleSheet, useColorScheme, View} from 'react-native';
+import {StyleSheet, useColorScheme} from 'react-native';
 import {Avatar, Provider as PaperProvider} from 'react-native-paper';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -45,9 +45,12 @@ function App(): JSX.Element {
                 <Avatar.Icon
                   size={responsiveScreenHeight(2.5)}
                   style={{
-                    display: 'flex', justifyContent: 'center', alignItems: 'center'
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
                   }}
-                  icon="flag" />
+                  icon="flag"
+                />
               );
             },
           }}
@@ -72,8 +75,10 @@ function App(): JSX.Element {
                 <Avatar.Icon
                   size={responsiveScreenHeight(2.5)}
                   style={{
-                    display: 'flex', justifyContent: 'center', alignItems: 'center'
-                }}
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
                   icon="flag-outline"
                 />
               );

@@ -263,7 +263,10 @@ const styles = StyleSheet.create({
     paddingTop: responsiveScreenHeight(2.5),
     position: 'relative',
     top: '17%',
-    transform: [{ scaleX:  responsiveScreenFontSize(.08)}, { scaleY: responsiveScreenFontSize(.08) }]
+    transform: [
+      {scaleX: responsiveScreenFontSize(0.08)},
+      {scaleY: responsiveScreenFontSize(0.08)},
+    ],
   },
 });
 
