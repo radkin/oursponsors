@@ -3,7 +3,6 @@ import axios, {
   AxiosInstance,
   AxiosRequestConfig,
   AxiosResponse,
-  Method,
 } from 'axios';
 
 import {INAJAR_URL} from 'react-native-dotenv';

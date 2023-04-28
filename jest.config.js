@@ -1,8 +1,9 @@
-const { defaults: tsjPreset } = require('ts-jest/presets')
+const {defaults: tsjPreset} = require('ts-jest/presets');
 
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
   ...tsjPreset,
+  testEnvironment: 'jsdom',
   preset: 'react-native',
   transform: {
     '^.+\\.jsx$': 'babel-jest',
@@ -14,4 +15,4 @@ module.exports = {
     ],
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-}
+};
