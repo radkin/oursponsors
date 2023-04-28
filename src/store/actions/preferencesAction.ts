@@ -1,21 +1,25 @@
-// @ts-ignore
 import {INAJAR_TOKEN, INAJAR_URL} from 'react-native-dotenv';
-import axios from 'axios';
+import axios, {AxiosRequestConfig} from 'axios';
 
 import {GET_PREFERENCES, PREFERENCES_ERROR, UPDATE_PREFERENCES} from '../types';
 import {getSenators} from './senatorAction';
 import {getCongress} from './congressAction';
+import {performAxiosRequest} from '../../utils';
 
+const data = {id: 1};
+const requestConfig: AxiosRequestConfig = {
+  method: 'post',
+  url: '/user/get_preferences',
+  data,
+  headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
+};
 export const getPreferences = () => async dispatch => {
   try {
-    const res = await axios.post(
-      `${INAJAR_URL}/user/get_preferences`,
-      {id: 1},
-      {headers: {'INAJAR-TOKEN': INAJAR_TOKEN}},
-    );
-    dispatch({
-      type: GET_PREFERENCES,
-      payload: res.data,
+    await performAxiosRequest(requestConfig, true).then(res => {
+      dispatch({
+        type: GET_PREFERENCES,
+        payload: res,
+      });
     });
   } catch (error) {
     dispatch({
@@ -26,20 +30,22 @@ export const getPreferences = () => async dispatch => {
 };
 
 export const updatePreferences = (pref, value) => async dispatch => {
-  const prefData = {
+  const data = {
     user_id: 1,
     [pref]: value,
   };
-
+  const requestConfig: AxiosRequestConfig = {
+    method: 'post',
+    url: '/user/update_preferences',
+    data,
+    headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
+  };
   try {
-    const res = await axios.post(
-      `${INAJAR_URL}/user/update_preferences`,
-      prefData,
-      {headers: {'INAJAR-TOKEN': INAJAR_TOKEN}},
-    );
-    dispatch({
-      type: UPDATE_PREFERENCES,
-      payload: res.data,
+    await performAxiosRequest(requestConfig, true).then(res => {
+      dispatch({
+        type: UPDATE_PREFERENCES,
+        payload: res,
+      });
     });
   } catch (error) {
     dispatch({

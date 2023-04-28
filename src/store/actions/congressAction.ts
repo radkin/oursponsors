@@ -1,23 +1,20 @@
-// @ts-ignore
-import {INAJAR_TOKEN, INAJAR_URL} from 'react-native-dotenv';
-
-const url = `${INAJAR_URL}/propublica/get_congress`;
-const instance = axios.create({
-  baseURL: url,
-  timeout: 1000,
-  headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
-});
-
+import {performAxiosRequest} from '../../utils';
 import {GET_CONGRESS, CONGRESS_ERROR} from '../types';
-import axios from 'axios';
+import {AxiosRequestConfig} from 'axios';
+import {INAJAR_TOKEN} from 'react-native-dotenv';
 
+const requestConfig: AxiosRequestConfig = {
+  method: 'get',
+  url: '/propublica/get_congress',
+  headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
+};
 export const getCongress = () => async dispatch => {
   try {
-    // @ts-ignore
-    const res = await instance.get();
-    dispatch({
-      type: GET_CONGRESS,
-      payload: res.data,
+    await performAxiosRequest(requestConfig, true).then(res => {
+      dispatch({
+        type: GET_CONGRESS,
+        payload: res,
+      });
     });
   } catch (error) {
     dispatch({
