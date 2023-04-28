@@ -1,22 +1,20 @@
-import {INAJAR_TOKEN, INAJAR_URL} from 'react-native-dotenv';
-
-const url = `${INAJAR_URL}/propublica/get_senators`;
-const instance = axios.create({
-  baseURL: url,
-  timeout: 1000,
-  headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
-});
-
+import {performAxiosRequest} from '../../utils';
 import {GET_SENATORS, SENATORS_ERROR} from '../types';
-import axios from 'axios';
+import {AxiosRequestConfig} from 'axios';
+import {INAJAR_TOKEN} from 'react-native-dotenv';
 
+const requestConfig: AxiosRequestConfig = {
+  method: 'get',
+  url: '/propublica/get_senators',
+  headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
+};
 export const getSenators = () => async dispatch => {
   try {
-    // @ts-ignore
-    const res = await instance.get();
-    dispatch({
-      type: GET_SENATORS,
-      payload: res.data,
+    await performAxiosRequest(requestConfig, true).then(res => {
+      dispatch({
+        type: GET_SENATORS,
+        payload: res,
+      });
     });
   } catch (error) {
     dispatch({
