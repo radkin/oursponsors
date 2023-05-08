@@ -1,5 +1,5 @@
 import {Avatar, Card, Provider, Text} from 'react-native-paper';
-import {StyleSheet} from 'react-native';
+import { FlatList, StyleSheet } from "react-native";
 import * as React from 'react';
 import {
   responsiveScreenHeight,
@@ -44,6 +44,10 @@ function RenderDetailsRepCard({value}) {
             style={
               styles.contentText
             }>{`${value.state} ${value.party} ${value.title}`}</Text>
+          <FlatList data={sectors}
+                    renderItem={({item}) => <Text>{item.sector_name}</Text>}
+                    keyExtractor={item => item.id}
+          />
         </Card.Content>
         <Card.Cover
           style={styles.cardProfPic}
