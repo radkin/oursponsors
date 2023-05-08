@@ -13,7 +13,7 @@ import {
   responsiveScreenFontSize,
   responsiveScreenHeight,
 } from 'react-native-responsive-dimensions';
-import RenderRepCard from '../RenderRepCard';
+import RenderDetailsRepCard from '../RenderDetailsRepCard';
 import ScrollView = Animated.ScrollView;
 import {getPreferences} from '../../store/actions/preferencesAction';
 import {useAppDispatch, useAppSelector} from '../../hooks';
@@ -31,7 +31,7 @@ function DetailsScreen({route}) {
   return (
     <View style={{paddingBottom: 190}}>
       <View style={styles.card}>
-        <RenderRepCard value={value} />
+        <RenderDetailsRepCard value={value} />
       </View>
 
       <ScrollView style={{paddingTop: 7}}>
