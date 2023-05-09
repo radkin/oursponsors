@@ -24,8 +24,10 @@ function RenderRepDetailsTable({value}) {
   const {sectors} = sectorsListData;
   const cid = 'N00033390';
 
+  console.log(value.crp_id);
+
   useEffect(() => {
-    dispatch(getSectors(cid));
+    dispatch(getSectors(value.crp_id));
   }, [dispatch]);
 
   const formatter = new Intl.NumberFormat('en-US', {
@@ -81,12 +83,6 @@ const styles = StyleSheet.create({
   },
   table: {
     height: responsiveScreenHeight(25),
-  },
-  textContainer: {
-    marginVertical: responsiveScreenHeight(0.75),
-    display: 'flex',
-    flexDirection: 'column',
-    height: 280,
   },
   basicsText: {
     fontSize: responsiveScreenFontSize(1.75),

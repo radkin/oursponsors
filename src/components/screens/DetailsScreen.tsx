@@ -4,7 +4,6 @@ import {
   Linking,
   TouchableOpacity,
   Animated,
-  ViewStyle,
   TextStyle,
 } from 'react-native';
 import React, {useEffect} from 'react';
@@ -17,7 +16,7 @@ import RenderRepDetailsTable from '../RenderRepDetailsTable';
 import ScrollView = Animated.ScrollView;
 import {getPreferences} from '../../store/actions/preferencesAction';
 import {useAppDispatch, useAppSelector} from '../../hooks';
-import RenderRepCard from "../RenderRepCard";
+import RenderRepCard from '../RenderRepCard';
 
 function DetailsScreen({route}) {
   const dispatch = useAppDispatch();
