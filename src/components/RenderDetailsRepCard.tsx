@@ -1,5 +1,5 @@
 import {Avatar, Card, Provider, Text} from 'react-native-paper';
-import { FlatList, StyleSheet } from "react-native";
+import {FlatList, StyleSheet} from 'react-native';
 import * as React from 'react';
 import {
   responsiveScreenHeight,
@@ -40,13 +40,15 @@ function RenderDetailsRepCard({value}) {
         />
         <Card.Content style={styles.textContainer}>
           <Text
-            variant="titleMedium"
             style={
               styles.contentText
             }>{`${value.state} ${value.party} ${value.title}`}</Text>
-          <FlatList data={sectors}
-                    renderItem={({item}) => <Text>{item.sector_name}</Text>}
-                    keyExtractor={item => item.id}
+          <FlatList
+            data={sectors}
+            renderItem={({item}) => (
+              <Text style={styles.contentText}>{item.sector_name}</Text>
+            )}
+            keyExtractor={item => item.id}
           />
         </Card.Content>
         <Card.Cover
@@ -77,14 +79,15 @@ const styles = StyleSheet.create({
     borderColor: '#3d80fc',
   },
   textContainer: {
-    marginTop: 15,
-    height: responsiveScreenHeight(5),
-    left: 2,
-    flexDirection: 'row',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    height: 100,
+    border: '3px solidBlack',
+    boxSizing: 'border-box',
   },
   contentText: {
-    paddingTop: responsiveScreenFontSize(3),
-    fontSize: responsiveScreenFontSize(2),
+    fontSize: responsiveScreenFontSize(1.5),
   },
   cardProfPic: {
     position: 'absolute',
