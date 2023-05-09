@@ -13,10 +13,11 @@ import {
   responsiveScreenFontSize,
   responsiveScreenHeight,
 } from 'react-native-responsive-dimensions';
-import RenderDetailsRepCard from '../RenderDetailsRepCard';
+import RenderRepDetailsTable from '../RenderRepDetailsTable';
 import ScrollView = Animated.ScrollView;
 import {getPreferences} from '../../store/actions/preferencesAction';
 import {useAppDispatch, useAppSelector} from '../../hooks';
+import RenderRepCard from "../RenderRepCard";
 
 function DetailsScreen({route}) {
   const dispatch = useAppDispatch();
@@ -30,8 +31,13 @@ function DetailsScreen({route}) {
   const {value} = route.params;
   return (
     <View style={{paddingBottom: 190}}>
+
       <View style={styles.card}>
-        <RenderDetailsRepCard value={value} />
+        <RenderRepCard value={value} />
+      </View>
+
+      <View style={styles.table}>
+        <RenderRepDetailsTable value={value} />
       </View>
 
       <ScrollView style={{paddingTop: 7}}>
@@ -300,7 +306,15 @@ const styles = StyleSheet.create({
     borderColor: '#E8E8E8',
     justifyContent: 'center',
     backgroundColor: MD3Colors.secondary90,
-    height: responsiveScreenHeight(30),
+    height: responsiveScreenHeight(20),
+  },
+  table: {
+    borderRadius: 4,
+    borderWidth: 2,
+    borderColor: '#E8E8E8',
+    justifyContent: 'center',
+    backgroundColor: MD3Colors.secondary90,
+    height: responsiveScreenHeight(25),
   },
   detailsContainer: {
     flex: 1,
