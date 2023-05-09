@@ -23,9 +23,15 @@ function RenderDetailsRepCard({value}) {
 
   const LeftContent = props => <Avatar.Icon {...props} icon="folder" />;
 
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+  });
+
   return (
     <Provider>
-      <Card style={styles.cardSmallStyle}>
+      <Card style={styles.cardBigStyle}>
         <Card.Title
           style={styles.textContainer}
           title={`${value.first_name} ${value.last_name}`}
@@ -46,7 +52,9 @@ function RenderDetailsRepCard({value}) {
           <FlatList
             data={sectors}
             renderItem={({item}) => (
-              <Text style={styles.contentText}>{item.sector_name}</Text>
+              <Text style={styles.contentText}>
+                {item.sector_name}: {formatter.format(item.total)}
+              </Text>
             )}
             keyExtractor={item => item.id}
           />
@@ -65,8 +73,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'stretch',
   },
-  cardSmallStyle: {
-    height: responsiveScreenHeight(22.5),
+  cardBigStyle: {
+    height: responsiveScreenHeight(30),
     width: responsiveScreenWidth(60),
     marginHorizontal: 7,
     marginVertical: responsiveScreenHeight(1),

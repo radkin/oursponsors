@@ -300,7 +300,7 @@ const styles = StyleSheet.create({
     borderColor: '#E8E8E8',
     justifyContent: 'center',
     backgroundColor: MD3Colors.secondary90,
-    height: responsiveScreenHeight(20),
+    height: responsiveScreenHeight(30),
   },
   detailsContainer: {
     flex: 1,
