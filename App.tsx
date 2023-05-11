@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {StyleSheet, useColorScheme} from 'react-native';
+import {useColorScheme} from 'react-native';
 import {Avatar, Provider as PaperProvider} from 'react-native-paper';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -42,14 +42,15 @@ function App(): JSX.Element {
           options={{
             tabBarIcon: ({}) => {
               return (
-                <Avatar.Icon
-                  size={responsiveScreenHeight(2.5)}
+                <Avatar.Text
+                  size={responsiveScreenHeight(4)}
                   style={{
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
+                    top: responsiveScreenHeight(0.75),
                   }}
-                  icon="flag"
+                  label={'Sen'}
                 />
               );
             },
@@ -72,14 +73,15 @@ function App(): JSX.Element {
           options={{
             tabBarIcon: ({}) => {
               return (
-                <Avatar.Icon
-                  size={responsiveScreenHeight(2.5)}
+                <Avatar.Text
+                  size={responsiveScreenHeight(4)}
                   style={{
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
+                    top: responsiveScreenHeight(0.75),
                   }}
-                  icon="flag-outline"
+                  label="Con"
                 />
               );
             },
@@ -100,7 +102,7 @@ function App(): JSX.Element {
               },
             }}>
             <Drawer.Screen
-              name="Representatives"
+              name="Summary"
               component={TabNavigator}
               options={{
                 headerTitleStyle: {
@@ -129,23 +131,5 @@ function App(): JSX.Element {
     </Provider>
   );
 }
-StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;
