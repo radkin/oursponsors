@@ -30,7 +30,6 @@ function DetailsScreen({route}) {
   const {value} = route.params;
   return (
     <View style={{paddingBottom: 190}}>
-
       <View style={styles.card}>
         <RenderRepCard value={value} />
       </View>
