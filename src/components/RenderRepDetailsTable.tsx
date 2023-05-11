@@ -1,11 +1,4 @@
-import {
-  Avatar,
-  Card,
-  DataTable,
-  Provider,
-  Surface,
-  Text,
-} from 'react-native-paper';
+import {DataTable, Provider, Surface} from 'react-native-paper';
 import {FlatList, StyleSheet} from 'react-native';
 import * as React from 'react';
 import {
@@ -14,7 +7,7 @@ import {
   responsiveScreenFontSize,
 } from 'react-native-responsive-dimensions';
 import {useAppDispatch, useAppSelector} from '../hooks';
-import {useEffect} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {getSectors} from '../store/actions/sectorAction';
 import {connect} from 'react-redux';
 
@@ -22,13 +15,19 @@ function RenderRepDetailsTable({value}) {
   const dispatch = useAppDispatch();
   const sectorsListData = useAppSelector(state => state.sectorsList);
   const {sectors} = sectorsListData;
-  const cid = 'N00033390';
 
-  console.log(value.crp_id);
+  const [internalState, setInternalState] = useState(value);
+
+  const previousValueRef = useRef();
+  const previousValue = previousValueRef.current;
+  if (value !== previousValue && value !== internalState) {
+    setInternalState(value);
+  }
 
   useEffect(() => {
-    dispatch(getSectors(value.crp_id));
-  }, [dispatch]);
+    previousValueRef.current = value;
+    dispatch(getSectors(internalState.crp_id));
+  }, [dispatch, internalState.crp_id, value]);
 
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
