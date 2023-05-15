@@ -56,7 +56,9 @@ function RenderRepDetailsTable({value}) {
             <DataTable.Title textStyle={styles.tableHeader}>
               Contributor
             </DataTable.Title>
-            <DataTable.Title textStyle={styles.tableHeader}>
+            <DataTable.Title
+              textStyle={styles.tableHeader}
+              sortDirection={'descending'}>
               Total
             </DataTable.Title>
           </DataTable.Header>
