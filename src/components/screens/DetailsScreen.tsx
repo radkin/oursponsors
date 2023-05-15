@@ -12,7 +12,8 @@ import {
   responsiveScreenFontSize,
   responsiveScreenHeight,
 } from 'react-native-responsive-dimensions';
-import RenderRepDetailsTable from '../RenderRepDetailsTable';
+import RenderRepDetailsTable from '../RenderRepSectorsTable';
+import RenderRepContributorsTable from '../RenderRepContributorsTable';
 import ScrollView = Animated.ScrollView;
 import {getPreferences} from '../../store/actions/preferencesAction';
 import {useAppDispatch, useAppSelector} from '../../hooks';
@@ -36,6 +37,10 @@ function DetailsScreen({route}) {
 
       <View style={styles.table}>
         <RenderRepDetailsTable value={value} />
+      </View>
+
+      <View style={styles.table}>
+        <RenderRepContributorsTable value={value} />
       </View>
 
       <ScrollView style={{paddingTop: 7}}>
@@ -312,7 +317,7 @@ const styles = StyleSheet.create({
     borderColor: '#E8E8E8',
     justifyContent: 'center',
     backgroundColor: MD3Colors.secondary90,
-    height: responsiveScreenHeight(25),
+    height: responsiveScreenHeight(20),
   },
   detailsContainer: {
     flex: 1,
