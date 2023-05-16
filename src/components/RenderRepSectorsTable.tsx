@@ -11,7 +11,7 @@ import {useEffect, useRef, useState} from 'react';
 import {getSectors} from '../store/actions/sectorAction';
 import {connect} from 'react-redux';
 
-function RenderRepDetailsTable({value}) {
+function RenderRepSectorsTable({value}) {
   const dispatch = useAppDispatch();
   const sectorsListData = useAppSelector(state => state.sectorsList);
   const {sectors} = sectorsListData;
@@ -54,7 +54,7 @@ function RenderRepDetailsTable({value}) {
         <DataTable style={styles.table}>
           <DataTable.Header>
             <DataTable.Title textStyle={styles.tableHeader}>
-              Contributor
+              Sector
             </DataTable.Title>
             <DataTable.Title
               textStyle={styles.tableHeader}
@@ -76,14 +76,15 @@ function RenderRepDetailsTable({value}) {
 
 const styles = StyleSheet.create({
   surface: {
-    height: responsiveScreenHeight(25),
+    height: responsiveScreenHeight(23),
     width: responsiveScreenWidth(100),
     marginHorizontal: 7,
     marginVertical: responsiveScreenHeight(0.5),
     position: 'absolute',
   },
   table: {
-    height: responsiveScreenHeight(25),
+    height: responsiveScreenHeight(23),
+    width: responsiveScreenWidth(150),
   },
   basicsText: {
     fontSize: responsiveScreenFontSize(1.75),
@@ -110,4 +111,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(RenderRepDetailsTable);
+)(RenderRepSectorsTable);
