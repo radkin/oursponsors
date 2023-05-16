@@ -76,14 +76,14 @@ function RenderRepContributorsTable({value}) {
 
 const styles = StyleSheet.create({
   surface: {
-    height: responsiveScreenHeight(20),
+    height: responsiveScreenHeight(23),
     width: responsiveScreenWidth(100),
     marginHorizontal: 7,
     marginVertical: responsiveScreenHeight(0.5),
     position: 'absolute',
   },
   table: {
-    height: responsiveScreenHeight(20),
+    height: responsiveScreenHeight(23),
   },
   basicsText: {
     fontSize: responsiveScreenFontSize(1.75),
