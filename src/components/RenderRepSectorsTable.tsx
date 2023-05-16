@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   },
   table: {
     height: responsiveScreenHeight(23),
-    width: responsiveScreenWidth(160),
+    width: responsiveScreenWidth(150),
   },
   basicsText: {
     fontSize: responsiveScreenFontSize(1.75),
