@@ -39,7 +39,7 @@ function RenderRepContributorsTable({value}) {
     return (
       <DataTable.Row>
         <DataTable.Cell textStyle={styles.cellText}>
-          {value.contributor_name}
+          {value.org_name}
         </DataTable.Cell>
         <DataTable.Cell textStyle={styles.cellText}>
           {formatter.format(value.total)}
@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
   },
   table: {
     height: responsiveScreenHeight(23),
+    width: responsiveScreenWidth(160),
   },
   basicsText: {
     fontSize: responsiveScreenFontSize(1.75),
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
     marginVertical: responsiveScreenHeight(0.5),
   },
   cellText: {
-    fontSize: responsiveScreenFontSize(2),
+    fontSize: responsiveScreenFontSize(1.8),
   },
   tableHeader: {
     fontSize: responsiveScreenFontSize(2.5),
