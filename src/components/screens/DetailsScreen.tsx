@@ -8,16 +8,13 @@ import {
 } from 'react-native';
 import React, {useEffect} from 'react';
 import {Divider, List, MD3Colors, Surface, Text} from 'react-native-paper';
-import {
-  responsiveScreenFontSize,
-  responsiveScreenHeight,
-} from 'react-native-responsive-dimensions';
 import RenderRepDetailsTable from '../RenderRepSectorsTable';
 import RenderRepContributorsTable from '../RenderRepContributorsTable';
 import ScrollView = Animated.ScrollView;
 import {getPreferences} from '../../store/actions/preferencesAction';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import RenderSmallRepCard from '../RenderSmallRepCard';
+import { scale } from "react-native-size-matters";
 
 function DetailsScreen({route}) {
   const dispatch = useAppDispatch();
@@ -30,7 +27,7 @@ function DetailsScreen({route}) {
 
   const {value} = route.params;
   return (
-    <View style={{paddingBottom: 190}}>
+    <View style={{paddingBottom: scale(450)}}>
       <View style={styles.card}>
         <RenderSmallRepCard value={value} />
       </View>
@@ -43,7 +40,7 @@ function DetailsScreen({route}) {
         <RenderRepContributorsTable value={value} />
       </View>
 
-      <ScrollView style={{paddingTop: 7}}>
+      <ScrollView style={{paddingTop: scale(5)}}>
         <View>
           {value.twitter_account && !preferences.twitter_hide && (
             <Surface style={styles.surface} elevation={4}>
@@ -240,7 +237,7 @@ function DetailsScreen({route}) {
             </Surface>
           )}
 
-          <Divider horizontalInset={true} style={{height: 10}} />
+          <Divider horizontalInset={true} style={{height: scale(10)}} />
 
           {value.contact_form && (
             <Surface style={styles.surface} elevation={4}>
@@ -296,51 +293,52 @@ const styles = StyleSheet.create({
   surface: {
     flexDirection: 'column-reverse',
     flex: 1,
-    padding: responsiveScreenHeight(1),
-    margin: responsiveScreenHeight(0.4),
+    padding: scale(4),
+    margin: scale(2),
     textAlign: 'center',
-    height: responsiveScreenHeight(7),
+    height: scale(50),
+    width: scale(340),
     borderColor: 'grey',
     backgroundColor: MD3Colors.secondary95,
   },
   card: {
-    borderRadius: 4,
-    borderWidth: 2,
+    borderRadius: scale(4),
+    borderWidth: scale(2),
     borderColor: '#E8E8E8',
     justifyContent: 'center',
     backgroundColor: MD3Colors.secondary90,
-    height: responsiveScreenHeight(10),
+    height: scale(80),
   },
   table: {
-    borderRadius: 4,
-    borderWidth: 2,
+    borderRadius: scale(4),
+    borderWidth: scale(2),
     borderColor: '#E8E8E8',
     justifyContent: 'center',
     backgroundColor: MD3Colors.secondary90,
-    height: responsiveScreenHeight(23),
+    height: scale(180),
   },
   detailsContainer: {
     flex: 1,
     FlexDirection: 'row',
-    paddingBottom: 100,
+    paddingBottom: scale(100),
   },
   surfaceIcon: {
-    marginTop: 15,
-    height: responsiveScreenHeight(5),
-    left: 2,
+    marginTop: scale(12),
+    height: scale(40),
+    left: scale(10),
     flexDirection: 'row',
     alignSelf: 'flex-start',
     transform: [
-      {scaleX: responsiveScreenFontSize(0.08)},
-      {scaleY: responsiveScreenFontSize(0.08)},
+      {scaleX: scale(1)},
+      {scaleY: scale(1)},
     ],
   },
   surfaceText: {
-    margin: 10,
+    margin: scale(8),
     position: 'absolute',
     left: '20%',
-    fontSize: responsiveScreenFontSize(2),
-    paddingTop: responsiveScreenFontSize(2),
+    fontSize: scale(15),
+    paddingTop: scale(15),
   },
 });
 
