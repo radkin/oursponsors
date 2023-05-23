@@ -15,6 +15,7 @@ import {
   responsiveScreenWidth,
 } from 'react-native-responsive-dimensions';
 import {useAppDispatch, useAppSelector} from '../hooks';
+import { scale } from "react-native-size-matters";
 
 function PreferencesCards({setPreferences}) {
   const dispatch = useAppDispatch();
@@ -38,7 +39,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Title
             title="My State Only"
             titleStyle={styles.cardTitleStyle}
-            left={() => <Icon name="tasks" size={24} color="black" />}
+            left={() => <Icon name="tasks" size={scale(24)} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
             <Switch
@@ -53,7 +54,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Title
             title="My Party Only"
             titleStyle={styles.cardTitleStyle}
-            left={() => <Icon name="tasks" size={24} color="black" />}
+            left={() => <Icon name="tasks" size={scale(24)} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
             <Switch
@@ -64,7 +65,7 @@ function PreferencesCards({setPreferences}) {
           </Card.Content>
         </Card>
 
-        <Divider horizontalInset={true} style={{height: 10}} />
+        <Divider horizontalInset={true} style={{height: scale(10)}} />
 
         <Card title="Card Title">
           <Text style={styles.paragraph}>Specific Member Details</Text>
@@ -74,7 +75,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Title
             title="Hide Twitter"
             titleStyle={styles.cardTitleStyle}
-            left={() => <Icon name="tasks" size={24} color="black" />}
+            left={() => <Icon name="tasks" size={scale(24)} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
             <Switch
@@ -89,7 +90,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Title
             title="Hide Facebook"
             titleStyle={styles.cardTitleStyle}
-            left={() => <Icon name="tasks" size={24} color="black" />}
+            left={() => <Icon name="tasks" size={scale(24)} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
             <Switch
@@ -104,7 +105,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Title
             title="Hide YouTube"
             titleStyle={styles.cardTitleStyle}
-            left={() => <Icon name="tasks" size={24} color="black" />}
+            left={() => <Icon name="tasks" size={scale(24)} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
             <Switch
@@ -119,7 +120,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Title
             title="Hide Google Entity"
             titleStyle={styles.cardTitleStyle}
-            left={() => <Icon name="tasks" size={24} color="black" />}
+            left={() => <Icon name="tasks" size={scale(24)} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
             <Switch
@@ -136,7 +137,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Title
             title="Hide Cspan"
             titleStyle={styles.cardTitleStyle}
-            left={() => <Icon name="tasks" size={24} color="black" />}
+            left={() => <Icon name="tasks" size={scale(24)} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
             <Switch
@@ -151,7 +152,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Title
             title="Hide Gov Track"
             titleStyle={styles.cardTitleStyle}
-            left={() => <Icon name="tasks" size={24} color="black" />}
+            left={() => <Icon name="tasks" size={scale(24)} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
             <Switch
@@ -166,7 +167,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Title
             title="Hide Open Secrets"
             titleStyle={styles.cardTitleStyle}
-            left={() => <Icon name="tasks" size={24} color="black" />}
+            left={() => <Icon name="tasks" size={scale(24)} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
             <Switch
@@ -183,7 +184,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Title
             title="Hide Vote View"
             titleStyle={styles.cardTitleStyle}
-            left={() => <Icon name="tasks" size={24} color="black" />}
+            left={() => <Icon name="tasks" size={scale(24)} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
             <Switch
@@ -198,7 +199,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Title
             title="Hide Vote Smart"
             titleStyle={styles.cardTitleStyle}
-            left={() => <Icon name="tasks" size={24} color="black" />}
+            left={() => <Icon name="tasks" size={scale(24)} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
             <Switch
@@ -213,7 +214,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Title
             title="Hide FEC"
             titleStyle={styles.cardTitleStyle}
-            left={() => <Icon name="tasks" size={24} color="black" />}
+            left={() => <Icon name="tasks" size={scale(24)} color="black" />}
           />
           <Card.Content style={styles.cardContent}>
             <Switch
@@ -232,14 +233,14 @@ function PreferencesCards({setPreferences}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 20,
+    paddingTop: scale(10),
     backgroundColor: '#ecf0f1',
-    padding: 10,
-    width: responsiveScreenWidth(90),
+    padding: scale(3),
+    width: scale(300),
   },
   paragraph: {
-    margin: 24,
-    fontSize: responsiveScreenFontSize(3),
+    margin: scale(20),
+    fontSize: scale(20),
     fontWeight: 'bold',
     textAlign: 'center',
   },
@@ -249,24 +250,23 @@ const styles = StyleSheet.create({
     right: 0,
   },
   singleCard: {
-    margin: 3,
-    height: responsiveScreenHeight(7),
+    margin: scale(2.5),
+    height: scale(50),
     position: 'relative',
   },
   cardTitleStyle: {
-    fontSize: responsiveScreenFontSize(2),
-    paddingTop: responsiveScreenHeight(2.5),
+    fontSize: scale(15),
+    paddingTop: scale(19),
     position: 'relative',
     bottom: '17%',
   },
   cardSwitchStyle: {
-    fontSize: responsiveScreenFontSize(2),
-    paddingTop: responsiveScreenHeight(2.5),
+    paddingTop: scale(15),
     position: 'relative',
     top: '17%',
     transform: [
-      {scaleX: responsiveScreenFontSize(0.08)},
-      {scaleY: responsiveScreenFontSize(0.08)},
+      {scaleX: scale(0.7)},
+      {scaleY: scale(0.7)},
     ],
   },
 });
