@@ -56,13 +56,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   contentText: {
-    paddingTop: scale(3),
     fontSize: scale(13),
+    lineHeight: scale(13) * 0.75,
+    paddingTop: scale(13) - (scale(13) * 0.75),
   },
   titleText: {
     fontSize: scale(15),
     fontWeight: 'bold',
-    paddingTop: scale(5),
+    lineHeight: scale(15) * 0.75,
+    paddingTop: scale(15) - (scale(15) * 0.75),
     position: 'relative',
   },
   cardProfPic: {

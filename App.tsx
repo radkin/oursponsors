@@ -19,6 +19,7 @@ import {
   responsiveScreenFontSize,
   responsiveScreenHeight,
 } from 'react-native-responsive-dimensions';
+import { scale } from "react-native-size-matters";
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -31,7 +32,7 @@ function App(): JSX.Element {
       <Tab.Navigator
         screenOptions={{
           tabBarStyle: {
-            height: responsiveScreenHeight(4.7),
+            height: scale(30),
           },
           headerShown: false,
           title: '',
@@ -43,12 +44,12 @@ function App(): JSX.Element {
             tabBarIcon: ({}) => {
               return (
                 <Avatar.Text
-                  size={responsiveScreenHeight(4)}
+                  size={scale(20)}
                   style={{
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    top: responsiveScreenHeight(0.75),
+                    top: scale(5),
                   }}
                   label={'Sen'}
                 />
@@ -74,12 +75,12 @@ function App(): JSX.Element {
             tabBarIcon: ({}) => {
               return (
                 <Avatar.Text
-                  size={responsiveScreenHeight(4)}
+                  size={scale(20)}
                   style={{
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    top: responsiveScreenHeight(0.75),
+                    top: scale(5),
                   }}
                   label="Con"
                 />
@@ -98,7 +99,7 @@ function App(): JSX.Element {
           <Drawer.Navigator
             screenOptions={{
               headerStyle: {
-                height: responsiveScreenHeight(5),
+                height: scale(25),
               },
             }}>
             <Drawer.Screen
@@ -106,10 +107,12 @@ function App(): JSX.Element {
               component={TabNavigator}
               options={{
                 headerTitleStyle: {
-                  fontSize: responsiveScreenFontSize(2),
+                  fontSize: scale(13),
+                  lineHeight: scale(13) * 0.75,
+                  paddingTop: scale(13) - (scale(13) * 0.75),
                 },
                 drawerLabelStyle: {
-                  fontSize: responsiveScreenFontSize(1.5),
+                  fontSize: scale(13),
                 },
               }}
             />
@@ -118,10 +121,11 @@ function App(): JSX.Element {
               component={PreferencesScreen}
               options={{
                 headerTitleStyle: {
-                  fontSize: responsiveScreenFontSize(2),
-                },
+                  fontSize: scale(13),
+                  lineHeight: scale(13) * 0.75,
+                  paddingTop: scale(13) - (scale(13) * 0.75),                },
                 drawerLabelStyle: {
-                  fontSize: responsiveScreenFontSize(1.5),
+                  fontSize: scale(13),
                 },
               }}
             />
