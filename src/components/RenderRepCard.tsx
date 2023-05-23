@@ -4,7 +4,6 @@ import * as React from 'react';
 import { scale } from "react-native-size-matters";
 
 function RenderRepCard({value}) {
-  const LeftContent = props => <Avatar.Icon {...props} icon="folder" />;
 
   return (
     <Provider>
@@ -13,7 +12,6 @@ function RenderRepCard({value}) {
           style={styles.textContainer}
           title={`${value.first_name} ${value.last_name}`}
           titleStyle={styles.titleText}
-          left={LeftContent}
         />
         <Card.Content style={styles.textContainer}>
           <Text
@@ -38,7 +36,7 @@ const styles = StyleSheet.create({
   },
   card: {
     height: scale(140),
-    width: scale(210),
+    width: scale(500),
     marginHorizontal: scale(5),
     marginVertical: scale(5),
     position: 'absolute',
@@ -52,8 +50,9 @@ const styles = StyleSheet.create({
   textContainer: {
     marginTop: scale(5),
     height: scale(30),
-    left: scale(2),
+    paddingHorizontal: scale(170),
     flexDirection: 'row',
+    width: scale(500),
   },
   contentText: {
     fontSize: scale(13),
@@ -61,6 +60,7 @@ const styles = StyleSheet.create({
     paddingTop: scale(13) - (scale(13) * 0.75),
   },
   titleText: {
+    paddingHorizontal: scale(158),
     fontSize: scale(15),
     fontWeight: 'bold',
     lineHeight: scale(15) * 0.75,
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   cardProfPic: {
     position: 'absolute',
-    left: '100%',
+    right: '75%',
     height: scale(140),
     width: scale(130),
   },

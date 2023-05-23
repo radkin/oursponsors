@@ -3,7 +3,6 @@ import {getCongress} from '../store/actions/congressAction';
 import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import RenderRepCard from './RenderRepCard';
 import * as React from 'react';
-import {responsiveScreenHeight} from 'react-native-responsive-dimensions';
 import {useAppDispatch, useAppSelector} from '../hooks';
 import { scale } from "react-native-size-matters";
 
@@ -47,7 +46,7 @@ const styles = StyleSheet.create({
     borderColor: '#E8E8E8',
     justifyContent: 'center',
     backgroundColor: 'white',
-    height: scale(50),
+    height: scale(150),
   },
 });
 export default RenderCongress;

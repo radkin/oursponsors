@@ -1,11 +1,6 @@
-import {Avatar, Card, Provider, Text} from 'react-native-paper';
+import {Card, Provider, Text} from 'react-native-paper';
 import {StyleSheet} from 'react-native';
 import * as React from 'react';
-import {
-  responsiveScreenHeight,
-  responsiveScreenWidth,
-  responsiveScreenFontSize,
-} from 'react-native-responsive-dimensions';
 import { scale } from "react-native-size-matters";
 
 function RenderSmallRepCard({value}) {
@@ -15,7 +10,7 @@ function RenderSmallRepCard({value}) {
         <Card.Title
           style={styles.textContainer}
           title={
-            `${value.first_name} ${value.last_name} ${value.state} ${value.party}`
+            `${value.first_name} ${value.last_name}`
           }
           titleStyle={styles.titleText}
         />
@@ -55,13 +50,15 @@ const styles = StyleSheet.create({
   textContainer: {
     marginTop: scale(3),
     height: scale(20),
-    left: 2,
+    paddingHorizontal: scale(150),
     flexDirection: 'row',
+    width: scale(500),
   },
   contentText: {
     fontSize: scale(14),
   },
   titleText: {
+    paddingHorizontal: scale(138),
     fontSize: scale(17),
     fontWeight: 'bold',
     paddingTop: scale(10),
@@ -70,7 +67,7 @@ const styles = StyleSheet.create({
   },
   cardProfPic: {
     position: 'absolute',
-    left: '81%',
+    right: '81%',
     height: scale(69),
     width: scale(64),
   },

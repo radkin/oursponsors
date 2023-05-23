@@ -9,11 +9,6 @@ import {
   setPreferences,
 } from '../store/actions/preferencesAction';
 import {useEffect} from 'react';
-import {
-  responsiveScreenFontSize,
-  responsiveScreenHeight,
-  responsiveScreenWidth,
-} from 'react-native-responsive-dimensions';
 import {useAppDispatch, useAppSelector} from '../hooks';
 import { scale } from "react-native-size-matters";
 
