@@ -1,15 +1,11 @@
 import {DataTable, Provider, Surface} from 'react-native-paper';
 import {FlatList, StyleSheet} from 'react-native';
 import * as React from 'react';
-import {
-  responsiveScreenHeight,
-  responsiveScreenWidth,
-  responsiveScreenFontSize,
-} from 'react-native-responsive-dimensions';
 import {useAppDispatch, useAppSelector} from '../hooks';
 import {useEffect, useRef, useState} from 'react';
 import {getSectors} from '../store/actions/sectorAction';
 import {connect} from 'react-redux';
+import { scale } from "react-native-size-matters";
 
 function RenderRepSectorsTable({value}) {
   const dispatch = useAppDispatch();
@@ -53,11 +49,11 @@ function RenderRepSectorsTable({value}) {
       <Surface style={styles.surface}>
         <DataTable style={styles.table}>
           <DataTable.Header>
-            <DataTable.Title textStyle={styles.tableHeader}>
+            <DataTable.Title textStyle={styles.tableTitle}>
               Sector
             </DataTable.Title>
             <DataTable.Title
-              textStyle={styles.tableHeader}
+              textStyle={styles.tableTitle}
               sortDirection={'descending'}>
               Total
             </DataTable.Title>
@@ -76,26 +72,26 @@ function RenderRepSectorsTable({value}) {
 
 const styles = StyleSheet.create({
   surface: {
-    height: responsiveScreenHeight(23),
-    width: responsiveScreenWidth(100),
-    marginHorizontal: 7,
-    marginVertical: responsiveScreenHeight(0.5),
+    height: scale(165),
+    width: scale(335),
+    marginHorizontal: 10,
+    marginVertical: scale(3),
     position: 'absolute',
   },
   table: {
-    height: responsiveScreenHeight(23),
-    width: responsiveScreenWidth(150),
+    height: scale(165),
+    width: scale(500),
   },
   basicsText: {
-    fontSize: responsiveScreenFontSize(1.75),
+    fontSize: scale(15),
     fontWeight: '700',
-    marginVertical: responsiveScreenHeight(0.5),
+    marginVertical: scale(2),
   },
   cellText: {
-    fontSize: responsiveScreenFontSize(2),
+    fontSize: scale(16),
   },
-  tableHeader: {
-    fontSize: responsiveScreenFontSize(2.5),
+  tableTitle: {
+    fontSize: scale(18),
     fontWeight: 'bold',
   },
 });

@@ -1,31 +1,21 @@
-import {Avatar, Card, Provider, Text} from 'react-native-paper';
+import {Card, Provider, Text} from 'react-native-paper';
 import {StyleSheet} from 'react-native';
 import * as React from 'react';
-import {
-  responsiveScreenHeight,
-  responsiveScreenWidth,
-  responsiveScreenFontSize,
-} from 'react-native-responsive-dimensions';
+import { scale } from "react-native-size-matters";
 
 function RenderSmallRepCard({value}) {
   return (
     <Provider>
-      <Card style={styles.cardSmallStyle}>
+      <Card style={styles.card}>
         <Card.Title
           style={styles.textContainer}
           title={
-            `${value.first_name} ${value.last_name} ${value.state} ${value.party}`
+            `${value.first_name} ${value.last_name}`
           }
-          titleStyle={{
-            fontSize: responsiveScreenFontSize(2),
-            paddingTop: responsiveScreenHeight(1),
-            position: 'relative',
-            bottom: '17%',
-          }}
+          titleStyle={styles.titleText}
         />
         <Card.Content style={styles.textContainer}>
           <Text
-            variant="titleMedium"
             style={
               styles.contentText
             }>{`${value.state} ${value.party} ${value.title}`}</Text>
@@ -44,33 +34,42 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'stretch',
   },
-  cardSmallStyle: {
-    height: responsiveScreenHeight(11),
-    width: responsiveScreenWidth(100),
-    marginHorizontal: 7,
-    marginVertical: responsiveScreenHeight(1),
+  card: {
+    height: scale(70),
+    width: scale(342),
+    marginHorizontal: scale(5),
+    marginVertical: scale(5),
     position: 'absolute',
   },
   cardContainer: {
-    margin: 15,
-    borderRadius: 15,
-    borderWidth: 1,
+    margin: scale(15),
+    borderRadius: scale(15),
+    borderWidth: scale(1),
     borderColor: '#3d80fc',
   },
   textContainer: {
-    marginTop: 25,
-    height: responsiveScreenHeight(1),
-    left: 2,
+    marginTop: scale(3),
+    height: scale(20),
+    paddingHorizontal: scale(150),
     flexDirection: 'row',
+    width: scale(500),
   },
   contentText: {
-    fontSize: responsiveScreenFontSize(0.5),
+    fontSize: scale(14),
+  },
+  titleText: {
+    paddingHorizontal: scale(138),
+    fontSize: scale(17),
+    fontWeight: 'bold',
+    paddingTop: scale(10),
+    position: 'relative',
+    bottom: '17%',
   },
   cardProfPic: {
     position: 'absolute',
-    left: '75%',
-    height: responsiveScreenHeight(10),
-    width: responsiveScreenWidth(22),
+    right: '81%',
+    height: scale(69),
+    width: scale(64),
   },
 });
 export default RenderSmallRepCard;
