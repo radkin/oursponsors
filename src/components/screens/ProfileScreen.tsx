@@ -1,4 +1,3 @@
-import {useFocusEffect} from '@react-navigation/native';
 import React from 'react';
 import {View, StyleSheet, ScrollView} from 'react-native';
 import {useController, useForm} from 'react-hook-form';
@@ -13,8 +12,9 @@ function ProfileScreen({navigation}) {
       lastName: '',
       email: '',
       password: '',
-      city: '',
+      state: '',
       gender: '',
+      party: '',
       rememberMe: 'checked',
     },
     mode: 'onChange',
@@ -101,49 +101,49 @@ function ProfileScreen({navigation}) {
               },
             },
             {
-              name: 'city',
+              name: 'state',
               type: 'autocomplete',
               textInputProps: {
-                label: 'City',
+                label: 'State',
                 left: <TextInput.Icon name={'office-building'} />,
               },
               rules: {
                 required: {
                   value: true,
-                  message: 'City is required',
+                  message: 'State is required',
                 },
               },
               options: [
                 {
-                  label: 'Lucknow',
+                  label: 'California',
                   value: 1,
                 },
                 {
-                  label: 'Noida',
+                  label: 'Idaho',
                   value: 2,
                 },
                 {
-                  label: 'Delhi',
+                  label: 'Colorado',
                   value: 3,
                 },
                 {
-                  label: 'Bangalore',
+                  label: 'Texas',
                   value: 4,
                 },
                 {
-                  label: 'Pune',
+                  label: 'New York',
                   value: 5,
                 },
                 {
-                  label: 'Mumbai',
+                  label: 'Utah',
                   value: 6,
                 },
                 {
-                  label: 'Ahmedabad',
+                  label: 'Arizona',
                   value: 7,
                 },
                 {
-                  label: 'Patna',
+                  label: 'Florida',
                   value: 8,
                 },
               ],
@@ -173,6 +173,34 @@ function ProfileScreen({navigation}) {
                 {
                   value: 2,
                   label: 'Others',
+                },
+              ],
+            },
+            {
+              name: 'party',
+              type: 'select',
+              textInputProps: {
+                label: 'Party',
+                left: <TextInput.Icon name={'account'} />,
+              },
+              rules: {
+                required: {
+                  value: true,
+                  message: 'Party is required',
+                },
+              },
+              options: [
+                {
+                  value: 0,
+                  label: 'Independent',
+                },
+                {
+                  value: 1,
+                  label: 'Democrat',
+                },
+                {
+                  value: 2,
+                  label: 'Republican',
                 },
               ],
             },
