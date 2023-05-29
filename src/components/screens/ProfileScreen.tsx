@@ -14,11 +14,18 @@ function ProfileScreen({value}) {
   const {user} = userObjectData;
 
   const [internalState, setInternalState] = useState(value);
+  // internal state for all user properties
+  const [firstName, setFirstName] = useState(user.first_name);
+  const [lastName, setLastName] = useState(user.last_name);
+  const [email, setEmail] = useState(user.email);
 
   const previousValueRef = useRef();
   const previousValue = previousValueRef.current;
   if (value !== previousValue && value !== internalState) {
     setInternalState(value);
+    setFirstName(value.user.first_name);
+    setLastName(value.user.last_name);
+    setEmail(value.email);
   }
 
   useEffect(() => {
@@ -28,11 +35,13 @@ function ProfileScreen({value}) {
 
   console.log(user);
 
+  // const firstName = 'Joe';
+
   const {control, setFocus, handleSubmit} = useForm({
     defaultValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
       password: '',
       state: '',
       gender: '',
@@ -44,199 +53,201 @@ function ProfileScreen({value}) {
 
   return (
     <View style={styles.containerStyle}>
-      <ScrollView contentContainerStyle={styles.scrollViewStyle}>
-        <FormBuilder
-          control={control}
-          setFocus={setFocus}
-          formConfigArray={[
-            [
+      {user && (
+        <ScrollView contentContainerStyle={styles.scrollViewStyle}>
+          <FormBuilder
+            control={control}
+            setFocus={setFocus}
+            formConfigArray={[
+              [
+                {
+                  name: 'firstName',
+                  type: 'text',
+                  textInputProps: {
+                    label: 'First Name',
+                    left: <TextInput.Icon name={'account'} />,
+                  },
+                  rules: {
+                    required: {
+                      value: true,
+                      message: 'First name is required',
+                    },
+                  },
+                  flex: 1.5,
+                },
+                {
+                  name: 'lastName',
+                  type: 'text',
+                  textInputProps: {
+                    label: 'Last Name',
+                    left: <TextInput.Icon name={'account'} />,
+                  },
+                  rules: {
+                    required: {
+                      value: true,
+                      message: 'Last name is required',
+                    },
+                  },
+                  flex: 1,
+                },
+              ],
               {
-                name: 'firstName',
-                type: 'text',
+                name: 'email',
+                type: 'email',
                 textInputProps: {
-                  label: 'First Name',
+                  label: 'Email',
+                  left: <TextInput.Icon name={'email'} />,
+                },
+                rules: {
+                  required: {
+                    value: true,
+                    message: 'Email is required',
+                  },
+                  pattern: {
+                    value:
+                      /[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})/,
+                    message: 'Email is invalid',
+                  },
+                },
+              },
+              {
+                name: 'password',
+                type: 'password',
+                textInputProps: {
+                  label: 'Password',
+                  left: <TextInput.Icon name={'lock'} />,
+                },
+                rules: {
+                  required: {
+                    value: true,
+                    message: 'Password is required',
+                  },
+                  minLength: {
+                    value: 8,
+                    message: 'Password should be atleast 8 characters',
+                  },
+                  maxLength: {
+                    value: 30,
+                    message: 'Password should be between 8 and 30 characters',
+                  },
+                },
+              },
+              {
+                name: 'state',
+                type: 'autocomplete',
+                textInputProps: {
+                  label: 'State',
+                  left: <TextInput.Icon name={'office-building'} />,
+                },
+                rules: {
+                  required: {
+                    value: true,
+                    message: 'State is required',
+                  },
+                },
+                options: [
+                  {
+                    label: 'California',
+                    value: 1,
+                  },
+                  {
+                    label: 'Idaho',
+                    value: 2,
+                  },
+                  {
+                    label: 'Colorado',
+                    value: 3,
+                  },
+                  {
+                    label: 'Texas',
+                    value: 4,
+                  },
+                  {
+                    label: 'New York',
+                    value: 5,
+                  },
+                  {
+                    label: 'Utah',
+                    value: 6,
+                  },
+                  {
+                    label: 'Arizona',
+                    value: 7,
+                  },
+                  {
+                    label: 'Florida',
+                    value: 8,
+                  },
+                ],
+              },
+              {
+                name: 'gender',
+                type: 'select',
+                textInputProps: {
+                  label: 'Gender',
                   left: <TextInput.Icon name={'account'} />,
                 },
                 rules: {
                   required: {
                     value: true,
-                    message: 'First name is required',
+                    message: 'Gender is required',
                   },
                 },
-                flex: 1.5,
+                options: [
+                  {
+                    value: 0,
+                    label: 'Female',
+                  },
+                  {
+                    value: 1,
+                    label: 'Male',
+                  },
+                  {
+                    value: 2,
+                    label: 'Others',
+                  },
+                ],
               },
               {
-                name: 'lastName',
-                type: 'text',
+                name: 'party',
+                type: 'select',
                 textInputProps: {
-                  label: 'Last Name',
+                  label: 'Party',
                   left: <TextInput.Icon name={'account'} />,
                 },
                 rules: {
                   required: {
                     value: true,
-                    message: 'Last name is required',
+                    message: 'Party is required',
                   },
                 },
-                flex: 1,
+                options: [
+                  {
+                    value: 0,
+                    label: 'Independent',
+                  },
+                  {
+                    value: 1,
+                    label: 'Democrat',
+                  },
+                  {
+                    value: 2,
+                    label: 'Republican',
+                  },
+                ],
               },
-            ],
-            {
-              name: 'email',
-              type: 'email',
-              textInputProps: {
-                label: 'Email',
-                left: <TextInput.Icon name={'email'} />,
+              {
+                name: 'rememberMe',
+                type: 'custom',
+                JSX: TermsCheckBox,
               },
-              rules: {
-                required: {
-                  value: true,
-                  message: 'Email is required',
-                },
-                pattern: {
-                  value:
-                    /[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})/,
-                  message: 'Email is invalid',
-                },
-              },
-            },
-            {
-              name: 'password',
-              type: 'password',
-              textInputProps: {
-                label: 'Password',
-                left: <TextInput.Icon name={'lock'} />,
-              },
-              rules: {
-                required: {
-                  value: true,
-                  message: 'Password is required',
-                },
-                minLength: {
-                  value: 8,
-                  message: 'Password should be atleast 8 characters',
-                },
-                maxLength: {
-                  value: 30,
-                  message: 'Password should be between 8 and 30 characters',
-                },
-              },
-            },
-            {
-              name: 'state',
-              type: 'autocomplete',
-              textInputProps: {
-                label: 'State',
-                left: <TextInput.Icon name={'office-building'} />,
-              },
-              rules: {
-                required: {
-                  value: true,
-                  message: 'State is required',
-                },
-              },
-              options: [
-                {
-                  label: 'California',
-                  value: 1,
-                },
-                {
-                  label: 'Idaho',
-                  value: 2,
-                },
-                {
-                  label: 'Colorado',
-                  value: 3,
-                },
-                {
-                  label: 'Texas',
-                  value: 4,
-                },
-                {
-                  label: 'New York',
-                  value: 5,
-                },
-                {
-                  label: 'Utah',
-                  value: 6,
-                },
-                {
-                  label: 'Arizona',
-                  value: 7,
-                },
-                {
-                  label: 'Florida',
-                  value: 8,
-                },
-              ],
-            },
-            {
-              name: 'gender',
-              type: 'select',
-              textInputProps: {
-                label: 'Gender',
-                left: <TextInput.Icon name={'account'} />,
-              },
-              rules: {
-                required: {
-                  value: true,
-                  message: 'Gender is required',
-                },
-              },
-              options: [
-                {
-                  value: 0,
-                  label: 'Female',
-                },
-                {
-                  value: 1,
-                  label: 'Male',
-                },
-                {
-                  value: 2,
-                  label: 'Others',
-                },
-              ],
-            },
-            {
-              name: 'party',
-              type: 'select',
-              textInputProps: {
-                label: 'Party',
-                left: <TextInput.Icon name={'account'} />,
-              },
-              rules: {
-                required: {
-                  value: true,
-                  message: 'Party is required',
-                },
-              },
-              options: [
-                {
-                  value: 0,
-                  label: 'Independent',
-                },
-                {
-                  value: 1,
-                  label: 'Democrat',
-                },
-                {
-                  value: 2,
-                  label: 'Republican',
-                },
-              ],
-            },
-            {
-              name: 'rememberMe',
-              type: 'custom',
-              JSX: TermsCheckBox,
-            },
-          ]}
-        />
-        <Button mode={'contained'} onPress={handleSubmit(console.log)}>
-          Submit
-        </Button>
-      </ScrollView>
+            ]}
+          />
+          <Button mode={'contained'} onPress={handleSubmit(console.log)}>
+            Submit
+          </Button>
+        </ScrollView>
+      )}
     </View>
   );
 }
