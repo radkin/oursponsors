@@ -6476,6 +6476,11 @@ react-native-dotenv@^3.4.7:
   dependencies:
     dotenv "^16.0.3"
 
+react-native-dropdown-picker@^5.4.6:
+  version "5.4.6"
+  resolved "https://registry.yarnpkg.com/react-native-dropdown-picker/-/react-native-dropdown-picker-5.4.6.tgz#3736fc468de4a295e4df8d1f65ed2eadaf9b445f"
+  integrity sha512-T1XBHbE++M6aRU3wFYw3MvcOuabhWZ29RK/Ivdls2r1ZkZ62iEBZknLUPeVLMX3x6iUxj4Zgr3X2DGlEGXeHsA==
+
 react-native-flags@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-flags/-/react-native-flags-1.0.0.tgz#8bf99b58e125ca6057d7923549132b3579754ed3"
@@ -6496,11 +6501,6 @@ react-native-gradle-plugin@^0.71.13:
   version "0.71.13"
   resolved "https://registry.yarnpkg.com/react-native-gradle-plugin/-/react-native-gradle-plugin-0.71.13.tgz#6f60ff24ac712554903dfc0ae98475cb280c57a6"
   integrity sha512-C66LNZAXbU0YDRkWx8d/8kjesdu7fsUAc/3QPJNftSXKEvEtnFZK2aH/rIgu1s5dbTcE0fjhdVPNJMRIfKo61w==
-
-react-native-paper-form-builder@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-paper-form-builder/-/react-native-paper-form-builder-2.1.2.tgz#e44194946ee5e7c7ab8a8a051f3ceed3aa238c8e"
-  integrity sha512-BhnaVT51cTeNpRfUMNLRnY27tEgik4qZGHYtTctOPSK/E+2Oh3mdnDuVDOlVVkTurdjFMfUPehw9787XFRWyAg==
 
 react-native-paper-grid@^0.1.12:
   version "0.1.12"
