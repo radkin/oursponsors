@@ -60,7 +60,7 @@ function ProfileScreen({value}) {
               <TextInput
                 style={styles.text}
                 placeholder="Name"
-                defaultValue={value}
+                defaultValue={user.name}
                 onChangeText={v => onChange(v)}
               />
             </View>
@@ -85,7 +85,7 @@ function ProfileScreen({value}) {
               <TextInput
                 style={styles.text}
                 placeholder="Email"
-                defaultValue={value}
+                defaultValue={user.email}
                 onChangeText={v => onChange(v)}
               />
             </View>
@@ -117,7 +117,7 @@ function ProfileScreen({value}) {
               open={listOpen}
               setOpen={() => setListOpen(!listOpen)}
               items={listData}
-              value={value}
+              value={user.gender}
               setValue={item => onChange(item())}
             />
           )}
