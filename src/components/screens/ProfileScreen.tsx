@@ -1,11 +1,33 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {View, StyleSheet, ScrollView} from 'react-native';
 import {useController, useForm} from 'react-hook-form';
 import {Button, Checkbox, List, TextInput} from 'react-native-paper';
 import {FormBuilder} from 'react-native-paper-form-builder';
 import {LogicProps} from 'react-native-paper-form-builder/dist/Types/Types';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {connect} from 'react-redux';
+import {getUser} from '../../store/actions/userAction';
 
-function ProfileScreen({navigation}) {
+function ProfileScreen({value}) {
+  const dispatch = useAppDispatch();
+  const userObjectData = useAppSelector(state => state.userObject);
+  const {user} = userObjectData;
+
+  const [internalState, setInternalState] = useState(value);
+
+  const previousValueRef = useRef();
+  const previousValue = previousValueRef.current;
+  if (value !== previousValue && value !== internalState) {
+    setInternalState(value);
+  }
+
+  useEffect(() => {
+    previousValueRef.current = value;
+    dispatch(getUser());
+  }, [dispatch]);
+
+  console.log(user);
+
   const {control, setFocus, handleSubmit} = useForm({
     defaultValues: {
       firstName: '',
@@ -259,4 +281,13 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
 });
-export default ProfileScreen;
+
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
+const mapDispatchToProps = {
+  getUser,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen);

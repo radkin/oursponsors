@@ -5,6 +5,7 @@ import preferencesReducer from './preferencesReducer';
 import updatePreferencesReducer from './updatePreferencesReducer';
 import sectorReducer from './sectorReducer';
 import contributorReducer from "./contributorReducer";
+import userReducer from "./userReducer";
 
 export default combineReducers({
   senatorsList: senatorReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
   updatePreferences: updatePreferencesReducer,
   sectorsList: sectorReducer,
   contributorsList: contributorReducer,
+  userObject: userReducer,
 });
