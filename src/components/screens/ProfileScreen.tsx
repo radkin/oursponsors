@@ -21,6 +21,17 @@ const listData = [
   {label: 'Female', value: 'female'},
 ];
 
+const partyData = [
+  {label: 'Democrat', value: 'D'},
+  {label: 'Republican', value: 'R'},
+  {label: 'Independent', value: 'I'},
+];
+
+const stateData = [
+  {label: 'California', value: 'CA'},
+  {label: 'Alaska', value: 'AK'},
+];
+
 function ProfileScreen({value}) {
   const dispatch = useAppDispatch();
   const userObjectData = useAppSelector(state => state.userObject);
@@ -43,6 +54,9 @@ function ProfileScreen({value}) {
   }, [dispatch]);
 
   const [listOpen, setListOpen] = useState(false);
+  const [partyListOpen, setPartyListOpen] = useState(false);
+  const [stateListOpen, setStateListOpen] = useState(false);
+
   const {
     control,
     handleSubmit,
@@ -131,6 +145,60 @@ function ProfileScreen({value}) {
 
         {errors.gender?.message ? (
           <Text style={styles.errorText}>{errors.gender?.message}</Text>
+        ) : null}
+
+        <Controller
+          control={control}
+          name="party"
+          render={({field: {onChange, value}}) => (
+            <DropDownPicker
+              style={styles.dropdown}
+              placeholder="Select your party affiliation"
+              placeholderStyle={styles.dropdownPlaceholder}
+              open={partyListOpen}
+              setOpen={() => setPartyListOpen(!partyListOpen)}
+              items={partyData}
+              value={user.party}
+              setValue={item => onChange(item())}
+            />
+          )}
+          rules={{
+            required: {
+              value: true,
+              message: 'Please fill out all required fields.',
+            },
+          }}
+        />
+
+        {errors.party?.message ? (
+          <Text style={styles.errorText}>{errors.party?.message}</Text>
+        ) : null}
+
+        <Controller
+          control={control}
+          name="state"
+          render={({field: {onChange, value}}) => (
+            <DropDownPicker
+              style={styles.dropdown}
+              placeholder="Select your state of residence"
+              placeholderStyle={styles.dropdownPlaceholder}
+              open={stateListOpen}
+              setOpen={() => setStateListOpen(!stateListOpen)}
+              items={stateData}
+              value={user.state}
+              setValue={item => onChange(item())}
+            />
+          )}
+          rules={{
+            required: {
+              value: true,
+              message: 'Please fill out all required fields.',
+            },
+          }}
+        />
+
+        {errors.state?.message ? (
+          <Text style={styles.errorText}>{errors.state?.message}</Text>
         ) : null}
       </View>
 
