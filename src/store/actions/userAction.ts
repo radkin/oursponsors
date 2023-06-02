@@ -28,11 +28,10 @@ export const getUser = () => async dispatch => {
 export const updateUser = uProfile => async dispatch => {
   console.log('Updating user with');
   console.log(uProfile);
-  const data = {uProfile};
   const requestConfig: AxiosRequestConfig = {
     method: 'post',
     url: 'user/update_user',
-    data,
+    data: uProfile,
     headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
   };
   try {

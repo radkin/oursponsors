@@ -62,7 +62,7 @@ function ProfileScreen() {
         <TouchableOpacity
           style={styles.button}
           onPress={handleSubmit(formValue =>
-            Alert.alert('Form Value', JSON.stringify(formValue)),
+            dispatch(setUser(formValue)),
           )}>
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableOpacity>
