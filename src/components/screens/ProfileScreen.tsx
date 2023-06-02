@@ -1,38 +1,12 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  TextInput,
-  Text,
-  View,
-  TouchableOpacity,
-  Alert,
-} from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
+import React, { useEffect, useRef, useState } from "react";
 
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {connect} from 'react-redux';
-import {getUser} from '../../store/actions/userAction';
-import {useForm, Controller} from 'react-hook-form';
-// import { TextInput } from "react-native-paper";
+import {getUser, setUser} from '../../store/actions/userAction';
+import { View, SafeAreaView, StyleSheet, TextInput, Text, TouchableOpacity, Alert } from "react-native";
+import { Controller, useForm } from "react-hook-form";
 
-const listData = [
-  {label: 'Male', value: 'male'},
-  {label: 'Female', value: 'female'},
-];
-
-const partyData = [
-  {label: 'Democrat', value: 'D'},
-  {label: 'Republican', value: 'R'},
-  {label: 'Independent', value: 'I'},
-];
-
-const stateData = [
-  {label: 'California', value: 'CA'},
-  {label: 'Alaska', value: 'AK'},
-];
-
-function ProfileScreen({value}) {
+function ProfileScreen() {
   const dispatch = useAppDispatch();
   const userObjectData = useAppSelector(state => state.userObject);
   const {user} = userObjectData;
@@ -41,41 +15,32 @@ function ProfileScreen({value}) {
     dispatch(getUser());
   }, [dispatch]);
 
-  // sync state
-  const [internalState, setInternalState] = useState(value);
-  const previousValueRef = useRef();
-  const previousValue = previousValueRef.current;
-  if (value !== previousValue && value !== internalState) {
-    setInternalState(value);
-  }
-  useEffect(() => {
-    previousValueRef.current = value;
-    dispatch(getUser());
-  }, [dispatch]);
-
-  const [listOpen, setListOpen] = useState(false);
-  const [partyListOpen, setPartyListOpen] = useState(false);
-  const [stateListOpen, setStateListOpen] = useState(false);
-
   const {
     control,
     handleSubmit,
     formState: {errors},
   } = useForm();
 
+  console.log(user);
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
+
         <Controller
           control={control}
-          name="name"
+          name="first_name"
           render={({field: {onChange, value}}) => (
             <View style={styles.textBox}>
               <TextInput
-                style={styles.text}
-                placeholder="Name"
-                defaultValue={user.name}
-                onChangeText={v => onChange(v)}
+                editable
+                multiline
+                numberOfLines={4}
+                maxLength={40}
+                onChangeText={text => onChange(text)}
+                value={value}
+                defaultValue={user.first_name}
+                style={{padding: 10}}
               />
             </View>
           )}
@@ -91,115 +56,6 @@ function ProfileScreen({value}) {
           <Text style={styles.errorText}>{errors.name?.message}</Text>
         ) : null}
 
-        <Controller
-          control={control}
-          name="email"
-          render={({field: {onChange, value}}) => (
-            <View style={styles.textBox}>
-              <TextInput
-                style={styles.text}
-                placeholder="Email"
-                defaultValue={user.email}
-                onChangeText={v => onChange(v)}
-              />
-            </View>
-          )}
-          rules={{
-            required: {
-              value: true,
-              message: 'Please fill out all required fields.',
-            },
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: 'Please enter valid email.',
-            },
-          }}
-        />
-
-        {errors.email?.message ? (
-          <Text style={styles.errorText}>{errors.email?.message}</Text>
-        ) : null}
-
-        <Controller
-          control={control}
-          name="gender"
-          render={({field: {onChange, value}}) => (
-            <DropDownPicker
-              style={styles.dropdown}
-              placeholder="Select your gender"
-              placeholderStyle={styles.dropdownPlaceholder}
-              open={listOpen}
-              setOpen={() => setListOpen(!listOpen)}
-              items={listData}
-              value={user.gender}
-              setValue={item => onChange(item())}
-            />
-          )}
-          rules={{
-            required: {
-              value: true,
-              message: 'Please fill out all required fields.',
-            },
-          }}
-        />
-
-        {errors.gender?.message ? (
-          <Text style={styles.errorText}>{errors.gender?.message}</Text>
-        ) : null}
-
-        <Controller
-          control={control}
-          name="party"
-          render={({field: {onChange, value}}) => (
-            <DropDownPicker
-              style={styles.dropdown}
-              placeholder="Select your party affiliation"
-              placeholderStyle={styles.dropdownPlaceholder}
-              open={partyListOpen}
-              setOpen={() => setPartyListOpen(!partyListOpen)}
-              items={partyData}
-              value={user.party}
-              setValue={item => onChange(item())}
-            />
-          )}
-          rules={{
-            required: {
-              value: true,
-              message: 'Please fill out all required fields.',
-            },
-          }}
-        />
-
-        {errors.party?.message ? (
-          <Text style={styles.errorText}>{errors.party?.message}</Text>
-        ) : null}
-
-        <Controller
-          control={control}
-          name="state"
-          render={({field: {onChange, value}}) => (
-            <DropDownPicker
-              style={styles.dropdown}
-              placeholder="Select your state of residence"
-              placeholderStyle={styles.dropdownPlaceholder}
-              open={stateListOpen}
-              setOpen={() => setStateListOpen(!stateListOpen)}
-              items={stateData}
-              value={user.state}
-              setValue={item => onChange(item())}
-            />
-          )}
-          rules={{
-            required: {
-              value: true,
-              message: 'Please fill out all required fields.',
-            },
-          }}
-        />
-
-        {errors.state?.message ? (
-          <Text style={styles.errorText}>{errors.state?.message}</Text>
-        ) : null}
       </View>
 
       <View style={styles.container}>
@@ -211,8 +67,9 @@ function ProfileScreen({value}) {
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableOpacity>
       </View>
+
     </SafeAreaView>
-  );
+        );
 }
 
 const styles = StyleSheet.create({
