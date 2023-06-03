@@ -33,27 +33,86 @@ function ProfileScreen() {
           render={({field: {onChange, value}}) => (
             <View style={styles.textBox}>
               <TextInput
+                placeholder="First Name"
                 editable
-                multiline
-                numberOfLines={4}
-                maxLength={40}
+                numberOfLines={1}
+                maxLength={20}
                 onChangeText={text => onChange(text)}
                 value={value}
                 defaultValue={user.first_name}
-                style={{padding: 10}}
+                style={styles.textBox}
               />
             </View>
           )}
           rules={{
             required: {
-              value: true,
+              value: false,
               message: 'Please fill out all required fields.',
             },
           }}
         />
+        {errors.first_name?.message ? (
+          <Text style={styles.errorText}>{errors.first_name?.message}</Text>
+        ) : null}
 
-        {errors.name?.message ? (
-          <Text style={styles.errorText}>{errors.name?.message}</Text>
+        <Controller
+          control={control}
+          name="last_name"
+          render={({field: {onChange, value}}) => (
+            <View style={styles.textBox}>
+              <TextInput
+                placeholder="Last Name"
+                editable
+                numberOfLines={1}
+                maxLength={20}
+                onChangeText={text => onChange(text)}
+                value={value}
+                defaultValue={user.last_name}
+                style={styles.textBox}
+              />
+            </View>
+          )}
+          rules={{
+            required: {
+              value: false,
+              message: 'Please fill out all required fields.',
+            },
+          }}
+        />
+        {errors.last_name?.message ? (
+          <Text style={styles.errorText}>{errors.last_name?.message}</Text>
+        ) : null}
+
+        <Controller
+          control={control}
+          name="email"
+          render={({field: {onChange, value}}) => (
+            <View style={styles.textBox}>
+              <TextInput
+                placeholder="Email"
+                editable
+                numberOfLines={1}
+                maxLength={40}
+                onChangeText={text => onChange(text)}
+                value={value}
+                defaultValue={user.email}
+                style={styles.textBox}
+              />
+            </View>
+          )}
+          rules={{
+            required: {
+              value: false,
+              message: 'Please fill out all required fields.',
+            },
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: 'Please enter valid email.',
+            },
+          }}
+        />
+        {errors.email?.message ? (
+          <Text style={styles.errorText}>{errors.email?.message}</Text>
         ) : null}
 
       </View>
