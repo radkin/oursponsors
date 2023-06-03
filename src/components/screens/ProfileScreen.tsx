@@ -1,10 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {useEffect, useRef, useState} from 'react';
 
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {connect} from 'react-redux';
 import {getUser, setUser} from '../../store/actions/userAction';
-import { View, SafeAreaView, StyleSheet, TextInput, Text, TouchableOpacity, Alert } from "react-native";
-import { Controller, useForm } from "react-hook-form";
+import {
+  View,
+  SafeAreaView,
+  StyleSheet,
+  TextInput,
+  Text,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
+import {Controller, useForm} from 'react-hook-form';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 function ProfileScreen() {
   const dispatch = useAppDispatch();
@@ -15,6 +24,14 @@ function ProfileScreen() {
     dispatch(getUser());
   }, [dispatch]);
 
+  const [genderListOpen, setGenderListOpen] = useState(false);
+
+  const genderData = [
+    {label: 'Male', value: 'male'},
+    {label: 'Female', value: 'female'},
+    {label: 'Nonbinary', value: 'nonbinary'},
+  ];
+
   const {
     control,
     handleSubmit,
@@ -23,112 +40,135 @@ function ProfileScreen() {
 
   console.log(user);
 
-  return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
+  if (user) {
+    return (
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.container}>
+          <Controller
+            control={control}
+            name="first_name"
+            render={({field: {onChange, value}}) => (
+              <View style={styles.textBox}>
+                <TextInput
+                  placeholder="First Name"
+                  editable
+                  numberOfLines={1}
+                  maxLength={20}
+                  onChangeText={text => onChange(text)}
+                  value={value}
+                  defaultValue={user.first_name}
+                  style={styles.textBox}
+                />
+              </View>
+            )}
+            rules={{
+              required: {
+                value: false,
+                message: 'Please fill out all required fields.',
+              },
+            }}
+          />
+          {errors.first_name?.message ? (
+            <Text style={styles.errorText}>{errors.first_name?.message}</Text>
+          ) : null}
 
-        <Controller
-          control={control}
-          name="first_name"
-          render={({field: {onChange, value}}) => (
-            <View style={styles.textBox}>
-              <TextInput
-                placeholder="First Name"
-                editable
-                numberOfLines={1}
-                maxLength={20}
-                onChangeText={text => onChange(text)}
+          <Controller
+            control={control}
+            name="last_name"
+            render={({field: {onChange, value}}) => (
+              <View style={styles.textBox}>
+                <TextInput
+                  placeholder="Last Name"
+                  editable
+                  numberOfLines={1}
+                  maxLength={20}
+                  onChangeText={text => onChange(text)}
+                  value={value}
+                  defaultValue={user.last_name}
+                  style={styles.textBox}
+                />
+              </View>
+            )}
+            rules={{
+              required: {
+                value: false,
+                message: 'Please fill out all required fields.',
+              },
+            }}
+          />
+          {errors.last_name?.message ? (
+            <Text style={styles.errorText}>{errors.last_name?.message}</Text>
+          ) : null}
+
+          <Controller
+            control={control}
+            name="email"
+            render={({field: {onChange, value}}) => (
+              <View style={styles.textBox}>
+                <TextInput
+                  placeholder="Email"
+                  editable
+                  numberOfLines={1}
+                  maxLength={40}
+                  onChangeText={text => onChange(text)}
+                  value={value}
+                  defaultValue={user.email}
+                  style={styles.textBox}
+                />
+              </View>
+            )}
+            rules={{
+              required: {
+                value: false,
+                message: 'Please fill out all required fields.',
+              },
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Please enter valid email.',
+              },
+            }}
+          />
+          {errors.email?.message ? (
+            <Text style={styles.errorText}>{errors.email?.message}</Text>
+          ) : null}
+
+          <Controller
+            control={control}
+            name="gender"
+            render={({field: {onChange, value}}) => (
+              <DropDownPicker
+                style={styles.dropdown}
+                placeholder="Select your gender"
+                placeholderStyle={styles.dropdownPlaceholder}
+                open={genderListOpen}
+                setOpen={() => setGenderListOpen(!genderListOpen)}
+                items={genderData}
                 value={value}
-                defaultValue={user.first_name}
-                style={styles.textBox}
+                setValue={item => onChange(item())}
               />
-            </View>
-          )}
-          rules={{
-            required: {
-              value: false,
-              message: 'Please fill out all required fields.',
-            },
-          }}
-        />
-        {errors.first_name?.message ? (
-          <Text style={styles.errorText}>{errors.first_name?.message}</Text>
-        ) : null}
+            )}
+            rules={{
+              required: {
+                value: false,
+                message: 'Please fill out all required fields.',
+              },
+            }}
+          />
+          {errors.gender?.message ? (
+            <Text style={styles.errorText}>{errors.gender?.message}</Text>
+          ) : null}
+        </View>
 
-        <Controller
-          control={control}
-          name="last_name"
-          render={({field: {onChange, value}}) => (
-            <View style={styles.textBox}>
-              <TextInput
-                placeholder="Last Name"
-                editable
-                numberOfLines={1}
-                maxLength={20}
-                onChangeText={text => onChange(text)}
-                value={value}
-                defaultValue={user.last_name}
-                style={styles.textBox}
-              />
-            </View>
-          )}
-          rules={{
-            required: {
-              value: false,
-              message: 'Please fill out all required fields.',
-            },
-          }}
-        />
-        {errors.last_name?.message ? (
-          <Text style={styles.errorText}>{errors.last_name?.message}</Text>
-        ) : null}
-
-        <Controller
-          control={control}
-          name="email"
-          render={({field: {onChange, value}}) => (
-            <View style={styles.textBox}>
-              <TextInput
-                placeholder="Email"
-                editable
-                numberOfLines={1}
-                maxLength={40}
-                onChangeText={text => onChange(text)}
-                value={value}
-                defaultValue={user.email}
-                style={styles.textBox}
-              />
-            </View>
-          )}
-          rules={{
-            required: {
-              value: false,
-              message: 'Please fill out all required fields.',
-            },
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: 'Please enter valid email.',
-            },
-          }}
-        />
-        {errors.email?.message ? (
-          <Text style={styles.errorText}>{errors.email?.message}</Text>
-        ) : null}
-
-      </View>
-
-      <View style={styles.container}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={handleSubmit(formValue =>
-            dispatch(setUser(formValue)),
-          )}>
-          <Text style={styles.buttonText}>Submit</Text>
-        </TouchableOpacity>
-      </View>
-
-    </SafeAreaView>
-        );
+        <View style={styles.container}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={handleSubmit(formValue => dispatch(setUser(formValue)))}>
+            <Text style={styles.buttonText}>Submit</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
