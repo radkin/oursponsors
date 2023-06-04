@@ -17,3 +17,8 @@ export const GET_SECTORS = 'GET_SECTORS';
 export const SECTORS_ERROR = 'SECTORS_ERROR';
 export const GET_CONTRIBUTORS = 'GET_CONTRIBUTORS';
 export const CONTRIBUTORS_ERROR = 'CONTRIBUTORS_ERROR';
+// User
+export const GET_USER = 'GET_USER';
+export const USER_ERROR = 'USER_ERROR';
+
+export const UPDATE_USER = 'UPDATE_USER';

@@ -5,7 +5,7 @@ import {useAppDispatch, useAppSelector} from '../hooks';
 import {useEffect, useRef, useState} from 'react';
 import {getSectors} from '../store/actions/sectorAction';
 import {connect} from 'react-redux';
-import { scale } from "react-native-size-matters";
+import {scale} from 'react-native-size-matters';
 
 function RenderRepSectorsTable({value}) {
   const dispatch = useAppDispatch();

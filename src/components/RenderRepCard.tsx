@@ -1,10 +1,9 @@
 import {Avatar, Card, Provider, Text} from 'react-native-paper';
 import {StyleSheet} from 'react-native';
 import * as React from 'react';
-import { scale } from "react-native-size-matters";
+import {scale} from 'react-native-size-matters';
 
 function RenderRepCard({value}) {
-
   return (
     <Provider>
       <Card style={styles.card}>
@@ -57,14 +56,14 @@ const styles = StyleSheet.create({
   contentText: {
     fontSize: scale(13),
     lineHeight: scale(13) * 0.75,
-    paddingTop: scale(13) - (scale(13) * 0.75),
+    paddingTop: scale(13) - scale(13) * 0.75,
   },
   titleText: {
     paddingHorizontal: scale(158),
     fontSize: scale(15),
     fontWeight: 'bold',
     lineHeight: scale(15) * 0.75,
-    paddingTop: scale(15) - (scale(15) * 0.75),
+    paddingTop: scale(15) - scale(15) * 0.75,
     position: 'relative',
   },
   cardProfPic: {

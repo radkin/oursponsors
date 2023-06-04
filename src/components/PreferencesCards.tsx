@@ -10,7 +10,7 @@ import {
 } from '../store/actions/preferencesAction';
 import {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from '../hooks';
-import { scale } from "react-native-size-matters";
+import {scale} from 'react-native-size-matters';
 
 function PreferencesCards({setPreferences}) {
   const dispatch = useAppDispatch();
@@ -259,10 +259,7 @@ const styles = StyleSheet.create({
     paddingTop: scale(15),
     position: 'relative',
     top: '17%',
-    transform: [
-      {scaleX: scale(0.7)},
-      {scaleY: scale(0.7)},
-    ],
+    transform: [{scaleX: scale(0.7)}, {scaleY: scale(0.7)}],
   },
 });
 

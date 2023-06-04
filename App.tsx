@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, ParamListBase} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {useColorScheme} from 'react-native';
 import {Avatar, Provider as PaperProvider} from 'react-native-paper';
@@ -14,15 +14,17 @@ import {
   CongressScreen,
   SenatorsScreen,
   DetailsScreen,
+  ProfileScreen,
 } from './src/components/screens';
-import {
-  responsiveScreenFontSize,
-  responsiveScreenHeight,
-} from 'react-native-responsive-dimensions';
-import { scale } from "react-native-size-matters";
+import {scale} from 'react-native-size-matters';
+// import ScreenComponentType from "@react-navigation/core/lib/typescript/src/types";
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
+
+// interface AppProps {
+//   ProfileScreen: ScreenComponentType<ParamListBase, string | number>
+// }
 
 function App(): JSX.Element {
   useColorScheme() === 'dark';
@@ -109,7 +111,7 @@ function App(): JSX.Element {
                 headerTitleStyle: {
                   fontSize: scale(13),
                   lineHeight: scale(13) * 0.75,
-                  paddingTop: scale(13) - (scale(13) * 0.75),
+                  paddingTop: scale(13) - scale(13) * 0.75,
                 },
                 drawerLabelStyle: {
                   fontSize: scale(13),
@@ -123,7 +125,22 @@ function App(): JSX.Element {
                 headerTitleStyle: {
                   fontSize: scale(13),
                   lineHeight: scale(13) * 0.75,
-                  paddingTop: scale(13) - (scale(13) * 0.75),                },
+                  paddingTop: scale(13) - scale(13) * 0.75,
+                },
+                drawerLabelStyle: {
+                  fontSize: scale(13),
+                },
+              }}
+            />
+            <Drawer.Screen
+              name="Profile"
+              component={ProfileScreen}
+              options={{
+                headerTitleStyle: {
+                  fontSize: scale(13),
+                  lineHeight: scale(13) * 0.75,
+                  paddingTop: scale(13) - scale(13) * 0.75,
+                },
                 drawerLabelStyle: {
                   fontSize: scale(13),
                 },
