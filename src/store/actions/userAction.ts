@@ -3,6 +3,8 @@ import {INAJAR_TOKEN} from 'react-native-dotenv';
 
 import {GET_USER, USER_ERROR, UPDATE_USER} from '../types';
 import {performAxiosRequest} from '../../utils';
+import { getSenators } from "./senatorAction";
+import { getCongress } from "./congressAction";
 
 const requestConfig: AxiosRequestConfig = {
   method: 'get',
@@ -52,4 +54,6 @@ export const updateUser = uProfile => async dispatch => {
 export const setUser = uProfile => async dispatch => {
   await dispatch(updateUser(uProfile));
   await dispatch(getUser());
+  await dispatch(getSenators());
+  await dispatch(getCongress());
 };
