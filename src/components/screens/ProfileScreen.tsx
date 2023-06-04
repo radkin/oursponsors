@@ -36,6 +36,14 @@ function ProfileScreen() {
     {label: 'Independent', value: 'I'},
   ];
 
+  const getLabel = (myObjArray, value) => {
+    for (var i = 0; i < myObjArray.length; i++) {
+      if (myObjArray[i].value === value) {
+        return myObjArray[i].label;
+      }
+    }
+  };
+
   const {
     control,
     handleSubmit,
@@ -44,7 +52,7 @@ function ProfileScreen() {
 
   console.log(user);
 
-  if (user && user.state) {
+  if (user && user.party) {
     return (
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
@@ -196,6 +204,74 @@ function ProfileScreen() {
             <Text style={styles.errorText}>{errors.gender?.message}</Text>
           ) : null}
 
+          <Controller
+            control={control}
+            name="party"
+            render={({field: {onChange}}) => (
+              <ScrollView
+                showsVerticalScrollIndicator={false}
+                alwaysBounceVertical={false}
+                contentContainerStyle={styles.scrollViewContainer}>
+                <SelectDropdown
+                  data={partyData}
+                  defaultValue={{
+                    label: getLabel(partyData, user.party),
+                    value: user.party,
+                  }}
+                  onSelect={selectedItem => {
+                    onChange(selectedItem.value);
+                  }}
+                  defaultButtonText={'Select party'}
+                  buttonTextAfterSelection={(selectedItem, index) => {
+                    return selectedItem.label;
+                  }}
+                  rowTextForSelection={(item, index) => {
+                    return item;
+                  }}
+                  buttonStyle={styles.dropdown1BtnStyle}
+                  buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                  renderDropdownIcon={isOpened => {
+                    return (
+                      <FontAwesome
+                        name={isOpened ? 'chevron-up' : 'chevron-down'}
+                        color={'#444'}
+                        size={18}
+                      />
+                    );
+                  }}
+                  dropdownIconPosition={'right'}
+                  dropdownStyle={styles.dropdown3DropdownStyle}
+                  rowStyle={styles.dropdown3RowStyle}
+                  selectedRowStyle={styles.dropdown1SelectedRowStyle}
+                  renderCustomizedRowChild={(item, index) => {
+                    return (
+                      <View style={styles.dropdown3RowChildStyle}>
+                        <Text style={styles.dropdown3RowTxt}>{item.label}</Text>
+                      </View>
+                    );
+                  }}
+                  search
+                  searchInputStyle={styles.dropdown3searchInputStyleStyle}
+                  searchPlaceHolder={'Search here'}
+                  searchPlaceHolderColor={'#F8F8F8'}
+                  renderSearchInputLeftIcon={() => {
+                    return (
+                      <FontAwesome name={'search'} color={'#FFF'} size={18} />
+                    );
+                  }}
+                />
+              </ScrollView>
+            )}
+            rules={{
+              required: {
+                value: false,
+                message: 'Please fill out all required fields.',
+              },
+            }}
+          />
+          {errors.party?.message ? (
+            <Text style={styles.errorText}>{errors.party?.message}</Text>
+          ) : null}
         </View>
 
         <View style={styles.container}>
