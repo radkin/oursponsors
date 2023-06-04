@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {connect} from 'react-redux';
@@ -10,10 +10,14 @@ import {
   TextInput,
   Text,
   TouchableOpacity,
+  ScrollView,
   Alert,
 } from 'react-native';
 import {Controller, useForm} from 'react-hook-form';
-import DropDownPicker from 'react-native-dropdown-picker';
+import {stateList} from '../../StaticData/StateList';
+import SelectDropdown from 'react-native-select-dropdown';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import convertUsStateAbbrAndName from '../../ConvertUsStateAbbrAndName';
 
 function ProfileScreen() {
   const dispatch = useAppDispatch();
@@ -24,12 +28,12 @@ function ProfileScreen() {
     dispatch(getUser());
   }, [dispatch]);
 
-  const [genderListOpen, setGenderListOpen] = useState(false);
+  const genders = ['female', 'nonbinary', 'male'];
 
-  const genderData = [
-    {label: 'Male', value: 'male'},
-    {label: 'Female', value: 'female'},
-    {label: 'Nonbinary', value: 'nonbinary'},
+  const partyData = [
+    {label: 'Democrat', value: 'D'},
+    {label: 'Republican', value: 'R'},
+    {label: 'Independent', value: 'I'},
   ];
 
   const {
@@ -40,7 +44,7 @@ function ProfileScreen() {
 
   console.log(user);
 
-  if (user) {
+  if (user && user.state) {
     return (
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
@@ -135,17 +139,51 @@ function ProfileScreen() {
           <Controller
             control={control}
             name="gender"
-            render={({field: {onChange, value}}) => (
-              <DropDownPicker
-                style={styles.dropdown}
-                placeholder="Select your gender"
-                placeholderStyle={styles.dropdownPlaceholder}
-                open={genderListOpen}
-                setOpen={() => setGenderListOpen(!genderListOpen)}
-                items={genderData}
-                value={value}
-                setValue={item => onChange(item())}
-              />
+            render={({field: {onChange}}) => (
+              <ScrollView
+                showsVerticalScrollIndicator={false}
+                alwaysBounceVertical={false}
+                contentContainerStyle={styles.scrollViewContainer}>
+                <SelectDropdown
+                  data={genders}
+                  defaultValue={user.gender}
+                  onSelect={selectedItem => {
+                    onChange(selectedItem);
+                  }}
+                  defaultButtonText={'Gender'}
+                  buttonTextAfterSelection={(selectedItem, index) => {
+                    return selectedItem;
+                  }}
+                  rowTextForSelection={(item, index) => {
+                    return item;
+                  }}
+                  buttonStyle={styles.dropdown1BtnStyle}
+                  buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                  renderDropdownIcon={isOpened => {
+                    return (
+                      <FontAwesome
+                        name={isOpened ? 'chevron-up' : 'chevron-down'}
+                        color={'#444'}
+                        size={18}
+                      />
+                    );
+                  }}
+                  dropdownIconPosition={'right'}
+                  dropdownStyle={styles.dropdown1DropdownStyle}
+                  rowStyle={styles.dropdown1RowStyle}
+                  rowTextStyle={styles.dropdown1RowTxtStyle}
+                  selectedRowStyle={styles.dropdown1SelectedRowStyle}
+                  search
+                  searchInputStyle={styles.dropdown1searchInputStyleStyle}
+                  searchPlaceHolder={'Search here'}
+                  searchPlaceHolderColor={'darkgrey'}
+                  renderSearchInputLeftIcon={() => {
+                    return (
+                      <FontAwesome name={'search'} color={'#444'} size={18} />
+                    );
+                  }}
+                />
+              </ScrollView>
             )}
             rules={{
               required: {
@@ -157,6 +195,7 @@ function ProfileScreen() {
           {errors.gender?.message ? (
             <Text style={styles.errorText}>{errors.gender?.message}</Text>
           ) : null}
+
         </View>
 
         <View style={styles.container}>
