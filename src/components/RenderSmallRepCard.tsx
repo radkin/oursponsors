@@ -1,7 +1,7 @@
 import {Card, Provider, Text} from 'react-native-paper';
 import {StyleSheet} from 'react-native';
 import * as React from 'react';
-import { scale } from "react-native-size-matters";
+import {scale} from 'react-native-size-matters';
 
 function RenderSmallRepCard({value}) {
   return (
@@ -9,9 +9,7 @@ function RenderSmallRepCard({value}) {
       <Card style={styles.card}>
         <Card.Title
           style={styles.textContainer}
-          title={
-            `${value.first_name} ${value.last_name}`
-          }
+          title={`${value.first_name} ${value.last_name}`}
           titleStyle={styles.titleText}
         />
         <Card.Content style={styles.textContainer}>

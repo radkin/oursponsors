@@ -4,7 +4,7 @@ import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import RenderRepCard from './RenderRepCard';
 import * as React from 'react';
 import {useAppDispatch, useAppSelector} from '../hooks';
-import { scale } from "react-native-size-matters";
+import {scale} from 'react-native-size-matters';
 
 function RenderSenators(props) {
   const dispatch = useAppDispatch();

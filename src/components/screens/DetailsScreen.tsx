@@ -14,7 +14,7 @@ import ScrollView = Animated.ScrollView;
 import {getPreferences} from '../../store/actions/preferencesAction';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import RenderSmallRepCard from '../RenderSmallRepCard';
-import { scale } from "react-native-size-matters";
+import {scale} from 'react-native-size-matters';
 
 function DetailsScreen({route}) {
   const dispatch = useAppDispatch();
@@ -328,10 +328,7 @@ const styles = StyleSheet.create({
     left: scale(10),
     flexDirection: 'row',
     alignSelf: 'flex-start',
-    transform: [
-      {scaleX: scale(1)},
-      {scaleY: scale(1)},
-    ],
+    transform: [{scaleX: scale(1)}, {scaleY: scale(1)}],
   },
   surfaceText: {
     margin: scale(8),

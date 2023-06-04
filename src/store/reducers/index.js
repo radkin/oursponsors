@@ -4,8 +4,8 @@ import congressReducer from './congressReducer';
 import preferencesReducer from './preferencesReducer';
 import updatePreferencesReducer from './updatePreferencesReducer';
 import sectorReducer from './sectorReducer';
-import contributorReducer from "./contributorReducer";
-import userReducer from "./userReducer";
+import contributorReducer from './contributorReducer';
+import userReducer from './userReducer';
 
 export default combineReducers({
   senatorsList: senatorReducer,

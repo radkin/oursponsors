@@ -5,7 +5,7 @@ import {useAppDispatch, useAppSelector} from '../hooks';
 import {useEffect, useRef, useState} from 'react';
 import {getContributors} from '../store/actions/contributorAction';
 import {connect} from 'react-redux';
-import { scale } from "react-native-size-matters";
+import {scale} from 'react-native-size-matters';
 
 function RenderRepContributorsTable({value}) {
   const dispatch = useAppDispatch();
