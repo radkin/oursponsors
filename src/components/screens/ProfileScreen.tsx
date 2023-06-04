@@ -17,7 +17,6 @@ import {Controller, useForm} from 'react-hook-form';
 import {stateList} from '../../StaticData/StateList';
 import SelectDropdown from 'react-native-select-dropdown';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import convertUsStateAbbrAndName from '../../ConvertUsStateAbbrAndName';
 
 function ProfileScreen() {
   const dispatch = useAppDispatch();
@@ -35,6 +34,7 @@ function ProfileScreen() {
     {label: 'Republican', value: 'R'},
     {label: 'Independent', value: 'I'},
   ];
+
 
   const getLabel = (myObjArray, value) => {
     for (var i = 0; i < myObjArray.length; i++) {
@@ -272,6 +272,76 @@ function ProfileScreen() {
           {errors.party?.message ? (
             <Text style={styles.errorText}>{errors.party?.message}</Text>
           ) : null}
+
+          <Controller
+            control={control}
+            name="state"
+            render={({field: {onChange}}) => (
+              <ScrollView
+                showsVerticalScrollIndicator={false}
+                alwaysBounceVertical={false}
+                contentContainerStyle={styles.scrollViewContainer}>
+                <SelectDropdown
+                  data={stateList}
+                  defaultValue={{
+                    label: getLabel(stateList, user.state),
+                    value: user.state,
+                  }}
+                  onSelect={selectedItem => {
+                    onChange(selectedItem.value);
+                  }}
+                  defaultButtonText={'Select state'}
+                  buttonTextAfterSelection={(selectedItem, index) => {
+                    return selectedItem.label;
+                  }}
+                  rowTextForSelection={(item, index) => {
+                    return item;
+                  }}
+                  buttonStyle={styles.dropdown1BtnStyle}
+                  buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                  renderDropdownIcon={isOpened => {
+                    return (
+                      <FontAwesome
+                        name={isOpened ? 'chevron-up' : 'chevron-down'}
+                        color={'#444'}
+                        size={18}
+                      />
+                    );
+                  }}
+                  dropdownIconPosition={'right'}
+                  dropdownStyle={styles.dropdown3DropdownStyle}
+                  rowStyle={styles.dropdown3RowStyle}
+                  selectedRowStyle={styles.dropdown1SelectedRowStyle}
+                  renderCustomizedRowChild={(item, index) => {
+                    return (
+                      <View style={styles.dropdown3RowChildStyle}>
+                        <Text style={styles.dropdown3RowTxt}>{item.label}</Text>
+                      </View>
+                    );
+                  }}
+                  search
+                  searchInputStyle={styles.dropdown3searchInputStyleStyle}
+                  searchPlaceHolder={'Search here'}
+                  searchPlaceHolderColor={'#F8F8F8'}
+                  renderSearchInputLeftIcon={() => {
+                    return (
+                      <FontAwesome name={'search'} color={'#FFF'} size={18} />
+                    );
+                  }}
+                />
+              </ScrollView>
+            )}
+            rules={{
+              required: {
+                value: false,
+                message: 'Please fill out all required fields.',
+              },
+            }}
+          />
+          {errors.state?.message ? (
+            <Text style={styles.errorText}>{errors.state?.message}</Text>
+          ) : null}
+
         </View>
 
         <View style={styles.container}>
