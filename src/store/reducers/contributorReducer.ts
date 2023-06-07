@@ -8,7 +8,7 @@ const initialState = {
 
 type Action = {
   type: string;
-  payload?: [Contributor];
+  payload: [Contributor];
 };
 
 export default function (state = initialState, action: Action) {

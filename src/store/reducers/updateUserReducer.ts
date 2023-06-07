@@ -8,7 +8,7 @@ const initialState = {
 
 type Action = {
   type: string;
-  payload?: User;
+  payload: User;
 };
 
 export default function (state = initialState, action: Action) {

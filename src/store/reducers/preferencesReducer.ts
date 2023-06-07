@@ -13,7 +13,7 @@ const initialState = {
 
 type Action = {
   type: string;
-  payload?: [Preferences];
+  payload: [Preferences];
 };
 
 export default function (state = initialState, action: Action) {
