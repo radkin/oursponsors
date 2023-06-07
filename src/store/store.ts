@@ -1,5 +1,5 @@
-import {createStore, applyMiddleware} from 'redux';
-import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, Action } from "redux";
+import thunk, {ThunkAction} from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
 import rootReducer from './reducers';
@@ -18,5 +18,10 @@ const store = createStore(
 export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
-
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>;
 export default store;
