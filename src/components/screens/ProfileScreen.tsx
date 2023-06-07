@@ -42,18 +42,20 @@ function ProfileScreen() {
     }
   };
 
-  const methods = useForm({
-    defaultValues: user,
-  });
+  const {
+    control,
+    handleSubmit,
+    formState: {errors},
+  } = useForm();
 
   console.log(user);
 
-  if (user && user.party) {
+  if (user && user['party']) {
     return (
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
           <Controller
-            control={methods.control}
+            control={control}
             name="first_name"
             render={({field: {onChange, value}}) => (
               <View style={styles.textBox}>
@@ -64,7 +66,7 @@ function ProfileScreen() {
                   maxLength={20}
                   onChangeText={text => onChange(text)}
                   value={value}
-                  defaultValue={user.first_name}
+                  defaultValue={user['first_name']}
                   style={styles.textBox}
                 />
               </View>
@@ -76,9 +78,14 @@ function ProfileScreen() {
               },
             }}
           />
+          {errors.first_name?.message ? (
+            <Text style={styles.errorText}>
+              {errors['first_name']?.message}
+            </Text>
+          ) : null}
 
           <Controller
-            control={methods.control}
+            control={control}
             name="last_name"
             render={({field: {onChange, value}}) => (
               <View style={styles.textBox}>
@@ -89,7 +96,7 @@ function ProfileScreen() {
                   maxLength={20}
                   onChangeText={text => onChange(text)}
                   value={value}
-                  defaultValue={user.last_name}
+                  defaultValue={user['last_name']}
                   style={styles.textBox}
                 />
               </View>
@@ -101,9 +108,12 @@ function ProfileScreen() {
               },
             }}
           />
+          {errors.last_name?.message ? (
+            <Text style={styles.errorText}>{errors.last_name?.message}</Text>
+          ) : null}
 
           <Controller
-            control={methods.control}
+            control={control}
             name="email"
             render={({field: {onChange, value}}) => (
               <View style={styles.textBox}>
@@ -114,7 +124,7 @@ function ProfileScreen() {
                   maxLength={40}
                   onChangeText={text => onChange(text)}
                   value={value}
-                  defaultValue={user.email}
+                  defaultValue={user['email']}
                   style={styles.textBox}
                 />
               </View>
@@ -130,26 +140,29 @@ function ProfileScreen() {
               },
             }}
           />
+          {errors.email?.message ? (
+            <Text style={styles.errorText}>{errors.email?.message}</Text>
+          ) : null}
 
           <Controller
-            control={methods.control}
+            control={control}
             name="gender"
             render={({field: {onChange}}) => (
               <ScrollView
                 showsVerticalScrollIndicator={false}
                 alwaysBounceVertical={false}
-                contentContainerStyle={styles.scrollViewContainer}>
+                contentContainerStyle={styles.container}>
                 <SelectDropdown
                   data={genders}
-                  defaultValue={user.gender}
+                  defaultValue={user['gender']}
                   onSelect={selectedItem => {
                     onChange(selectedItem);
                   }}
                   defaultButtonText={'Gender'}
-                  buttonTextAfterSelection={(selectedItem, index) => {
+                  buttonTextAfterSelection={selectedItem => {
                     return selectedItem;
                   }}
-                  rowTextForSelection={(item, index) => {
+                  rowTextForSelection={item => {
                     return item;
                   }}
                   buttonStyle={styles.dropdown1BtnStyle}
@@ -187,29 +200,32 @@ function ProfileScreen() {
               },
             }}
           />
+          {errors.gender?.message ? (
+            <Text style={styles.errorText}>{errors.gender?.message}</Text>
+          ) : null}
 
           <Controller
-            control={methods.control}
+            control={control}
             name="party"
             render={({field: {onChange}}) => (
               <ScrollView
                 showsVerticalScrollIndicator={false}
                 alwaysBounceVertical={false}
-                contentContainerStyle={styles.scrollViewContainer}>
+                contentContainerStyle={styles.container}>
                 <SelectDropdown
                   data={partyData}
                   defaultValue={{
-                    label: getLabel(partyData, user.party),
-                    value: user.party,
+                    label: getLabel(partyData, user['party']),
+                    value: user['party'],
                   }}
                   onSelect={selectedItem => {
                     onChange(selectedItem.value);
                   }}
                   defaultButtonText={'Select party'}
-                  buttonTextAfterSelection={(selectedItem, index) => {
+                  buttonTextAfterSelection={selectedItem => {
                     return selectedItem.label;
                   }}
-                  rowTextForSelection={(item, index) => {
+                  rowTextForSelection={item => {
                     return item;
                   }}
                   buttonStyle={styles.dropdown1BtnStyle}
@@ -227,10 +243,12 @@ function ProfileScreen() {
                   dropdownStyle={styles.dropdown3DropdownStyle}
                   rowStyle={styles.dropdown3RowStyle}
                   selectedRowStyle={styles.dropdown1SelectedRowStyle}
-                  renderCustomizedRowChild={(item, index) => {
+                  renderCustomizedRowChild={item => {
                     return (
                       <View style={styles.dropdown3RowChildStyle}>
-                        <Text style={styles.dropdown3RowTxt}>{item.label}</Text>
+                        <Text style={styles.dropdown3RowTxt}>
+                          {item['label']}
+                        </Text>
                       </View>
                     );
                   }}
@@ -255,27 +273,27 @@ function ProfileScreen() {
           />
 
           <Controller
-            control={methods.control}
+            control={control}
             name="state"
             render={({field: {onChange}}) => (
               <ScrollView
                 showsVerticalScrollIndicator={false}
                 alwaysBounceVertical={false}
-                contentContainerStyle={styles.scrollViewContainer}>
+                contentContainerStyle={styles.container}>
                 <SelectDropdown
                   data={stateList}
                   defaultValue={{
-                    label: getLabel(stateList, user.state),
-                    value: user.state,
+                    label: getLabel(stateList, user['state']),
+                    value: user['state'],
                   }}
                   onSelect={selectedItem => {
                     onChange(selectedItem.value);
                   }}
                   defaultButtonText={'Select state'}
-                  buttonTextAfterSelection={(selectedItem, index) => {
+                  buttonTextAfterSelection={selectedItem => {
                     return selectedItem.label;
                   }}
-                  rowTextForSelection={(item, index) => {
+                  rowTextForSelection={item => {
                     return item;
                   }}
                   buttonStyle={styles.dropdown1BtnStyle}
@@ -293,10 +311,12 @@ function ProfileScreen() {
                   dropdownStyle={styles.dropdown3DropdownStyle}
                   rowStyle={styles.dropdown3RowStyle}
                   selectedRowStyle={styles.dropdown1SelectedRowStyle}
-                  renderCustomizedRowChild={(item, index) => {
+                  renderCustomizedRowChild={item => {
                     return (
                       <View style={styles.dropdown3RowChildStyle}>
-                        <Text style={styles.dropdown3RowTxt}>{item.label}</Text>
+                        <Text style={styles.dropdown3RowTxt}>
+                          {item['label']}
+                        </Text>
                       </View>
                     );
                   }}
@@ -324,11 +344,17 @@ function ProfileScreen() {
         <View style={styles.container}>
           <TouchableOpacity
             style={styles.button}
-            onPress={methods.handleSubmit(formValue => dispatch(setUser(formValue)))}>
+            onPress={handleSubmit(formValue => dispatch(setUser(formValue)))}>
             <Text style={styles.buttonText}>Submit</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
+    );
+  } else {
+    return (
+      <View>
+        <Text>Unable to display profile</Text>
+      </View>
     );
   }
 }
