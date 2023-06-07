@@ -42,11 +42,9 @@ function ProfileScreen() {
     }
   };
 
-  const {
-    control,
-    handleSubmit,
-    formState: {errors},
-  } = useForm();
+  const methods = useForm({
+    defaultValues: user,
+  });
 
   console.log(user);
 
@@ -55,7 +53,7 @@ function ProfileScreen() {
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
           <Controller
-            control={control}
+            control={methods.control}
             name="first_name"
             render={({field: {onChange, value}}) => (
               <View style={styles.textBox}>
@@ -78,12 +76,9 @@ function ProfileScreen() {
               },
             }}
           />
-          {errors.first_name?.message ? (
-            <Text style={styles.errorText}>{errors.first_name?.message}</Text>
-          ) : null}
 
           <Controller
-            control={control}
+            control={methods.control}
             name="last_name"
             render={({field: {onChange, value}}) => (
               <View style={styles.textBox}>
@@ -106,12 +101,9 @@ function ProfileScreen() {
               },
             }}
           />
-          {errors.last_name?.message ? (
-            <Text style={styles.errorText}>{errors.last_name?.message}</Text>
-          ) : null}
 
           <Controller
-            control={control}
+            control={methods.control}
             name="email"
             render={({field: {onChange, value}}) => (
               <View style={styles.textBox}>
@@ -138,12 +130,9 @@ function ProfileScreen() {
               },
             }}
           />
-          {errors.email?.message ? (
-            <Text style={styles.errorText}>{errors.email?.message}</Text>
-          ) : null}
 
           <Controller
-            control={control}
+            control={methods.control}
             name="gender"
             render={({field: {onChange}}) => (
               <ScrollView
@@ -198,12 +187,9 @@ function ProfileScreen() {
               },
             }}
           />
-          {errors.gender?.message ? (
-            <Text style={styles.errorText}>{errors.gender?.message}</Text>
-          ) : null}
 
           <Controller
-            control={control}
+            control={methods.control}
             name="party"
             render={({field: {onChange}}) => (
               <ScrollView
@@ -269,7 +255,7 @@ function ProfileScreen() {
           />
 
           <Controller
-            control={control}
+            control={methods.control}
             name="state"
             render={({field: {onChange}}) => (
               <ScrollView
@@ -338,7 +324,7 @@ function ProfileScreen() {
         <View style={styles.container}>
           <TouchableOpacity
             style={styles.button}
-            onPress={handleSubmit(formValue => dispatch(setUser(formValue)))}>
+            onPress={methods.handleSubmit(formValue => dispatch(setUser(formValue)))}>
             <Text style={styles.buttonText}>Submit</Text>
           </TouchableOpacity>
         </View>
