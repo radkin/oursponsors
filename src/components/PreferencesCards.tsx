@@ -39,7 +39,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Content style={styles.cardContent}>
             <Switch
               style={styles.cardSwitchStyle}
-              value={preferences.my_state_only}
+              value={preferences['my_state_only']}
               onValueChange={value => setPreferences('my_state_only', value)}
             />
           </Card.Content>
@@ -54,7 +54,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Content style={styles.cardContent}>
             <Switch
               style={styles.cardSwitchStyle}
-              value={preferences.my_party_only}
+              value={preferences['my_party_only']}
               onValueChange={value => setPreferences('my_party_only', value)}
             />
           </Card.Content>
@@ -75,7 +75,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Content style={styles.cardContent}>
             <Switch
               style={styles.cardSwitchStyle}
-              value={preferences.twitter_hide}
+              value={preferences['twitter_hide']}
               onValueChange={value => setPreferences('twitter_hide', value)}
             />
           </Card.Content>
@@ -90,7 +90,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Content style={styles.cardContent}>
             <Switch
               style={styles.cardSwitchStyle}
-              value={preferences.facebook_hide}
+              value={preferences['facebook_hide']}
               onValueChange={value => setPreferences('facebook_hide', value)}
             />
           </Card.Content>
@@ -105,7 +105,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Content style={styles.cardContent}>
             <Switch
               style={styles.cardSwitchStyle}
-              value={preferences.youtube_hide}
+              value={preferences['youtube_hide']}
               onValueChange={value => setPreferences('youtube_hide', value)}
             />
           </Card.Content>
@@ -120,7 +120,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Content style={styles.cardContent}>
             <Switch
               style={styles.cardSwitchStyle}
-              value={preferences.google_entity_hide}
+              value={preferences['google_entity_hide']}
               onValueChange={value =>
                 setPreferences('google_entity_hide', value)
               }
@@ -137,7 +137,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Content style={styles.cardContent}>
             <Switch
               style={styles.cardSwitchStyle}
-              value={preferences.cspan_hide}
+              value={preferences['cspan_hide']}
               onValueChange={value => setPreferences('cspan_hide', value)}
             />
           </Card.Content>
@@ -152,7 +152,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Content style={styles.cardContent}>
             <Switch
               style={styles.cardSwitchStyle}
-              value={preferences.gov_track_hide}
+              value={preferences['gov_track_hide']}
               onValueChange={value => setPreferences('gov_track_hide', value)}
             />
           </Card.Content>
@@ -167,7 +167,7 @@ function PreferencesCards({setPreferences}) {
           <Card.Content style={styles.cardContent}>
             <Switch
               style={styles.cardSwitchStyle}
-              value={preferences.open_secrets_hide}
+              value={preferences['open_secrets_hide']}
               onValueChange={value =>
                 setPreferences('open_secrets_hide', value)
               }

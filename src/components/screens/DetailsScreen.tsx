@@ -42,7 +42,7 @@ function DetailsScreen({route}) {
 
       <ScrollView style={{paddingTop: scale(5)}}>
         <View>
-          {value.twitter_account && !preferences.twitter_hide && (
+          {value.twitter_account && !preferences['twitter_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -61,7 +61,7 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.facebook_account && !preferences.facebook_hide && (
+          {value.facebook_account && !preferences['facebook_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -80,7 +80,7 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.youtube_account && !preferences.youtube_hide && (
+          {value.youtube_account && !preferences['youtube_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -101,7 +101,7 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.google_entity_id && !preferences.google_entity_hide && (
+          {value.google_entity_id && !preferences['google_entity_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -122,7 +122,7 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.cspan_id && !preferences.cspan_hide && (
+          {value.cspan_id && !preferences['cspan_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -141,7 +141,7 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.votesmart_id && !preferences.vote_smart_hide && (
+          {value.votesmart_id && !preferences['vote_smart_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -160,7 +160,7 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.govtrack_id && !preferences.gov_track_hide && (
+          {value.govtrack_id && !preferences['gov_track_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -179,7 +179,7 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.crp_id && !preferences.open_secrets_hide && (
+          {value.crp_id && !preferences['open_secrets_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -198,7 +198,7 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.icpsr_id && !preferences.vote_view_hide && (
+          {value.icpsr_id && !preferences['vote_view_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -217,7 +217,7 @@ function DetailsScreen({route}) {
               </TouchableOpacity>
             </Surface>
           )}
-          {value.fec_candidate_id && !preferences.fec_hide && (
+          {value.fec_candidate_id && !preferences['fec_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
