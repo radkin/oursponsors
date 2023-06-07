@@ -3,8 +3,8 @@ import {INAJAR_TOKEN} from 'react-native-dotenv';
 
 import {GET_USER, USER_ERROR, UPDATE_USER} from '../types';
 import {performAxiosRequest} from '../../utils';
-import { getSenators } from "./senatorAction";
-import { getCongress } from "./congressAction";
+import {getSenators} from './senatorAction';
+import {getCongress} from './congressAction';
 
 const requestConfig: AxiosRequestConfig = {
   method: 'get',
