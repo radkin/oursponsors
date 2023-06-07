@@ -4,13 +4,19 @@ import {
   UPDATE_PREFERENCES,
   UPDATE_PREFERENCES_ERROR,
 } from '../types';
+import {Preferences} from '../../models/Preferences';
 
 const initialState = {
-  preferences: [],
+  preferences: [] as Preferences[],
   loading: true,
 };
 
-export default function (state = initialState, action) {
+type Action = {
+  type: string;
+  payload?: [Preferences];
+};
+
+export default function (state = initialState, action: Action) {
   switch (action.type) {
     case GET_PREFERENCES:
       return {

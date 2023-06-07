@@ -1,11 +1,17 @@
 import {GET_CONTRIBUTORS, CONTRIBUTORS_ERROR} from '../types';
+import {Contributor} from '../../models/Contributor';
 
 const initialState = {
-  contributors: [],
+  contributors: [] as Contributor[],
   loading: true,
 };
 
-export default function (state = initialState, action) {
+type Action = {
+  type: string;
+  payload?: [Contributor];
+};
+
+export default function (state = initialState, action: Action) {
   switch (action.type) {
     case GET_CONTRIBUTORS:
       return {

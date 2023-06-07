@@ -1,11 +1,17 @@
 import {GET_SECTORS, SECTORS_ERROR} from '../types';
+import {Sector} from '../../models/Sector';
 
 const initialState = {
-  sectors: [],
+  sectors: [] as Sector[],
   loading: true,
 };
 
-export default function (state = initialState, action) {
+type Action = {
+  type: string;
+  payload?: [Sector];
+};
+
+export default function (state = initialState, action: Action) {
   switch (action.type) {
     case GET_SECTORS:
       return {

@@ -1,11 +1,17 @@
 import {GET_CONGRESS, CONGRESS_ERROR} from '../types';
+import {Congress} from '../../models/Congress';
 
 const initialState = {
-  congress: [],
+  congress: [] as Congress[],
   loading: true,
 };
 
-export default function (state = initialState, action) {
+type Action = {
+  type: string;
+  payload?: [Congress];
+};
+
+export default function (state = initialState, action: Action) {
   switch (action.type) {
     case GET_CONGRESS:
       return {

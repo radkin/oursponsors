@@ -1,11 +1,17 @@
 import {UPDATE_USER, USER_ERROR} from '../types';
+import {User} from '../../models/User';
 
 const initialState = {
-  user: {},
+  user: {} as User,
   loading: true,
 };
 
-export default function (state = initialState, action) {
+type Action = {
+  type: string;
+  payload?: User;
+};
+
+export default function (state = initialState, action: Action) {
   switch (action.type) {
     case UPDATE_USER:
       return {
