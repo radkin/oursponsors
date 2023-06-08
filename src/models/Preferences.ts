@@ -1,27 +1,22 @@
-export class Preferences {
-  constructor(
-    public id: number,
-    public my_state_only: boolean,
-    public my_party_only: boolean,
-    public twitter_hide: boolean,
-    public facebook_hide: boolean,
-    public youtube_hide: boolean,
-    public google_entity_hide: boolean,
-    public cspan_hide: boolean,
-    public gov_track_hide: boolean,
-    public open_secrets_hide: boolean,
-
-  ) {}
+export interface Preferences {
+  id: number;
+  my_state_only: boolean;
+  my_party_only: boolean;
+  twitter_hide: boolean;
+  facebook_hide: boolean;
+  youtube_hide: boolean;
+  google_entity_hide: boolean;
+  cspan_hide: boolean;
+  gov_track_hide: boolean;
+  open_secrets_hide: boolean;
 }
 
 /*
-
 ToDo: add these when bug is fixed
-     public vote_view_hide: boolean,
-    public fec_hide: boolean,
-    public vote_smart_hide: boolean,
+     vote_view_hide: boolean,
+    fec_hide: boolean,
+    vote_smart_hide: boolean,
 
-    public user_id: string,
-    public my_county_only: boolean,
-
+    user_id: string,
+    my_county_only: boolean,
  */

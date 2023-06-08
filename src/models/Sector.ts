@@ -1,11 +1,9 @@
-export class Sector {
-  constructor(
-    public sector_name: string,
-    public sectorid: string,
-    public indivs: string,
-    public pacs: string,
-    public total: number,
-    public cycle: number,
-    public cid: string,
-  ) {}
+export interface Sector {
+  sector_name: string;
+  sectorid: string;
+  indivs: string;
+  pacs: string;
+  total: number;
+  cycle: number;
+  cid: string;
 }

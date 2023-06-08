@@ -1,10 +1,8 @@
-export class Contributor {
-  constructor(
-    public cid: string,
-    public cycle: number,
-    public org_name: string,
-    public total: number,
-    public pacs: number,
-    public indivs: number,
-  ) {}
+export interface Contributor {
+  cid: string;
+  cycle: number;
+  org_name: string;
+  total: number;
+  pacs: number;
+  indivs: number;
 }

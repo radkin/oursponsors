@@ -1,20 +1,23 @@
-export class Senator {
-  constructor(
-    public id: number,
-    public proPublicaId: string,
-    public title: string,
-    public shortTitle: string,
-    public apiUrl: string,
-    public firstName: string,
-    public middleName: string,
-    public lastName: string,
-    public suffix: string,
-    public dateOfBirth: string,
-    public gender: string,
-    public party: string,
-    public leadershipRole: string,
-    public twitterAccount: string,
-    public facebookAccount,
+export interface Senator {
+  id: number;
+  proPublicaId: string;
+  title: string;
+  shortTitle: string;
+  apiUrl: string;
+  firstName: string;
+  middleName: string;
+  lastName: string;
+  suffix: string;
+  dateOfBirth: string;
+  gender: string;
+  party: string;
+  leadershipRole: string;
+  twitterAccount: string;
+  facebookAccount: string;
+}
+
+/*
+ToDo: Add partisan politics related numbers
     youtubeAccount: string,
     govtrackId: number,
     cspanId: number,
@@ -48,5 +51,4 @@ export class Senator {
     votesWithPartyPct: number,
     votesAgainstPartyPct: number,
     imageUrl: string,
-  ) {}
-}
+ */
