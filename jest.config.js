@@ -14,5 +14,8 @@ module.exports = {
       },
     ],
   },
+  transformIgnorePatterns: [
+    '/node_modules/(?!(@react-native|react-native|react-native-size-matters)/).*/',
+  ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 };

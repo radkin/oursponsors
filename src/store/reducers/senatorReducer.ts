@@ -1,11 +1,17 @@
 import {GET_SENATORS, SENATORS_ERROR} from '../types';
+import {Senator} from '../../models/Senator';
 
 const initialState = {
-  senators: [],
+  senators: [] as Senator[],
   loading: true,
 };
 
-export default function (state = initialState, action) {
+type Action = {
+  type: string;
+  payload: [Senator];
+};
+
+export default function (state = initialState, action: Action) {
   switch (action.type) {
     case GET_SENATORS:
       return {

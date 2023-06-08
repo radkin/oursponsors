@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavigationContainer, ParamListBase} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {useColorScheme} from 'react-native';
 import {Avatar, Provider as PaperProvider} from 'react-native-paper';

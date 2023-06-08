@@ -1,15 +1,17 @@
 import {DataTable, Provider, Surface} from 'react-native-paper';
 import {FlatList, StyleSheet} from 'react-native';
 import * as React from 'react';
-import {useAppDispatch, useAppSelector} from '../hooks';
 import {useEffect, useRef, useState} from 'react';
 import {getContributors} from '../store/actions/contributorAction';
 import {connect} from 'react-redux';
 import {scale} from 'react-native-size-matters';
+import { useTypedDispatch, useTypedSelector } from "../store/store";
 
 function RenderRepContributorsTable({value}) {
-  const dispatch = useAppDispatch();
-  const contributorsListData = useAppSelector(state => state.contributorsList);
+  const dispatch = useTypedDispatch();
+  const contributorsListData = useTypedSelector(
+    state => state.contributorsList,
+  );
   const {contributors} = contributorsListData;
 
   const [internalState, setInternalState] = useState(value);

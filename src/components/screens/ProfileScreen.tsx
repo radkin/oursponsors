@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 
-import {useAppDispatch, useAppSelector} from '../../hooks';
 import {connect} from 'react-redux';
 import {getUser, setUser} from '../../store/actions/userAction';
 import {
@@ -16,10 +15,11 @@ import {Controller, useForm} from 'react-hook-form';
 import {stateList} from '../../StaticData/StateList';
 import SelectDropdown from 'react-native-select-dropdown';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {useTypedDispatch, useTypedSelector} from '../../store/store';
 
 function ProfileScreen() {
-  const dispatch = useAppDispatch();
-  const userObjectData = useAppSelector(state => state.userObject);
+  const dispatch = useTypedDispatch();
+  const userObjectData = useTypedSelector(state => state.userObject);
   const {user} = userObjectData;
 
   useEffect(() => {
@@ -50,7 +50,7 @@ function ProfileScreen() {
 
   console.log(user);
 
-  if (user && user.party) {
+  if (user && user['party']) {
     return (
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
@@ -66,7 +66,7 @@ function ProfileScreen() {
                   maxLength={20}
                   onChangeText={text => onChange(text)}
                   value={value}
-                  defaultValue={user.first_name}
+                  defaultValue={user['first_name']}
                   style={styles.textBox}
                 />
               </View>
@@ -79,7 +79,9 @@ function ProfileScreen() {
             }}
           />
           {errors.first_name?.message ? (
-            <Text style={styles.errorText}>{errors.first_name?.message}</Text>
+            <Text style={styles.errorText}>
+              {errors['first_name']?.message}
+            </Text>
           ) : null}
 
           <Controller
@@ -94,7 +96,7 @@ function ProfileScreen() {
                   maxLength={20}
                   onChangeText={text => onChange(text)}
                   value={value}
-                  defaultValue={user.last_name}
+                  defaultValue={user['last_name']}
                   style={styles.textBox}
                 />
               </View>
@@ -122,7 +124,7 @@ function ProfileScreen() {
                   maxLength={40}
                   onChangeText={text => onChange(text)}
                   value={value}
-                  defaultValue={user.email}
+                  defaultValue={user['email']}
                   style={styles.textBox}
                 />
               </View>
@@ -149,18 +151,18 @@ function ProfileScreen() {
               <ScrollView
                 showsVerticalScrollIndicator={false}
                 alwaysBounceVertical={false}
-                contentContainerStyle={styles.scrollViewContainer}>
+                contentContainerStyle={styles.container}>
                 <SelectDropdown
                   data={genders}
-                  defaultValue={user.gender}
+                  defaultValue={user['gender']}
                   onSelect={selectedItem => {
                     onChange(selectedItem);
                   }}
                   defaultButtonText={'Gender'}
-                  buttonTextAfterSelection={(selectedItem, index) => {
+                  buttonTextAfterSelection={selectedItem => {
                     return selectedItem;
                   }}
-                  rowTextForSelection={(item, index) => {
+                  rowTextForSelection={item => {
                     return item;
                   }}
                   buttonStyle={styles.dropdown1BtnStyle}
@@ -209,21 +211,21 @@ function ProfileScreen() {
               <ScrollView
                 showsVerticalScrollIndicator={false}
                 alwaysBounceVertical={false}
-                contentContainerStyle={styles.scrollViewContainer}>
+                contentContainerStyle={styles.container}>
                 <SelectDropdown
                   data={partyData}
                   defaultValue={{
-                    label: getLabel(partyData, user.party),
-                    value: user.party,
+                    label: getLabel(partyData, user['party']),
+                    value: user['party'],
                   }}
                   onSelect={selectedItem => {
                     onChange(selectedItem.value);
                   }}
                   defaultButtonText={'Select party'}
-                  buttonTextAfterSelection={(selectedItem, index) => {
+                  buttonTextAfterSelection={selectedItem => {
                     return selectedItem.label;
                   }}
-                  rowTextForSelection={(item, index) => {
+                  rowTextForSelection={item => {
                     return item;
                   }}
                   buttonStyle={styles.dropdown1BtnStyle}
@@ -241,10 +243,12 @@ function ProfileScreen() {
                   dropdownStyle={styles.dropdown3DropdownStyle}
                   rowStyle={styles.dropdown3RowStyle}
                   selectedRowStyle={styles.dropdown1SelectedRowStyle}
-                  renderCustomizedRowChild={(item, index) => {
+                  renderCustomizedRowChild={item => {
                     return (
                       <View style={styles.dropdown3RowChildStyle}>
-                        <Text style={styles.dropdown3RowTxt}>{item.label}</Text>
+                        <Text style={styles.dropdown3RowTxt}>
+                          {item['label']}
+                        </Text>
                       </View>
                     );
                   }}
@@ -275,21 +279,21 @@ function ProfileScreen() {
               <ScrollView
                 showsVerticalScrollIndicator={false}
                 alwaysBounceVertical={false}
-                contentContainerStyle={styles.scrollViewContainer}>
+                contentContainerStyle={styles.container}>
                 <SelectDropdown
                   data={stateList}
                   defaultValue={{
-                    label: getLabel(stateList, user.state),
-                    value: user.state,
+                    label: getLabel(stateList, user['state']),
+                    value: user['state'],
                   }}
                   onSelect={selectedItem => {
                     onChange(selectedItem.value);
                   }}
                   defaultButtonText={'Select state'}
-                  buttonTextAfterSelection={(selectedItem, index) => {
+                  buttonTextAfterSelection={selectedItem => {
                     return selectedItem.label;
                   }}
-                  rowTextForSelection={(item, index) => {
+                  rowTextForSelection={item => {
                     return item;
                   }}
                   buttonStyle={styles.dropdown1BtnStyle}
@@ -307,10 +311,12 @@ function ProfileScreen() {
                   dropdownStyle={styles.dropdown3DropdownStyle}
                   rowStyle={styles.dropdown3RowStyle}
                   selectedRowStyle={styles.dropdown1SelectedRowStyle}
-                  renderCustomizedRowChild={(item, index) => {
+                  renderCustomizedRowChild={item => {
                     return (
                       <View style={styles.dropdown3RowChildStyle}>
-                        <Text style={styles.dropdown3RowTxt}>{item.label}</Text>
+                        <Text style={styles.dropdown3RowTxt}>
+                          {item['label']}
+                        </Text>
                       </View>
                     );
                   }}
@@ -343,6 +349,12 @@ function ProfileScreen() {
           </TouchableOpacity>
         </View>
       </SafeAreaView>
+    );
+  } else {
+    return (
+      <View>
+        <Text>Unable to display profile</Text>
+      </View>
     );
   }
 }

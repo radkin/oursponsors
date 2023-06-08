@@ -3,12 +3,12 @@ import {getCongress} from '../store/actions/congressAction';
 import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import RenderRepCard from './RenderRepCard';
 import * as React from 'react';
-import {useAppDispatch, useAppSelector} from '../hooks';
 import {scale} from 'react-native-size-matters';
+import { useTypedDispatch, useTypedSelector } from "../store/store";
 
 function RenderCongress(props) {
-  const dispatch = useAppDispatch();
-  const congressListData = useAppSelector(state => state.congressList);
+  const dispatch = useTypedDispatch();
+  const congressListData = useTypedSelector(state => state.congressList);
   const {congress} = congressListData;
 
   useEffect(() => {

@@ -1,9 +1,6 @@
 // Senate
 export const GET_SENATORS = 'GET_SENATORS';
 export const SENATORS_ERROR = 'SENATORS_ERROR';
-export const GET_SENATORS_BY_STATE = 'GET_SENATORS_BY_STATE';
-export const SENATORS_BY_STATE_ERROR = 'GET_SENATORS_BY_STATE_ERROR';
-
 // Congress
 export const GET_CONGRESS = 'GET_CONGRESS';
 export const CONGRESS_ERROR = 'CONGRESS_ERROR';
@@ -20,5 +17,4 @@ export const CONTRIBUTORS_ERROR = 'CONTRIBUTORS_ERROR';
 // User
 export const GET_USER = 'GET_USER';
 export const USER_ERROR = 'USER_ERROR';
-
 export const UPDATE_USER = 'UPDATE_USER';

@@ -1,4 +1,4 @@
-import {Avatar, Card, Provider, Text} from 'react-native-paper';
+import {Card, Provider, Text} from 'react-native-paper';
 import {StyleSheet} from 'react-native';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';

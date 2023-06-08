@@ -3,12 +3,12 @@ import {getSenators} from '../store/actions/senatorAction';
 import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import RenderRepCard from './RenderRepCard';
 import * as React from 'react';
-import {useAppDispatch, useAppSelector} from '../hooks';
 import {scale} from 'react-native-size-matters';
+import { useTypedDispatch, useTypedSelector } from "../store/store";
 
 function RenderSenators(props) {
-  const dispatch = useAppDispatch();
-  const senatorsListData = useAppSelector(state => state.senatorsList);
+  const dispatch = useTypedDispatch();
+  const senatorsListData = useTypedSelector(state => state.senatorsList);
   const {senators} = senatorsListData;
 
   useEffect(() => {
