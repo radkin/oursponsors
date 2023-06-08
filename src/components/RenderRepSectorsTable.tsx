@@ -1,15 +1,15 @@
 import {DataTable, Provider, Surface} from 'react-native-paper';
 import {FlatList, StyleSheet} from 'react-native';
 import * as React from 'react';
-import {useAppDispatch, useAppSelector} from '../hooks';
 import {useEffect, useRef, useState} from 'react';
 import {getSectors} from '../store/actions/sectorAction';
 import {connect} from 'react-redux';
 import {scale} from 'react-native-size-matters';
+import { useTypedDispatch, useTypedSelector } from "../store/store";
 
 function RenderRepSectorsTable({value}) {
-  const dispatch = useAppDispatch();
-  const sectorsListData = useAppSelector(state => state.sectorsList);
+  const dispatch = useTypedDispatch();
+  const sectorsListData = useTypedSelector(state => state.sectorsList);
   const {sectors} = sectorsListData;
 
   const [internalState, setInternalState] = useState(value);

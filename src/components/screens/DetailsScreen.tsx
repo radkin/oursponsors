@@ -12,13 +12,13 @@ import RenderRepDetailsTable from '../RenderRepSectorsTable';
 import RenderRepContributorsTable from '../RenderRepContributorsTable';
 import ScrollView = Animated.ScrollView;
 import {getPreferences} from '../../store/actions/preferencesAction';
-import {useAppDispatch, useAppSelector} from '../../hooks';
 import RenderSmallRepCard from '../RenderSmallRepCard';
 import {scale} from 'react-native-size-matters';
+import { useTypedDispatch, useTypedSelector } from "../../store/store";
 
 function DetailsScreen({route}) {
-  const dispatch = useAppDispatch();
-  const preferencesListData = useAppSelector(state => state.preferencesList);
+  const dispatch = useTypedDispatch();
+  const preferencesListData = useTypedSelector(state => state.preferencesList);
   const {preferences} = preferencesListData;
 
   useEffect(() => {

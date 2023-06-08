@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 
-import {useAppDispatch, useAppSelector} from '../../hooks';
 import {connect} from 'react-redux';
 import {getUser, setUser} from '../../store/actions/userAction';
 import {
@@ -16,10 +15,11 @@ import {Controller, useForm} from 'react-hook-form';
 import {stateList} from '../../StaticData/StateList';
 import SelectDropdown from 'react-native-select-dropdown';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {useTypedDispatch, useTypedSelector} from '../../store/store';
 
 function ProfileScreen() {
-  const dispatch = useAppDispatch();
-  const userObjectData = useAppSelector(state => state.userObject);
+  const dispatch = useTypedDispatch();
+  const userObjectData = useTypedSelector(state => state.userObject);
   const {user} = userObjectData;
 
   useEffect(() => {

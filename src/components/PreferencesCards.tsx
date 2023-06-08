@@ -9,12 +9,12 @@ import {
   setPreferences,
 } from '../store/actions/preferencesAction';
 import {useEffect} from 'react';
-import {useAppDispatch, useAppSelector} from '../hooks';
 import {scale} from 'react-native-size-matters';
+import { useTypedDispatch, useTypedSelector } from "../store/store";
 
 function PreferencesCards({setPreferences}) {
-  const dispatch = useAppDispatch();
-  const preferencesListData = useAppSelector(state => state.preferencesList);
+  const dispatch = useTypedDispatch();
+  const preferencesListData = useTypedSelector(state => state.preferencesList);
   const {preferences} = preferencesListData;
 
   // ToDo: mapStateToProps is not working. When fixed, remove this hook

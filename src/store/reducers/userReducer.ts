@@ -2,7 +2,7 @@ import {GET_USER, USER_ERROR} from '../types';
 import {User} from '../../models/User';
 
 const initialState = {
-  user: User,
+  user: {} as User,
   loading: true,
 };
 
