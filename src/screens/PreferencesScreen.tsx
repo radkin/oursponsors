@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import PreferencesCards from '../PreferencesCards';
+import PreferencesCards from '../components/PreferencesCards';
 
 function PreferencesScreen(props) {
   return (

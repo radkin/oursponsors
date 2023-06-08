@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 
 import {connect} from 'react-redux';
-import {getUser, setUser} from '../../store/actions/userAction';
+import {getUser, setUser} from '../store/actions/userAction';
 import {
   View,
   SafeAreaView,
@@ -12,10 +12,10 @@ import {
   ScrollView,
 } from 'react-native';
 import {Controller, useForm} from 'react-hook-form';
-import {stateList} from '../../StaticData/StateList';
+import {stateList} from '../staticData/StateList';
 import SelectDropdown from 'react-native-select-dropdown';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {useTypedDispatch, useTypedSelector} from '../../store/store';
+import {useTypedDispatch, useTypedSelector} from '../store/store';
 
 function ProfileScreen() {
   const dispatch = useTypedDispatch();

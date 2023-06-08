@@ -1,7 +1,7 @@
 jest.useFakeTimers();
 
 import renderer from 'react-test-renderer';
-import DetailsScreen from '../src/components/screens/DetailsScreen';
+import DetailsScreen from '../src/screens/DetailsScreen';
 import {Provider} from 'react-redux';
 import {Provider as PaperProvider} from 'react-native-paper';
 

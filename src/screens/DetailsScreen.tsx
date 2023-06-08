@@ -8,13 +8,13 @@ import {
 } from 'react-native';
 import React, {useEffect} from 'react';
 import {Divider, List, MD3Colors, Surface, Text} from 'react-native-paper';
-import RenderRepDetailsTable from '../RenderRepSectorsTable';
-import RenderRepContributorsTable from '../RenderRepContributorsTable';
+import RenderRepDetailsTable from '../components/RenderRepSectorsTable';
+import RenderRepContributorsTable from '../components/RenderRepContributorsTable';
 import ScrollView = Animated.ScrollView;
-import {getPreferences} from '../../store/actions/preferencesAction';
-import RenderSmallRepCard from '../RenderSmallRepCard';
+import {getPreferences} from '../store/actions/preferencesAction';
+import RenderSmallRepCard from '../components/RenderSmallRepCard';
 import {scale} from 'react-native-size-matters';
-import { useTypedDispatch, useTypedSelector } from "../../store/store";
+import { useTypedDispatch, useTypedSelector } from "../store/store";
 
 function DetailsScreen({route}) {
   const dispatch = useTypedDispatch();
