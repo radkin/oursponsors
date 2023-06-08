@@ -5,7 +5,7 @@ import {GET_PREFERENCES, PREFERENCES_ERROR, UPDATE_PREFERENCES} from '../types';
 import {getSenators} from './senatorAction';
 import {getCongress} from './congressAction';
 import {performAxiosRequest} from '../../utils';
-import {AppThunk} from '../store';
+import {TypedThunk} from '../store';
 
 export const getPreferences = () => async dispatch => {
   const data = {id: 1};
@@ -56,7 +56,7 @@ export const updatePreferences = (pref, value) => async dispatch => {
   }
 };
 
-export const setPreferences = (pref, value): AppThunk => async dispatch => {
+export const setPreferences = (pref, value): TypedThunk => async dispatch => {
     await dispatch(updatePreferences(pref, value));
     await dispatch(getSenators());
     await dispatch(getCongress());

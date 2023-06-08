@@ -5,7 +5,7 @@ import {GET_USER, USER_ERROR, UPDATE_USER} from '../types';
 import {performAxiosRequest} from '../../utils';
 import {getSenators} from './senatorAction';
 import {getCongress} from './congressAction';
-import {AppThunk} from '../store';
+import {TypedThunk} from '../store';
 
 const requestConfig: AxiosRequestConfig = {
   method: 'get',
@@ -52,7 +52,7 @@ export const updateUser = uProfile => async dispatch => {
 };
 
 export const setUser =
-  (uProfile): AppThunk =>
+  (uProfile): TypedThunk =>
   async dispatch => {
     await dispatch(updateUser(uProfile));
     await dispatch(getUser());
