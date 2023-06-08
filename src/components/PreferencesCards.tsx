@@ -10,7 +10,7 @@ import {
 } from '../store/actions/preferencesAction';
 import {useEffect} from 'react';
 import {scale} from 'react-native-size-matters';
-import { useTypedDispatch, useTypedSelector } from "../store/store";
+import {useTypedDispatch, useTypedSelector} from '../store/store';
 
 function PreferencesCards({setPreferences}) {
   const dispatch = useTypedDispatch();
