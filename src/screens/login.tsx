@@ -1,10 +1,19 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import React, { FC, useState } from "react";
 import { Button, Input } from "../components";
+import { auth } from "../constants/firebase";
 
 const Login : FC = (props) => {
   const [email, setEmail] = useState<string | null>(null);
   const [password, setPassword] = useState<string | null>(null);
+
+  const login = async () => {
+    if (email && password) {
+      const {user} = await auth.signInWithEmailAndPassword(email, password);
+    } else {
+      Alert.alert('Missing Fields');
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -17,7 +26,7 @@ const Login : FC = (props) => {
         secureTextEntry
         onChangeText={text => setPassword(text)}
       />
-      <Button title="Login" onPress={() => alert('button pressed')} />
+      <Button title="Login" onPress={login} />
       <View style={styles.loginText}>
         <Text style={{marginHorizontal: 5}}>Don't Have an Account?</Text>
         <TouchableOpacity style={{marginHorizontal: 5}} onPress={() => props.navigation.navigate('signup')}>
