@@ -15,7 +15,6 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 const auth = firebaseApp.auth();
 const db = firebaseApp.firestore();
-
 export default Object.freeze({auth, db});
 export {auth, db};
 
