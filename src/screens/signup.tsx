@@ -12,9 +12,9 @@ const Signup: FC = (props) => {
   const signup = async () => {
     if (name && email && password) {
       try {
-        const user = await auth.createUserWithEmailAndPassword(email, password);
-        if (user) {
-          await db.collection('users').doc(user.user?.uid).set({name, email, password});
+        const firebaseUser = await auth.createUserWithEmailAndPassword(email, password);
+        if (firebaseUser) {
+          await db.collection('users').doc(firebaseUser.user?.uid).set({name, email, password});
         }
       } catch (error) {
         console.log(error);

@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Button, Input } from "../components";
 import { auth } from "../constants/firebase";
 
@@ -9,11 +9,11 @@ const Login : FC = (props) => {
 
   const login = async () => {
     if (email && password) {
-      const {user} = await auth.signInWithEmailAndPassword(email, password);
+      await auth.signInWithEmailAndPassword(email, password);
     } else {
       Alert.alert('Missing Fields');
     }
-  }
+  };
 
   return (
     <View style={styles.container}>
