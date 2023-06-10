@@ -4,8 +4,9 @@ import {FC, useEffect, useState} from 'react';
 import {RenderPendingPost} from '../components';
 import {db} from '../constants/firebase';
 import React from 'react';
+import Button from "../components/button";
 
-const Dashboard: FC = () => {
+const Dashboard: FC = (props) => {
   const [posts, setPosts] = useState<any>(null);
   const fetchPendingPosts = async () => {
     const posts = await db
@@ -19,16 +20,23 @@ const Dashboard: FC = () => {
     fetchPendingPosts();
   }, []);
 
-  const onApprove = (id: string) => {
-    Alert.alert(`item of id:${id} will be approved`);
+  const onApprove = async (id: string) => {
+    const post = await db.collection('posts')
+      .doc(id)
+      .get();
+    post.ref.set({approved: true}, {merge: true});
+  }
+
+  const onReject = async (id: string) => {
+    await db.collection('posts')
+      .doc(id)
+      .delete();
   };
 
-  const onReject = (id: string) => {
-    Alert.alert(`item of id:${id} will be rejected`);
-  };
-
+  // ToDo: fix return only shows correct Array.length() and id no msg or timeStamp.
   return (
     <View style={styles.container}>
+      <Button title="Back" onPress={() => props.navigation.goBack()} />
       <Text>Dashboard screen</Text>
       <View style={{height: '50%'}}>
         <FlatList

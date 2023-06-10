@@ -8,11 +8,9 @@ interface Props {
   msg: string;
   approved: string;
   timeStamp: number;
-  onApprove: () => void;
-  onReject: () => void;
 }
 
-const RenderPendingPost : FC <Props> = (props) => {
+const RenderPosts : FC <Props> = (props) => {
 
   const formatTime = (timeStamp: number): string => {
     const calculatedTime = Date.now() - timeStamp;
@@ -27,10 +25,6 @@ const RenderPendingPost : FC <Props> = (props) => {
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
         <Text style={{width: '60%'}}>{props.msg}</Text>
         <Text>{formatTime(props.timeStamp)}</Text>
-      </View>
-      <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-        <Button title="Approve" onPress={props.onApprove} />
-        <Button title="Decline" onPress={props.onReject} />
       </View>
     </View>
   );
@@ -53,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RenderPendingPost;
+export default RenderPosts;
