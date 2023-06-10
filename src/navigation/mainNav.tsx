@@ -3,6 +3,10 @@ import {NavigationContainer} from '@react-navigation/native';
 import {auth} from '../constants/firebase';
 import AppStack from './appstack';
 import AuthStack from './authstack';
+import store from '../store/store';
+import {Provider} from 'react-redux';
+
+import {Provider as PaperProvider} from 'react-native-paper';
 
 const MainNav: FC = () => {
   const [user, setUser] = useState<any>(null);
@@ -20,9 +24,13 @@ const MainNav: FC = () => {
   }, []);
 
   return (
-    <NavigationContainer>
-      {user != null ? <AppStack /> : <AuthStack />}
-    </NavigationContainer>
+    <Provider store={store}>
+      <PaperProvider>
+        <NavigationContainer>
+          {user != null ? <AppStack /> : <AuthStack />}
+        </NavigationContainer>
+      </PaperProvider>
+    </Provider>
   );
 };
 
