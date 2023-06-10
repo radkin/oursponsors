@@ -5,7 +5,7 @@ import {auth, db} from '../constants/firebase';
 
 const Home: FC = props => {
   const [msg, setMsg] = useState<string | null>(null);
-  const [user, setUser] = useState<any>(null);
+  const [firebaseUser, setFirebaseUser] = useState<any>(null);
   const signOut = () => {
     auth.signOut();
   };
@@ -13,7 +13,7 @@ const Home: FC = props => {
   const fetchCurrentUser = async () => {
     const uid = auth.currentUser?.uid;
     const user = await db.collection('users').doc(uid).get();
-    setUser({id: (await user).id, ...user.data()});
+    setFirebaseUser({id: (await user).id, ...user.data()});
   };
 
   useEffect(() => {
@@ -48,8 +48,8 @@ const Home: FC = props => {
         />
         <Button title="Post" onPress={post} />
       </View>
-      {user ? (
-        user.isAdmin ? (
+      {firebaseUser ? (
+        firebaseUser.isAdmin ? (
           <View>
             <Button
               title="Dashboard"
