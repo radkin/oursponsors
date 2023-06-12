@@ -7,6 +7,8 @@ const Login : FC = (props) => {
   const [email, setEmail] = useState<string | null>(null);
   const [password, setPassword] = useState<string | null>(null);
 
+
+
   const login = async () => {
     if (email && password) {
       await auth.signInWithEmailAndPassword(email, password);
