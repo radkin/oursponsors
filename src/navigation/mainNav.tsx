@@ -10,11 +10,15 @@ import {Provider as PaperProvider} from 'react-native-paper';
 
 const MainNav: FC = () => {
   const [firebaseUser, setFirebaseUser] = useState<any>(null);
-
+  const [logout, setLogout] = useState<number>(1);
   const bootstrap = () => {
     auth.onAuthStateChanged(_user => {
       if (_user) {
         setFirebaseUser(_user);
+        if (firebaseUser == null) {
+          console.log("user has logged out!");
+          setLogout(0);
+        }
       }
     });
   };
@@ -27,7 +31,7 @@ const MainNav: FC = () => {
     <Provider store={store}>
       <PaperProvider>
         <NavigationContainer>
-          {firebaseUser != null ? <Drawerstack /> : <AuthStack />}
+          {firebaseUser != null ? <Drawerstack logout={logout}/> : <AuthStack />}
         </NavigationContainer>
       </PaperProvider>
     </Provider>
