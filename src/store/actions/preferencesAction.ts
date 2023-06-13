@@ -7,13 +7,13 @@ import {getCongress} from './congressAction';
 import {performAxiosRequest} from '../../utils';
 import store, {TypedThunk} from '../store';
 
-export const getPreferences = () => async dispatch => {
+export const _getPreferences = (uid) => async dispatch => {
   const requestConfig: AxiosRequestConfig = {
     method: 'get',
     url: '/user/get_preferences',
     headers: {
       'INAJAR-TOKEN': INAJAR_TOKEN,
-      'GOOGLE-UID': 'c8gJzQumZ7NBw8ZT0iYJOfk2qup2',
+      'GOOGLE-UID': uid,
     },
   };
   try {
@@ -66,8 +66,13 @@ export const setPreferences =
   async dispatch => {
   const uid = await store.getState().googleUid.googleUid;
     if (uid) {
-      dispatch(updatePreferences(pref, value, uid));
+      await dispatch(updatePreferences(pref, value, uid));
       await dispatch(getSenators());
       await dispatch(getCongress());
     }
   };
+
+export const getPreferences = (): TypedThunk => async dispatch => {
+  const uid = await store.getState().googleUid.googleUid;
+  if (uid) return dispatch(_getPreferences(uid));
+};
