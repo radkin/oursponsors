@@ -17,6 +17,7 @@ function RenderSenators(props) {
 
   const navigation = props.navigation;
 
+  // ToDo: conditional render for senators empty due to filters
   return (
     <FlatList
       data={senators}
