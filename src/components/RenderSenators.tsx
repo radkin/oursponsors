@@ -4,7 +4,7 @@ import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import RenderRepCard from './RenderRepCard';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';
-import { useTypedDispatch, useTypedSelector } from "../store/store";
+import store, {useTypedDispatch, useTypedSelector} from '../store/store';
 
 function RenderSenators(props) {
   const dispatch = useTypedDispatch();
@@ -14,6 +14,9 @@ function RenderSenators(props) {
   useEffect(() => {
     dispatch(getSenators());
   }, [dispatch]);
+
+  const uid = store.getState().googleUid.googleUid;
+  console.log(uid);
 
   const navigation = props.navigation;
 
