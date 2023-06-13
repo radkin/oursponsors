@@ -22,8 +22,6 @@ function PreferencesCards({setPreferences}) {
     dispatch(getPreferences());
   }, [dispatch]);
 
-  console.log(preferences);
-
   // ToDo: "vote_view, vote_smart, fec are not working. Uncomment when fixed
   return (
     <ScrollView>

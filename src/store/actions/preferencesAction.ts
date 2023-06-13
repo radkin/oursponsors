@@ -2,8 +2,8 @@ import {INAJAR_TOKEN} from 'react-native-dotenv';
 import {AxiosRequestConfig} from 'axios';
 
 import {GET_PREFERENCES, PREFERENCES_ERROR, UPDATE_PREFERENCES} from '../types';
-import {getSenators} from './senatorAction';
-import {getCongress} from './congressAction';
+import { _getSenators} from "./senatorAction";
+import { _getCongress} from "./congressAction";
 import {performAxiosRequest} from '../../utils';
 import store, {TypedThunk} from '../store';
 
@@ -36,7 +36,6 @@ export const updatePreferences = (pref, value, uid) => async dispatch => {
     user_id: 1,
     [pref]: value,
   };
-  console.log(`should be getting UID. We see ${uid}`);
   const requestConfig: AxiosRequestConfig = {
     method: 'post',
     url: '/user/update_preferences',
@@ -67,12 +66,12 @@ export const setPreferences =
   const uid = await store.getState().googleUid.googleUid;
     if (uid) {
       await dispatch(updatePreferences(pref, value, uid));
-      await dispatch(getSenators());
-      await dispatch(getCongress());
+      await dispatch(_getSenators(uid));
+      await dispatch(_getCongress(uid));
     }
   };
 
 export const getPreferences = (): TypedThunk => async dispatch => {
-  const uid = await store.getState().googleUid.googleUid;
-  if (uid) return dispatch(_getPreferences(uid));
+  const uid = store.getState().googleUid.googleUid;
+  if (uid) dispatch(_getPreferences(uid));
 };

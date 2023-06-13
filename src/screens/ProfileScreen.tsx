@@ -50,8 +50,6 @@ function ProfileScreen() {
     formState: {errors},
   } = useForm();
 
-  console.log(user);
-
   if (user && user['party']) {
     return (
       <SafeAreaView style={styles.safeArea}>
