@@ -16,5 +16,5 @@ export default combineReducers({
   sectorsList: sectorReducer,
   contributorsList: contributorReducer,
   userObject: userReducer,
-  googleUser: firestoreReducer,
+  googleUid: firestoreReducer,
 });

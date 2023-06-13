@@ -16,7 +16,6 @@ const MainNav: FC = () => {
       if (_user) {
         setFirebaseUser(_user);
         if (firebaseUser == null) {
-          console.log("user has logged out!");
           setLogout(0);
         }
       }
