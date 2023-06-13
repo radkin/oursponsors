@@ -41,7 +41,6 @@ export const updateUser = uProfile => async dispatch => {
       'INAJAR-TOKEN': INAJAR_TOKEN,
       'GOOGLE-UID': 'c8gJzQumZ7NBw8ZT0iYJOfk2qup2',
     },  };
-  console.log(`uProfile is ${uProfile}`);
   try {
     await performAxiosRequest(requestConfig, true).then(res => {
       dispatch({

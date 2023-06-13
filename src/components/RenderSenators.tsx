@@ -15,9 +15,6 @@ function RenderSenators(props) {
     dispatch(getSenators());
   }, [dispatch]);
 
-  const uid = store.getState().googleUid.googleUid;
-  console.log(uid);
-
   const navigation = props.navigation;
 
   return (
