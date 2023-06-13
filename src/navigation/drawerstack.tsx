@@ -36,7 +36,6 @@ const Drawerstack: FC <Props> = (props) => {
           drawerLabelStyle: {
             fontSize: scale(13),
           },
-          drawerItemStyle: { display: (props.logout===1)?"flex":"none", }
         }}
       />
       <Drawer.Screen
@@ -51,7 +50,6 @@ const Drawerstack: FC <Props> = (props) => {
           drawerLabelStyle: {
             fontSize: scale(13),
           },
-          drawerItemStyle: { display: (props.logout===1)?"flex":"none", }
         }}
       />
       <Drawer.Screen
@@ -66,7 +64,6 @@ const Drawerstack: FC <Props> = (props) => {
           drawerLabelStyle: {
             fontSize: scale(13),
           },
-          drawerItemStyle: { display: (props.logout===1)?"flex":"none", }
         }}
       />
       <Drawer.Screen
@@ -81,7 +78,6 @@ const Drawerstack: FC <Props> = (props) => {
           drawerLabelStyle: {
             fontSize: scale(13),
           },
-          drawerItemStyle: { display: (props.logout===1)?"flex":"none", }
         }}
       />
 

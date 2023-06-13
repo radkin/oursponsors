@@ -5,4 +5,6 @@ export interface User {
   state: string;
   gender: string;
   party: string;
+  google_uid: string;
+  is_logged_in: boolean;
 }
