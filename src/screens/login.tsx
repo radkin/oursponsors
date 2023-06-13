@@ -2,12 +2,13 @@ import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import React, { FC, useEffect, useState } from "react";
 import { Button, Input } from "../components";
 import { auth } from "../constants/firebase";
+import { connect } from "react-redux";
+import { useTypedDispatch, useTypedSelector } from "../store/store";
+import { updateUser } from "../store/actions/userAction";
 
-const Login : FC = (props) => {
+const Login : FC = (props, ) => {
   const [email, setEmail] = useState<string | null>(null);
   const [password, setPassword] = useState<string | null>(null);
-
-
 
   const login = async () => {
     if (email && password) {
@@ -49,6 +50,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginVertical: 20,
   },
-})
+});
 
 export default Login;

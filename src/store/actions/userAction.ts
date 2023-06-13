@@ -7,13 +7,13 @@ import {getSenators} from './senatorAction';
 import {getCongress} from './congressAction';
 import {TypedThunk} from '../store';
 
-const requestConfig: AxiosRequestConfig = {
-  method: 'get',
-  url: '/user/get_user',
-  headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
-};
-
-export const getUser = () => async dispatch => {
+export const getUser = (email) => async dispatch => {
+  const requestConfig: AxiosRequestConfig = {
+    method: 'post',
+    url: '/user/get_user',
+    headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
+    data: email,
+  };
   try {
     await performAxiosRequest(requestConfig, true).then(res => {
       dispatch({
@@ -29,13 +29,14 @@ export const getUser = () => async dispatch => {
   }
 };
 
-export const updateUser = uProfile => async dispatch => {
+export const updateUser = (uProfile) => async dispatch => {
   const requestConfig: AxiosRequestConfig = {
     method: 'post',
-    url: 'user/update_user',
+    url: 'user/create_or_update_user',
     data: uProfile,
     headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
   };
+  console.log(`uProfile is ${uProfile}`);
   try {
     await performAxiosRequest(requestConfig, true).then(res => {
       dispatch({
@@ -53,9 +54,11 @@ export const updateUser = uProfile => async dispatch => {
 
 export const setUser =
   (uProfile): TypedThunk =>
-  async dispatch => {
+    async dispatch => {
+    const userEmail = {"email": "john@gmail.com"};
+    uProfile['email'] = "john@gmail.com";
     await dispatch(updateUser(uProfile));
-    await dispatch(getUser());
+    await dispatch(getUser(userEmail));
     await dispatch(getSenators());
     await dispatch(getCongress());
   };
