@@ -6,8 +6,10 @@ import {INAJAR_TOKEN} from 'react-native-dotenv';
 const requestConfig: AxiosRequestConfig = {
   method: 'get',
   url: '/propublica/get_senators',
-  headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
-};
+  headers: {
+    'INAJAR-TOKEN': INAJAR_TOKEN,
+    'GOOGLE-UID': 'c8gJzQumZ7NBw8ZT0iYJOfk2qup2',
+  },};
 export const getSenators = () => async dispatch => {
   try {
     await performAxiosRequest(requestConfig, true).then(res => {

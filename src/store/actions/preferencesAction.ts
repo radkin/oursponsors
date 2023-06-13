@@ -8,13 +8,13 @@ import {performAxiosRequest} from '../../utils';
 import {TypedThunk} from '../store';
 
 export const getPreferences = () => async dispatch => {
-  const data = {id: 1};
   const requestConfig: AxiosRequestConfig = {
-    method: 'post',
+    method: 'get',
     url: '/user/get_preferences',
-    data,
-    headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
-  };
+    headers: {
+      'INAJAR-TOKEN': INAJAR_TOKEN,
+      'GOOGLE-UID': 'c8gJzQumZ7NBw8ZT0iYJOfk2qup2',
+    },  };
   try {
     await performAxiosRequest(requestConfig, true).then(res => {
       dispatch({
@@ -39,8 +39,10 @@ export const updatePreferences = (pref, value) => async dispatch => {
     method: 'post',
     url: '/user/update_preferences',
     data,
-    headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
-  };
+    headers: {
+      'INAJAR-TOKEN': INAJAR_TOKEN,
+      'GOOGLE-UID': 'c8gJzQumZ7NBw8ZT0iYJOfk2qup2',
+    },  };
   try {
     await performAxiosRequest(requestConfig, true).then(res => {
       dispatch({
