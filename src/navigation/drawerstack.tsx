@@ -1,29 +1,47 @@
-import React, {FC} from 'react';
+import React, { FC, useState } from "react";
 import {
   PreferencesScreen,
   ProfileScreen,
-  Login,
 } from '../screens';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerContentScrollView } from "@react-navigation/drawer";
 import {scale} from 'react-native-size-matters';
 import Tabstack from './tabstack';
 import login from "../screens/login";
+import { auth } from "../constants/firebase";
+import {View} from "react-native";
+import {Button} from "../components";
 
 const Drawer = createDrawerNavigator();
 
-interface Props {
-  logout: number;
-}
+const Drawerstack: FC = () => {
+  const [logout, setLogout] = useState<number>(0);
 
-const Drawerstack: FC <Props> = (props) => {
+  const signOut = () => {
+    auth.signOut();
+    setLogout(1);
+  };
+
+  console.log(`logout is ${logout}`);
+
+  const CustomComponent = (props) => {
+    return (
+      <DrawerContentScrollView {...props}>
+        <View>
+          <Button title="log out" onPress={signOut} />
+        </View>
+      </DrawerContentScrollView>
+    )
+  }
 
   return (
     <Drawer.Navigator
+      // drawerContent={(props) => <CustomComponent {...props} />}
       screenOptions={{
         headerStyle: {
           height: scale(25),
         },
-      }}>
+      }}
+    >
       <Drawer.Screen
         name="Summary"
         component={Tabstack}
@@ -36,6 +54,7 @@ const Drawerstack: FC <Props> = (props) => {
           drawerLabelStyle: {
             fontSize: scale(13),
           },
+          drawerItemStyle: { display: (logout===0)?"flex":"none", }
         }}
       />
       <Drawer.Screen
@@ -50,6 +69,7 @@ const Drawerstack: FC <Props> = (props) => {
           drawerLabelStyle: {
             fontSize: scale(13),
           },
+          drawerItemStyle: { display: (logout===0)?"flex":"none", }
         }}
       />
       <Drawer.Screen
@@ -64,10 +84,11 @@ const Drawerstack: FC <Props> = (props) => {
           drawerLabelStyle: {
             fontSize: scale(13),
           },
+          drawerItemStyle: { display: (logout===0)?"flex":"none", }
         }}
       />
       <Drawer.Screen
-        name="Logout"
+        name="Login"
         component={login}
         options={{
           headerTitleStyle: {
@@ -78,6 +99,22 @@ const Drawerstack: FC <Props> = (props) => {
           drawerLabelStyle: {
             fontSize: scale(13),
           },
+          drawerItemStyle: { display: (logout===1)?"flex":"none", }
+        }}
+      />
+      <Drawer.Screen
+        name="Log out"
+        component={login}
+        options={{
+          headerTitleStyle: {
+            fontSize: scale(13),
+            lineHeight: scale(13) * 0.75,
+            paddingTop: scale(13) - scale(13) * 0.75,
+          },
+          drawerLabelStyle: {
+            fontSize: scale(13),
+          },
+          drawerItemStyle: { display: (logout===0)?"flex":"none", }
         }}
       />
 

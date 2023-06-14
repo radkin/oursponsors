@@ -352,7 +352,7 @@ function ProfileScreen() {
     );
   } else {
     return (
-      <View>
+      <View style={styles.noProfile}>
         <Text>Unable to display profile</Text>
       </View>
     );
@@ -496,6 +496,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'slategray',
     borderBottomWidth: 1,
     borderBottomColor: '#FFF',
+  },
+  noProfile: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
