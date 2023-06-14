@@ -1,5 +1,5 @@
 import {View, Text, StyleSheet, TouchableOpacity, Alert} from 'react-native';
-import React, {FC, useEffect, useState} from 'react';
+import React, { FC, useState } from "react";
 import {Button, Input} from '../components';
 import {auth} from '../constants/firebase';
 import store from '../store/store';
@@ -10,25 +10,15 @@ const Login: FC = props => {
 
   const login = async () => {
     if (email && password) {
-      await auth.signInWithEmailAndPassword(email, password)
+      await auth
+        .signInWithEmailAndPassword(email, password)
         .then(currentUser => currentUser.user?.uid)
-        .then((uid) => {
-            store.dispatch({
-              type: 'SET_GOOGLE_UID',
-              payload: uid,
-            });
+        .then(uid => {
+          store.dispatch({
+            type: 'SET_GOOGLE_UID',
+            payload: uid,
+          });
         });
-      // const uid = await auth.currentUser?.uid;
-
-      // return new Promise<void>(resolve => {
-      //   store.dispatch({
-      //     type: 'SET_GOOGLE_UID',
-      //     payload: uid,
-      //   });
-      //   resolve();
-      // });
-
-      // console.log(`UID is ${uid}`);
     } else {
       Alert.alert('Missing Fields');
     }

@@ -1,10 +1,12 @@
 import {useEffect} from 'react';
 import {getSenators} from '../store/actions/senatorAction';
-import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import RenderRepCard from './RenderRepCard';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';
 import store, {useTypedDispatch, useTypedSelector} from '../store/store';
+import {Fader} from 'react-native-ui-lib';
+import position = Fader.position;
 
 function RenderSenators(props) {
   const dispatch = useTypedDispatch();
@@ -17,26 +19,34 @@ function RenderSenators(props) {
 
   const navigation = props.navigation;
 
-  // ToDo: conditional render for senators empty due to filters
-  return (
-    <FlatList
-      data={senators}
-      renderItem={({item}) => (
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('Details', {
-              value: item,
-            })
-          }>
-          <View style={styles.card}>
-            <RenderRepCard value={item} />
-          </View>
-        </TouchableOpacity>
-      )}
-      keyExtractor={item => item.id}
-      horizontal={false}
-    />
-  );
+  if (senators === undefined || senators.length == 0) {
+    return (
+      <View style={styles.noSenators}>
+        <Text>Unable to display Senators</Text>
+        <Text>It is likely you are filtering all of them</Text>
+      </View>
+    );
+  } else {
+    return (
+      <FlatList
+        data={senators}
+        renderItem={({item}) => (
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('Details', {
+                value: item,
+              })
+            }>
+            <View style={styles.card}>
+              <RenderRepCard value={item} />
+            </View>
+          </TouchableOpacity>
+        )}
+        keyExtractor={item => item.id}
+        horizontal={false}
+      />
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -48,6 +58,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'white',
     height: scale(150),
+  },
+  noSenators: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 export default RenderSenators;
