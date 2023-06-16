@@ -1,7 +1,7 @@
 jest.useFakeTimers();
 
 import renderer from 'react-test-renderer';
-import RenderSenators from '../src/components/RenderSenators';
+import RenderSenators from '../src/components/renderSenators';
 import {Provider} from 'react-redux';
 import {Provider as PaperProvider} from 'react-native-paper';
 

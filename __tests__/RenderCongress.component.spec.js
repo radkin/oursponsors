@@ -1,7 +1,7 @@
 jest.useFakeTimers();
 
 import renderer from 'react-test-renderer';
-import RenderCongress from '../src/components/RenderCongress';
+import RenderCongress from '../src/components/renderCongress';
 import {Provider} from 'react-redux';
 import {Provider as PaperProvider} from 'react-native-paper';
 

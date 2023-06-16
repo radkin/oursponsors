@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';
 
-function RenderSmallRepCard({value}) {
+function SmallRepCard({value}) {
   return (
     <Provider>
       <Card style={styles.card}>
@@ -70,4 +70,4 @@ const styles = StyleSheet.create({
     width: scale(64),
   },
 });
-export default RenderSmallRepCard;
+export default SmallRepCard;

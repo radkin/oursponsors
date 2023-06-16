@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import {getCongress} from '../store/actions/congressAction';
 import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
-import RenderRepCard from './RenderRepCard';
+import RepCard from './repCard';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';
 import { useTypedDispatch, useTypedSelector } from "../store/store";
@@ -28,7 +28,7 @@ function RenderCongress(props) {
             })
           }>
           <View style={styles.card}>
-            <RenderRepCard value={item} />
+            <RepCard value={item} />
           </View>
         </TouchableOpacity>
       )}

@@ -2,17 +2,15 @@ import {DataTable, Provider, Surface} from 'react-native-paper';
 import {FlatList, StyleSheet} from 'react-native';
 import * as React from 'react';
 import {useEffect, useRef, useState} from 'react';
-import {getContributors} from '../store/actions/contributorAction';
+import {getSectors} from '../store/actions/sectorAction';
 import {connect} from 'react-redux';
 import {scale} from 'react-native-size-matters';
 import { useTypedDispatch, useTypedSelector } from "../store/store";
 
-function RenderRepContributorsTable({value}) {
+function RepSectorsTable({value}) {
   const dispatch = useTypedDispatch();
-  const contributorsListData = useTypedSelector(
-    state => state.contributorsList,
-  );
-  const {contributors} = contributorsListData;
+  const sectorsListData = useTypedSelector(state => state.sectorsList);
+  const {sectors} = sectorsListData;
 
   const [internalState, setInternalState] = useState(value);
 
@@ -24,7 +22,7 @@ function RenderRepContributorsTable({value}) {
 
   useEffect(() => {
     previousValueRef.current = value;
-    dispatch(getContributors(internalState.crp_id));
+    dispatch(getSectors(internalState.crp_id));
   }, [dispatch, internalState.crp_id, value]);
 
   const formatter = new Intl.NumberFormat('en-US', {
@@ -37,7 +35,7 @@ function RenderRepContributorsTable({value}) {
     return (
       <DataTable.Row>
         <DataTable.Cell textStyle={styles.cellText}>
-          {value.org_name}
+          {value.sector_name}
         </DataTable.Cell>
         <DataTable.Cell textStyle={styles.cellText}>
           {formatter.format(value.total)}
@@ -52,7 +50,7 @@ function RenderRepContributorsTable({value}) {
         <DataTable style={styles.table}>
           <DataTable.Header>
             <DataTable.Title textStyle={styles.tableTitle}>
-              Organization
+              Sector
             </DataTable.Title>
             <DataTable.Title
               textStyle={styles.tableTitle}
@@ -62,7 +60,7 @@ function RenderRepContributorsTable({value}) {
           </DataTable.Header>
 
           <FlatList
-            data={contributors}
+            data={sectors}
             renderItem={({item}) => <RenderDataTable value={item} />}
             keyExtractor={item => item.id}
           />
@@ -82,7 +80,7 @@ const styles = StyleSheet.create({
   },
   table: {
     height: scale(165),
-    width: scale(540),
+    width: scale(500),
   },
   basicsText: {
     fontSize: scale(15),
@@ -90,7 +88,7 @@ const styles = StyleSheet.create({
     marginVertical: scale(2),
   },
   cellText: {
-    fontSize: scale(12),
+    fontSize: scale(16),
   },
   tableTitle: {
     fontSize: scale(18),
@@ -99,14 +97,14 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-  contributors: state.contributors,
+  sectors: state.sectors,
 });
 
 const mapDispatchToProps = {
-  getContributors,
+  getSectors,
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(RenderRepContributorsTable);
+)(RepSectorsTable);

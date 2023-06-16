@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';
 
-function RenderRepCard({value}) {
+function RepCard({value}) {
   return (
     <Provider>
       <Card style={styles.card}>
@@ -73,4 +73,4 @@ const styles = StyleSheet.create({
     width: scale(130),
   },
 });
-export default RenderRepCard;
+export default RepCard;
