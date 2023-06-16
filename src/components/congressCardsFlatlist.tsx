@@ -1,7 +1,7 @@
 import {StyleSheet, View} from 'react-native';
 import * as React from 'react';
 
-import RenderCongress from './RenderCongress';
+import RenderCongress from './renderCongress';
 
 function CardsFlatlist(props): JSX.Element {
   return <View style={styles.container}>{RenderCongress(props)}</View>;

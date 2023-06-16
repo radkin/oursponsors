@@ -1,8 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
-import PreferencesCards from '../components/PreferencesCards';
+import PreferencesCards from '../components/preferencesCards';
 
-function PreferencesScreen(props) {
+function Preferences(props) {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <PreferencesCards {...props} />
@@ -10,4 +10,4 @@ function PreferencesScreen(props) {
   );
 }
 
-export default PreferencesScreen;
+export default Preferences;

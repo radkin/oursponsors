@@ -17,7 +17,7 @@ import SelectDropdown from 'react-native-select-dropdown';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {useTypedDispatch, useTypedSelector} from '../store/store';
 
-function ProfileScreen() {
+function Profile() {
   const dispatch = useTypedDispatch();
   const userObjectData = useTypedSelector(state => state.userObject);
   const {user} = userObjectData;
@@ -510,4 +510,4 @@ const mapDispatchToProps = {
   getUser,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

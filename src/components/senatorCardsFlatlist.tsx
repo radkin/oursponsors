@@ -1,6 +1,6 @@
 import {StyleSheet, View} from 'react-native';
 import * as React from 'react';
-import renderSenators from './RenderSenators';
+import renderSenators from './renderSenators';
 
 function SenatorCardsFlatlist(props): JSX.Element {
   return <View style={styles.container}>{renderSenators(props)}</View>;

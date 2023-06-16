@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import {getSenators} from '../store/actions/senatorAction';
 import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import RenderRepCard from './RenderRepCard';
+import RepCard from './repCard';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';
 import store, {useTypedDispatch, useTypedSelector} from '../store/store';
@@ -38,7 +38,7 @@ function RenderSenators(props) {
               })
             }>
             <View style={styles.card}>
-              <RenderRepCard value={item} />
+              <RepCard value={item} />
             </View>
           </TouchableOpacity>
         )}

@@ -1,7 +1,7 @@
 jest.useFakeTimers();
 
 import renderer from 'react-test-renderer';
-import DetailsScreen from '../src/screens/DetailsScreen';
+import RepDetails from '../src/screens/repDetails';
 import {Provider} from 'react-redux';
 import {Provider as PaperProvider} from 'react-native-paper';
 
@@ -12,7 +12,7 @@ describe('DetailsScreen', () => {
       .create(
         <Provider store={store}>
           <PaperProvider>
-            <DetailsScreen />
+            <RepDetails />
           </PaperProvider>
         </Provider>,
       )

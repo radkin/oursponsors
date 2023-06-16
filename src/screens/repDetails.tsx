@@ -8,15 +8,15 @@ import {
 } from 'react-native';
 import React, {useEffect} from 'react';
 import {Divider, List, MD3Colors, Surface, Text} from 'react-native-paper';
-import RenderRepDetailsTable from '../components/RenderRepSectorsTable';
-import RenderRepContributorsTable from '../components/RenderRepContributorsTable';
+import RenderRepDetailsTable from '../components/repSectorsTable';
+import RenderRepContributorsTable from '../components/repContributorsTable';
 import ScrollView = Animated.ScrollView;
 import {getPreferences} from '../store/actions/preferencesAction';
-import RenderSmallRepCard from '../components/RenderSmallRepCard';
+import SmallRepCard from '../components/smallRepCard';
 import {scale} from 'react-native-size-matters';
 import { useTypedDispatch, useTypedSelector } from "../store/store";
 
-function DetailsScreen({route}) {
+function RepDetails({route}) {
   const dispatch = useTypedDispatch();
   const preferencesListData = useTypedSelector(state => state.preferencesList);
   const {preferences} = preferencesListData;
@@ -29,7 +29,7 @@ function DetailsScreen({route}) {
   return (
     <View style={{paddingBottom: scale(450)}}>
       <View style={styles.card}>
-        <RenderSmallRepCard value={value} />
+        <SmallRepCard value={value} />
       </View>
 
       <View style={styles.table}>
@@ -339,4 +339,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DetailsScreen;
+export default RepDetails;
