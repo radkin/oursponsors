@@ -13,6 +13,7 @@ const Signup: FC = (props) => {
     if (name && email && password) {
       try {
         const firebaseUser = await auth.createUserWithEmailAndPassword(email, password);
+
         if (firebaseUser) {
           await db.collection('users').doc(firebaseUser.user?.uid).set({name, email, password});
         }

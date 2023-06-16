@@ -31,14 +31,14 @@ export const _getUser = (uid) => async dispatch => {
   }
 };
 
-export const updateUser = uProfile => async dispatch => {
+export const updateUser = (uProfile, uid) => async dispatch => {
   const requestConfig: AxiosRequestConfig = {
     method: 'post',
     url: 'user/create_or_update_user',
     data: uProfile,
     headers: {
       'INAJAR-TOKEN': INAJAR_TOKEN,
-      'GOOGLE-UID': 'c8gJzQumZ7NBw8ZT0iYJOfk2qup2',
+      'GOOGLE-UID': uid,
     },  };
   try {
     await performAxiosRequest(requestConfig, true).then(res => {
@@ -58,8 +58,9 @@ export const updateUser = uProfile => async dispatch => {
 export const setUser =
   (uProfile): TypedThunk =>
   async dispatch => {
-    await dispatch(updateUser(uProfile));
-    await dispatch(getUser());
+    const uid = store.getState().googleUid.googleUid;
+    await dispatch(updateUser(uProfile, uid));
+    if (uid) dispatch(_getUser(uid));
     await dispatch(getSenators());
     await dispatch(getCongress());
   };
