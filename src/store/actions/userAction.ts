@@ -5,18 +5,17 @@ import {GET_USER, USER_ERROR, UPDATE_USER} from '../types';
 import {performAxiosRequest} from '../../utils';
 import {getSenators} from './senatorAction';
 import {getCongress} from './congressAction';
-import {TypedThunk} from '../store';
+import store, {TypedThunk} from '../store';
 
-const requestConfig: AxiosRequestConfig = {
-  method: 'get',
-  url: '/user/get_user',
-  headers: {
-    'INAJAR-TOKEN': INAJAR_TOKEN,
-    'GOOGLE-UID': 'c8gJzQumZ7NBw8ZT0iYJOfk2qup2',
-  },
-};
-
-export const getUser = () => async dispatch => {
+export const _getUser = (uid) => async dispatch => {
+  const requestConfig: AxiosRequestConfig = {
+    method: 'get',
+    url: '/user/get_user',
+    headers: {
+      'INAJAR-TOKEN': INAJAR_TOKEN,
+      'GOOGLE-UID': uid,
+    },
+  };
   try {
     await performAxiosRequest(requestConfig, true).then(res => {
       dispatch({
@@ -64,3 +63,8 @@ export const setUser =
     await dispatch(getSenators());
     await dispatch(getCongress());
   };
+
+export const getUser = (): TypedThunk => async dispatch => {
+  const uid = store.getState().googleUid.googleUid;
+  if (uid) dispatch(_getUser(uid));
+}

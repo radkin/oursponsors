@@ -22,10 +22,8 @@ function ProfileScreen() {
   const userObjectData = useTypedSelector(state => state.userObject);
   const {user} = userObjectData;
 
-  const userEmail = {"email": "john@gmail.com"};
-
   useEffect(() => {
-    dispatch(getUser(userEmail));
+    dispatch(getUser());
   }, [dispatch]);
 
   const genders = ['female', 'nonbinary', 'male'];
@@ -508,10 +506,8 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-const userEmail = {"email": "john@gmail.com"};
-
 const mapDispatchToProps = {
-  getUser: getUser(userEmail)
+  getUser,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen);
