@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#fff',
+    fontSize: scale(10),
   }
 })
 
