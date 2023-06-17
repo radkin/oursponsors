@@ -380,6 +380,7 @@ const styles = StyleSheet.create({
     borderWidth: scale(1),
     alignSelf: 'stretch',
     marginVertical: scale(7),
+    fontSize: scale(10),
   },
   errorText: {
     color: 'red',
@@ -402,6 +403,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     alignSelf: 'center',
+    fontSize: scale(10),
   },
   dropdown1BtnStyle: {
     width: '80%',
@@ -411,7 +413,7 @@ const styles = StyleSheet.create({
     borderWidth: scale(1),
     borderColor: '#444',
   },
-  dropdown1BtnTxtStyle: {color: '#444', textAlign: 'left'},
+  dropdown1BtnTxtStyle: {color: '#444', textAlign: 'left', fontSize: scale(10)},
   dropdown1DropdownStyle: {backgroundColor: '#EFEFEF'},
   dropdown1RowStyle: {backgroundColor: '#EFEFEF', borderBottomColor: '#C5C5C5'},
   dropdown1RowTxtStyle: {color: '#444', textAlign: 'left'},
@@ -472,7 +474,7 @@ const styles = StyleSheet.create({
     color: '#444',
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: scale(17),
+    fontSize: scale(12),
     marginHorizontal: scale(12),
   },
   dropdown3DropdownStyle: {backgroundColor: 'slategray'},
@@ -493,7 +495,7 @@ const styles = StyleSheet.create({
     color: '#F1F1F1',
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: scale(17),
+    fontSize: scale(12),
     marginHorizontal: scale(12),
   },
   dropdown3searchInputStyleStyle: {

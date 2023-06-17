@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
     marginVertical: scale(10),
   },
   input: {
-    padding: 15,
+    padding: scale(15),
+    fontSize: scale(10),
   },
 });
 

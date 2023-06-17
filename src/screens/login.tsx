@@ -32,7 +32,7 @@ const Login: FC<Props> = props => {
 
   return (
     <View style={styles.container}>
-      <Text>Login screen</Text>
+      <Text style={{fontSize: scale(10)}}>Login screen</Text>
       <Input placeholder={'Email'} onChangeText={text => setEmail(text)} />
       <Input
         placeholder={'Password'}
@@ -41,11 +41,11 @@ const Login: FC<Props> = props => {
       />
       <Button title="Login" onPress={login} />
       <View style={styles.loginText}>
-        <Text style={{marginHorizontal: scale(5)}}>Don't Have an Account?</Text>
+        <Text style={{marginHorizontal: scale(5), fontSize: scale(10)}}>Don't Have an Account?</Text>
         <TouchableOpacity
           style={{marginHorizontal: scale(5)}}
           onPress={() => props.navigation.navigate('signup')}>
-          <Text style={{color: 'rgba(81,135,200,1)'}}>Signup Here</Text>
+          <Text style={{color: 'rgba(81,135,200,1)', fontSize: scale(10)}}>Signup Here</Text>
         </TouchableOpacity>
       </View>
     </View>

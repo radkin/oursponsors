@@ -35,7 +35,7 @@ const Signup: FC<Props> = props => {
 
   return (
     <View style={styles.container}>
-      <Text>sign up screen</Text>
+      <Text style={styles.loginText}>sign up screen</Text>
       <Input placeholder={'Name'} onChangeText={text => setName(text)} />
       <Input placeholder={'Email'} onChangeText={text => setEmail(text)} />
       <Input
@@ -45,9 +45,9 @@ const Signup: FC<Props> = props => {
       />
       <Button title="Sign up" onPress={signup} />
       <View style={styles.loginText}>
-        <Text style={{marginHorizontal: scale(5)}}>Already Have an Account?</Text>
+        <Text style={{marginHorizontal: scale(5), fontSize: scale(10)}}>Already Have an Account?</Text>
         <TouchableOpacity style={{marginHorizontal: scale(5)}} onPress={() => props.navigation.navigate('login')}>
-          <Text style={{color: 'rgba(81,135,200,1)'}}>Login Here</Text>
+          <Text style={{color: 'rgba(81,135,200,1)', fontSize: scale(10)}}>Login Here</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
   loginText: {
     flexDirection: 'row',
     marginVertical: scale(20),
+    fontSize: scale(10),
   },
 });
 
