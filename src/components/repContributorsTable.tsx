@@ -27,7 +27,7 @@ const RepContributorsTable: FC<Rep> = ({contribRep}) => {
 
   const [internalState, setInternalState] = useState(contribRep);
 
-  const previousValueRef = useRef();
+  let previousValueRef: React.MutableRefObject<Congress | Senator | undefined> = useRef();
   const previousValue = previousValueRef.current;
   if (contribRep !== previousValue && contribRep !== internalState) {
     setInternalState(contribRep);
@@ -77,7 +77,6 @@ const RepContributorsTable: FC<Rep> = ({contribRep}) => {
           <FlatList
             data={contributors}
             renderItem={({item}) => <RenderDataTable contrib={item} />}
-            keyExtractor={item => item.id}
           />
         </DataTable>
       </Surface>
