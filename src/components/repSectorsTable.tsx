@@ -14,9 +14,13 @@ interface Rep {
   sectorRep: Congress | Senator;
 }
 
+interface TheSectors {
+  sectors: Sector[];
+}
+
 const RepSectorsTable: FC<Rep> = ({sectorRep}) => {
   const dispatch = useTypedDispatch();
-  const sectorsListData = useTypedSelector(state => state.sectorsList);
+  const sectorsListData: TheSectors = useTypedSelector(state => state.sectorsList);
   const {sectors} = sectorsListData;
 
   const [internalState, setInternalState] = useState(sectorRep);

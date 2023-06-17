@@ -1,18 +1,25 @@
-import { FC, useEffect } from "react";
+import {FC, useEffect} from 'react';
 import {getCongress} from '../store/actions/congressAction';
 import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import RepCard from './repCard';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';
-import { useTypedDispatch, useTypedSelector } from "../store/store";
-import { NavigationProp } from "@react-navigation/native";
+import {useTypedDispatch, useTypedSelector} from '../store/store';
+import {NavigationProp} from '@react-navigation/native';
+import {Congress} from '../models/Congress';
 
 interface Props {
   navigation: NavigationProp<any>;
 }
-const RenderCongress: FC<Props> = (props) => {
+
+interface TheCongress {
+  congress: Congress[];
+}
+const RenderCongress: FC<Props> = props => {
   const dispatch = useTypedDispatch();
-  const congressListData = useTypedSelector(state => state.congressList);
+  const congressListData: TheCongress = useTypedSelector(
+    state => state.congressList,
+  );
   const {congress} = congressListData;
 
   useEffect(() => {
@@ -36,11 +43,10 @@ const RenderCongress: FC<Props> = (props) => {
           </View>
         </TouchableOpacity>
       )}
-      keyExtractor={item => item.id}
       horizontal={false}
     />
   );
-}
+};
 
 const styles = StyleSheet.create({
   card: {

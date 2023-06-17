@@ -8,15 +8,19 @@ import {scale} from 'react-native-size-matters';
 import { useTypedDispatch, useTypedSelector } from "../store/store";
 import { Congress } from "../models/Congress";
 import { Senator } from "../models/Senator";
+import { Contributor } from "../models/Contributor";
 
 interface Rep {
   contribRep: Congress | Senator;
 }
 
+interface TheContributors {
+  contributors: Contributor[];
+}
 
 const RepContributorsTable: FC<Rep> = ({contribRep}) => {
   const dispatch = useTypedDispatch();
-  const contributorsListData = useTypedSelector(
+  const contributorsListData: TheContributors = useTypedSelector(
     state => state.contributorsList,
   );
   const {contributors} = contributorsListData;
