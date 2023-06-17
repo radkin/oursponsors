@@ -6,5 +6,3 @@ export {default as ProfileScreen} from './profile';
 
 export {default as Signup} from './signup';
 export  {default as Login} from './login';
-export  {default as Home} from './home';
-export  {default as Dashboard} from './dashboard';
