@@ -2,8 +2,15 @@ import {Card, Provider, Text} from 'react-native-paper';
 import {StyleSheet} from 'react-native';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';
+import {FC} from 'react';
+import {Senator} from '../models/Senator';
+import {Congress} from '../models/Congress';
 
-function SmallRepCard({value}) {
+interface Value {
+  value: Congress | Senator;
+}
+
+const SmallRepCard: FC<Value> = ({value}) => {
   return (
     <Provider>
       <Card style={styles.card}>
@@ -25,7 +32,7 @@ function SmallRepCard({value}) {
       </Card>
     </Provider>
   );
-}
+};
 
 const styles = StyleSheet.create({
   screenRow: {

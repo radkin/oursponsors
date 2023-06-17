@@ -8,11 +8,11 @@ import {
   getPreferences,
   setPreferences,
 } from '../store/actions/preferencesAction';
-import {useEffect} from 'react';
+import { FC, useEffect } from "react";
 import {scale} from 'react-native-size-matters';
 import {useTypedDispatch, useTypedSelector} from '../store/store';
 
-function PreferencesCards({setPreferences}) {
+const PreferencesCards: FC = ({setPreferences}) => {
   const dispatch = useTypedDispatch();
   const preferencesListData = useTypedSelector(state => state.preferencesList);
   const {preferences} = preferencesListData;

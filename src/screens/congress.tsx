@@ -1,8 +1,13 @@
 import CongressCardsFlatlist from '../components/congressCardsFlatlist';
 import {StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, {FC} from 'react';
+import {NavigationProp} from '@react-navigation/native';
 
-function Congress(props) {
+interface Props {
+  navigation: NavigationProp<any>;
+}
+
+const Congress: FC<Props> = props => {
   return (
     <View
       style={[
@@ -16,7 +21,7 @@ function Congress(props) {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

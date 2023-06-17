@@ -1,10 +1,16 @@
 import {StyleSheet, View} from 'react-native';
 import * as React from 'react';
 import renderSenators from './renderSenators';
+import { NavigationProp } from "@react-navigation/native";
+import { FC } from "react";
 
-function SenatorCardsFlatlist(props): JSX.Element {
-  return <View style={styles.container}>{renderSenators(props)}</View>;
+interface Props {
+  navigation: NavigationProp<any>;
 }
+
+const SenatorCardsFlatlist: FC<Props> = (props) => {
+  return <View style={styles.container}>{renderSenators(props)}</View>;
+};
 
 const styles = StyleSheet.create({
   container: {

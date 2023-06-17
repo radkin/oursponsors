@@ -1,30 +1,32 @@
 export interface Congress {
   id: number;
-  proPublicaId: string;
+  pro_publica_id: string;
   title: string;
-  shortTitle: string;
-  apiUrl: string;
-  firstName: string;
-  middleName: string;
-  lastName: string;
+  short_title: string;
+  api_url: string;
+  first_name: string;
+  middle_name: string;
+  last_name: string;
   suffix: string;
-  dateOfBirth: string;
+  date_of_birth: string;
   gender: string;
   party: string;
-  leadershipRole: string;
-  twitterAccount: string;
-  facebookAccount;
-  // youtubeAccount: string,
-  // govtrackId: number,
-  // cspanId: number,
-  // votesmartId: number,
-  // icpsrId: number,
-  // crpId: string,
-  // googleEntityId: string,
-  // fecCandidateId: string,
-  // url: string,
+  leadership_role: string;
+  twitter_account: string;
+  facebook_account;
+  crp_id: string;
+  youtube_account: string,
+  govtrack_id: number,
+  cspan_id: number,
+  votesmart_id: number,
+  icpsr_id: number,
+  google_entity_id: string,
+  url: string,
+  contactForm: string,
+  image_url: string;
+  state: string,
   // rssUrl: string,
-  // contactForm: string,
+  // fecCandidateId: string,
   // inOffice: boolean,
   // //    @JsonProperty(value="cook_pvi")
   // dwNominate: number,
@@ -39,7 +41,6 @@ export interface Congress {
   // office: string,
   // phone: string,
   // //    @JsonProperty(value="fax")
-  // state: string,
   // district: string,
   // atLarge: boolean,
   // geoId: string,
