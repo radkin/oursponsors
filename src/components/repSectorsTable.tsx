@@ -20,12 +20,14 @@ interface TheSectors {
 
 const RepSectorsTable: FC<Rep> = ({sectorRep}) => {
   const dispatch = useTypedDispatch();
-  const sectorsListData: TheSectors = useTypedSelector(state => state.sectorsList);
+  const sectorsListData: TheSectors = useTypedSelector(
+    state => state.sectorsList,
+  );
   const {sectors} = sectorsListData;
 
   const [internalState, setInternalState] = useState(sectorRep);
 
-  const previousValueRef = useRef();
+  let previousValueRef: React.MutableRefObject<Congress | Senator | undefined> = useRef();
   const previousValue = previousValueRef.current;
   if (sectorRep !== previousValue && sectorRep !== internalState) {
     setInternalState(sectorRep);
@@ -74,7 +76,6 @@ const RepSectorsTable: FC<Rep> = ({sectorRep}) => {
           <FlatList
             data={sectors}
             renderItem={({item}) => <RenderDataTable sector={item} />}
-            keyExtractor={item => item.id}
           />
         </DataTable>
       </Surface>
