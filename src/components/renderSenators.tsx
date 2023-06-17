@@ -1,19 +1,26 @@
-import { FC, useEffect } from "react";
+import {FC, useEffect} from 'react';
 import {getSenators} from '../store/actions/senatorAction';
 import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import RepCard from './repCard';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';
 import {useTypedDispatch, useTypedSelector} from '../store/store';
-import { NavigationProp } from "@react-navigation/native";
+import {NavigationProp} from '@react-navigation/native';
+import {Senator} from '../models/Senator';
 
 interface Props {
   navigation: NavigationProp<any>;
 }
 
-const RenderSenators: FC<Props> = (props) => {
+interface Senators {
+  senators: Senator[];
+}
+
+const RenderSenators: FC<Props> = props => {
   const dispatch = useTypedDispatch();
-  const senatorsListData = useTypedSelector(state => state.senatorsList);
+  const senatorsListData: Senators = useTypedSelector(
+    state => state.senatorsList,
+  );
   const {senators} = senatorsListData;
 
   useEffect(() => {
@@ -45,12 +52,11 @@ const RenderSenators: FC<Props> = (props) => {
             </View>
           </TouchableOpacity>
         )}
-        keyExtractor={item => item.id}
         horizontal={false}
       />
     );
   }
-}
+};
 
 const styles = StyleSheet.create({
   card: {
