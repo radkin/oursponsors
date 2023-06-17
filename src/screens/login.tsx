@@ -4,6 +4,7 @@ import {Button, Input} from '../components';
 import {auth} from '../constants/firebase';
 import store from '../store/store';
 import { NavigationProp } from "@react-navigation/native";
+import { scale } from "react-native-size-matters";
 
 interface Props {
   navigation: NavigationProp<any>;
@@ -40,9 +41,9 @@ const Login: FC<Props> = props => {
       />
       <Button title="Login" onPress={login} />
       <View style={styles.loginText}>
-        <Text style={{marginHorizontal: 5}}>Don't Have an Account?</Text>
+        <Text style={{marginHorizontal: scale(5)}}>Don't Have an Account?</Text>
         <TouchableOpacity
-          style={{marginHorizontal: 5}}
+          style={{marginHorizontal: scale(5)}}
           onPress={() => props.navigation.navigate('signup')}>
           <Text style={{color: 'rgba(81,135,200,1)'}}>Signup Here</Text>
         </TouchableOpacity>
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
   },
   loginText: {
     flexDirection: 'row',
-    marginVertical: 20,
+    marginVertical: scale(20),
   },
 });
 
