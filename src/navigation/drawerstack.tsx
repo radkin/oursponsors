@@ -5,14 +5,15 @@ import {scale} from 'react-native-size-matters';
 import Tabstack from './tabstack';
 import login from '../screens/login';
 import {auth} from '../constants/firebase';
-import {View, Button, Text} from 'react-native';
+import {View} from 'react-native';
 import signup from "../screens/signup";
+import {Button} from "../components";
 
 const Drawer = createDrawerNavigator();
 
 const Drawerstack: FC = () => {
   const [logout, setLogout] = useState<number>(0);
-  
+
   const LogoutScreen = () => {
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>

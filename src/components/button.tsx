@@ -1,7 +1,6 @@
 import React, {FC} from 'react';
-import { Dimensions, TextInput, View, StyleSheet, Text, TouchableOpacity } from "react-native";
-
-const {height, width} = Dimensions.get('screen');
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { scale } from "react-native-size-matters";
 
 interface Props {
   title: string;
@@ -23,10 +22,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
-    padding: 10,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-    marginVertical: 10,
+    padding: scale(10),
+    paddingHorizontal: scale(20),
+    borderRadius: scale(8),
+    marginVertical: scale(10),
   },
   text: {
     color: '#fff',

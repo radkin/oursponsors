@@ -51,8 +51,8 @@ const RenderCongress: FC<Props> = props => {
 const styles = StyleSheet.create({
   card: {
     flex: 1,
-    borderRadius: 4,
-    borderWidth: 2,
+    borderRadius: scale(4),
+    borderWidth: scale(2),
     borderColor: '#E8E8E8',
     justifyContent: 'center',
     backgroundColor: 'white',

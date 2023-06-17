@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
-import {Dimensions, TextInput, View, StyleSheet} from 'react-native';
+import {TextInput, View, StyleSheet} from 'react-native';
+import {scale} from 'react-native-size-matters';
 
-const {height, width} = Dimensions.get('screen');
 interface Props {
   placeholder: string;
   onChangeText: (text: string) => void;
@@ -23,11 +23,11 @@ const Input: FC<Props> = props => {
 
 const styles = StyleSheet.create({
   container: {
-    width: width / 1.1,
+    width: scale(280),
     alignSelf: 'center',
     backgroundColor: '#e3e3e3',
-    borderRadius: 5,
-    marginVertical: 10,
+    borderRadius: scale(5),
+    marginVertical: scale(10),
   },
   input: {
     padding: 15,
