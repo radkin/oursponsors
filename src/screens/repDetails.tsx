@@ -6,17 +6,25 @@ import {
   Animated,
   TextStyle,
 } from 'react-native';
-import React, {useEffect} from 'react';
+import React, { FC, useEffect } from "react";
 import {Divider, List, MD3Colors, Surface, Text} from 'react-native-paper';
-import RenderRepDetailsTable from '../components/repSectorsTable';
+import RenderRepSectorsTable from '../components/repSectorsTable';
 import RenderRepContributorsTable from '../components/repContributorsTable';
 import ScrollView = Animated.ScrollView;
 import {getPreferences} from '../store/actions/preferencesAction';
 import SmallRepCard from '../components/smallRepCard';
 import {scale} from 'react-native-size-matters';
 import { useTypedDispatch, useTypedSelector } from "../store/store";
+import { Senator } from "../models/Senator";
+import { Congress } from "../models/Congress";
 
-function RepDetails({route}) {
+interface Route {
+  key: string;
+  name: string;
+  params: Senator | Congress;
+}
+
+const RepDetails: FC<Route> = ({route}) => {
   const dispatch = useTypedDispatch();
   const preferencesListData = useTypedSelector(state => state.preferencesList);
   const {preferences} = preferencesListData;
@@ -25,7 +33,11 @@ function RepDetails({route}) {
     dispatch(getPreferences());
   }, [dispatch]);
 
+  // console.log(route);
+
   const {value} = route.params;
+
+
   return (
     <View style={{paddingBottom: scale(450)}}>
       <View style={styles.card}>
@@ -33,11 +45,11 @@ function RepDetails({route}) {
       </View>
 
       <View style={styles.table}>
-        <RenderRepDetailsTable value={value} />
+        <RenderRepSectorsTable sectorRep={value} />
       </View>
 
       <View style={styles.table}>
-        <RenderRepContributorsTable value={value} />
+        <RenderRepContributorsTable contribRep={value} />
       </View>
 
       <ScrollView style={{paddingTop: scale(5)}}>

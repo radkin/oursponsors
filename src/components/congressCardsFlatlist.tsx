@@ -2,10 +2,15 @@ import {StyleSheet, View} from 'react-native';
 import * as React from 'react';
 
 import RenderCongress from './renderCongress';
+import {NavigationProp} from '@react-navigation/native';
+import {FC} from 'react';
 
-function CardsFlatlist(props): JSX.Element {
-  return <View style={styles.container}>{RenderCongress(props)}</View>;
+interface Props {
+  navigation: NavigationProp<any>;
 }
+const CardsFlatlist: FC<Props> = props => {
+  return <View style={styles.container}>{RenderCongress(props)}</View>;
+};
 
 const styles = StyleSheet.create({
   container: {

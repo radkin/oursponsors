@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {FC, useEffect} from 'react';
 
 import {connect} from 'react-redux';
 import {getUser, setUser} from '../store/actions/userAction';
@@ -17,7 +17,7 @@ import SelectDropdown from 'react-native-select-dropdown';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {useTypedDispatch, useTypedSelector} from '../store/store';
 
-function Profile() {
+const Profile: FC = () => {
   const dispatch = useTypedDispatch();
   const userObjectData = useTypedSelector(state => state.userObject);
   const {user} = userObjectData;
@@ -34,7 +34,7 @@ function Profile() {
     {label: 'Independent', value: 'I'},
   ];
 
-  const getLabel = (myObjArray, value) => {
+  const getLabel: FC = (myObjArray, value) => {
     for (var i = 0; i < myObjArray.length; i++) {
       if (myObjArray[i].value === value) {
         return myObjArray[i].label;
@@ -48,7 +48,7 @@ function Profile() {
     formState: {errors},
   } = useForm();
 
-  if (user && user['party']) {
+  if (user && user.party) {
     return (
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
@@ -64,7 +64,7 @@ function Profile() {
                   maxLength={20}
                   onChangeText={text => onChange(text)}
                   value={value}
-                  defaultValue={user['first_name']}
+                  defaultValue={user.first_name}
                   style={styles.textBox}
                 />
               </View>
@@ -77,9 +77,7 @@ function Profile() {
             }}
           />
           {errors.first_name?.message ? (
-            <Text style={styles.errorText}>
-              {errors['first_name']?.message}
-            </Text>
+            <Text style={styles.errorText}>{errors.first_name?.message}</Text>
           ) : null}
 
           <Controller
@@ -94,7 +92,7 @@ function Profile() {
                   maxLength={20}
                   onChangeText={text => onChange(text)}
                   value={value}
-                  defaultValue={user['last_name']}
+                  defaultValue={user.last_name}
                   style={styles.textBox}
                 />
               </View>
@@ -122,7 +120,7 @@ function Profile() {
                   maxLength={40}
                   onChangeText={text => onChange(text)}
                   value={value}
-                  defaultValue={user['email']}
+                  defaultValue={user.email}
                   style={styles.textBox}
                 />
               </View>
@@ -152,7 +150,7 @@ function Profile() {
                 contentContainerStyle={styles.container}>
                 <SelectDropdown
                   data={genders}
-                  defaultValue={user['gender']}
+                  defaultValue={user.gender}
                   onSelect={selectedItem => {
                     onChange(selectedItem);
                   }}
@@ -213,8 +211,8 @@ function Profile() {
                 <SelectDropdown
                   data={partyData}
                   defaultValue={{
-                    label: getLabel(partyData, user['party']),
-                    value: user['party'],
+                    label: getLabel(partyData, user.party),
+                    value: user.party,
                   }}
                   onSelect={selectedItem => {
                     onChange(selectedItem.value);
@@ -244,9 +242,7 @@ function Profile() {
                   renderCustomizedRowChild={item => {
                     return (
                       <View style={styles.dropdown3RowChildStyle}>
-                        <Text style={styles.dropdown3RowTxt}>
-                          {item['label']}
-                        </Text>
+                        <Text style={styles.dropdown3RowTxt}>{item.label}</Text>
                       </View>
                     );
                   }}
@@ -281,8 +277,8 @@ function Profile() {
                 <SelectDropdown
                   data={stateList}
                   defaultValue={{
-                    label: getLabel(stateList, user['state']),
-                    value: user['state'],
+                    label: getLabel(stateList, user.state),
+                    value: user.state,
                   }}
                   onSelect={selectedItem => {
                     onChange(selectedItem.value);
@@ -312,9 +308,7 @@ function Profile() {
                   renderCustomizedRowChild={item => {
                     return (
                       <View style={styles.dropdown3RowChildStyle}>
-                        <Text style={styles.dropdown3RowTxt}>
-                          {item['label']}
-                        </Text>
+                        <Text style={styles.dropdown3RowTxt}>{item.label}</Text>
                       </View>
                     );
                   }}
@@ -355,7 +349,7 @@ function Profile() {
       </View>
     );
   }
-}
+};
 
 const styles = StyleSheet.create({
   safeArea: {

@@ -1,34 +1,37 @@
 export interface Senator {
   id: number;
-  proPublicaId: string;
+  pro_publica_id: string;
   title: string;
-  shortTitle: string;
-  apiUrl: string;
-  firstName: string;
-  middleName: string;
-  lastName: string;
+  short_title: string;
+  api_url: string;
+  first_name: string;
+  middle_name: string;
+  last_name: string;
   suffix: string;
-  dateOfBirth: string;
+  date_of_birth: string;
   gender: string;
   party: string;
-  leadershipRole: string;
-  twitterAccount: string;
-  facebookAccount: string;
+  leadership_role: string;
+  twitter_account: string;
+  facebook_account: string;
+  crp_id: string;
+  state: string,
+  youtube_account: string,
+  govtrack_id: number,
+  cspan_id: number,
+  votesmart_id: number,
+  icpsr_id: number,
+  google_entity_id: string,
+  fecCandidateId: string,
+  url: string,
+  rssUrl: string,
+  contact_form: string,
+  image_url: string;
 }
 
 /*
 ToDo: Add partisan politics related numbers
-    youtubeAccount: string,
-    govtrackId: number,
-    cspanId: number,
-    votesmartId: number,
-    icpsrId: number,
-    crpId: string,
-    googleEntityId: string,
-    fecCandidateId: string,
-    url: string,
-    rssUrl: string,
-    contactForm: string,
+
     inOffice: boolean,
     //    @JsonProperty(value="cook_pvi")
     dwNominate: number,
@@ -43,7 +46,6 @@ ToDo: Add partisan politics related numbers
     office: string,
     phone: string,
     //    @JsonProperty(value="fax")
-    state: string,
     senateClass: number,
     stateRank: string,
     lisId: string,

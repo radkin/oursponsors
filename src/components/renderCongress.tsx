@@ -1,12 +1,16 @@
-import {useEffect} from 'react';
+import { FC, useEffect } from "react";
 import {getCongress} from '../store/actions/congressAction';
 import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import RepCard from './repCard';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';
 import { useTypedDispatch, useTypedSelector } from "../store/store";
+import { NavigationProp } from "@react-navigation/native";
 
-function RenderCongress(props) {
+interface Props {
+  navigation: NavigationProp<any>;
+}
+const RenderCongress: FC<Props> = (props) => {
   const dispatch = useTypedDispatch();
   const congressListData = useTypedSelector(state => state.congressList);
   const {congress} = congressListData;

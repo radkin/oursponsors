@@ -1,13 +1,13 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {View} from 'react-native';
 import PreferencesCards from '../components/preferencesCards';
 
-function Preferences(props) {
+const Preferences: FC = () => {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <PreferencesCards {...props} />
+      <PreferencesCards />
     </View>
   );
-}
+};
 
 export default Preferences;

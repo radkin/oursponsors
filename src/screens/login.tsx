@@ -3,8 +3,13 @@ import React, { FC, useState } from "react";
 import {Button, Input} from '../components';
 import {auth} from '../constants/firebase';
 import store from '../store/store';
+import { NavigationProp } from "@react-navigation/native";
 
-const Login: FC = props => {
+interface Props {
+  navigation: NavigationProp<any>;
+}
+
+const Login: FC<Props> = props => {
   const [email, setEmail] = useState<string | null>(null);
   const [password, setPassword] = useState<string | null>(null);
 

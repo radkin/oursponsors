@@ -2,8 +2,16 @@ import {Card, Provider, Text} from 'react-native-paper';
 import {StyleSheet} from 'react-native';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';
+import { Congress } from "../models/Congress";
+import { Senator } from "../models/Senator";
+import { FC } from "react";
 
-function RepCard({value}) {
+interface Value {
+  value: Congress | Senator;
+}
+
+const RepCard: FC<Value> = ({value}) => {
+
   return (
     <Provider>
       <Card style={styles.card}>

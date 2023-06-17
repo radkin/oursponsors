@@ -1,14 +1,17 @@
-import {useEffect} from 'react';
+import { FC, useEffect } from "react";
 import {getSenators} from '../store/actions/senatorAction';
 import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import RepCard from './repCard';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';
-import store, {useTypedDispatch, useTypedSelector} from '../store/store';
-import {Fader} from 'react-native-ui-lib';
-import position = Fader.position;
+import {useTypedDispatch, useTypedSelector} from '../store/store';
+import { NavigationProp } from "@react-navigation/native";
 
-function RenderSenators(props) {
+interface Props {
+  navigation: NavigationProp<any>;
+}
+
+const RenderSenators: FC<Props> = (props) => {
   const dispatch = useTypedDispatch();
   const senatorsListData = useTypedSelector(state => state.senatorsList);
   const {senators} = senatorsListData;
