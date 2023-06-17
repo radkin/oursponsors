@@ -16,30 +16,41 @@ import {stateList} from '../staticData/StateList';
 import SelectDropdown from 'react-native-select-dropdown';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {useTypedDispatch, useTypedSelector} from '../store/store';
+import { User } from "../models/User";
+
+interface TheUser {
+  user: User;
+}
+
+interface TheLabel {
+  label: string;
+  value: string;
+}
 
 const Profile: FC = () => {
   const dispatch = useTypedDispatch();
-  const userObjectData = useTypedSelector(state => state.userObject);
+  const userObjectData: TheUser = useTypedSelector(state => state.userObject);
   const {user} = userObjectData;
 
   useEffect(() => {
     dispatch(getUser());
   }, [dispatch]);
 
-  const genders = ['female', 'nonbinary', 'male'];
+  const genders: string[] = ['female', 'nonbinary', 'male'];
 
-  const partyData = [
+  const partyData: TheLabel[] = [
     {label: 'Democrat', value: 'D'},
     {label: 'Republican', value: 'R'},
     {label: 'Independent', value: 'I'},
   ];
 
-  const getLabel: FC = (myObjArray, value) => {
-    for (var i = 0; i < myObjArray.length; i++) {
+  const getLabel = (myObjArray: TheLabel[], value: string): string => {
+    for (let i = 0; i < myObjArray.length; i++) {
       if (myObjArray[i].value === value) {
         return myObjArray[i].label;
       }
     }
+    return '';
   };
 
   const {
@@ -48,7 +59,7 @@ const Profile: FC = () => {
     formState: {errors},
   } = useForm();
 
-  if (user && user.party) {
+  if (user && user['party']) {
     return (
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
@@ -64,7 +75,7 @@ const Profile: FC = () => {
                   maxLength={20}
                   onChangeText={text => onChange(text)}
                   value={value}
-                  defaultValue={user.first_name}
+                  defaultValue={user['first_name']}
                   style={styles.textBox}
                 />
               </View>
@@ -92,7 +103,7 @@ const Profile: FC = () => {
                   maxLength={20}
                   onChangeText={text => onChange(text)}
                   value={value}
-                  defaultValue={user.last_name}
+                  defaultValue={user['last_name']}
                   style={styles.textBox}
                 />
               </View>
@@ -120,7 +131,7 @@ const Profile: FC = () => {
                   maxLength={40}
                   onChangeText={text => onChange(text)}
                   value={value}
-                  defaultValue={user.email}
+                  defaultValue={user['email']}
                   style={styles.textBox}
                 />
               </View>
@@ -150,7 +161,7 @@ const Profile: FC = () => {
                 contentContainerStyle={styles.container}>
                 <SelectDropdown
                   data={genders}
-                  defaultValue={user.gender}
+                  defaultValue={user['gender']}
                   onSelect={selectedItem => {
                     onChange(selectedItem);
                   }}
@@ -211,8 +222,8 @@ const Profile: FC = () => {
                 <SelectDropdown
                   data={partyData}
                   defaultValue={{
-                    label: getLabel(partyData, user.party),
-                    value: user.party,
+                    label: getLabel(partyData, user['party']),
+                    value: user['party'],
                   }}
                   onSelect={selectedItem => {
                     onChange(selectedItem.value);
@@ -277,8 +288,8 @@ const Profile: FC = () => {
                 <SelectDropdown
                   data={stateList}
                   defaultValue={{
-                    label: getLabel(stateList, user.state),
-                    value: user.state,
+                    label: getLabel(stateList, user['state']),
+                    value: user['state'],
                   }}
                   onSelect={selectedItem => {
                     onChange(selectedItem.value);
