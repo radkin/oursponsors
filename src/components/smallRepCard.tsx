@@ -2,8 +2,15 @@ import {Card, Provider, Text} from 'react-native-paper';
 import {StyleSheet} from 'react-native';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';
+import {FC} from 'react';
+import {Senator} from '../models/Senator';
+import {Congress} from '../models/Congress';
 
-function RenderRepCard({value}) {
+interface Value {
+  value: Congress | Senator;
+}
+
+const SmallRepCard: FC<Value> = ({value}) => {
   return (
     <Provider>
       <Card style={styles.card}>
@@ -14,7 +21,6 @@ function RenderRepCard({value}) {
         />
         <Card.Content style={styles.textContainer}>
           <Text
-            variant="titleMedium"
             style={
               styles.contentText
             }>{`${value.state} ${value.party} ${value.title}`}</Text>
@@ -26,7 +32,7 @@ function RenderRepCard({value}) {
       </Card>
     </Provider>
   );
-}
+};
 
 const styles = StyleSheet.create({
   screenRow: {
@@ -34,8 +40,8 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
   },
   card: {
-    height: scale(140),
-    width: scale(500),
+    height: scale(70),
+    width: scale(342),
     marginHorizontal: scale(5),
     marginVertical: scale(5),
     position: 'absolute',
@@ -47,30 +53,28 @@ const styles = StyleSheet.create({
     borderColor: '#3d80fc',
   },
   textContainer: {
-    marginTop: scale(5),
-    height: scale(30),
-    paddingHorizontal: scale(170),
+    marginTop: scale(3),
+    height: scale(20),
+    paddingHorizontal: scale(150),
     flexDirection: 'row',
     width: scale(500),
   },
   contentText: {
-    fontSize: scale(13),
-    lineHeight: scale(13) * 0.75,
-    paddingTop: scale(13) - scale(13) * 0.75,
+    fontSize: scale(14),
   },
   titleText: {
-    paddingHorizontal: scale(158),
-    fontSize: scale(15),
+    paddingHorizontal: scale(138),
+    fontSize: scale(17),
     fontWeight: 'bold',
-    lineHeight: scale(15) * 0.75,
-    paddingTop: scale(15) - scale(15) * 0.75,
+    paddingTop: scale(10),
     position: 'relative',
+    bottom: '17%',
   },
   cardProfPic: {
     position: 'absolute',
-    right: '75%',
-    height: scale(140),
-    width: scale(130),
+    right: '81%',
+    height: scale(69),
+    width: scale(64),
   },
 });
-export default RenderRepCard;
+export default SmallRepCard;

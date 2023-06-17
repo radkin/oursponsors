@@ -2,13 +2,16 @@ import {performAxiosRequest} from '../../utils';
 import {GET_SENATORS, SENATORS_ERROR} from '../types';
 import {AxiosRequestConfig} from 'axios';
 import {INAJAR_TOKEN} from 'react-native-dotenv';
+import store, { TypedThunk } from "../store";
 
-const requestConfig: AxiosRequestConfig = {
-  method: 'get',
-  url: '/propublica/get_senators',
-  headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
-};
-export const getSenators = () => async dispatch => {
+export const _getSenators = (uid) => async dispatch => {
+  const requestConfig: AxiosRequestConfig = {
+    method: 'get',
+    url: '/propublica/get_senators',
+    headers: {
+      'INAJAR-TOKEN': INAJAR_TOKEN,
+      'GOOGLE-UID': uid,
+    },};
   try {
     await performAxiosRequest(requestConfig, true).then(res => {
       dispatch({
@@ -22,4 +25,14 @@ export const getSenators = () => async dispatch => {
       payload: error,
     });
   }
+};
+
+// getCongress requires if (uid), while getSenators needs this approach
+export const getSenators = (): TypedThunk => async dispatch => {
+  const unsubscribe = store.subscribe(() => {
+    const uid = store.getState().googleUid.googleUid;
+    dispatch(_getSenators(uid));
+    unsubscribe();
+  });
+
 };

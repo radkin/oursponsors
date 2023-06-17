@@ -6,6 +6,7 @@ import updatePreferencesReducer from './updatePreferencesReducer';
 import sectorReducer from './sectorReducer';
 import contributorReducer from './contributorReducer';
 import userReducer from './userReducer';
+import firestoreReducer from './firestoreReducer';
 
 export default combineReducers({
   senatorsList: senatorReducer,
@@ -15,4 +16,5 @@ export default combineReducers({
   sectorsList: sectorReducer,
   contributorsList: contributorReducer,
   userObject: userReducer,
+  googleUid: firestoreReducer,
 });

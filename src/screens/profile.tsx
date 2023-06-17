@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {FC, useEffect} from 'react';
 
 import {connect} from 'react-redux';
-import {getUser, setUser} from '../../store/actions/userAction';
+import {getUser, setUser} from '../store/actions/userAction';
 import {
   View,
   SafeAreaView,
@@ -12,34 +12,46 @@ import {
   ScrollView,
 } from 'react-native';
 import {Controller, useForm} from 'react-hook-form';
-import {stateList} from '../../StaticData/StateList';
+import {stateList} from '../staticData/StateList';
 import SelectDropdown from 'react-native-select-dropdown';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {useTypedDispatch, useTypedSelector} from '../../store/store';
+import {useTypedDispatch, useTypedSelector} from '../store/store';
+import { User } from "../models/User";
+import { scale } from "react-native-size-matters";
 
-function ProfileScreen() {
+interface TheUser {
+  user: User;
+}
+
+interface TheLabel {
+  label: string;
+  value: string;
+}
+
+const Profile: FC = () => {
   const dispatch = useTypedDispatch();
-  const userObjectData = useTypedSelector(state => state.userObject);
+  const userObjectData: TheUser = useTypedSelector(state => state.userObject);
   const {user} = userObjectData;
 
   useEffect(() => {
     dispatch(getUser());
   }, [dispatch]);
 
-  const genders = ['female', 'nonbinary', 'male'];
+  const genders: string[] = ['female', 'nonbinary', 'male'];
 
-  const partyData = [
+  const partyData: TheLabel[] = [
     {label: 'Democrat', value: 'D'},
     {label: 'Republican', value: 'R'},
     {label: 'Independent', value: 'I'},
   ];
 
-  const getLabel = (myObjArray, value) => {
-    for (var i = 0; i < myObjArray.length; i++) {
+  const getLabel = (myObjArray: TheLabel[], value: string): string => {
+    for (let i = 0; i < myObjArray.length; i++) {
       if (myObjArray[i].value === value) {
         return myObjArray[i].label;
       }
     }
+    return '';
   };
 
   const {
@@ -47,8 +59,6 @@ function ProfileScreen() {
     handleSubmit,
     formState: {errors},
   } = useForm();
-
-  console.log(user);
 
   if (user && user['party']) {
     return (
@@ -79,9 +89,7 @@ function ProfileScreen() {
             }}
           />
           {errors.first_name?.message ? (
-            <Text style={styles.errorText}>
-              {errors['first_name']?.message}
-            </Text>
+            <Text style={styles.errorText}>{errors.first_name?.message}</Text>
           ) : null}
 
           <Controller
@@ -246,9 +254,7 @@ function ProfileScreen() {
                   renderCustomizedRowChild={item => {
                     return (
                       <View style={styles.dropdown3RowChildStyle}>
-                        <Text style={styles.dropdown3RowTxt}>
-                          {item['label']}
-                        </Text>
+                        <Text style={styles.dropdown3RowTxt}>{item.label}</Text>
                       </View>
                     );
                   }}
@@ -314,9 +320,7 @@ function ProfileScreen() {
                   renderCustomizedRowChild={item => {
                     return (
                       <View style={styles.dropdown3RowChildStyle}>
-                        <Text style={styles.dropdown3RowTxt}>
-                          {item['label']}
-                        </Text>
+                        <Text style={styles.dropdown3RowTxt}>{item.label}</Text>
                       </View>
                     );
                   }}
@@ -352,12 +356,12 @@ function ProfileScreen() {
     );
   } else {
     return (
-      <View>
+      <View style={styles.noProfile}>
         <Text>Unable to display profile</Text>
       </View>
     );
   }
-}
+};
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -370,12 +374,13 @@ const styles = StyleSheet.create({
   },
   textBox: {
     backgroundColor: '#fafafa',
-    borderRadius: 10,
-    paddingStart: 5,
+    borderRadius: scale(10),
+    paddingStart: scale(5),
     borderColor: '#e4e4e4',
-    borderWidth: 1,
+    borderWidth: scale(1),
     alignSelf: 'stretch',
-    marginVertical: 7,
+    marginVertical: scale(7),
+    fontSize: scale(10),
   },
   errorText: {
     color: 'red',
@@ -383,7 +388,7 @@ const styles = StyleSheet.create({
   dropdown: {
     borderColor: '#e4e4e4',
     backgroundColor: '#fafafa',
-    marginVertical: 10,
+    marginVertical: scale(10),
   },
   dropdownPlaceholder: {
     color: '#c7c7c8',
@@ -391,39 +396,40 @@ const styles = StyleSheet.create({
   button: {
     width: '100%',
     backgroundColor: '#517CFF',
-    borderRadius: 10,
-    paddingVertical: 10,
-    marginVertical: 20,
+    borderRadius: scale(10),
+    paddingVertical: scale(10),
+    marginVertical: scale(20),
   },
   buttonText: {
     color: 'white',
     alignSelf: 'center',
+    fontSize: scale(10),
   },
   dropdown1BtnStyle: {
     width: '80%',
-    height: 50,
+    height: scale(50),
     backgroundColor: '#FFF',
-    borderRadius: 8,
-    borderWidth: 1,
+    borderRadius: scale(8),
+    borderWidth: scale(1),
     borderColor: '#444',
   },
-  dropdown1BtnTxtStyle: {color: '#444', textAlign: 'left'},
+  dropdown1BtnTxtStyle: {color: '#444', textAlign: 'left', fontSize: scale(10)},
   dropdown1DropdownStyle: {backgroundColor: '#EFEFEF'},
   dropdown1RowStyle: {backgroundColor: '#EFEFEF', borderBottomColor: '#C5C5C5'},
   dropdown1RowTxtStyle: {color: '#444', textAlign: 'left'},
   dropdown1SelectedRowStyle: {backgroundColor: 'rgba(0,0,0,0.1)'},
   dropdown1searchInputStyleStyle: {
     backgroundColor: '#EFEFEF',
-    borderRadius: 8,
-    borderBottomWidth: 1,
+    borderRadius: scale(8),
+    borderBottomWidth: scale(1),
     borderBottomColor: '#444',
   },
 
   dropdown2BtnStyle: {
     width: '80%',
-    height: 50,
+    height: scale(50),
     backgroundColor: '#444',
-    borderRadius: 8,
+    borderRadius: scale(8),
   },
   dropdown2BtnTxtStyle: {
     color: '#FFF',
@@ -432,7 +438,7 @@ const styles = StyleSheet.create({
   },
   dropdown2DropdownStyle: {
     backgroundColor: '#444',
-    borderRadius: 12,
+    borderRadius: scale(12),
   },
   dropdown2RowStyle: {backgroundColor: '#444', borderBottomColor: '#C5C5C5'},
   dropdown2RowTxtStyle: {
@@ -443,17 +449,17 @@ const styles = StyleSheet.create({
   dropdown2SelectedRowStyle: {backgroundColor: 'rgba(255,255,255,0.2)'},
   dropdown2searchInputStyleStyle: {
     backgroundColor: '#444',
-    borderBottomWidth: 1,
+    borderBottomWidth: scale(1),
     borderBottomColor: '#FFF',
   },
 
   dropdown3BtnStyle: {
     width: '80%',
-    height: 50,
+    height: scale(50),
     backgroundColor: '#FFF',
     paddingHorizontal: 0,
-    borderWidth: 1,
-    borderRadius: 8,
+    borderWidth: scale(1),
+    borderRadius: scale(8),
     borderColor: '#444',
   },
   dropdown3BtnChildStyle: {
@@ -461,41 +467,46 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 18,
+    paddingHorizontal: scale(18),
   },
-  dropdown3BtnImage: {width: 45, height: 45, resizeMode: 'cover'},
+  dropdown3BtnImage: {width: scale(45), height: scale(45), resizeMode: 'cover'},
   dropdown3BtnTxt: {
     color: '#444',
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: 24,
-    marginHorizontal: 12,
+    fontSize: scale(12),
+    marginHorizontal: scale(12),
   },
   dropdown3DropdownStyle: {backgroundColor: 'slategray'},
   dropdown3RowStyle: {
     backgroundColor: 'slategray',
     borderBottomColor: '#444',
-    height: 50,
+    height: scale(50),
   },
   dropdown3RowChildStyle: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingHorizontal: 18,
+    paddingHorizontal: scale(18),
   },
-  dropdownRowImage: {width: 45, height: 45, resizeMode: 'cover'},
+  dropdownRowImage: {width: scale(45), height: scale(45), resizeMode: 'cover'},
   dropdown3RowTxt: {
     color: '#F1F1F1',
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: 24,
-    marginHorizontal: 12,
+    fontSize: scale(12),
+    marginHorizontal: scale(12),
   },
   dropdown3searchInputStyleStyle: {
     backgroundColor: 'slategray',
-    borderBottomWidth: 1,
+    borderBottomWidth: scale(1),
     borderBottomColor: '#FFF',
+  },
+  noProfile: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
@@ -507,4 +518,4 @@ const mapDispatchToProps = {
   getUser,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

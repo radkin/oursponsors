@@ -1,4 +1,4 @@
-import { ProfileScreen } from "../src/components/screens";
+import { ProfileScreen } from "../src/screens";
 
 jest.useFakeTimers();
 

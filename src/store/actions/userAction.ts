@@ -5,15 +5,17 @@ import {GET_USER, USER_ERROR, UPDATE_USER} from '../types';
 import {performAxiosRequest} from '../../utils';
 import {getSenators} from './senatorAction';
 import {getCongress} from './congressAction';
-import {TypedThunk} from '../store';
+import store, {TypedThunk} from '../store';
 
-const requestConfig: AxiosRequestConfig = {
-  method: 'get',
-  url: '/user/get_user',
-  headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
-};
-
-export const getUser = () => async dispatch => {
+export const _getUser = (uid) => async dispatch => {
+  const requestConfig: AxiosRequestConfig = {
+    method: 'get',
+    url: '/user/get_user',
+    headers: {
+      'INAJAR-TOKEN': INAJAR_TOKEN,
+      'GOOGLE-UID': uid,
+    },
+  };
   try {
     await performAxiosRequest(requestConfig, true).then(res => {
       dispatch({
@@ -29,13 +31,15 @@ export const getUser = () => async dispatch => {
   }
 };
 
-export const updateUser = uProfile => async dispatch => {
+export const updateUser = (uProfile, uid) => async dispatch => {
   const requestConfig: AxiosRequestConfig = {
     method: 'post',
-    url: 'user/update_user',
+    url: 'user/create_or_update_user',
     data: uProfile,
-    headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
-  };
+    headers: {
+      'INAJAR-TOKEN': INAJAR_TOKEN,
+      'GOOGLE-UID': uid,
+    },  };
   try {
     await performAxiosRequest(requestConfig, true).then(res => {
       dispatch({
@@ -54,8 +58,14 @@ export const updateUser = uProfile => async dispatch => {
 export const setUser =
   (uProfile): TypedThunk =>
   async dispatch => {
-    await dispatch(updateUser(uProfile));
-    await dispatch(getUser());
+    const uid = store.getState().googleUid.googleUid;
+    await dispatch(updateUser(uProfile, uid));
+    if (uid) dispatch(_getUser(uid));
     await dispatch(getSenators());
     await dispatch(getCongress());
   };
+
+export const getUser = (): TypedThunk => async dispatch => {
+  const uid = store.getState().googleUid.googleUid;
+  if (uid) dispatch(_getUser(uid));
+}

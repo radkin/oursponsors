@@ -8,13 +8,19 @@ import {
   getPreferences,
   setPreferences,
 } from '../store/actions/preferencesAction';
-import {useEffect} from 'react';
+import {FC, useEffect} from 'react';
 import {scale} from 'react-native-size-matters';
 import {useTypedDispatch, useTypedSelector} from '../store/store';
 
-function PreferencesCards({setPreferences}) {
+interface Preferences {
+  preferences: Preferences;
+}
+
+const PreferencesCards: FC = ({setPreferences}) => {
   const dispatch = useTypedDispatch();
-  const preferencesListData = useTypedSelector(state => state.preferencesList);
+  const preferencesListData: Preferences = useTypedSelector(
+    state => state.preferencesList,
+  );
   const {preferences} = preferencesListData;
 
   // ToDo: mapStateToProps is not working. When fixed, remove this hook
@@ -223,7 +229,7 @@ function PreferencesCards({setPreferences}) {
       </View>
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

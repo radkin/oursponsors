@@ -2,8 +2,16 @@ import {Card, Provider, Text} from 'react-native-paper';
 import {StyleSheet} from 'react-native';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';
+import { Congress } from "../models/Congress";
+import { Senator } from "../models/Senator";
+import { FC } from "react";
 
-function RenderSmallRepCard({value}) {
+interface Value {
+  value: Congress | Senator;
+}
+
+const RepCard: FC<Value> = ({value}) => {
+
   return (
     <Provider>
       <Card style={styles.card}>
@@ -14,6 +22,7 @@ function RenderSmallRepCard({value}) {
         />
         <Card.Content style={styles.textContainer}>
           <Text
+            variant="titleMedium"
             style={
               styles.contentText
             }>{`${value.state} ${value.party} ${value.title}`}</Text>
@@ -33,8 +42,8 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
   },
   card: {
-    height: scale(70),
-    width: scale(342),
+    height: scale(140),
+    width: scale(500),
     marginHorizontal: scale(5),
     marginVertical: scale(5),
     position: 'absolute',
@@ -46,28 +55,30 @@ const styles = StyleSheet.create({
     borderColor: '#3d80fc',
   },
   textContainer: {
-    marginTop: scale(3),
-    height: scale(20),
-    paddingHorizontal: scale(150),
+    marginTop: scale(5),
+    height: scale(30),
+    paddingHorizontal: scale(170),
     flexDirection: 'row',
     width: scale(500),
   },
   contentText: {
-    fontSize: scale(14),
+    fontSize: scale(13),
+    lineHeight: scale(13) * 0.75,
+    paddingTop: scale(13) - scale(13) * 0.75,
   },
   titleText: {
-    paddingHorizontal: scale(138),
-    fontSize: scale(17),
+    paddingHorizontal: scale(158),
+    fontSize: scale(15),
     fontWeight: 'bold',
-    paddingTop: scale(10),
+    lineHeight: scale(15) * 0.75,
+    paddingTop: scale(15) - scale(15) * 0.75,
     position: 'relative',
-    bottom: '17%',
   },
   cardProfPic: {
     position: 'absolute',
-    right: '81%',
-    height: scale(69),
-    width: scale(64),
+    right: '75%',
+    height: scale(140),
+    width: scale(130),
   },
 });
-export default RenderSmallRepCard;
+export default RepCard;

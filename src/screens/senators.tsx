@@ -1,8 +1,12 @@
-import SenatorCardsFlatlist from '../SenatorCardsFlatlist';
+import SenatorCardsFlatlist from '../components/senatorCardsFlatlist';
 import {StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, { FC } from "react";
+import { NavigationProp } from "@react-navigation/native";
 
-function SenatorsScreen(props) {
+interface Props {
+  navigation: NavigationProp<any>;
+}
+const Senators: FC<Props> = props => {
   return (
     <View
       style={[
@@ -24,4 +28,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SenatorsScreen;
+export default Senators;
