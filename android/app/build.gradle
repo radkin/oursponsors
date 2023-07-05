@@ -98,8 +98,8 @@ android {
         applicationId "com.oursponsors"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 17
-        versionName "1.17"
+        versionCode 20
+        versionName "1.20"
     }
 
     splits {
