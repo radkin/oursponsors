@@ -88,7 +88,8 @@ const Profile: FC = () => {
               },
             }}
           />
-          {errors.first_name?.message ? (
+          {errors.first_name?.message &&
+          typeof errors.first_name?.message === 'string' ? (
             <Text style={styles.errorText}>{errors.first_name?.message}</Text>
           ) : null}
 
@@ -116,7 +117,8 @@ const Profile: FC = () => {
               },
             }}
           />
-          {errors.last_name?.message ? (
+          {errors.last_name?.message &&
+          typeof errors.last_name?.message === 'string' ? (
             <Text style={styles.errorText}>{errors.last_name?.message}</Text>
           ) : null}
 
@@ -148,7 +150,8 @@ const Profile: FC = () => {
               },
             }}
           />
-          {errors.email?.message ? (
+          {errors.email?.message &&
+          typeof errors.email?.message === 'string' ? (
             <Text style={styles.errorText}>{errors.email?.message}</Text>
           ) : null}
 
@@ -208,7 +211,8 @@ const Profile: FC = () => {
               },
             }}
           />
-          {errors.gender?.message ? (
+          {errors.gender?.message &&
+          typeof errors.gender?.message === 'string' ? (
             <Text style={styles.errorText}>{errors.gender?.message}</Text>
           ) : null}
 

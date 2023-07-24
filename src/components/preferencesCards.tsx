@@ -16,7 +16,11 @@ interface Preferences {
   preferences: Preferences;
 }
 
-const PreferencesCards: FC = ({setPreferences}) => {
+interface SetPreferences {
+  setPreferences: (key: string, value: boolean) => void;
+}
+
+const PreferencesCards: FC<SetPreferences> = ({setPreferences}) => {
   const dispatch = useTypedDispatch();
   const preferencesListData: Preferences = useTypedSelector(
     state => state.preferencesList,
@@ -32,7 +36,7 @@ const PreferencesCards: FC = ({setPreferences}) => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Card title="Card Title">
+        <Card>
           <Text style={styles.paragraph}>Representative Filtering</Text>
         </Card>
 
@@ -68,7 +72,7 @@ const PreferencesCards: FC = ({setPreferences}) => {
 
         <Divider horizontalInset={true} style={{height: scale(10)}} />
 
-        <Card title="Card Title">
+        <Card>
           <Text style={styles.paragraph}>Specific Member Details</Text>
         </Card>
 

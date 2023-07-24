@@ -7,7 +7,7 @@ import {Provider} from 'react-redux';
 import {Provider as PaperProvider} from 'react-native-paper';
 
 import store from '../src/store/store';
-describe('DetailsScreen', () => {
+describe('ProfileScreen', () => {
   it('renders correctly', () => {
     const tree = renderer
       .create(
