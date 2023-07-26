@@ -27,7 +27,7 @@ const RenderCongress: FC<Props> = props => {
   }, [dispatch]);
 
   const navigation = props.navigation;
-
+console.log(congress);
   return (
     <FlatList
       data={congress}
