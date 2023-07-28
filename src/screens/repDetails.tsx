@@ -42,7 +42,7 @@ const RepDetails: FC<Props> = (props) => {
     dispatch(getPreferences());
   }, [dispatch]);
 
-  const value = props.route.params?.value;
+  const value = props.route?.params?.value;
 
   if (value) {
     return (
