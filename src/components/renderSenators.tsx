@@ -1,35 +1,35 @@
 import {FC, useEffect} from 'react';
-import {getSenators} from '../store/actions/senatorAction';
 import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import RepCard from './repCard';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';
 import {useTypedDispatch, useTypedSelector} from '../store/store';
 import {NavigationProp} from '@react-navigation/native';
-import {Senator} from '../models/Senator';
+import { MiniSenator } from "../models/MiniSenator";
+import { getMiniSenators } from "../store/actions/miniSenatorAction";
 
 interface Props {
   navigation: NavigationProp<any>;
 }
 
-interface Senators {
-  senators: Senator[];
+interface MiniSenators {
+  miniSenators: MiniSenator[];
 }
 
 const RenderSenators: FC<Props> = props => {
   const dispatch = useTypedDispatch();
-  const senatorsListData: Senators = useTypedSelector(
-    state => state.senatorsList,
+  const miniSenatorsListData: MiniSenators = useTypedSelector(
+    state => state.miniSenatorsList,
   );
-  const {senators} = senatorsListData;
+  const {miniSenators} = miniSenatorsListData;
 
   useEffect(() => {
-    dispatch(getSenators());
+    dispatch(getMiniSenators());
   }, [dispatch]);
 
   const navigation = props.navigation;
 
-  if (senators === undefined || senators.length == 0) {
+  if (miniSenators === undefined || miniSenators.length == 0) {
     return (
       <View style={styles.noSenators}>
         <Text>Unable to display Senators</Text>
@@ -39,7 +39,7 @@ const RenderSenators: FC<Props> = props => {
   } else {
     return (
       <FlatList
-        data={senators}
+        data={miniSenators}
         renderItem={({item}) => (
           <TouchableOpacity
             onPress={() =>

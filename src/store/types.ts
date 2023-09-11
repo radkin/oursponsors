@@ -1,6 +1,8 @@
 // Senate
 export const GET_SENATORS = 'GET_SENATORS';
 export const SENATORS_ERROR = 'SENATORS_ERROR';
+export const GET_MINI_SENATORS = 'GET_MINI_SENATORS';
+export const MINI_SENATORS_ERROR = 'MINI_SENATORS_ERROR';
 // Congress
 export const GET_CONGRESS = 'GET_CONGRESS';
 export const CONGRESS_ERROR = 'CONGRESS_ERROR';
@@ -19,3 +21,5 @@ export const GET_USER = 'GET_USER';
 export const USER_ERROR = 'USER_ERROR';
 export const UPDATE_USER = 'UPDATE_USER';
 export const SET_GOOGLE_UID = 'SET_GOOGLE_UID';
+export const GET_SPONSORS = 'GET_SPONSORS';
+export const SPONSORS_ERROR = 'SPONSORS_ERROR';

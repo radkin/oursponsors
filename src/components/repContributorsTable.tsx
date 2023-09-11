@@ -9,6 +9,7 @@ import { useTypedDispatch, useTypedSelector } from "../store/store";
 import { Congress } from "../models/Congress";
 import { Senator } from "../models/Senator";
 import { Contributor } from "../models/Contributor";
+import {formatter} from "../currencyFormatter";
 
 interface Rep {
   contribRep: Congress | Senator;
@@ -37,12 +38,6 @@ const RepContributorsTable: FC<Rep> = ({contribRep}) => {
     previousValueRef.current = contribRep;
     dispatch(getContributors(internalState.crp_id));
   }, [dispatch, internalState.crp_id, contribRep]);
-
-  const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
-  });
 
   const RenderDataTable = ({contrib}) => {
 

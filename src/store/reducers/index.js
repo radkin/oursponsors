@@ -7,9 +7,12 @@ import sectorReducer from './sectorReducer';
 import contributorReducer from './contributorReducer';
 import userReducer from './userReducer';
 import firestoreReducer from './firestoreReducer';
+import sponsorsReducer from './sponsorsReducer';
+import miniSenatorReducer from "./miniSenatorReducer";
 
 export default combineReducers({
   senatorsList: senatorReducer,
+  miniSenatorsList: miniSenatorReducer,
   congressList: congressReducer,
   preferencesList: preferencesReducer,
   updatePreferences: updatePreferencesReducer,
@@ -17,4 +20,5 @@ export default combineReducers({
   contributorsList: contributorReducer,
   userObject: userReducer,
   googleUid: firestoreReducer,
+  sponsorsList: sponsorsReducer,
 });

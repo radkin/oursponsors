@@ -2,15 +2,32 @@ import {Card, Provider, Text} from 'react-native-paper';
 import {StyleSheet} from 'react-native';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';
-import { Congress } from "../models/Congress";
-import { Senator } from "../models/Senator";
-import { FC } from "react";
+import {Congress} from '../models/Congress';
+import {MiniSenator} from '../models/MiniSenator';
+import {FC} from 'react';
+import {formatter} from '../currencyFormatter';
 
+// interface Value {
+//   value: Congress | MiniSenator;
+// }
 interface Value {
-  value: Congress | Senator;
+  value: MiniSenator;
 }
 
 const RepCard: FC<Value> = ({value}) => {
+  const sponsorList = (value.sponsors || []).map((sponsor, index) => (
+    <React.Fragment key={index}>
+      <Text style={styles.sponsorText}>{`${sponsor.contributor_name.replace(
+        /^(\S+\s+\S+\s).*/,
+        '$1',
+      )}`}</Text>
+      <Text style={styles.sponsorText}>
+        {formatter.format(
+          parseFloat(String(sponsor.contributor_aggregate_ytd)),
+        )}
+      </Text>
+    </React.Fragment>
+  ));
 
   return (
     <Provider>
@@ -27,6 +44,15 @@ const RepCard: FC<Value> = ({value}) => {
               styles.contentText
             }>{`${value.state} ${value.party} ${value.title}`}</Text>
         </Card.Content>
+        {value.sponsors === undefined || value.sponsors.length == 0 ? (
+          <Card.Content>
+            <Text>No sponsors found</Text>
+          </Card.Content>
+        ) : (
+          <Card.Content style={styles.sponsorContainer}>
+            {sponsorList}
+          </Card.Content>
+        )}
         <Card.Cover
           style={styles.cardProfPic}
           source={{uri: value.image_url}}
@@ -34,7 +60,7 @@ const RepCard: FC<Value> = ({value}) => {
       </Card>
     </Provider>
   );
-}
+};
 
 const styles = StyleSheet.create({
   screenRow: {
@@ -55,16 +81,27 @@ const styles = StyleSheet.create({
     borderColor: '#3d80fc',
   },
   textContainer: {
-    marginTop: scale(5),
-    height: scale(30),
+    height: scale(17),
     paddingHorizontal: scale(170),
     flexDirection: 'row',
+    width: scale(500),
+  },
+  sponsorContainer: {
+    height: scale(60),
+    paddingHorizontal: scale(170),
+    flexDirection: 'column',
     width: scale(500),
   },
   contentText: {
     fontSize: scale(13),
     lineHeight: scale(13) * 0.75,
     paddingTop: scale(13) - scale(13) * 0.75,
+  },
+  sponsorText: {
+    flex: 1,
+    fontSize: scale(11),
+    lineHeight: scale(12),
+    flexDirection: 'column',
   },
   titleText: {
     paddingHorizontal: scale(158),
