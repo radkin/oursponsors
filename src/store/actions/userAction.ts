@@ -3,7 +3,7 @@ import {INAJAR_TOKEN} from 'react-native-dotenv';
 
 import {GET_USER, USER_ERROR, UPDATE_USER} from '../types';
 import {performAxiosRequest} from '../../utils';
-import {getSenators} from './senatorAction';
+import {getMiniSenators} from './miniSenatorAction';
 import {getCongress} from './congressAction';
 import store, {TypedThunk} from '../store';
 
@@ -61,7 +61,7 @@ export const setUser =
     const uid = store.getState().googleUid.googleUid;
     await dispatch(updateUser(uProfile, uid));
     if (uid) dispatch(_getUser(uid));
-    await dispatch(getSenators());
+    await dispatch(getMiniSenators());
     await dispatch(getCongress());
   };
 

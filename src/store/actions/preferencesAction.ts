@@ -2,7 +2,7 @@ import {INAJAR_TOKEN} from 'react-native-dotenv';
 import {AxiosRequestConfig} from 'axios';
 
 import {GET_PREFERENCES, PREFERENCES_ERROR, UPDATE_PREFERENCES} from '../types';
-import { _getSenators} from "./senatorAction";
+import { _getMiniSenators} from "./miniSenatorAction";
 import { _getCongress} from "./congressAction";
 import {performAxiosRequest} from '../../utils';
 import store, {TypedThunk} from '../store';
@@ -66,7 +66,7 @@ export const setPreferences =
   const uid = await store.getState().googleUid.googleUid;
     if (uid) {
       await dispatch(updatePreferences(pref, value, uid));
-      await dispatch(_getSenators(uid));
+      await dispatch(_getMiniSenators(uid));
       await dispatch(_getCongress(uid));
     }
   };
