@@ -4,7 +4,7 @@ import {INAJAR_TOKEN} from 'react-native-dotenv';
 import {GET_USER, USER_ERROR, UPDATE_USER} from '../types';
 import {performAxiosRequest} from '../../utils';
 import {getMiniSenators} from './miniSenatorAction';
-import {getCongress} from './congressAction';
+import {getMiniCongress} from './miniCongressAction';
 import store, {TypedThunk} from '../store';
 
 export const _getUser = (uid) => async dispatch => {
@@ -62,7 +62,7 @@ export const setUser =
     await dispatch(updateUser(uProfile, uid));
     if (uid) dispatch(_getUser(uid));
     await dispatch(getMiniSenators());
-    await dispatch(getCongress());
+    await dispatch(getMiniCongress());
   };
 
 export const getUser = (): TypedThunk => async dispatch => {

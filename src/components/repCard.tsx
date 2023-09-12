@@ -2,16 +2,13 @@ import {Card, Provider, Text} from 'react-native-paper';
 import {StyleSheet} from 'react-native';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';
-import {Congress} from '../models/Congress';
 import {MiniSenator} from '../models/MiniSenator';
 import {FC} from 'react';
 import {formatter} from '../currencyFormatter';
+import { MiniCongress } from "../models/MiniCongress";
 
-// interface Value {
-//   value: Congress | MiniSenator;
-// }
 interface Value {
-  value: MiniSenator;
+  value: MiniCongress | MiniSenator;
 }
 
 const RepCard: FC<Value> = ({value}) => {

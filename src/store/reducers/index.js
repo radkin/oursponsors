@@ -9,11 +9,13 @@ import userReducer from './userReducer';
 import firestoreReducer from './firestoreReducer';
 import sponsorsReducer from './sponsorsReducer';
 import miniSenatorReducer from "./miniSenatorReducer";
+import miniCongressReducer from "./miniCongressReducer";
 
 export default combineReducers({
   senatorsList: senatorReducer,
   miniSenatorsList: miniSenatorReducer,
   congressList: congressReducer,
+  miniCongressList: miniCongressReducer,
   preferencesList: preferencesReducer,
   updatePreferences: updatePreferencesReducer,
   sectorsList: sectorReducer,

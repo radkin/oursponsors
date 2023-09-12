@@ -3,7 +3,7 @@ import {AxiosRequestConfig} from 'axios';
 
 import {GET_PREFERENCES, PREFERENCES_ERROR, UPDATE_PREFERENCES} from '../types';
 import { _getMiniSenators} from "./miniSenatorAction";
-import { _getCongress} from "./congressAction";
+import { _getMiniCongress} from "./miniCongressAction";
 import {performAxiosRequest} from '../../utils';
 import store, {TypedThunk} from '../store';
 
@@ -67,7 +67,7 @@ export const setPreferences =
     if (uid) {
       await dispatch(updatePreferences(pref, value, uid));
       await dispatch(_getMiniSenators(uid));
-      await dispatch(_getCongress(uid));
+      await dispatch(_getMiniCongress(uid));
     }
   };
 
