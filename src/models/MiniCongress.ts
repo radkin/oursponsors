@@ -8,5 +8,6 @@ export interface MiniCongress {
   party: string;
   image_url: string;
   state: string,
+  crp_id: string;
   sponsors: Sponsor[];
 }
