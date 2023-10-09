@@ -74,22 +74,6 @@ const RepDetails: FC<Props> = (props) => {
     }
   }, [dispatch, miniRep?.id]);
 
-  // if (senatorDetails) {
-  //   console.log('SENATOR');
-  //   console.log(senatorDetails.senator);
-  //   console.log('SECTORS');
-  //   console.log(senatorDetails.sectors);
-  //   console.log('CONTRIBUTORS');
-  //   console.log(senatorDetails.contributors);
-  //   console.log('PREFERENCES');
-  //   console.log(senatorDetails.preferences);
-  // };
-
-
-
-
-
-
   if (senatorDetails) {
     return (
       <View style={{ paddingBottom: scale(450) }}>
