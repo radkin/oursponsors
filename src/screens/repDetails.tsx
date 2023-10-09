@@ -6,11 +6,12 @@ import {
   Animated,
   TextStyle,
 } from 'react-native';
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import {Divider, List, MD3Colors, Surface, Text} from 'react-native-paper';
 import RenderRepSectorsTable from '../components/repSectorsTable';
 import RenderRepContributorsTable from '../components/repContributorsTable';
-import RepDetailLinks from '../components/repDetailLinks';
+import SenatorDetailLinks from '../components/senatorDetailLinks';
+import CongressDetailLinks from '../components/congressDetailLinks';
 import ScrollView = Animated.ScrollView;
 import SmallRepCard from '../components/smallRepCard';
 import {scale} from 'react-native-size-matters';
@@ -19,6 +20,9 @@ import { NavigationProp } from "@react-navigation/native";
 import { getSenatorDetails } from "../store/actions/senatorDetailsAction";
 import { MiniSenator } from "../models/MiniSenator";
 import {SenatorDetails} from '../models/SenatorDetails';
+import { CongressDetails } from "../models/CongressDetails";
+import { MiniCongress } from "../models/MiniCongress";
+import { getCongressDetails } from "../store/actions/congressDetailsAction";
 
 interface Props {
   navigation: NavigationProp<any>;
@@ -31,23 +35,43 @@ interface Route {
 }
 
 interface MiniRep {
-  value: MiniSenator;
+  value: MiniSenator | MiniCongress;
 }
 
 interface TheSenatorDetails {
   senatorDetails: SenatorDetails;
 }
 
+interface TheCongressDetails {
+  congressDetails: CongressDetails;
+}
+
 const RepDetails: FC<Props> = (props) => {
   const miniRep = props.route.params?.value;
+  const [repType, setRepType] = useState('senator');
+
+  useEffect(() => {
+    const regex = /^(.*?),/;
+    const repTypeString = miniRep?.title.match(regex);
+    if ( repTypeString && repTypeString[0] == 'congress') {
+      setRepType('congress');
+      console.log('this is a congress');
+    }
+  }, [miniRep?.title]);
 
   const dispatch = useTypedDispatch();
   const senatorDetailsObjectData: TheSenatorDetails = useTypedSelector(state => state.senatorDetailsObject);
   const {senatorDetails} = senatorDetailsObjectData;
 
+  const congressDetailsObjectData: TheCongressDetails = useTypedSelector(state => state.congressDetailsObject);
+  const {congressDetails} = congressDetailsObjectData;
 
   useEffect(() => {
-    dispatch(getSenatorDetails(miniRep?.id));
+    if (repType == 'senator') {
+      dispatch(getSenatorDetails(miniRep?.id));
+    } else {
+      dispatch(getCongressDetails(miniRep?.id));
+    }
   }, [dispatch, miniRep?.id]);
 
   // if (senatorDetails) {
@@ -64,12 +88,7 @@ const RepDetails: FC<Props> = (props) => {
 
 
 
-  const regex = /^(.*?),/;
 
-  if (miniRep?.title.match(regex)) {
-    console.log('this is a senator');
-
-  }
 
   if (senatorDetails) {
     return (
@@ -87,11 +106,32 @@ const RepDetails: FC<Props> = (props) => {
         </View>
 
         <View>
-          <RepDetailLinks prefDetails={senatorDetails} />
+          <SenatorDetailLinks preferenceDetails={senatorDetails} />
         </View>
 
       </View>
     );
+  } else if (congressDetails) {
+    return (
+      <View style={{ paddingBottom: scale(450) }}>
+        <View style={styles.card}>
+          <SmallRepCard miniRep={miniRep} />
+        </View>
+
+        <View style={styles.table}>
+          <RenderRepSectorsTable repSectors={congressDetails.sectors} />
+        </View>
+
+        <View style={styles.table}>
+          <RenderRepContributorsTable repContributors={congressDetails.contributors} />
+        </View>
+
+        <View>
+          <CongressDetailLinks preferenceDetails={congressDetails} />
+        </View>
+
+      </View>
+    )
   } else {
     return (
       <View style={styles.noRep}>

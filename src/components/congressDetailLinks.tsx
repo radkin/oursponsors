@@ -1,26 +1,24 @@
 import * as React from 'react';
-import {FC} from 'react';
-import { Preferences } from "../models/Preferences";
+import { FC, useEffect, useState } from "react";
 import { scale } from "react-native-size-matters";
 import { Linking, ScrollView, StyleSheet, TextStyle, TouchableOpacity, View } from "react-native";
 import { Divider, List, MD3Colors, Surface, Text } from "react-native-paper";
-import { Senator } from "../models/Senator";
-import { SenatorDetails } from "../models/SenatorDetails";
+import { CongressDetails } from "../models/CongressDetails";
 
-interface PrefDetails {
-  prefDetails: SenatorDetails;
+interface PreferenceDetails {
+  preferenceDetails: CongressDetails;
 }
-const RepDetailLinks: FC<PrefDetails> = ({prefDetails}) => {
 
-  if (prefDetails) {
+const CongressDetailLinks: FC<PreferenceDetails> = ({preferenceDetails}) => {
 
-    const preferences = prefDetails.preferences;
-    const senator = prefDetails.senator;
+  const preferences = preferenceDetails.preferences;
+  const repDetails = preferenceDetails.congress;
 
+  if (repDetails && preferences) {
     return (
       <ScrollView style={{ paddingTop: scale(5) }}>
         <View>
-          {senator['twitter_account'] && !preferences['twitter_hide'] && (
+          {repDetails['twitter_account'] && !preferences['twitter_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -39,7 +37,7 @@ const RepDetailLinks: FC<PrefDetails> = ({prefDetails}) => {
               </TouchableOpacity>
             </Surface>
           )}
-          {senator['facebook_account'] && !preferences['facebook_hide'] && (
+          {repDetails['facebook_account'] && !preferences['facebook_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -58,7 +56,7 @@ const RepDetailLinks: FC<PrefDetails> = ({prefDetails}) => {
               </TouchableOpacity>
             </Surface>
           )}
-          {senator['youtube_account'] && !preferences['youtube_hide'] && (
+          {repDetails['youtube_account'] && !preferences['youtube_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -79,7 +77,7 @@ const RepDetailLinks: FC<PrefDetails> = ({prefDetails}) => {
               </TouchableOpacity>
             </Surface>
           )}
-          {senator['google_entity_id'] && !preferences['google_entity_hide'] && (
+          {repDetails['google_entity_id'] && !preferences['google_entity_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -100,7 +98,7 @@ const RepDetailLinks: FC<PrefDetails> = ({prefDetails}) => {
               </TouchableOpacity>
             </Surface>
           )}
-          {senator['cspan_id'] && !preferences['cspan_hide'] && (
+          {repDetails['cspan_id'] && !preferences['cspan_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -119,7 +117,7 @@ const RepDetailLinks: FC<PrefDetails> = ({prefDetails}) => {
               </TouchableOpacity>
             </Surface>
           )}
-          {senator['votesmart_id'] && !preferences['vote_smart_hide'] && (
+          {repDetails['votesmart_id'] && !preferences['vote_smart_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -138,7 +136,7 @@ const RepDetailLinks: FC<PrefDetails> = ({prefDetails}) => {
               </TouchableOpacity>
             </Surface>
           )}
-          {senator['govtrack_id'] && !preferences['gov_track_hide'] && (
+          {repDetails['govtrack_id'] && !preferences['gov_track_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -157,7 +155,7 @@ const RepDetailLinks: FC<PrefDetails> = ({prefDetails}) => {
               </TouchableOpacity>
             </Surface>
           )}
-          {senator['crp_id'] && !preferences['open_secrets_hide'] && (
+          {repDetails['crp_id'] && !preferences['open_secrets_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -176,7 +174,7 @@ const RepDetailLinks: FC<PrefDetails> = ({prefDetails}) => {
               </TouchableOpacity>
             </Surface>
           )}
-          {senator['icpsr_id'] && !preferences['vote_view_hide'] && (
+          {repDetails['icpsr_id'] && !preferences['vote_view_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -195,7 +193,7 @@ const RepDetailLinks: FC<PrefDetails> = ({prefDetails}) => {
               </TouchableOpacity>
             </Surface>
           )}
-          {senator['fec_candidate_id'] && !preferences['fec_hide'] && (
+          {repDetails['fec_candidate_id'] && !preferences['fec_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() =>
@@ -217,7 +215,7 @@ const RepDetailLinks: FC<PrefDetails> = ({prefDetails}) => {
 
           <Divider horizontalInset={true} style={{ height: scale(10) }} />
 
-          {senator['contact_form'] && (
+          {repDetails['contact_form'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() => Linking.openURL(preferences['contact_form'])}>
@@ -232,7 +230,7 @@ const RepDetailLinks: FC<PrefDetails> = ({prefDetails}) => {
               </TouchableOpacity>
             </Surface>
           )}
-          {senator['url'] && (
+          {repDetails['url'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity onPress={() => Linking.openURL(`${preferences['url']}`)}>
                 <List.Icon
@@ -246,7 +244,7 @@ const RepDetailLinks: FC<PrefDetails> = ({prefDetails}) => {
               </TouchableOpacity>
             </Surface>
           )}
-          {senator['api_url'] && (
+          {repDetails['api_url'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
                 onPress={() => Linking.openURL(`${preferences['api_url']}`)}>
@@ -266,7 +264,7 @@ const RepDetailLinks: FC<PrefDetails> = ({prefDetails}) => {
     )
   } else {
     return (
-      <p>No Preferences, so no links!</p>
+      <Text>No Preferences, so no links!</Text>
     )
   }
 
@@ -327,4 +325,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RepDetailLinks;
+export default CongressDetailLinks;

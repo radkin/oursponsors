@@ -11,6 +11,7 @@ import sponsorsReducer from './sponsorsReducer';
 import miniSenatorReducer from './miniSenatorReducer';
 import miniCongressReducer from './miniCongressReducer';
 import senatorDetailsReducer from './SenatorDetailsReducer';
+import congressDetailsReducer from './CongressDetailsReducer';
 
 export default combineReducers({
   senatorsList: senatorReducer,
@@ -25,4 +26,5 @@ export default combineReducers({
   googleUid: firestoreReducer,
   sponsorsList: sponsorsReducer,
   senatorDetailsObject: senatorDetailsReducer,
+  congressDetailsObject: congressDetailsReducer,
 });
