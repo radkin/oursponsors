@@ -3,31 +3,35 @@ import {StyleSheet} from 'react-native';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';
 import {FC} from 'react';
-import {Senator} from '../models/Senator';
-import {Congress} from '../models/Congress';
+import { MiniSenator } from "../models/MiniSenator";
+import { MiniCongress } from "../models/MiniCongress";
 
-interface Value {
-  value: Congress | Senator;
+// interface Mini {
+//   mini: MiniSenator | MiniCongress;
+// }
+
+interface MiniRep {
+  miniRep?: MiniSenator;
 }
 
-const SmallRepCard: FC<Value> = ({value}) => {
+const SmallRepCard: FC<MiniRep> = ({miniRep}) => {
   return (
     <Provider>
       <Card style={styles.card}>
         <Card.Title
           style={styles.textContainer}
-          title={`${value.first_name} ${value.last_name}`}
+          title={`${miniRep?.first_name} ${miniRep?.last_name}`}
           titleStyle={styles.titleText}
         />
         <Card.Content style={styles.textContainer}>
           <Text
             style={
               styles.contentText
-            }>{`${value.state} ${value.party} ${value.title}`}</Text>
+            }>{`${miniRep?.state} ${miniRep?.party} ${miniRep?.title}`}</Text>
         </Card.Content>
         <Card.Cover
           style={styles.cardProfPic}
-          source={{uri: value.image_url}}
+          source={{uri: miniRep?.image_url}}
         />
       </Card>
     </Provider>

@@ -10,14 +10,15 @@ import React, { FC, useEffect } from "react";
 import {Divider, List, MD3Colors, Surface, Text} from 'react-native-paper';
 import RenderRepSectorsTable from '../components/repSectorsTable';
 import RenderRepContributorsTable from '../components/repContributorsTable';
+import RepDetailLinks from '../components/repDetailLinks';
 import ScrollView = Animated.ScrollView;
-import {getPreferences} from '../store/actions/preferencesAction';
 import SmallRepCard from '../components/smallRepCard';
 import {scale} from 'react-native-size-matters';
 import { useTypedDispatch, useTypedSelector } from "../store/store";
-import { Senator } from "../models/Senator";
-import { Congress } from "../models/Congress";
 import { NavigationProp } from "@react-navigation/native";
+import { getSenatorDetails } from "../store/actions/senatorDetailsAction";
+import { MiniSenator } from "../models/MiniSenator";
+import {SenatorDetails} from '../models/SenatorDetails';
 
 interface Props {
   navigation: NavigationProp<any>;
@@ -26,284 +27,69 @@ interface Props {
 interface Route {
   key: string;
   name: string;
-  params: Rep | null;
+  params: MiniRep | null;
 }
 
-interface Rep {
-  value: Senator | Congress;
+interface MiniRep {
+  value: MiniSenator;
+}
+
+interface TheSenatorDetails {
+  senatorDetails: SenatorDetails;
 }
 
 const RepDetails: FC<Props> = (props) => {
+  const miniRep = props.route.params?.value;
+
   const dispatch = useTypedDispatch();
-  const preferencesListData = useTypedSelector(state => state.preferencesList);
-  const {preferences} = preferencesListData;
+  const senatorDetailsObjectData: TheSenatorDetails = useTypedSelector(state => state.senatorDetailsObject);
+  const {senatorDetails} = senatorDetailsObjectData;
+
 
   useEffect(() => {
-    dispatch(getPreferences());
-  }, [dispatch]);
+    dispatch(getSenatorDetails(miniRep?.id));
+  }, [dispatch, miniRep?.id]);
 
-  const value = props.route.params?.value;
+  // if (senatorDetails) {
+  //   console.log('SENATOR');
+  //   console.log(senatorDetails.senator);
+  //   console.log('SECTORS');
+  //   console.log(senatorDetails.sectors);
+  //   console.log('CONTRIBUTORS');
+  //   console.log(senatorDetails.contributors);
+  //   console.log('PREFERENCES');
+  //   console.log(senatorDetails.preferences);
+  // };
 
-  if (value) {
+
+
+
+  const regex = /^(.*?),/;
+
+  if (miniRep?.title.match(regex)) {
+    console.log('this is a senator');
+
+  }
+
+  if (senatorDetails) {
     return (
       <View style={{ paddingBottom: scale(450) }}>
         <View style={styles.card}>
-          <SmallRepCard value={value} />
+          <SmallRepCard miniRep={miniRep} />
         </View>
 
         <View style={styles.table}>
-          <RenderRepSectorsTable sectorRep={value} />
+          <RenderRepSectorsTable repSectors={senatorDetails.sectors} />
         </View>
 
         <View style={styles.table}>
-          <RenderRepContributorsTable contribRep={value} />
+          <RenderRepContributorsTable repContributors={senatorDetails.contributors} />
         </View>
 
-        <ScrollView style={{ paddingTop: scale(5) }}>
-          <View>
-            {value['twitter_account'] && !preferences['twitter_hide'] && (
-              <Surface style={styles.surface} elevation={4}>
-                <TouchableOpacity
-                  onPress={() =>
-                    Linking.openURL(
-                      `https://twitter.com/${value['twitter_account']}`,
-                    )
-                  }>
-                  <List.Icon
-                    color={MD3Colors.primary40}
-                    icon="twitter"
-                    style={styles.surfaceIcon}
-                  />
-                  <Text style={styles.surfaceText} variant="titleMedium">
-                    Twitter
-                  </Text>
-                </TouchableOpacity>
-              </Surface>
-            )}
-            {value['facebook_account'] && !preferences['facebook_hide'] && (
-              <Surface style={styles.surface} elevation={4}>
-                <TouchableOpacity
-                  onPress={() =>
-                    Linking.openURL(
-                      `https://facebook.com/${value['facebook_account']}`,
-                    )
-                  }>
-                  <List.Icon
-                    color={MD3Colors.primary40}
-                    icon="facebook"
-                    style={styles.surfaceIcon}
-                  />
-                  <Text style={styles.surfaceText} variant="titleMedium">
-                    Facebook
-                  </Text>
-                </TouchableOpacity>
-              </Surface>
-            )}
-            {value['youtube_account'] && !preferences['youtube_hide'] && (
-              <Surface style={styles.surface} elevation={4}>
-                <TouchableOpacity
-                  onPress={() =>
-                    Linking.openURL(
-                      `https://youtube.com/${value['youtube_account']}`,
-                    )
-                  }>
-                  <List.Icon
-                    color={MD3Colors.primary40}
-                    icon="youtube"
-                    style={styles.surfaceIcon}
-                  />
-                  <Text
-                    style={styles.surfaceText as TextStyle}
-                    variant="titleMedium">
-                    YouTube
-                  </Text>
-                </TouchableOpacity>
-              </Surface>
-            )}
-            {value['google_entity_id'] && !preferences['google_entity_hide'] && (
-                <Surface style={styles.surface} elevation={4}>
-                  <TouchableOpacity
-                    onPress={() =>
-                      Linking.openURL(
-                        `https://www.google.com/search?kgmid=${value['google_entity_id']}`,
-                      )
-                    }>
-                    <List.Icon
-                      color={MD3Colors.primary40}
-                      icon="google"
-                      style={styles.surfaceIcon}
-                    />
-                    <Text
-                      style={styles.surfaceText as TextStyle}
-                      variant="titleMedium">
-                      Google Entity
-                    </Text>
-                  </TouchableOpacity>
-                </Surface>
-              )}
-            {value['cspan_id'] && !preferences['cspan_hide'] && (
-              <Surface style={styles.surface} elevation={4}>
-                <TouchableOpacity
-                  onPress={() =>
-                    Linking.openURL(
-                      `https://www.c-span.org/person/?${value['cspan_id']}`,
-                    )
-                  }>
-                  <Text style={styles.surfaceText} variant="titleMedium">
-                    C-SPAN
-                  </Text>
-                  <List.Icon
-                    color={MD3Colors.primary40}
-                    icon="folder"
-                    style={styles.surfaceIcon}
-                  />
-                </TouchableOpacity>
-              </Surface>
-            )}
-            {value['votesmart_id'] && !preferences['vote_smart_hide'] && (
-              <Surface style={styles.surface} elevation={4}>
-                <TouchableOpacity
-                  onPress={() =>
-                    Linking.openURL(
-                      `https://justfacts.votesmart.org/candidate/${value['votesmart_id']}`,
-                    )
-                  }>
-                  <Text style={styles.surfaceText} variant="titleMedium">
-                    Vote Smart
-                  </Text>
-                  <List.Icon
-                    color={MD3Colors.primary40}
-                    icon="vote"
-                    style={styles.surfaceIcon}
-                  />
-                </TouchableOpacity>
-              </Surface>
-            )}
-            {value['govtrack_id'] && !preferences['gov_track_hide'] && (
-              <Surface style={styles.surface} elevation={4}>
-                <TouchableOpacity
-                  onPress={() =>
-                    Linking.openURL(
-                      `https://www.govtrack.us/congress/members/${value['govtrack_id']}`,
-                    )
-                  }>
-                  <List.Icon
-                    color={MD3Colors.primary40}
-                    icon="trackpad"
-                    style={styles.surfaceIcon}
-                  />
-                  <Text style={styles.surfaceText} variant="titleMedium">
-                    Gov Track
-                  </Text>
-                </TouchableOpacity>
-              </Surface>
-            )}
-            {value['crp_id'] && !preferences['open_secrets_hide'] && (
-              <Surface style={styles.surface} elevation={4}>
-                <TouchableOpacity
-                  onPress={() =>
-                    Linking.openURL(
-                      `https://www.opensecrets.org/members-of-congress/summary?cid=${value['crp_id']}&cycle=2022`,
-                    )
-                  }>
-                  <List.Icon
-                    color={MD3Colors.primary40}
-                    icon="file-hidden"
-                    style={styles.surfaceIcon}
-                  />
-                  <Text style={styles.surfaceText} variant="titleMedium">
-                    Open Secrets
-                  </Text>
-                </TouchableOpacity>
-              </Surface>
-            )}
-            {value['icpsr_id'] && !preferences['vote_view_hide'] && (
-              <Surface style={styles.surface} elevation={4}>
-                <TouchableOpacity
-                  onPress={() =>
-                    Linking.openURL(
-                      `https://voteview.com/person/${value['icpsr_id']}`,
-                    )
-                  }>
-                  <List.Icon
-                    color={MD3Colors.primary40}
-                    icon="poll"
-                    style={styles.surfaceIcon}
-                  />
-                  <Text style={styles.surfaceText} variant="titleMedium">
-                    Vote View
-                  </Text>
-                </TouchableOpacity>
-              </Surface>
-            )}
-            {value['fec_candidate_id'] && !preferences['fec_hide'] && (
-              <Surface style={styles.surface} elevation={4}>
-                <TouchableOpacity
-                  onPress={() =>
-                    Linking.openURL(
-                      `https://www.fec.gov/data/candidate/${value['fec_candidate_id']}`,
-                    )
-                  }>
-                  <List.Icon
-                    color={MD3Colors.primary40}
-                    icon="selection"
-                    style={styles.surfaceIcon}
-                  />
-                  <Text style={styles.surfaceText} variant="titleMedium">
-                    FEC
-                  </Text>
-                </TouchableOpacity>
-              </Surface>
-            )}
+        <View>
+          <RepDetailLinks prefDetails={senatorDetails} />
+        </View>
 
-            <Divider horizontalInset={true} style={{ height: scale(10) }} />
-
-            {value['contact_form'] && (
-              <Surface style={styles.surface} elevation={4}>
-                <TouchableOpacity
-                  onPress={() => Linking.openURL(value['contact_form'])}>
-                  <List.Icon
-                    color={MD3Colors.primary40}
-                    icon="contacts"
-                    style={styles.surfaceIcon}
-                  />
-                  <Text style={styles.surfaceText} variant="titleMedium">
-                    Contact
-                  </Text>
-                </TouchableOpacity>
-              </Surface>
-            )}
-            {value['url'] && (
-              <Surface style={styles.surface} elevation={4}>
-                <TouchableOpacity onPress={() => Linking.openURL(`${value['url']}`)}>
-                  <List.Icon
-                    color={MD3Colors.primary40}
-                    icon="web"
-                    style={styles.surfaceIcon}
-                  />
-                  <Text style={styles.surfaceText} variant="titleMedium">
-                    GOV website
-                  </Text>
-                </TouchableOpacity>
-              </Surface>
-            )}
-            {value['api_url'] && (
-              <Surface style={styles.surface} elevation={4}>
-                <TouchableOpacity
-                  onPress={() => Linking.openURL(`${value['api_url']}`)}>
-                  <List.Icon
-                    color={MD3Colors.primary40}
-                    icon="people"
-                    style={styles.surfaceIcon}
-                  />
-                  <Text style={styles.surfaceText} variant="titleMedium">
-                    ProPublica
-                  </Text>
-                </TouchableOpacity>
-              </Surface>
-            )}
-          </View>
-        </ScrollView>
       </View>
     );
   } else {
