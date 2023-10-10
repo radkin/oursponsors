@@ -55,6 +55,7 @@ const RenderCongress: FC<Props> = props => {
       />
     );
   }
+
 };
 
 const styles = StyleSheet.create({
