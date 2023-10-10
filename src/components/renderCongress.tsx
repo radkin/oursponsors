@@ -1,51 +1,61 @@
 import {FC, useEffect} from 'react';
-import {getCongress} from '../store/actions/congressAction';
-import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {getMiniCongress} from '../store/actions/miniCongressAction';
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import RepCard from './repCard';
 import * as React from 'react';
 import {scale} from 'react-native-size-matters';
 import {useTypedDispatch, useTypedSelector} from '../store/store';
 import {NavigationProp} from '@react-navigation/native';
-import {Congress} from '../models/Congress';
+import { MiniCongress } from "../models/MiniCongress";
 
 interface Props {
   navigation: NavigationProp<any>;
 }
 
-interface TheCongress {
-  congress: Congress[];
+interface TheMiniCongress {
+  miniCongress: MiniCongress[];
 }
 const RenderCongress: FC<Props> = props => {
   const dispatch = useTypedDispatch();
-  const congressListData: TheCongress = useTypedSelector(
-    state => state.congressList,
+  const miniCongressListData: TheMiniCongress = useTypedSelector(
+    state => state.miniCongressList,
   );
-  const {congress} = congressListData;
+  const {miniCongress} = miniCongressListData;
 
   useEffect(() => {
-    dispatch(getCongress());
+    dispatch(getMiniCongress());
   }, [dispatch]);
-
+  
   const navigation = props.navigation;
-console.log(congress);
-  return (
-    <FlatList
-      data={congress}
-      renderItem={({item}) => (
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('Details', {
-              value: item,
-            })
-          }>
-          <View style={styles.card}>
-            <RepCard value={item} />
-          </View>
-        </TouchableOpacity>
-      )}
-      horizontal={false}
-    />
-  );
+
+  if (miniCongress === undefined || miniCongress.length == 0) {
+    return (
+      <View style={styles.noCongress}>
+        <Text>Unable to display Congress</Text>
+        <Text>It is likely you are filtering all of them</Text>
+      </View>
+    );
+  } else {
+    return (
+      <FlatList
+        data={miniCongress}
+        renderItem={({item}) => (
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('Details', {
+                value: item,
+              })
+            }>
+            <View style={styles.card}>
+              <RepCard value={item} />
+            </View>
+          </TouchableOpacity>
+        )}
+        horizontal={false}
+      />
+    );
+  }
+
 };
 
 const styles = StyleSheet.create({
@@ -57,6 +67,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'white',
     height: scale(150),
+  },
+  noCongress: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 export default RenderCongress;

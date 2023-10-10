@@ -28,29 +28,3 @@ export interface Senator {
   contact_form: string,
   image_url: string;
 }
-
-/*
-ToDo: Add partisan politics related numbers
-
-    inOffice: boolean,
-    //    @JsonProperty(value="cook_pvi")
-    dwNominate: number,
-    //    @JsonProperty(value="ideal_point")
-    seniority: number,
-    nextElection: string,
-    totalVotes: number,
-    missedVotes: number,
-    totalPresent: number,
-    lastUpdated: string,
-    ocdId: string,
-    office: string,
-    phone: string,
-    //    @JsonProperty(value="fax")
-    senateClass: number,
-    stateRank: string,
-    lisId: string,
-    missedVotesPct: number,
-    votesWithPartyPct: number,
-    votesAgainstPartyPct: number,
-    imageUrl: string,
- */

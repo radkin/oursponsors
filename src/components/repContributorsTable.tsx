@@ -9,40 +9,17 @@ import { useTypedDispatch, useTypedSelector } from "../store/store";
 import { Congress } from "../models/Congress";
 import { Senator } from "../models/Senator";
 import { Contributor } from "../models/Contributor";
+import {formatter} from "../currencyFormatter";
 
-interface Rep {
-  contribRep: Congress | Senator;
-}
+// interface Rep {
+//   contribRep: Congress | Senator;
+// }
 
 interface TheContributors {
-  contributors: Contributor[];
+  repContributors: Contributor[];
 }
 
-const RepContributorsTable: FC<Rep> = ({contribRep}) => {
-  const dispatch = useTypedDispatch();
-  const contributorsListData: TheContributors = useTypedSelector(
-    state => state.contributorsList,
-  );
-  const {contributors} = contributorsListData;
-
-  const [internalState, setInternalState] = useState(contribRep);
-
-  let previousValueRef: React.MutableRefObject<Congress | Senator | undefined> = useRef();
-  const previousValue = previousValueRef.current;
-  if (contribRep !== previousValue && contribRep !== internalState) {
-    setInternalState(contribRep);
-  }
-
-  useEffect(() => {
-    previousValueRef.current = contribRep;
-    dispatch(getContributors(internalState.crp_id));
-  }, [dispatch, internalState.crp_id, contribRep]);
-
-  const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
-  });
+const RepContributorsTable: FC<TheContributors> = ({repContributors}) => {
 
   const RenderDataTable = ({contrib}) => {
 
@@ -75,7 +52,7 @@ const RepContributorsTable: FC<Rep> = ({contribRep}) => {
           </DataTable.Header>
 
           <FlatList
-            data={contributors}
+            data={repContributors}
             renderItem={({item}) => <RenderDataTable contrib={item} />}
           />
         </DataTable>

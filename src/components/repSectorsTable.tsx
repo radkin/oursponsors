@@ -1,49 +1,22 @@
 import {DataTable, Provider, Surface} from 'react-native-paper';
 import {FlatList, StyleSheet} from 'react-native';
 import * as React from 'react';
-import { FC, useEffect, useRef, useState } from "react";
 import {getSectors} from '../store/actions/sectorAction';
 import {connect} from 'react-redux';
 import {scale} from 'react-native-size-matters';
-import {useTypedDispatch, useTypedSelector} from '../store/store';
-import {Senator} from '../models/Senator';
-import {Congress} from '../models/Congress';
 import { Sector } from "../models/Sector";
+import {formatter} from "../currencyFormatter";
+import { FC } from "react";
 
-interface Rep {
-  sectorRep: Congress | Senator;
-}
+// interface Rep {
+//   sectorRep: Congress | Senator;
+// }
 
 interface TheSectors {
-  sectors: Sector[];
+  repSectors: Sector[];
 }
 
-const RepSectorsTable: FC<Rep> = ({sectorRep}) => {
-  const dispatch = useTypedDispatch();
-  const sectorsListData: TheSectors = useTypedSelector(
-    state => state.sectorsList,
-  );
-  const {sectors} = sectorsListData;
-
-  const [internalState, setInternalState] = useState(sectorRep);
-
-  let previousValueRef: React.MutableRefObject<Congress | Senator | undefined> = useRef();
-  const previousValue = previousValueRef.current;
-  if (sectorRep !== previousValue && sectorRep !== internalState) {
-    setInternalState(sectorRep);
-  }
-
-  useEffect(() => {
-    previousValueRef.current = sectorRep;
-    dispatch(getSectors(internalState.crp_id));
-  }, [dispatch, internalState.crp_id, sectorRep]);
-
-  const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
-  });
-
+const RepSectorsTable: FC<TheSectors> = ({repSectors}) => {
   const RenderDataTable = ({sector}) => {
 
     return (
@@ -74,7 +47,7 @@ const RepSectorsTable: FC<Rep> = ({sectorRep}) => {
           </DataTable.Header>
 
           <FlatList
-            data={sectors}
+            data={repSectors}
             renderItem={({item}) => <RenderDataTable sector={item} />}
           />
         </DataTable>
