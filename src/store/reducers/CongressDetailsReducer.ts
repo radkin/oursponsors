@@ -16,7 +16,7 @@ export default function (state = initialState, action: Action) {
     case GET_CONGRESS_DETAILS:
       return {
         ...state,
-        senatorDetails: action.payload,
+        congressDetails: action.payload,
         loading: false,
       };
     case CONGRESS_DETAILS_ERROR:

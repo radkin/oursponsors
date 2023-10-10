@@ -24,7 +24,7 @@ const SenatorDetailLinks: FC<PreferenceDetails> = ({preferenceDetails}) => {
               <TouchableOpacity
                 onPress={() =>
                   Linking.openURL(
-                    `https://twitter.com/${preferences['twitter_account']}`,
+                    `https://twitter.com/${repDetails['twitter_account']}`,
                   )
                 }>
                 <List.Icon
@@ -43,7 +43,7 @@ const SenatorDetailLinks: FC<PreferenceDetails> = ({preferenceDetails}) => {
               <TouchableOpacity
                 onPress={() =>
                   Linking.openURL(
-                    `https://facebook.com/${preferences['facebook_account']}`,
+                    `https://facebook.com/${repDetails['facebook_account']}`,
                   )
                 }>
                 <List.Icon
@@ -62,7 +62,7 @@ const SenatorDetailLinks: FC<PreferenceDetails> = ({preferenceDetails}) => {
               <TouchableOpacity
                 onPress={() =>
                   Linking.openURL(
-                    `https://youtube.com/${preferences['youtube_account']}`,
+                    `https://youtube.com/${repDetails['youtube_account']}`,
                   )
                 }>
                 <List.Icon
@@ -83,7 +83,7 @@ const SenatorDetailLinks: FC<PreferenceDetails> = ({preferenceDetails}) => {
               <TouchableOpacity
                 onPress={() =>
                   Linking.openURL(
-                    `https://www.google.com/search?kgmid=${preferences['google_entity_id']}`,
+                    `https://www.google.com/search?kgmid=${repDetails['google_entity_id']}`,
                   )
                 }>
                 <List.Icon
@@ -104,7 +104,7 @@ const SenatorDetailLinks: FC<PreferenceDetails> = ({preferenceDetails}) => {
               <TouchableOpacity
                 onPress={() =>
                   Linking.openURL(
-                    `https://www.c-span.org/person/?${preferences['cspan_id']}`,
+                    `https://www.c-span.org/person/?${repDetails['cspan_id']}`,
                   )
                 }>
                 <Text style={styles.surfaceText} variant="titleMedium">
@@ -123,7 +123,7 @@ const SenatorDetailLinks: FC<PreferenceDetails> = ({preferenceDetails}) => {
               <TouchableOpacity
                 onPress={() =>
                   Linking.openURL(
-                    `https://justfacts.votesmart.org/candidate/${preferences['votesmart_id']}`,
+                    `https://justfacts.votesmart.org/candidate/${repDetails['votesmart_id']}`,
                   )
                 }>
                 <Text style={styles.surfaceText} variant="titleMedium">
@@ -142,7 +142,7 @@ const SenatorDetailLinks: FC<PreferenceDetails> = ({preferenceDetails}) => {
               <TouchableOpacity
                 onPress={() =>
                   Linking.openURL(
-                    `https://www.govtrack.us/congress/members/${preferences['govtrack_id']}`,
+                    `https://www.govtrack.us/congress/members/${repDetails['govtrack_id']}`,
                   )
                 }>
                 <List.Icon
@@ -161,7 +161,7 @@ const SenatorDetailLinks: FC<PreferenceDetails> = ({preferenceDetails}) => {
               <TouchableOpacity
                 onPress={() =>
                   Linking.openURL(
-                    `https://www.opensecrets.org/members-of-congress/summary?cid=${preferences['crp_id']}&cycle=2022`,
+                    `https://www.opensecrets.org/members-of-congress/summary?cid=${repDetails['crp_id']}&cycle=2022`,
                   )
                 }>
                 <List.Icon
@@ -180,7 +180,7 @@ const SenatorDetailLinks: FC<PreferenceDetails> = ({preferenceDetails}) => {
               <TouchableOpacity
                 onPress={() =>
                   Linking.openURL(
-                    `https://voteview.com/person/${preferences['icpsr_id']}`,
+                    `https://voteview.com/person/${repDetails['icpsr_id']}`,
                   )
                 }>
                 <List.Icon
@@ -199,7 +199,7 @@ const SenatorDetailLinks: FC<PreferenceDetails> = ({preferenceDetails}) => {
               <TouchableOpacity
                 onPress={() =>
                   Linking.openURL(
-                    `https://www.fec.gov/data/candidate/${preferences['fec_candidate_id']}`,
+                    `https://www.fec.gov/data/candidate/${repDetails['fec_candidate_id']}`,
                   )
                 }>
                 <List.Icon
@@ -219,7 +219,7 @@ const SenatorDetailLinks: FC<PreferenceDetails> = ({preferenceDetails}) => {
           {repDetails['contact_form'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
-                onPress={() => Linking.openURL(preferences['contact_form'])}>
+                onPress={() => Linking.openURL(repDetails['contact_form'])}>
                 <List.Icon
                   color={MD3Colors.primary40}
                   icon="contacts"
@@ -233,7 +233,7 @@ const SenatorDetailLinks: FC<PreferenceDetails> = ({preferenceDetails}) => {
           )}
           {repDetails['url'] && (
             <Surface style={styles.surface} elevation={4}>
-              <TouchableOpacity onPress={() => Linking.openURL(`${preferences['url']}`)}>
+              <TouchableOpacity onPress={() => Linking.openURL(`${repDetails['url']}`)}>
                 <List.Icon
                   color={MD3Colors.primary40}
                   icon="web"
@@ -248,7 +248,7 @@ const SenatorDetailLinks: FC<PreferenceDetails> = ({preferenceDetails}) => {
           {repDetails['api_url'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity
-                onPress={() => Linking.openURL(`${preferences['api_url']}`)}>
+                onPress={() => Linking.openURL(`${repDetails['api_url']}`)}>
                 <List.Icon
                   color={MD3Colors.primary40}
                   icon="people"

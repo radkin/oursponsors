@@ -48,16 +48,6 @@ interface TheCongressDetails {
 
 const RepDetails: FC<Props> = (props) => {
   const miniRep = props.route.params?.value;
-  const [repType, setRepType] = useState('senator');
-
-  useEffect(() => {
-    const regex = /^(.*?),/;
-    const repTypeString = miniRep?.title.match(regex);
-    if ( repTypeString && repTypeString[0] == 'congress') {
-      setRepType('congress');
-      console.log('this is a congress');
-    }
-  }, [miniRep?.title]);
 
   const dispatch = useTypedDispatch();
   const senatorDetailsObjectData: TheSenatorDetails = useTypedSelector(state => state.senatorDetailsObject);
@@ -67,14 +57,17 @@ const RepDetails: FC<Props> = (props) => {
   const {congressDetails} = congressDetailsObjectData;
 
   useEffect(() => {
-    if (repType == 'senator') {
+    if (miniRep?.rep_type == 'senator') {
       dispatch(getSenatorDetails(miniRep?.id));
-    } else {
+    } else if (miniRep?.rep_type == 'congress') {
       dispatch(getCongressDetails(miniRep?.id));
     }
   }, [dispatch, miniRep?.id]);
 
-  if (senatorDetails) {
+  if (
+    senatorDetails?.senator != undefined &&
+    miniRep?.rep_type == 'senator'
+  ) {
     return (
       <View style={{ paddingBottom: scale(450) }}>
         <View style={styles.card}>
@@ -95,7 +88,10 @@ const RepDetails: FC<Props> = (props) => {
 
       </View>
     );
-  } else if (congressDetails) {
+  } else if (
+    congressDetails?.congress != undefined &&
+    miniRep?.rep_type == 'congress'
+  ) {
     return (
       <View style={{ paddingBottom: scale(450) }}>
         <View style={styles.card}>
