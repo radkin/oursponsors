@@ -1,7 +1,6 @@
 import {performAxiosRequest} from '../../utils';
 import {GET_CONGRESS, CONGRESS_ERROR} from '../types';
 import {AxiosRequestConfig} from 'axios';
-import {INAJAR_TOKEN} from 'react-native-dotenv';
 import store, { TypedThunk } from "../store";
 
 export const _getCongress = (uid) => async dispatch => {
@@ -9,8 +8,7 @@ export const _getCongress = (uid) => async dispatch => {
     method: 'get',
     url: '/propublica/get_congress',
     headers: {
-      'INAJAR-TOKEN': INAJAR_TOKEN,
-      'GOOGLE-UID': uid,
+      'INAJAR-TOKEN': uid,
     },};
   try {
     await performAxiosRequest(requestConfig, true).then(res => {

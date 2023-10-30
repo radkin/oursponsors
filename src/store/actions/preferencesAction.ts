@@ -1,4 +1,3 @@
-import {INAJAR_TOKEN} from 'react-native-dotenv';
 import {AxiosRequestConfig} from 'axios';
 
 import {GET_PREFERENCES, PREFERENCES_ERROR, UPDATE_PREFERENCES} from '../types';
@@ -12,8 +11,7 @@ export const _getPreferences = (uid) => async dispatch => {
     method: 'get',
     url: '/user/get_preferences',
     headers: {
-      'INAJAR-TOKEN': INAJAR_TOKEN,
-      'GOOGLE-UID': uid,
+      'INAJAR-TOKEN': uid,
     },
   };
   try {
@@ -41,8 +39,7 @@ export const updatePreferences = (pref, value, uid) => async dispatch => {
     url: '/user/update_preferences',
     data,
     headers: {
-      'INAJAR-TOKEN': INAJAR_TOKEN,
-      'GOOGLE-UID': uid,
+      'INAJAR-TOKEN': uid,
     },
   };
   try {

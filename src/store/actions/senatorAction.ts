@@ -1,17 +1,16 @@
 import {performAxiosRequest} from '../../utils';
 import {GET_SENATORS, SENATORS_ERROR} from '../types';
 import {AxiosRequestConfig} from 'axios';
-import {INAJAR_TOKEN} from 'react-native-dotenv';
-import store, { TypedThunk } from "../store";
+import store, {TypedThunk} from '../store';
 
-export const _getSenators = (uid) => async dispatch => {
+export const _getSenators = uid => async dispatch => {
   const requestConfig: AxiosRequestConfig = {
     method: 'get',
     url: '/propublica/get_senators',
     headers: {
-      'INAJAR-TOKEN': INAJAR_TOKEN,
-      'GOOGLE-UID': uid,
-    },};
+      'INAJAR-TOKEN': uid,
+    },
+  };
   try {
     await performAxiosRequest(requestConfig, true).then(res => {
       dispatch({
@@ -34,5 +33,4 @@ export const getSenators = (): TypedThunk => async dispatch => {
     dispatch(_getSenators(uid));
     unsubscribe();
   });
-
 };

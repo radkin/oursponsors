@@ -1,7 +1,6 @@
 import {performAxiosRequest} from '../../utils';
 import {GET_MINI_SENATORS, MINI_SENATORS_ERROR} from '../types';
 import {AxiosRequestConfig} from 'axios';
-import {INAJAR_TOKEN} from 'react-native-dotenv';
 import store, {TypedThunk} from '../store';
 
 export const _getMiniSenators = uid => async dispatch => {
@@ -9,8 +8,7 @@ export const _getMiniSenators = uid => async dispatch => {
     method: 'get',
     url: '/propublica/get_mini_senators',
     headers: {
-      'INAJAR-TOKEN': INAJAR_TOKEN,
-      'GOOGLE-UID': uid,
+      'INAJAR-TOKEN': uid,
     },
   };
   try {

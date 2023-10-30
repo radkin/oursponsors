@@ -1,9 +1,9 @@
 import {performAxiosRequest} from '../../utils';
 import {GET_SECTORS, SECTORS_ERROR} from '../types';
 import {AxiosRequestConfig} from 'axios';
-import {INAJAR_TOKEN} from 'react-native-dotenv';
+import store, {TypedThunk} from '../store';
 
-export const getSectors = cid => async dispatch => {
+export const _getSectors = (cid, uid) => async dispatch => {
   const data = {
     cid: cid,
   };
@@ -11,7 +11,7 @@ export const getSectors = cid => async dispatch => {
     method: 'post',
     url: '/opensecrets/get_sectors/',
     data,
-    headers: {'INAJAR-TOKEN': INAJAR_TOKEN},
+    headers: {'INAJAR-TOKEN': uid},
   };
   try {
     await performAxiosRequest(requestConfig, true).then(res => {
@@ -27,3 +27,8 @@ export const getSectors = cid => async dispatch => {
     });
   }
 };
+
+export const getSectors = (cid): TypedThunk => async dispatch => {
+    const uid = store.getState().googleUid.googleUid;
+    if (uid) dispatch(_getSectors(cid, uid));
+  };
