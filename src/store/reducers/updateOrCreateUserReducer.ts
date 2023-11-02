@@ -1,4 +1,4 @@
-import {UPDATE_USER, USER_ERROR} from '../types';
+import {CREATE_OR_UPDATE_USER, USER_ERROR} from '../types';
 import {User} from '../../models/User';
 
 const initialState = {
@@ -13,7 +13,7 @@ type Action = {
 
 export default function (state = initialState, action: Action) {
   switch (action.type) {
-    case UPDATE_USER:
+    case CREATE_OR_UPDATE_USER:
       return {
         ...state,
         user: action.payload,
