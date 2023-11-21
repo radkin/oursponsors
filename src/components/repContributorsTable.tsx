@@ -1,13 +1,10 @@
 import {DataTable, Provider, Surface} from 'react-native-paper';
 import {FlatList, StyleSheet} from 'react-native';
 import * as React from 'react';
-import { FC, useEffect, useRef, useState } from "react";
+import { FC } from "react";
 import {getContributors} from '../store/actions/contributorAction';
 import {connect} from 'react-redux';
 import {scale} from 'react-native-size-matters';
-import { useTypedDispatch, useTypedSelector } from "../store/store";
-import { Congress } from "../models/Congress";
-import { Senator } from "../models/Senator";
 import { Contributor } from "../models/Contributor";
 import {formatter} from "../currencyFormatter";
 

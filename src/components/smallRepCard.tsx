@@ -11,7 +11,7 @@ import { MiniCongress } from "../models/MiniCongress";
 // }
 
 interface MiniRep {
-  miniRep?: MiniSenator;
+  miniRep?: MiniSenator | MiniCongress;
 }
 
 const SmallRepCard: FC<MiniRep> = ({miniRep}) => {

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { scale } from "react-native-size-matters";
-import { Linking, ScrollView, StyleSheet, TextStyle, TouchableOpacity, View } from "react-native";
+import { Linking, ScrollView, TextStyle, TouchableOpacity, View } from "react-native";
 import { Divider, List, MD3Colors, Surface, Text } from "react-native-paper";
 import { SenatorDetails } from "../models/SenatorDetails";
 import {detailStyles as styles} from './detailStyles';
@@ -79,26 +79,26 @@ const SenatorDetailLinks: FC<PreferenceDetails> = ({preferenceDetails}) => {
             </Surface>
           )}
           {repDetails['google_entity_id'] && !preferences['google_entity_hide'] && (
-            <Surface style={styles.surface} elevation={4}>
-              <TouchableOpacity
-                onPress={() =>
-                  Linking.openURL(
-                    `https://www.google.com/search?kgmid=${repDetails['google_entity_id']}`,
-                  )
-                }>
-                <List.Icon
-                  color={MD3Colors.primary40}
-                  icon="google"
-                  style={styles.surfaceIcon}
-                />
-                <Text
-                  style={styles.surfaceText as TextStyle}
-                  variant="titleMedium">
-                  Google Entity
-                </Text>
-              </TouchableOpacity>
-            </Surface>
-          )}
+              <Surface style={styles.surface} elevation={4}>
+                <TouchableOpacity
+                  onPress={() =>
+                    Linking.openURL(
+                      `https://www.google.com/search?kgmid=${repDetails['google_entity_id']}`,
+                    )
+                  }>
+                  <List.Icon
+                    color={MD3Colors.primary40}
+                    icon="google"
+                    style={styles.surfaceIcon}
+                  />
+                  <Text
+                    style={styles.surfaceText as TextStyle}
+                    variant="titleMedium">
+                    Google Entity
+                  </Text>
+                </TouchableOpacity>
+              </Surface>
+            )}
           {repDetails['cspan_id'] && !preferences['cspan_hide'] && (
             <Surface style={styles.surface} elevation={4}>
               <TouchableOpacity

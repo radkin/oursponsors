@@ -1,28 +1,20 @@
-import {
-  View,
-  StyleSheet,
-  Linking,
-  TouchableOpacity,
-  Animated,
-  TextStyle,
-} from 'react-native';
-import React, { FC, useEffect, useState } from "react";
-import {Divider, List, MD3Colors, Surface, Text} from 'react-native-paper';
+import {View, StyleSheet} from 'react-native';
+import React, {FC, useEffect} from 'react';
+import {MD3Colors, Text} from 'react-native-paper';
 import RenderRepSectorsTable from '../components/repSectorsTable';
 import RenderRepContributorsTable from '../components/repContributorsTable';
 import SenatorDetailLinks from '../components/senatorDetailLinks';
 import CongressDetailLinks from '../components/congressDetailLinks';
-import ScrollView = Animated.ScrollView;
 import SmallRepCard from '../components/smallRepCard';
 import {scale} from 'react-native-size-matters';
-import { useTypedDispatch, useTypedSelector } from "../store/store";
-import { NavigationProp } from "@react-navigation/native";
-import { getSenatorDetails } from "../store/actions/senatorDetailsAction";
-import { MiniSenator } from "../models/MiniSenator";
+import {useTypedDispatch, useTypedSelector} from '../store/store';
+import {NavigationProp} from '@react-navigation/native';
+import {getSenatorDetails} from '../store/actions/senatorDetailsAction';
+import {MiniSenator} from '../models/MiniSenator';
 import {SenatorDetails} from '../models/SenatorDetails';
-import { CongressDetails } from "../models/CongressDetails";
-import { MiniCongress } from "../models/MiniCongress";
-import { getCongressDetails } from "../store/actions/congressDetailsAction";
+import {CongressDetails} from '../models/CongressDetails';
+import {MiniCongress} from '../models/MiniCongress';
+import {getCongressDetails} from '../store/actions/congressDetailsAction';
 
 interface Props {
   navigation: NavigationProp<any>;
@@ -46,30 +38,33 @@ interface TheCongressDetails {
   congressDetails: CongressDetails;
 }
 
-const RepDetails: FC<Props> = (props) => {
+const RepDetails: FC<Props> = props => {
   const miniRep = props.route.params?.value;
 
   const dispatch = useTypedDispatch();
-  const senatorDetailsObjectData: TheSenatorDetails = useTypedSelector(state => state.senatorDetailsObject);
+  const senatorDetailsObjectData: TheSenatorDetails = useTypedSelector(
+    state => state.senatorDetailsObject,
+  );
   const {senatorDetails} = senatorDetailsObjectData;
 
-  const congressDetailsObjectData: TheCongressDetails = useTypedSelector(state => state.congressDetailsObject);
+  const congressDetailsObjectData: TheCongressDetails = useTypedSelector(
+    state => state.congressDetailsObject,
+  );
   const {congressDetails} = congressDetailsObjectData;
 
   useEffect(() => {
-    if (miniRep?.rep_type == 'senator') {
+    if (miniRep?.rep_type === 'senator') {
       dispatch(getSenatorDetails(miniRep?.id));
-    } else if (miniRep?.rep_type == 'congress') {
+    } else if (miniRep?.rep_type === 'congress') {
       dispatch(getCongressDetails(miniRep?.id));
     }
-  }, [dispatch, miniRep?.id]);
-
+  }, [dispatch, miniRep?.id, miniRep?.rep_type]);
   if (
-    senatorDetails?.senator != undefined &&
-    miniRep?.rep_type == 'senator'
+    senatorDetails?.senator !== undefined &&
+    miniRep?.rep_type === 'senator'
   ) {
     return (
-      <View style={{ paddingBottom: scale(450) }}>
+      <View style={{paddingBottom: scale(450)}}>
         <View style={styles.card}>
           <SmallRepCard miniRep={miniRep} />
         </View>
@@ -79,21 +74,22 @@ const RepDetails: FC<Props> = (props) => {
         </View>
 
         <View style={styles.table}>
-          <RenderRepContributorsTable repContributors={senatorDetails.contributors} />
+          <RenderRepContributorsTable
+            repContributors={senatorDetails.contributors}
+          />
         </View>
 
         <View>
           <SenatorDetailLinks preferenceDetails={senatorDetails} />
         </View>
-
       </View>
     );
   } else if (
-    congressDetails?.congress != undefined &&
-    miniRep?.rep_type == 'congress'
+    congressDetails?.congress !== undefined &&
+    miniRep?.rep_type === 'congress'
   ) {
     return (
-      <View style={{ paddingBottom: scale(450) }}>
+      <View style={{paddingBottom: scale(450)}}>
         <View style={styles.card}>
           <SmallRepCard miniRep={miniRep} />
         </View>
@@ -103,15 +99,16 @@ const RepDetails: FC<Props> = (props) => {
         </View>
 
         <View style={styles.table}>
-          <RenderRepContributorsTable repContributors={congressDetails.contributors} />
+          <RenderRepContributorsTable
+            repContributors={congressDetails.contributors}
+          />
         </View>
 
         <View>
           <CongressDetailLinks preferenceDetails={congressDetails} />
         </View>
-
       </View>
-    )
+    );
   } else {
     return (
       <View style={styles.noRep}>
