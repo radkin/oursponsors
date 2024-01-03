@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 services:
   dbpostgresql:
     image: "postgres:12"
@@ -16,10 +16,9 @@ services:
       POSTGRES_PASSWORD: testingPassword
   app:
     container_name: os-backend
-    image: radkin/os_backend
+    image: "radkin/os_backend:latest"
     networks:
       - os-pgsql
-    build: ./
     ports:
       - "5000:5000"
     depends_on:
